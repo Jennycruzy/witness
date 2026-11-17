@@ -39,6 +39,15 @@ describe('blame by comparison on real failures', () => {
     expect(fixed.healed).toBe(false);
   });
 
+  it('a real blind check: Kane passed "exactly one todo, b" while the blank todo from #2315 was on screen', () => {
+    for (const f of ['todomvc-2315-edit-target-svelte', 'todomvc-2315-edit-target-svelte-run2']) {
+      const lines = readFileSync(new URL(`./fixtures/${f}.ndjson`, import.meta.url), 'utf8').split('\n').filter(l => l.includes('"run_id":"run-2"') && l.includes('"type":"run_end"'));
+      const ev = JSON.parse(lines[0]);
+      expect(ev.status).toBe('passed');
+      expect(ev.variables_out.todo_list_exactly_one_b_check.value).toBe('\nb');
+    }
+  });
+
   it('re-recording on the target turns the layout failure into the real check failure', () => {
     const rerecord = run('actual-layout-rerecord-26.7.0');
     expect(rerecord.failed?.kind).toBe('check');
