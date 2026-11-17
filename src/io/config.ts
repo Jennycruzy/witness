@@ -2,7 +2,16 @@
 import { readFileSync } from 'node:fs';
 import { dirname, isAbsolute, resolve } from 'node:path';
 
-export interface BuildRef { url?: string; dir?: string; isolation?: boolean; profile?: string; }
+export interface BuildRef { url?: string; dir?: string; isolation?: boolean; profile?: string; setup?: string; }
+
+/** A published build channel on npm (for nightly watch and search). */
+export interface NpmSource {
+  npm: string;            // package name, e.g. @actual-app/web
+  buildDir?: string;      // folder inside the package to serve, e.g. build
+  isolation?: boolean;    // serve with cross-origin isolation headers
+  setup?: string;         // command that prepares app state: gets {url} and {profile}
+  repo?: string;          // GitHub owner/name, to list the commits between two builds
+}
 
 export interface FixConfig {
   agent: string[];      // command + args; the card text is sent on stdin
@@ -20,6 +29,8 @@ export interface WitnessConfig {
   fix?: FixConfig;
   spec?: string;
   evidenceDir?: string;
+  nightly?: NpmSource;
+  cacheDir?: string;
 }
 
 export function loadConfig(path: string): WitnessConfig {
@@ -30,5 +41,6 @@ export function loadConfig(path: string): WitnessConfig {
   for (const b of [c.target, c.reference]) { b.dir = abs(b.dir); b.profile = abs(b.profile); }
   if (c.fix) c.fix.cwd = abs(c.fix.cwd)!;
   c.evidenceDir = abs(c.evidenceDir ?? '.witness/runs');
+  c.cacheDir = abs(c.cacheDir ?? '.witness/builds');
   return c;
 }

@@ -7,14 +7,16 @@ import type { RunSummary } from '../core/stream.js';
 import { findBlindChecks, type BlindCheck } from '../core/blind.js';
 import { runKane } from '../io/kane.js';
 import { serveDir } from '../io/serve.js';
+import { prepareProfile } from '../io/setup.js';
 import type { BuildRef, WitnessConfig } from '../io/config.js';
 
 export interface GuardResult { test: string; decision: Decision; target: RunSummary; reference?: RunSummary; card?: string; evidenceDir: string; blind: BlindCheck[]; }
 
 async function open(ref: BuildRef) {
-  if (ref.url) return { url: ref.url, close: async () => {} };
-  if (ref.dir) return serveDir(ref.dir, { isolation: ref.isolation });
-  throw new Error('a build needs url or dir');
+  const s = ref.url ? { url: ref.url, close: async () => {} } : ref.dir ? await serveDir(ref.dir, { isolation: ref.isolation }) : null;
+  if (!s) throw new Error('a build needs url or dir');
+  const prof = ref.setup ? await prepareProfile(ref.setup, s.url) : null;
+  return { url: s.url, profile: prof?.dir ?? ref.profile, close: async () => { prof?.remove(); await s.close(); } };
 }
 
 export async function guard(cfg: WitnessConfig, testFile: string, log = console.log): Promise<GuardResult> {
@@ -26,7 +28,7 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
   let blind: BlindCheck[] = [];
   try {
     log(`witness  ${basename(testFile)}  target ${tgt.url}`);
-    const t = await runKane({ testFile, url: tgt.url, profileTemplate: cfg.target.profile });
+    const t = await runKane({ testFile, url: tgt.url, profileTemplate: tgt.profile });
     writeFileSync(join(evidenceDir, 'target.ndjson'), t.ndjson);
     target = t.summary;
     blind = findBlindChecks(t.ndjson);
@@ -43,7 +45,7 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
   let reference: RunSummary;
   try {
     log(`  reference  ${ref.url}`);
-    const r = await runKane({ testFile, url: ref.url, profileTemplate: cfg.reference.profile });
+    const r = await runKane({ testFile, url: ref.url, profileTemplate: ref.profile });
     writeFileSync(join(evidenceDir, 'reference.ndjson'), r.ndjson);
     reference = r.summary;
   } finally { await ref.close(); }

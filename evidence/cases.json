@@ -1,0 +1,27 @@
+{
+  "about": "Real Kane CLI runs (kane-cli 0.10.5, 17 Nov 2026). Truth comes from public issues and fixes, never from Kane's label.",
+  "pairs": [
+    { "name": "Actual Budget: running balance not updated after an edit", "issue": "https://github.com/actualbudget/actual/issues/8475",
+      "target": "test/fixtures/actual-8475-target-nightly-20260620.ndjson", "reference": "test/fixtures/actual-8475-reference-nightly-20260617.ndjson",
+      "target_build": "@actual-app/web 26.7.0-nightly.20260620", "reference_build": "@actual-app/web 26.7.0-nightly.20260617", "truth": "APP_BUG" },
+    { "name": "TodoMVC svelte: a whitespace-only edit leaves an empty todo / edits not trimmed", "issue": "https://github.com/tastejs/todomvc/issues/2315",
+      "target": "test/fixtures/todomvc-2315-edit-target-svelte.ndjson", "reference": "test/fixtures/todomvc-2315-edit-reference-vue.ndjson",
+      "target_build": "tastejs/todomvc ff43b02 examples/svelte", "reference_build": "tastejs/todomvc ff43b02 examples/vue", "truth": "APP_BUG" },
+    { "name": "TodoMVC svelte: the chosen filter is not restored on reload", "issue": "https://github.com/tastejs/todomvc/issues/2315",
+      "target": "test/fixtures/todomvc-2315-filter-target-svelte.ndjson", "reference": "test/fixtures/todomvc-2315-filter-reference-vue.ndjson",
+      "target_build": "tastejs/todomvc ff43b02 examples/svelte", "reference_build": "tastejs/todomvc ff43b02 examples/vue", "truth": "APP_BUG" },
+    { "name": "Actual Budget: typed apostrophe thousands separator truncates the amount", "issue": "https://github.com/actualbudget/actual/issues/6794",
+      "target": "test/fixtures/actual-6794-target-26.1.0.ndjson", "reference": "test/fixtures/actual-6794-reference-26.2.0.ndjson",
+      "target_build": "@actual-app/web 26.1.0", "reference_build": "@actual-app/web 26.2.0", "truth": "APP_BUG" },
+    { "name": "Actual Budget: a recording made on 26.8.0 replayed on 26.7.0 (the page layout differs)", "issue": null,
+      "target": "test/fixtures/actual-layout-target-26.7.0.ndjson", "reference": "test/fixtures/actual-layout-reference-26.8.0.ndjson",
+      "target_build": "@actual-app/web 26.7.0", "reference_build": "@actual-app/web 26.8.0", "truth": "TEST_PROBLEM" },
+    { "name": "Actual Budget: a 'create payee' menu appears during replay", "issue": null,
+      "target": "test/fixtures/actual-finance-target-26.8.0.ndjson", "reference": "test/fixtures/actual-finance-reference-26.8.0.ndjson",
+      "target_build": "@actual-app/web 26.8.0", "reference_build": "@actual-app/web 26.8.0", "truth": "TEST_PROBLEM" }
+  ],
+  "fix": { "name": "Agent fix for the TodoMVC svelte edit bug, proven with the unchanged recording", "issue": "https://github.com/tastejs/todomvc/issues/2315",
+           "run": "test/fixtures/todomvc-2315-edit-fixed-svelte.ndjson", "diff": "evidence/todomvc-svelte-trim.patch" },
+  "blind": { "name": "Kane passed 'exactly one todo, b' reading \"\\nb\" while the blank todo was listed", "issue": "https://github.com/tastejs/todomvc/issues/2315",
+             "runs": ["test/fixtures/todomvc-2315-edit-target-svelte.ndjson", "test/fixtures/todomvc-2315-edit-target-svelte-run2.ndjson"] }
+}

@@ -10,6 +10,10 @@ import { loadConfig } from './io/config.js';
 import { guard } from './commands/guard.js';
 import { fix } from './commands/fix.js';
 import { stopHook } from './commands/hook.js';
+import { watch } from './commands/watch.js';
+import { search } from './commands/search.js';
+import { listVersions } from './io/npm.js';
+import { verify } from './commands/verify.js';
 
 const [cmd, a, b] = process.argv.slice(2);
 
@@ -35,6 +39,25 @@ async function main(): Promise<number> {
     const cfg = loadConfig(b ?? 'witness.json');
     const r = await fix(cfg, resolve(a));
     return r.outcome === 'PROVEN' ? 0 : 2;
+  }
+  if (cmd === 'verify') return verify(process.cwd(), { writeManifest: a === '--write-manifest' });
+  if (cmd === 'watch') {
+    const r = await watch(loadConfig(a ?? 'witness.json'));
+    return r.results.some((x: any) => x.verdict === 'APP_BUG') ? 2 : 0;
+  }
+  if (cmd === 'search' && a) {
+    // witness search <test_md> <from-version> <to-version> [witness.json]
+    const [, , from, to, cfgPath] = process.argv.slice(2);
+    const cfg = loadConfig(cfgPath ?? 'witness.json');
+    if (!cfg.nightly || !from || !to) { console.error('usage: witness search <test_md> <good-version> <bad-version> [witness.json]'); return 64; }
+    const all = await listVersions(cfg.nightly.npm);
+    const i = all.findIndex(v => v.version === from), j = all.findIndex(v => v.version === to);
+    const span = all.slice(i, j + 1).filter((v, k, arr) => k === 0 || k === arr.length - 1 || /nightly/.test(v.version));
+    console.log(`search ${cfg.nightly.npm}: ${span.length} builds from ${from} (good) to ${to} (bad)`);
+    const r = await search(cfg.nightly, span, resolve(a), cfg.cacheDir!);
+    console.log(`  first bad ${r.firstBad}  (last good ${r.lastGood})`);
+    for (const c of r.commits) console.log(`    ${c.sha} ${c.date} ${c.title}`);
+    return 0;
   }
   if (cmd === 'hook') {
     const stdin = await new Promise<string>(res => { let s = ''; process.stdin.on('data', d => { s += d; }); process.stdin.on('end', () => res(s)); });
