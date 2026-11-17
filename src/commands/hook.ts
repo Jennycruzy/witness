@@ -1,6 +1,7 @@
 // Claude Code Stop hook. Exit 2 blocks the stop and Claude reads stderr as the reason (Claude Code hooks docs).
 // It stops blocking when the same verdict repeats 3 times while the hook keeps the turn going.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 import { loadConfig } from '../io/config.js';
 import { guard } from './guard.js';
@@ -19,6 +20,10 @@ export async function stopHook(stdin: string, maxRepeats = 3): Promise<number> {
   const state = existsSync(statePath) ? JSON.parse(readFileSync(statePath, 'utf8')) : { last: '', repeats: 0 };
   if (!input.stop_hook_active) { state.last = ''; state.repeats = 0; }
 
+  if (cfg.fix?.build) {
+    try { execSync(cfg.fix.build, { cwd: cfg.fix.cwd, stdio: 'pipe' }); }
+    catch (e: any) { process.stderr.write(`WITNESS: the app does not build, so it cannot be checked yet.\n${String(e.stderr || e.message).slice(-1500)}\n`); return 2; }
+  }
   const quiet: string[] = [];
   const problems: string[] = [];
   for (const t of cfg.tests) {

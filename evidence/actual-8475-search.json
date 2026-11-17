@@ -1,0 +1,46 @@
+{
+  "lastGood": "26.7.0-nightly.20260619",
+  "firstBad": "26.7.0-nightly.20260620",
+  "probes": [
+    {
+      "version": "26.7.0-nightly.20260624",
+      "status": "failed",
+      "failedKind": "check"
+    },
+    {
+      "version": "26.7.0-nightly.20260620",
+      "status": "failed",
+      "failedKind": "check"
+    },
+    {
+      "version": "26.7.0-nightly.20260617",
+      "status": "passed"
+    },
+    {
+      "version": "26.7.0-nightly.20260619",
+      "status": "passed"
+    }
+  ],
+  "commits": [
+    {
+      "sha": "4b5642b73",
+      "date": "2026-06-19T20:57:28Z",
+      "title": "EasyBank PayeeName fallback fix (#8243)"
+    },
+    {
+      "sha": "240d72d06",
+      "date": "2026-06-19T20:44:33Z",
+      "title": "Update Titlebar colors and bare button theme colors (#8267)"
+    },
+    {
+      "sha": "930d1d944",
+      "date": "2026-06-19T07:50:35Z",
+      "title": ":zap: Make transactions list re-renders non-blocking and perform optimistic updates (#8209)"
+    },
+    {
+      "sha": "8f27e177d",
+      "date": "2026-06-19T06:32:26Z",
+      "title": "[AI] api: add browser build (#8166)"
+    }
+  ]
+}
