@@ -23,12 +23,18 @@ export async function startChrome(profileTemplate?: string): Promise<Chrome> {
   if (profileTemplate && existsSync(profileTemplate)) cpSync(profileTemplate, profile, { recursive: true });
   const proc: ChildProcess = spawn(CHROME, [
     '--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`,
-    '--no-first-run', '--no-default-browser-check', '--disable-dev-shm-usage', '--window-size=1366,900', 'about:blank',
+    '--no-first-run', '--no-default-browser-check', '--disable-dev-shm-usage', '--window-size=1366,900',
+    ...(process.getuid?.() === 0 ? ['--no-sandbox'] : []),   // Chrome will not start as root without it
+    'about:blank',
   ], { stdio: 'ignore', detached: false });
   const endpoint = `http://127.0.0.1:${port}`;
   for (let i = 0; i < 60; i++) {
     try { const r = await fetch(`${endpoint}/json/version`); if (r.ok) break; } catch { /* not up yet */ }
     await new Promise(r => setTimeout(r, 250));
   }
-  return { endpoint, stop: () => { try { proc.kill('SIGKILL'); } catch { /* gone */ } rmSync(profile, { recursive: true, force: true }); } };
+  return { endpoint, stop: () => {
+    try { proc.kill('SIGKILL'); } catch { /* gone */ }
+    // Chrome may still be writing its profile for a moment after it is killed: retry, never fail the run over cleanup.
+    try { rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 }); } catch { /* left for the OS temp cleaner */ }
+  } };
 }

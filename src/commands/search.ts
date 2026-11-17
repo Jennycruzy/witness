@@ -41,6 +41,7 @@ export async function search(src: NpmSource, versions: { version: string; time: 
     let p = await probe(src, versions[mid].version, testFile, cacheDir, log);
     if (p.status === 'failed' && p.failedKind !== 'check') { log(`  ${versions[mid].version} failed at an action; replaying once more`); p = await probe(src, versions[mid].version, testFile, cacheDir, log); }
     probes.push(p);
+    if (p.status === 'unknown') throw new Error(`NOT_RUN: Kane gave no result on ${versions[mid].version} (check Chrome, the Kane login and the network); the search stops here instead of guessing`);
     if (p.status === 'passed') lo = mid; else if (p.failedKind === 'check') hi = mid;
     else { log(`  ${versions[mid].version} failed at an action: the page changed there; skipping it`); versions.splice(mid, 1); hi--; }
   }
