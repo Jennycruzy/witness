@@ -24,6 +24,7 @@ export async function stopHook(stdin: string, maxRepeats = 3): Promise<number> {
   for (const t of cfg.tests) {
     const r = await guard(cfg, t, (s) => quiet.push(s));
     if (r.decision.verdict === 'APP_BUG' || r.decision.verdict === 'TEST_PROBLEM') problems.push(r.card ?? r.decision.why);
+    for (const b of r.blind) problems.push(`BLIND check in ${t}, test step ${Number(b.runId.replace('run-', '')) + 1}: it passed reading ${JSON.stringify(b.value)}; ${b.reason}. Make that step check each item separately (or count items), then re-record it.`);
   }
   if (!problems.length) { writeFileSync(statePath, JSON.stringify({ last: '', repeats: 0 })); return 0; }
 
