@@ -1,0 +1,13 @@
+diff --git a/src/router.js b/src/router.js
+index 65a9c65..a4f75a2 100644
+--- a/src/router.js
++++ b/src/router.js
+@@ -18,6 +18,8 @@ export function router(onChange) {
+ 
+     function init() {
+         window.addEventListener("hashchange", handleChange);
++        // `hashchange` doesn't fire on initial load, so apply the current hash now.
++        handleChange();
+     }
+ 
+     return {

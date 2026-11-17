@@ -13,7 +13,8 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
   const cases = JSON.parse(readFileSync(join(root, 'evidence/cases.json'), 'utf8'));
   const files: string[] = [];
   for (const p of cases.pairs) files.push(p.target, p.reference);
-  files.push(cases.fix.run, cases.fix.diff, ...cases.blind.runs);
+  for (const f of cases.fixes) files.push(f.run, f.diff);
+  files.push(...cases.blind.runs);
   const uniq = [...new Set(files)].sort();
   const manifestPath = join(root, 'evidence/manifest.json');
   const hashes = Object.fromEntries(uniq.map(f => [f, sha(join(root, f))]));
@@ -38,9 +39,13 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
   log(`\n  real app bugs:      Kane's label right on ${kaneRight} of ${appBugs}; WITNESS right on ${witnessRight} of ${appBugs}`);
   log(`  real test problems: WITNESS right on ${witnessRightTP} of ${testProblems}`);
 
-  const fixed = parseRun(readFileSync(join(root, cases.fix.run), 'utf8'));
-  const fixOk = fixed.status === 'passed' && !fixed.healed;
-  log(`  agent fix:          the unchanged recording ${fixOk ? 'PASSES' : 'does NOT pass'} on the fixed build (${fixed.stepsPassed}/${fixed.stepsTotal} steps, no heal)`);
+  let fixOk = true;
+  for (const f of cases.fixes) {
+    const fixed = parseRun(readFileSync(join(root, f.run), 'utf8'));
+    const ok1 = fixed.status === 'passed' && !fixed.healed;
+    if (!ok1) fixOk = false;
+    log(`  agent fix:          the unchanged recording ${ok1 ? 'PASSES' : 'does NOT pass'} on the fixed build (${fixed.stepsPassed}/${fixed.stepsTotal} steps, no heal): ${f.name}`);
+  }
   const blind = cases.blind.runs.map((r: string) => findBlindChecks(readFileSync(join(root, r), 'utf8')).length);
   log(`  blind check:        found in ${blind.filter((n: number) => n > 0).length} of ${blind.length} real runs on the buggy build`);
   if (!fixOk || blind.some((n: number) => n === 0)) ok = false;

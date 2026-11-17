@@ -1,0 +1,109 @@
+{"type":"stream_start","cli_version":"0.10.5","surface":"testmd","pid":3923278,"v":1,"ts":"2026-11-17T20:04:14.323Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Add two todos","ref":null,"v":1,"ts":"2026-11-17T20:05:20.679Z"}
+{"type":"run_start","objective":"Type \"Buy milk\" in the new todo box and press Enter, then type \"Walk dog\" and press Enter.","timestamp":1794945922,"environment":{"resolution":"1920x1080"},"override_start_url":"http://127.0.0.1:37343/","recorded_start_url":"http://127.0.0.1:5191/","override_applied":true,"v":1,"ts":"2026-11-17T20:05:22.229Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 6 actions","recording_length":6,"v":1,"ts":"2026-11-17T20:05:22.509Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T20:05:22.522Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-17T20:05:23.732Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:5191/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-17T20:05:26.610Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:5191/","action_type":"navigate","v":1,"ts":"2026-11-17T20:05:26.621Z"}
+{"type":"step_end","index":1,"status":"passed","duration":4.4,"summary":"navigate: Navigate to http://127.0.0.1:5191/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"f40c7ca7-6638-414f-bc88-ef5f9efb25c7","v":1,"ts":"2026-11-17T20:05:26.636Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T20:05:26.660Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:26.947Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Waiting for the queued plan steps to complete","action_type":"wait","success":true,"v":1,"ts":"2026-11-17T20:05:27.958Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Waiting for the queued plan steps to complete","action_type":"wait","v":1,"ts":"2026-11-17T20:05:27.958Z"}
+{"type":"step_end","index":2,"status":"passed","duration":1.3,"summary":"wait: Waiting for the queued plan steps to complete","ordinal":2,"id":"0-2","kind":"wait","screenshot":"screenshot.jpg","action_id":"a5a8f81a-d553-4dbf-98f9-fdc61760cdc8","v":1,"ts":"2026-11-17T20:05:27.964Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-17T20:05:27.967Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:28.048Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Type \"Buy milk\" into \"What needs to be done?\"","action_type":"fill","success":true,"v":1,"ts":"2026-11-17T20:05:28.377Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Type \"Buy milk\" into \"What needs to be done?\"","action_type":"fill","v":1,"ts":"2026-11-17T20:05:28.377Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.4,"summary":"fill: Type \"Buy milk\" into \"What needs to be done?\"","ordinal":3,"id":"0-3","kind":"fill","screenshot":"screenshot.jpg","action_id":"ea5ba488-5007-45ea-bf7d-813e7af1d491","v":1,"ts":"2026-11-17T20:05:28.576Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-17T20:05:28.576Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:28.646Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Pressing the Enter key","action_type":"press_key","success":true,"v":1,"ts":"2026-11-17T20:05:29.229Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Pressing the Enter key","action_type":"press_key","v":1,"ts":"2026-11-17T20:05:29.230Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.7,"summary":"press_key: Pressing the Enter key","ordinal":4,"id":"0-4","kind":"press_key","screenshot":"screenshot.jpg","action_id":"b1257781-e326-46f9-b1d4-b6c04e6d7fc4","v":1,"ts":"2026-11-17T20:05:29.246Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-17T20:05:29.247Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:29.323Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Typing \"Walk dog\" in the new todo box","action_type":"fill","success":true,"v":1,"ts":"2026-11-17T20:05:29.487Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Typing \"Walk dog\" in the new todo box","action_type":"fill","v":1,"ts":"2026-11-17T20:05:29.488Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.3,"summary":"fill: Typing \"Walk dog\" in the new todo box","ordinal":5,"id":"0-5","kind":"fill","screenshot":"screenshot.jpg","action_id":"63ef4df1-82b1-4c44-9c59-aa358e06ceb9","v":1,"ts":"2026-11-17T20:05:29.592Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-17T20:05:29.593Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:29.663Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Pressing the Enter key","action_type":"press_key","success":true,"v":1,"ts":"2026-11-17T20:05:30.182Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Pressing the Enter key","action_type":"press_key","v":1,"ts":"2026-11-17T20:05:30.182Z"}
+{"type":"step_end","index":6,"status":"passed","duration":0.6,"summary":"press_key: Pressing the Enter key","ordinal":6,"id":"0-6","kind":"press_key","screenshot":"screenshot.jpg","action_id":"4fbcbe57-7dff-4305-8b76-b951584c3b23","v":1,"ts":"2026-11-17T20:05:30.184Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":9.36,"final_url":"http://127.0.0.1:37343/","actions_executed":6,"screenshot_path":"<local>/step_006.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T20:05:30.204Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":9.36,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T20:05:30.224Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Complete one todo","ref":null,"v":1,"ts":"2026-11-17T20:05:30.229Z"}
+{"type":"run_start","objective":"Tick the checkbox next to \"Buy milk\".","timestamp":1794945930,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T20:05:30.290Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 1 actions","recording_length":1,"v":1,"ts":"2026-11-17T20:05:30.291Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T20:05:30.297Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:30.389Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Ticking the checkbox next to Buy milk","action_type":"click","success":true,"v":1,"ts":"2026-11-17T20:05:30.980Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Ticking the checkbox next to Buy milk","action_type":"click","v":1,"ts":"2026-11-17T20:05:30.980Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"click: Ticking the checkbox next to Buy milk","ordinal":7,"id":"1-1","kind":"click","screenshot":"screenshot.jpg","action_id":"04ab1bcd-18dc-48b8-bddd-4be184f4c854","v":1,"ts":"2026-11-17T20:05:31.084Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":0.84,"final_url":"http://127.0.0.1:37343/","actions_executed":1,"screenshot_path":"<local>/step_001.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T20:05:31.092Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":0.84,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T20:05:31.094Z"}
+{"type":"test_md_step_start","step_index":3,"heading":"Show completed todos","ref":null,"v":1,"ts":"2026-11-17T20:05:31.097Z"}
+{"type":"run_start","objective":"Click the \"Completed\" filter.","timestamp":1794945931,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T20:05:31.118Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 1 actions","recording_length":1,"v":1,"ts":"2026-11-17T20:05:31.119Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T20:05:31.126Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:31.198Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking the Completed filter","action_type":"click","success":true,"v":1,"ts":"2026-11-17T20:05:31.807Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking the Completed filter","action_type":"click","v":1,"ts":"2026-11-17T20:05:31.807Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"click: Clicking the Completed filter","ordinal":8,"id":"2-1","kind":"click","screenshot":"screenshot.jpg","action_id":"16b5646a-49ab-4a7a-8ee2-fdc61e2ef9a2","v":1,"ts":"2026-11-17T20:05:31.911Z"}
+{"type":"run_end","run_id":"run-2","status":"passed","summary":"","reason":"replay completed","duration":0.82,"final_url":"http://127.0.0.1:37343/#/completed","actions_executed":1,"screenshot_path":"<local>/step_001.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T20:05:31.917Z"}
+{"type":"test_md_step_end","step_index":3,"status":"passed","duration_s":0.82,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T20:05:31.918Z"}
+{"type":"test_md_step_start","step_index":4,"heading":"Reload","ref":null,"v":1,"ts":"2026-11-17T20:05:31.918Z"}
+{"type":"run_start","objective":"Reload the page.","timestamp":1794945931,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T20:05:31.934Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-17T20:05:31.934Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T20:05:31.940Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37343/#/completed","v":1,"ts":"2026-11-17T20:05:32.013Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate refresh","action_type":"refresh","success":true,"v":1,"ts":"2026-11-17T20:05:32.151Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate refresh","action_type":"refresh","v":1,"ts":"2026-11-17T20:05:32.152Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.2,"summary":"refresh: Navigate refresh","ordinal":9,"id":"3-1","kind":"refresh","screenshot":"screenshot.jpg","action_id":"41ebca9a-5888-474f-bcd1-e7fdc80b7af5","v":1,"ts":"2026-11-17T20:05:32.152Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T20:05:32.155Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37343/#/completed","v":1,"ts":"2026-11-17T20:05:32.297Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Reloading the page","action_type":"wait","success":true,"v":1,"ts":"2026-11-17T20:05:33.303Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Reloading the page","action_type":"wait","v":1,"ts":"2026-11-17T20:05:33.304Z"}
+{"type":"step_end","index":2,"status":"passed","duration":1.1,"summary":"wait: Reloading the page","ordinal":10,"id":"3-2","kind":"wait","screenshot":"screenshot.jpg","action_id":"ccfc1651-d1fb-4fed-bb72-417534be69ec","v":1,"ts":"2026-11-17T20:05:33.304Z"}
+{"type":"run_end","run_id":"run-3","status":"passed","summary":"","reason":"replay completed","duration":1.39,"final_url":"http://127.0.0.1:37343/#/completed","actions_executed":2,"screenshot_path":"<local>/step_002.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T20:05:33.311Z"}
+{"type":"test_md_step_end","step_index":4,"status":"passed","duration_s":1.39,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T20:05:33.312Z"}
+{"type":"test_md_step_start","step_index":5,"heading":"Add a todo after the reload","ref":null,"v":1,"ts":"2026-11-17T20:05:33.312Z"}
+{"type":"run_start","objective":"Type \"Call mom\" in the new todo box and press Enter.","timestamp":1794945933,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T20:05:33.329Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 3 actions","recording_length":3,"v":1,"ts":"2026-11-17T20:05:33.331Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T20:05:33.336Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37343/#/completed","v":1,"ts":"2026-11-17T20:05:33.414Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Waiting for the input prompt to be ready","action_type":"wait","success":true,"v":1,"ts":"2026-11-17T20:05:34.421Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Waiting for the input prompt to be ready","action_type":"wait","v":1,"ts":"2026-11-17T20:05:34.421Z"}
+{"type":"step_end","index":1,"status":"passed","duration":1.1,"summary":"wait: Waiting for the input prompt to be ready","ordinal":11,"id":"4-1","kind":"wait","screenshot":"screenshot.jpg","action_id":"0ecc52d3-a5e3-4af5-8113-3310b36a3f57","v":1,"ts":"2026-11-17T20:05:34.422Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T20:05:34.422Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37343/#/completed","v":1,"ts":"2026-11-17T20:05:34.496Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Type \"Call mom\" into \"What needs to be done?\"","action_type":"fill","success":true,"v":1,"ts":"2026-11-17T20:05:34.658Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Type \"Call mom\" into \"What needs to be done?\"","action_type":"fill","v":1,"ts":"2026-11-17T20:05:34.658Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.2,"summary":"fill: Type \"Call mom\" into \"What needs to be done?\"","ordinal":12,"id":"4-2","kind":"fill","screenshot":"screenshot.jpg","action_id":"b230aec8-62f4-4523-828b-62c4e8ed0bd2","v":1,"ts":"2026-11-17T20:05:34.755Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-17T20:05:34.755Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:37343/#/completed","v":1,"ts":"2026-11-17T20:05:34.828Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Pressing the Enter key","action_type":"press_key","success":true,"v":1,"ts":"2026-11-17T20:05:35.347Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Pressing the Enter key","action_type":"press_key","v":1,"ts":"2026-11-17T20:05:35.348Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.6,"summary":"press_key: Pressing the Enter key","ordinal":13,"id":"4-3","kind":"press_key","screenshot":"screenshot.jpg","action_id":"34609744-d56b-43a8-bb7f-8ccd967fd04c","v":1,"ts":"2026-11-17T20:05:35.348Z"}
+{"type":"run_end","run_id":"run-4","status":"passed","summary":"","reason":"replay completed","duration":2.04,"final_url":"http://127.0.0.1:37343/#/completed","actions_executed":3,"screenshot_path":"<local>/step_003.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T20:05:35.358Z"}
+{"type":"test_md_step_end","step_index":5,"status":"passed","duration_s":2.04,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T20:05:35.359Z"}
+{"type":"test_md_step_start","step_index":6,"heading":"Check the filter","ref":null,"v":1,"ts":"2026-11-17T20:05:35.359Z"}
+{"type":"run_start","objective":"Verify the \"Completed\" filter is the selected filter.","timestamp":1794945935,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T20:05:35.375Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-17T20:05:35.375Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T20:05:35.380Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37343/#/completed","v":1,"ts":"2026-11-17T20:05:35.464Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Checking whether the Completed filter is selected","action_type":"analyze","success":true,"v":1,"ts":"2026-11-17T20:05:35.506Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Checking whether the Completed filter is selected","action_type":"analyze","v":1,"ts":"2026-11-17T20:05:35.506Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.1,"summary":"analyze: Checking whether the Completed filter is selected","ordinal":14,"id":"5-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"212ce17e-70fa-41c3-8c98-cbbbe890c853","v":1,"ts":"2026-11-17T20:05:35.507Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T20:05:35.507Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37343/#/completed","v":1,"ts":"2026-11-17T20:05:35.578Z"}
+{"type":"step_event","index":2,"event":"assertion","detail":"the \"Completed\" filter is the selected filter","passed":true,"v":1,"ts":"2026-11-17T20:05:35.582Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.1,"summary":"assert: the \"Completed\" filter is the selected filter","ordinal":15,"id":"5-2","kind":"assert","screenshot":"screenshot.jpg","action_id":"699c19bd-cc3c-4c4f-a52c-b2a44637c035","v":1,"ts":"2026-11-17T20:05:35.584Z"}
+{"type":"run_end","run_id":"run-5","status":"passed","summary":"","reason":"replay completed","duration":0.23,"final_url":"http://127.0.0.1:37343/#/completed","actions_executed":2,"screenshot_path":"<local>/step_002.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{"completed_filter_selected":{"syntax":"{{completed_filter_selected}}","value":"true","secret":false}},"pointer":""},"variables_out":{"completed_filter_selected":{"syntax":"{{completed_filter_selected}}","value":"true","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T20:05:35.592Z"}
+{"type":"test_md_step_end","step_index":6,"status":"passed","duration_s":0.23,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T20:05:35.592Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"0b5c1c24-14a2-42f9-9ccf-2ea611384793","v":1,"ts":"2026-11-17T20:05:42.623Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":81,"steps":{"total":6,"passed":6,"failed":0,"skipped":0,"replay_decisions":6,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:42.637Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>/0b5c1c24-14a2-42f9-9ccf-2ea611384793.evidence","v":1,"ts":"2026-11-17T20:05:42.648Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":81,"session_id":"ed3d8db0-e866-4cce-8af5-29e40d48e1ae","coverage":{"status":"skipped"},"override_start_url":"http://127.0.0.1:37343/","v":1,"ts":"2026-11-17T20:05:42.648Z"}
