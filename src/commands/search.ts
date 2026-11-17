@@ -38,7 +38,8 @@ export async function search(src: NpmSource, versions: { version: string; time: 
   let lo = 0, hi = versions.length - 1;               // lo = good, hi = bad (an app bug, failed at a check)
   while (hi - lo > 1) {
     const mid = Math.floor((lo + hi) / 2);
-    const p = await probe(src, versions[mid].version, testFile, cacheDir, log);
+    let p = await probe(src, versions[mid].version, testFile, cacheDir, log);
+    if (p.status === 'failed' && p.failedKind !== 'check') { log(`  ${versions[mid].version} failed at an action; replaying once more`); p = await probe(src, versions[mid].version, testFile, cacheDir, log); }
     probes.push(p);
     if (p.status === 'passed') lo = mid; else if (p.failedKind === 'check') hi = mid;
     else { log(`  ${versions[mid].version} failed at an action: the page changed there; skipping it`); versions.splice(mid, 1); hi--; }
