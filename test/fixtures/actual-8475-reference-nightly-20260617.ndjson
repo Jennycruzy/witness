@@ -1,0 +1,79 @@
+{"type":"stream_start","cli_version":"0.10.5","surface":"testmd","pid":3761952,"v":1,"ts":"2026-11-17T15:31:00.629Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Open the Wallet account","ref":null,"v":1,"ts":"2026-11-17T15:31:25.651Z"}
+{"type":"run_start","objective":"Click \"Wallet\" in the sidebar and wait for its transactions to show.","timestamp":1794929486,"environment":{"resolution":"1920x1080"},"override_start_url":"http://127.0.0.1:5203/","recorded_start_url":"http://127.0.0.1:5201/","override_applied":true,"v":1,"ts":"2026-11-17T15:31:26.014Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 3 actions","recording_length":3,"v":1,"ts":"2026-11-17T15:31:26.027Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T15:31:26.029Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-17T15:31:26.281Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:5201/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-17T15:31:31.409Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:5201/","action_type":"navigate","v":1,"ts":"2026-11-17T15:31:31.411Z"}
+{"type":"step_end","index":1,"status":"passed","duration":5.4,"summary":"navigate: Navigate to http://127.0.0.1:5201/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"e2d81516-6252-4302-bbf7-4fffbe1025a8","v":1,"ts":"2026-11-17T15:31:31.420Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T15:31:31.422Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:5203/","v":1,"ts":"2026-11-17T15:31:33.333Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking Wallet in the sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-17T15:31:34.906Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking Wallet in the sidebar","action_type":"click","v":1,"ts":"2026-11-17T15:31:34.908Z"}
+{"type":"step_end","index":2,"status":"passed","duration":3.5,"summary":"click: Clicking Wallet in the sidebar","ordinal":2,"id":"0-2","kind":"click","screenshot":"screenshot.jpg","action_id":"40aa5321-ec6d-4587-8194-f51acccb1663","v":1,"ts":"2026-11-17T15:31:35.360Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-17T15:31:35.364Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:35.456Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Waiting for Wallet transactions to show","action_type":"wait","success":true,"v":1,"ts":"2026-11-17T15:31:40.230Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Waiting for Wallet transactions to show","action_type":"wait","v":1,"ts":"2026-11-17T15:31:40.230Z"}
+{"type":"step_end","index":3,"status":"passed","duration":4.9,"summary":"wait: Waiting for Wallet transactions to show","ordinal":3,"id":"0-3","kind":"wait","screenshot":"screenshot.jpg","action_id":"12eeb7f6-bb8e-4313-b0fe-7d21c07d75e5","v":1,"ts":"2026-11-17T15:31:40.231Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":14.52,"final_url":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","actions_executed":3,"screenshot_path":"<local>/step_003.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T15:31:40.258Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":14.52,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T15:31:40.270Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Edit the deposit","ref":null,"v":1,"ts":"2026-11-17T15:31:40.275Z"}
+{"type":"run_start","objective":"Click the Deposit amount 20.00 of the transaction, change it to 50.00 and press Enter.","timestamp":1794929500,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T15:31:40.313Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 7 actions","recording_length":7,"v":1,"ts":"2026-11-17T15:31:40.314Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T15:31:40.321Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:40.407Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking Deposit amount 20.00 for the transaction on 11/17/2026","action_type":"click","success":true,"v":1,"ts":"2026-11-17T15:31:41.007Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking Deposit amount 20.00 for the transaction on 11/17/2026","action_type":"click","v":1,"ts":"2026-11-17T15:31:41.008Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"click: Clicking Deposit amount 20.00 for the transaction on 11/17/2026","ordinal":4,"id":"1-1","kind":"click","screenshot":"screenshot.jpg","action_id":"34cdbd1e-30e7-45c0-8a8e-9e880dee2672","v":1,"ts":"2026-11-17T15:31:41.116Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T15:31:41.116Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:41.188Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking deposit amount 20.00","action_type":"click","success":true,"v":1,"ts":"2026-11-17T15:31:41.786Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking deposit amount 20.00","action_type":"click","v":1,"ts":"2026-11-17T15:31:41.787Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.7,"summary":"click: Clicking deposit amount 20.00","ordinal":5,"id":"1-2","kind":"click","screenshot":"screenshot.jpg","action_id":"69320aa5-681c-439b-89a3-7191565c815b","v":1,"ts":"2026-11-17T15:31:41.886Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-17T15:31:41.886Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:41.972Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Pressing Enter to edit the Deposit amount 20.00","action_type":"press_key","success":true,"v":1,"ts":"2026-11-17T15:31:42.495Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Pressing Enter to edit the Deposit amount 20.00","action_type":"press_key","v":1,"ts":"2026-11-17T15:31:42.496Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.6,"summary":"press_key: Pressing Enter to edit the Deposit amount 20.00","ordinal":6,"id":"1-3","kind":"press_key","screenshot":"screenshot.jpg","action_id":"26fca328-661a-4a68-8b5b-89df6f62b665","v":1,"ts":"2026-11-17T15:31:42.497Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-17T15:31:42.498Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:42.579Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking the deposit amount 20.00","action_type":"click","success":true,"v":1,"ts":"2026-11-17T15:31:49.523Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking the deposit amount 20.00","action_type":"click","v":1,"ts":"2026-11-17T15:31:49.524Z"}
+{"type":"step_end","index":4,"status":"passed","duration":7,"summary":"click: Clicking the deposit amount 20.00","ordinal":7,"id":"1-4","kind":"click","screenshot":"screenshot.jpg","action_id":"b5b4efe3-622e-4c95-be32-c493f788018c","v":1,"ts":"2026-11-17T15:31:49.525Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-17T15:31:49.525Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:49.622Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Waiting for the next step to run","action_type":"wait","success":true,"v":1,"ts":"2026-11-17T15:31:50.628Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Waiting for the next step to run","action_type":"wait","v":1,"ts":"2026-11-17T15:31:50.628Z"}
+{"type":"step_end","index":5,"status":"passed","duration":1.1,"summary":"wait: Waiting for the next step to run","ordinal":8,"id":"1-5","kind":"wait","screenshot":"screenshot.jpg","action_id":"198ed8e2-44f0-4a32-8049-94c4b76bb889","v":1,"ts":"2026-11-17T15:31:50.629Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-17T15:31:50.631Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:50.705Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Type \"50.00\" into \"textbox\"","action_type":"fill","success":true,"v":1,"ts":"2026-11-17T15:31:50.912Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Type \"50.00\" into \"textbox\"","action_type":"fill","v":1,"ts":"2026-11-17T15:31:50.912Z"}
+{"type":"step_end","index":6,"status":"passed","duration":0.3,"summary":"fill: Type \"50.00\" into \"textbox\"","ordinal":9,"id":"1-6","kind":"fill","screenshot":"screenshot.jpg","action_id":"c9b9b949-e70a-49cb-b4b8-16b6e2fbcb54","v":1,"ts":"2026-11-17T15:31:51.016Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-17T15:31:51.018Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:51.105Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Press Enter","action_type":"press_key","success":true,"v":1,"ts":"2026-11-17T15:31:51.635Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Press Enter","action_type":"press_key","v":1,"ts":"2026-11-17T15:31:51.635Z"}
+{"type":"step_end","index":7,"status":"passed","duration":0.6,"summary":"press_key: Press Enter","ordinal":10,"id":"1-7","kind":"press_key","screenshot":"screenshot.jpg","action_id":"9fcd0bff-0381-4892-9570-8aa35b4bf903","v":1,"ts":"2026-11-17T15:31:51.638Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":11.36,"final_url":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","actions_executed":7,"screenshot_path":"<local>/step_007.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T15:31:51.651Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":11.36,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T15:31:51.653Z"}
+{"type":"test_md_step_start","step_index":3,"heading":"Check the running balance","ref":null,"v":1,"ts":"2026-11-17T15:31:51.655Z"}
+{"type":"run_start","objective":"Verify the Balance column for the transaction shows 50.00.","timestamp":1794929511,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T15:31:51.706Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-17T15:31:51.709Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T15:31:51.722Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:51.899Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Reading the transaction balance","action_type":"analyze","success":true,"v":1,"ts":"2026-11-17T15:31:51.949Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Reading the transaction balance","action_type":"analyze","v":1,"ts":"2026-11-17T15:31:51.949Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.2,"summary":"analyze: Reading the transaction balance","ordinal":11,"id":"2-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"8b606e64-410b-40e7-9566-c22795f98457","v":1,"ts":"2026-11-17T15:31:51.950Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T15:31:51.953Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","v":1,"ts":"2026-11-17T15:31:52.024Z"}
+{"type":"step_event","index":2,"event":"assertion","detail":"the Balance column for the transaction shows 50.00","passed":true,"v":1,"ts":"2026-11-17T15:31:52.038Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.1,"summary":"assert: the Balance column for the transaction shows 50.00","ordinal":12,"id":"2-2","kind":"assert","screenshot":"screenshot.jpg","action_id":"eb3398e8-9fa5-4891-830c-0fe1f11f62d6","v":1,"ts":"2026-11-17T15:31:52.040Z"}
+{"type":"run_end","run_id":"run-2","status":"passed","summary":"","reason":"replay completed","duration":0.39,"final_url":"http://127.0.0.1:5203/accounts/88a06a91-7764-42ac-98e5-f41a4defcde7","actions_executed":2,"screenshot_path":"<local>/step_002.png","run_dir":"<local>/replay-test","total_runs":1,"context":{"memory":{},"variables":{"transaction_balance_check":{"syntax":"{{transaction_balance_check}}","value":"50.00","secret":false}},"pointer":""},"variables_out":{"transaction_balance_check":{"syntax":"{{transaction_balance_check}}","value":"50.00","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T15:31:52.054Z"}
+{"type":"test_md_step_end","step_index":3,"status":"passed","duration_s":0.39,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T15:31:52.055Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"371b11d5-8e89-4543-b51c-4054ad236eca","v":1,"ts":"2026-11-17T15:31:57.018Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":51,"steps":{"total":3,"passed":3,"failed":0,"skipped":0,"replay_decisions":3,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"http://127.0.0.1:5203/","v":1,"ts":"2026-11-17T15:31:57.032Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>/371b11d5-8e89-4543-b51c-4054ad236eca.evidence","v":1,"ts":"2026-11-17T15:31:57.040Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":51,"session_id":"e3be0821-b906-4109-ba45-a4542f88331b","coverage":{"status":"skipped"},"override_start_url":"http://127.0.0.1:5203/","v":1,"ts":"2026-11-17T15:31:57.040Z"}
