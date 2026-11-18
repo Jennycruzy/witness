@@ -1,5 +1,6 @@
 {
   "evidence/todomvc-svelte-filter-reload.patch": "c7395f03716407d3fca1a2c35e9d66041fd341e5610dad721925f10e2a797ae8",
+  "evidence/todomvc-svelte-trim-hook-untold.patch": "f8ca46a6708809be9f8f54699e6c59fbe0f5cfa7a8752fd9cdd2ea2fe8ca6f90",
   "evidence/todomvc-svelte-trim.patch": "f8ca46a6708809be9f8f54699e6c59fbe0f5cfa7a8752fd9cdd2ea2fe8ca6f90",
   "test/fixtures/actual-6794-reference-26.2.0.ndjson": "ea382cbc448c381ef5668072fd934036f2a382da24935fdfa4f2e56b370f14bf",
   "test/fixtures/actual-6794-target-26.1.0.ndjson": "9e84de161a87310a671f9f0170bb0e53ed272d2239ccb1ef5ef0af8e495fb8aa",
@@ -9,6 +10,7 @@
   "test/fixtures/actual-finance-target-26.8.0.ndjson": "ed9f280149cb2d3a23fcad6558b8c5b921ffadf75cb26c04014b05d688febea7",
   "test/fixtures/actual-layout-reference-26.8.0.ndjson": "f1a4b8dab1732c9a8d5f025a58fde49ecc3a1099386a7a5cd134f82a23bc1601",
   "test/fixtures/actual-layout-target-26.7.0.ndjson": "ad77aa207f71366d4a7994718957970380290435c0c02e44c2867ce769f0f658",
+  "test/fixtures/todomvc-2315-edit-fixed-svelte-hook-untold.ndjson": "6c4e61c66a63eec094cfed0b4e60f5a12e860bf173ef8e0c91f762feb4888129",
   "test/fixtures/todomvc-2315-edit-fixed-svelte.ndjson": "a6666f789d90e5cd7d176cffef857a40f3bc71453d603b555ff9d93bec139d9c",
   "test/fixtures/todomvc-2315-edit-reference-vue.ndjson": "4caf881493eb167282f894f8796db8b0721487a37d3f74c66ab8278e0fdfb83a",
   "test/fixtures/todomvc-2315-edit-target-svelte-run2.ndjson": "79affc7d6a61641f421a893d637108093bca95a78d6026827f85b7aa69613518",

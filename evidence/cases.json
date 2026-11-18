@@ -76,6 +76,12 @@
       "issue": "https://github.com/tastejs/todomvc/issues/2315",
       "run": "test/fixtures/todomvc-2315-filter-fixed-svelte-hook.ndjson",
       "diff": "evidence/todomvc-svelte-filter-reload.patch"
+    },
+    {
+      "name": "Agent fix for the TodoMVC svelte blank-edit bug the agent was never told about: given only the filter report, it tried to stop, the WITNESS Stop hook blocked it (Kane label automation_bug 0.84; reference build passed), and it fixed Item.svelte",
+      "issue": "https://github.com/tastejs/todomvc/issues/2315",
+      "run": "test/fixtures/todomvc-2315-edit-fixed-svelte-hook-untold.ndjson",
+      "diff": "evidence/todomvc-svelte-trim-hook-untold.patch"
     }
   ]
 }
