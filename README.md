@@ -62,6 +62,7 @@ Put a `witness.json` next to your Kane tests:
 
 | Command | What it does | Kane credits |
 |---|---|---|
+| `witness record <test>` | Records the test's steps with Kane on the reference build (with an npm channel: the newest release) and keeps the recording | ~50 for a short test |
 | `witness guard` | Runs each test on your build; on a failure replays it on the reference and gives the verdict | 0 when the target passes |
 | `witness fix <test>` | APP_BUG → the agent gets the card (it may change only `source/`) → rebuild → the unchanged recording must pass | rebuild + replays |
 | `witness install-hook` | Adds a Claude Code Stop hook: the agent cannot stop while a verdict is open | — |
@@ -69,7 +70,7 @@ Put a `witness.json` next to your Kane tests:
 | `witness watch` | Checks the newest nightly against the newest release; on an APP_BUG it runs the search | 0 on quiet nights |
 | `witness verify` | Recomputes the headline numbers from `evidence/`, offline | 0 |
 
-Builds can be a URL or a folder that WITNESS serves itself (with cross-origin isolation headers when an app needs them). Apps that need a starting state get a setup command (see [`examples/actual/setup.mjs`](examples/actual/setup.mjs)).
+Builds can be a URL or a folder that WITNESS serves itself (with cross-origin isolation headers when an app needs them). Apps that need a starting state get a setup command (see [`examples/actual/setup.mjs`](examples/actual/setup.mjs); the full nightly setup for Actual Budget, with its recorded test, is in [`examples/actual`](examples/actual), run from that folder).
 
 ## How the decision is made
 

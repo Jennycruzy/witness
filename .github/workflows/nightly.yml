@@ -1,0 +1,36 @@
+name: nightly watch
+# Every night: replay the Actual Budget tests on the newest nightly build and on the newest release.
+# On an APP_BUG, search the nightlies for the first bad build and list the commits in between.
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci && npm run build
+      - run: npm install -g @testmuai/kane-cli
+      - name: Kane login
+        run: kane-cli login --username "$KANE_USERNAME" --access-key "$KANE_ACCESS_KEY" < /dev/null
+        env:
+          KANE_USERNAME: ${{ secrets.KANE_USERNAME }}
+          KANE_ACCESS_KEY: ${{ secrets.KANE_ACCESS_KEY }}
+      - name: Watch the newest Actual Budget nightly
+        working-directory: examples/actual
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node ../../dist/cli.js watch witness.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: witness-nightly
+          path: |
+            examples/actual/.witness/runs
+            examples/actual/.witness/nightly
+          if-no-files-found: ignore

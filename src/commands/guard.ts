@@ -12,7 +12,7 @@ import type { BuildRef, WitnessConfig } from '../io/config.js';
 
 export interface GuardResult { test: string; decision: Decision; target: RunSummary; reference?: RunSummary; card?: string; evidenceDir: string; blind: BlindCheck[]; }
 
-async function open(ref: BuildRef) {
+export async function open(ref: BuildRef) {
   const s = ref.url ? { url: ref.url, close: async () => {} } : ref.dir ? await serveDir(ref.dir, { isolation: ref.isolation }) : null;
   if (!s) throw new Error('a build needs url or dir');
   const prof = ref.setup ? await prepareProfile(ref.setup, s.url) : null;

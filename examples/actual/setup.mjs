@@ -1,6 +1,5 @@
 // Prepares Actual Budget for the running-balance test: a fresh local budget, an account "Wallet",
 // the Balance column shown, and one 20.00 deposit. Usage: node setup.mjs <url> <chrome-profile-dir>
-// Fresh local budget → account → running balance on → +20.00 → edit to 50.00 → read cells.
 import { chromium } from 'playwright-core';
 const [url, prof] = process.argv.slice(2);
 const ctx = await chromium.launchPersistentContext(prof, { executablePath: '/usr/bin/google-chrome', headless: true, viewport: { width: 1366, height: 900 } });
@@ -15,7 +14,16 @@ await p.getByRole('button',{name:'Add account'}).first().click({ timeout: 60000 
 if (await p.getByRole('button',{name:'Create a local account'}).count()) { await p.getByRole('button',{name:'Create a local account'}).click(); await W(1500); }
 await p.locator('[role=dialog]').last().locator('input').first().waitFor({ timeout: 60000 });
 const d = p.locator('[role=dialog]').last(); await d.locator('input').nth(0).fill('Wallet'); await d.getByRole('button',{name:/^Create$/}).click(); await W(4000);
-await p.getByRole('button',{name:'Account menu'}).click(); await W(800); await p.getByText('Show running balance').click(); await W(1500);
+// Turn the balance column on. Older builds have "Show running balance" in the account menu; newer ones moved it
+// into "Manage table columns".
+await p.getByRole('button',{name:'Account menu'}).click(); await W(800);
+if (await p.getByText('Show running balance').count()) { await p.getByText('Show running balance').click(); }
+else {
+  await p.getByText('Manage table columns').click(); const pane = p.locator('[role=dialog]').last(); await pane.waitFor({ timeout: 60000 });
+  await pane.locator('input[aria-label="Running balance"]').evaluate(e => { if (!e.checked) e.click(); }); await W(300);
+  await pane.getByRole('button',{name:'Save'}).click();
+}
+await W(1500);
 await p.getByRole('button',{name:'Add New'}).click(); await W(1200);
 const nr = p.locator('[data-testid="new-transaction"]');
 await nr.locator('[data-testid="payee"]').click(); await W(400); await p.keyboard.type('Coffee shop'); await p.keyboard.press('Escape').catch(()=>{}); await W(400);

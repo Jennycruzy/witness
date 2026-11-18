@@ -1,0 +1,18 @@
+{
+  "test_id": "eb2c4264-571f-4462-b5eb-3cd0f37a5593",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "running_balance",
+  "commit_id": "d95e2226-6ddb-4d7c-8d26-40340f1a001e",
+  "testcase_id": "01M7P0FTRGNT9RSVKMW59NDFFM",
+  "executions": [
+    {
+      "execution_id": "0641b8a0-2368-4aa9-9e88-e66a46c7c992",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-18T00:23:36.415Z"
+    }
+  ]
+}

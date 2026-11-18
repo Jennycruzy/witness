@@ -1,0 +1,12 @@
+{
+  "tests": ["tests/running_balance_test.md"],
+  "target":    { "url": "http://127.0.0.1:1/" },
+  "reference": { "url": "http://127.0.0.1:1/" },
+  "nightly": {
+    "npm": "@actual-app/web",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "repo": "actualbudget/actual"
+  }
+}
