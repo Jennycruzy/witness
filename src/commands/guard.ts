@@ -5,12 +5,13 @@ import { classify, isStale, labelDisagrees, type Decision } from '../core/classi
 import { buildCard, parseTestSteps } from '../core/card.js';
 import type { RunSummary } from '../core/stream.js';
 import { findBlindChecks, type BlindCheck } from '../core/blind.js';
+import { findLockedChecks, type LockedCheck } from '../core/locked.js';
 import { runKane } from '../io/kane.js';
 import { serveDir } from '../io/serve.js';
 import { prepareProfile } from '../io/setup.js';
 import type { BuildRef, WitnessConfig } from '../io/config.js';
 
-export interface GuardResult { test: string; decision: Decision; target: RunSummary; reference?: RunSummary; card?: string; evidenceDir: string; blind: BlindCheck[]; }
+export interface GuardResult { test: string; decision: Decision; target: RunSummary; reference?: RunSummary; card?: string; evidenceDir: string; blind: BlindCheck[]; locked: LockedCheck[]; }
 
 export async function open(ref: BuildRef) {
   const s = ref.url ? { url: ref.url, close: async () => {} } : ref.dir ? await serveDir(ref.dir, { isolation: ref.isolation }) : null;
@@ -23,6 +24,8 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
   const id = new Date().toISOString().replace(/[:.]/g, '-');
   const evidenceDir = join(cfg.evidenceDir ?? '.witness/runs', `${id}-${basename(testFile, '.md')}`);
   mkdirSync(evidenceDir, { recursive: true });
+  const locked = findLockedChecks(testFile);
+  for (const l of locked) log(`  LOCKED     test step ${l.step} finds the element by its expected text ${JSON.stringify(l.expected)} (${l.locator}), so it only proves that text is somewhere on the page, not which item or where${l.positional ? ' (this step is about position, so it cannot catch a wrong order)' : ''}`);
   const tgt = await open(cfg.target);
   let target: RunSummary;
   let blind: BlindCheck[] = [];
@@ -37,10 +40,10 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
   for (const b of blind) log(`  BLIND      test step ${Number(b.runId.replace('run-', '')) + 1} passed reading ${JSON.stringify(b.value)}: ${b.reason}`);
   if (target.status === 'passed' || isStale(target)) {
     const decision = classify(target, target);
-    writeFileSync(join(evidenceDir, 'decision.json'), JSON.stringify({ test: testFile, decision, blind }, null, 2));
+    writeFileSync(join(evidenceDir, 'decision.json'), JSON.stringify({ test: testFile, decision, blind, locked }, null, 2));
     if (decision.verdict === 'STALE') log(`  VERDICT    STALE: ${decision.why}\n  next       ${decision.next}`);
     else log(`  VERDICT    PASS${blind.length ? ' (with blind checks: harden those steps)' : ''}`);
-    return { test: testFile, decision, target, evidenceDir, blind };
+    return { test: testFile, decision, target, evidenceDir, blind, locked };
   }
   const ref = await open(cfg.reference);
   let reference: RunSummary;
@@ -57,7 +60,7 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
   log(`  next       ${decision.next}`);
   const card = buildCard({ testName: basename(testFile), steps: parseTestSteps(readFileSync(testFile, 'utf8')), target, decision, targetUrl: cfg.target.url ?? cfg.target.dir ?? '', referenceUrl: cfg.reference.url ?? cfg.reference.dir ?? '', spec: cfg.spec });
   writeFileSync(join(evidenceDir, 'card.md'), card);
-  writeFileSync(join(evidenceDir, 'decision.json'), JSON.stringify({ test: testFile, decision, target, reference, blind }, null, 2));
+  writeFileSync(join(evidenceDir, 'decision.json'), JSON.stringify({ test: testFile, decision, target, reference, blind, locked }, null, 2));
   log(`  evidence   ${evidenceDir}`);
-  return { test: testFile, decision, target, reference, card, evidenceDir, blind };
+  return { test: testFile, decision, target, reference, card, evidenceDir, blind, locked };
 }

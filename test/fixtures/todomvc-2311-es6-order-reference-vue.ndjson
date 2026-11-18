@@ -1,0 +1,49 @@
+{"type":"stream_start","cli_version":"0.10.5","surface":"testmd","pid":4088403,"v":1,"ts":"2026-11-18T12:30:55.565Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Add two todos","ref":null,"v":1,"ts":"2026-11-18T12:32:10.532Z"}
+{"type":"run_start","objective":"Type \"a\" in the new todo box and press Enter, then type \"b\" and press Enter.","timestamp":1795005137,"environment":{"resolution":"1920x1080"},"override_start_url":"http://127.0.0.1:34595/","recorded_start_url":"http://127.0.0.1:41339/","override_applied":true,"v":1,"ts":"2026-11-18T12:32:17.603Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 5 actions","recording_length":5,"v":1,"ts":"2026-11-18T12:32:18.047Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-18T12:32:18.081Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-18T12:32:22.091Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:41339/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-18T12:32:30.796Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:41339/","action_type":"navigate","v":1,"ts":"2026-11-18T12:32:30.871Z"}
+{"type":"step_end","index":1,"status":"passed","duration":12.7,"summary":"navigate: Navigate to http://127.0.0.1:41339/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"c3c8f3cc-293c-4c25-923d-3ba23d2c6814","v":1,"ts":"2026-11-18T12:32:30.945Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-18T12:32:31.416Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:34595/#/","v":1,"ts":"2026-11-18T12:32:33.221Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Typing a in the new todo box","action_type":"fill","success":true,"v":1,"ts":"2026-11-18T12:32:43.087Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Typing a in the new todo box","action_type":"fill","v":1,"ts":"2026-11-18T12:32:43.095Z"}
+{"type":"step_end","index":2,"status":"passed","duration":12.1,"summary":"fill: Typing a in the new todo box","ordinal":2,"id":"0-2","kind":"fill","screenshot":"screenshot.jpg","action_id":"b908b418-4b5d-4935-958c-7ce11499f10c","v":1,"ts":"2026-11-18T12:32:46.408Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-18T12:32:46.565Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:34595/#/","v":1,"ts":"2026-11-18T12:32:47.971Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Pressing the Enter key","action_type":"press_key","success":true,"v":1,"ts":"2026-11-18T12:32:48.763Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Pressing the Enter key","action_type":"press_key","v":1,"ts":"2026-11-18T12:32:48.768Z"}
+{"type":"step_end","index":3,"status":"passed","duration":2.4,"summary":"press_key: Pressing the Enter key","ordinal":3,"id":"0-3","kind":"press_key","screenshot":"screenshot.jpg","action_id":"5372d75d-f578-4925-90a8-8517d4a3906c","v":1,"ts":"2026-11-18T12:32:48.769Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-18T12:32:48.770Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:34595/#/","v":1,"ts":"2026-11-18T12:32:54.818Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Typing into new todo input","action_type":"fill","success":true,"v":1,"ts":"2026-11-18T12:32:56.096Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Typing into new todo input","action_type":"fill","v":1,"ts":"2026-11-18T12:32:56.099Z"}
+{"type":"step_end","index":4,"status":"passed","duration":7.3,"summary":"fill: Typing into new todo input","ordinal":4,"id":"0-4","kind":"fill","screenshot":"screenshot.jpg","action_id":"4810acfa-8d52-4ad3-a8ce-b28b25fb1c00","v":1,"ts":"2026-11-18T12:32:56.569Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-18T12:32:56.579Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:34595/#/","v":1,"ts":"2026-11-18T12:32:56.806Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Pressing the Enter key","action_type":"press_key","success":true,"v":1,"ts":"2026-11-18T12:32:57.394Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Pressing the Enter key","action_type":"press_key","v":1,"ts":"2026-11-18T12:32:57.394Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.8,"summary":"press_key: Pressing the Enter key","ordinal":5,"id":"0-5","kind":"press_key","screenshot":"screenshot.jpg","action_id":"647457ca-1554-46f3-a7ff-0d8ba7af2f29","v":1,"ts":"2026-11-18T12:32:57.399Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":46.54,"final_url":"http://127.0.0.1:34595/#/","actions_executed":5,"screenshot_path":"~/.testmuai/kaneai/sessions/cd44010f-f44c-422b-9146-d6698d292cfb/scratch/0/replay-test/screenshots/step_005.png","run_dir":"~/.testmuai/kaneai/sessions/cd44010f-f44c-422b-9146-d6698d292cfb/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-18T12:32:57.601Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":46.54,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-18T12:32:57.629Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Check the order","ref":null,"v":1,"ts":"2026-11-18T12:32:57.654Z"}
+{"type":"run_start","objective":"Verify the todo list reads, from top to bottom: a, b — exactly two items, with nothing before, between, or after them.","timestamp":1795005181,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-18T12:33:01.190Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-18T12:33:01.647Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-18T12:33:01.675Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:34595/#/","v":1,"ts":"2026-11-18T12:33:01.810Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Reading the todo items from the main list","action_type":"analyze","success":true,"v":1,"ts":"2026-11-18T12:33:02.495Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Reading the todo items from the main list","action_type":"analyze","v":1,"ts":"2026-11-18T12:33:02.495Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.8,"summary":"analyze: Reading the todo items from the main list","ordinal":6,"id":"1-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"89c3aab4-acbf-494e-9d68-fc1e48227851","v":1,"ts":"2026-11-18T12:33:02.496Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-18T12:33:02.496Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:34595/#/","v":1,"ts":"2026-11-18T12:33:02.709Z"}
+{"type":"step_event","index":2,"event":"assertion","detail":"the todo list reads, from top to bottom: a, b — exactly two items, with nothing before, between, or after them","passed":true,"v":1,"ts":"2026-11-18T12:33:02.828Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.3,"summary":"assert: the todo list reads, from top to bottom: a, b — exactly two items, with nothing ","ordinal":7,"id":"1-2","kind":"assert","screenshot":"screenshot.jpg","action_id":"c64a1912-d37b-4c6a-9f4f-d753da2764ae","v":1,"ts":"2026-11-18T12:33:02.829Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":2.82,"final_url":"http://127.0.0.1:34595/#/","actions_executed":2,"screenshot_path":"~/.testmuai/kaneai/sessions/cd44010f-f44c-422b-9146-d6698d292cfb/scratch/1/replay-test/screenshots/step_002.png","run_dir":"~/.testmuai/kaneai/sessions/cd44010f-f44c-422b-9146-d6698d292cfb/scratch/1/replay-test","total_runs":1,"context":{"memory":{},"variables":{"todo_list_exact_items_check":{"syntax":"{{todo_list_exact_items_check}}","value":"[\"a\",\"b\"]","secret":false}},"pointer":""},"variables_out":{"todo_list_exact_items_check":{"syntax":"{{todo_list_exact_items_check}}","value":"[\"a\",\"b\"]","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-18T12:33:02.841Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":2.82,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-18T12:33:02.842Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"513774b4-b9e7-4081-add6-571727a1ffdf","v":1,"ts":"2026-11-18T12:34:40.251Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":127,"steps":{"total":2,"passed":2,"failed":0,"skipped":0,"replay_decisions":2,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"http://127.0.0.1:34595/","v":1,"ts":"2026-11-18T12:34:41.294Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"~/.testmuai/kaneai/sessions/cd44010f-f44c-422b-9146-d6698d292cfb/evidence/513774b4-b9e7-4081-add6-571727a1ffdf.evidence","v":1,"ts":"2026-11-18T12:34:41.365Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":127,"session_id":"cd44010f-f44c-422b-9146-d6698d292cfb","coverage":{"status":"skipped"},"override_start_url":"http://127.0.0.1:34595/","v":1,"ts":"2026-11-18T12:34:41.365Z"}

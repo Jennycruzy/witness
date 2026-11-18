@@ -2,7 +2,7 @@
 
 **Kane says why a test failed. WITNESS checks it against a second build before your coding agent acts.**
 
-When a [Kane CLI](https://www.testmuai.com/kane-cli/) test fails, a coding agent has to choose: fix the app, or fix the test. Kane gives a label for that, and agents act on it. On real bugs we measured that label pointing at the test when the app was broken in 2 of 4 cases. An agent that trusts it rewrites the test to accept the bug.
+When a [Kane CLI](https://www.testmuai.com/kane-cli/) test fails, a coding agent has to choose: fix the app, or fix the test. Kane gives a label for that, and agents act on it. On 9 real app bugs we measured that label pointing at the test in 5. On a 10th, Kane passed the bug outright. An agent that trusts it rewrites the test to accept the bug.
 
 WITNESS replays the **same recording** on a reference build (main, the last release, yesterday's nightly) and decides by comparison:
 
@@ -21,12 +21,15 @@ All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5). N
 
 | | Kane's own label | WITNESS |
 |---|---|---|
-| Real app bugs (4) | right on **2 of 4** | right on **4 of 4** |
-| Real test problems (2) | right on 2 of 2 | right on **2 of 2** |
+| Real app bugs (9) | right on **4 of 9** | right on **9 of 9** |
+| Real test problems (3) | right on 3 of 3 | right on **3 of 3** |
+| Real bug Kane passed (1) | PASS | flagged the check as **LOCKED** from the recording, before any run |
 
 - **TodoMVC Svelte, [#2315](https://github.com/tastejs/todomvc/issues/2315) (open).** Kane failed the edit test and labelled it `automation_bug` (0.88). WITNESS: the same recording passes on the Vue build and fails here at a check, so APP_BUG. Claude Code got WITNESS's card, changed one line in `src/Item.svelte` ([diff](evidence/todomvc-svelte-trim.patch)), WITNESS rebuilt the app, and the unchanged recording passed 5 of 5 with no self-healing.
 - **A check that could not see the bug.** In the same test, Kane's check *"the list shows exactly one todo, b"* passed on the buggy build in every run, reading `"\nb"`: the blank todo was on the page, and the comparison stripped it away. WITNESS flags this as BLIND.
 - **Actual Budget, [#8475](https://github.com/actualbudget/actual/issues/8475).** The running balance stopped updating after an edit. The recording passes on the 17 June 2026 nightly and fails on 20 June at the balance check (reads 20.00, expected 50.00). That bug shipped to everyone in 26.7.0 on 2 July and was first reported on 14 July.
+- **Six more open TodoMVC bugs** ([#2309](https://github.com/tastejs/todomvc/issues/2309) react, [#2310](https://github.com/tastejs/todomvc/issues/2310) es5, [#2311](https://github.com/tastejs/todomvc/issues/2311) es6, [#2313](https://github.com/tastejs/todomvc/issues/2313) lit, [#2314](https://github.com/tastejs/todomvc/issues/2314) web-components), each a plain-English Kane test recorded once on the Vue build and replayed on the buggy one. Kane labelled three of them `automation_bug` (0.78 to 0.98). WITNESS: APP_BUG on all.
+- **A check locked to its own answer.** On javascript-es6 ([#2311](https://github.com/tastejs/todomvc/issues/2311)), Kane passed *"the first todo is a and the second is b"* while the list showed b, a. Its recording finds each todo *by the text it expects* and reads that text back, so it can never see the order. WITNESS flags this as LOCKED from the recording alone (free, no run). Given only WITNESS's message, Claude Code rewrote the step to *"the todo list reads, from top to bottom: a, b"*; re-recorded, it fails on es6 and passes on Vue.
 - **Actual Budget, a layout change between 26.8.0 and 26.7.0.** The replay failed at a click: TEST_PROBLEM. Re-recording on 26.7.0 passed the click, then failed at the balance check: the real #8475 bug, now an APP_BUG.
 
 ## Install

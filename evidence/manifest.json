@@ -10,6 +10,18 @@
   "test/fixtures/actual-finance-target-26.8.0.ndjson": "ed9f280149cb2d3a23fcad6558b8c5b921ffadf75cb26c04014b05d688febea7",
   "test/fixtures/actual-layout-reference-26.8.0.ndjson": "f1a4b8dab1732c9a8d5f025a58fde49ecc3a1099386a7a5cd134f82a23bc1601",
   "test/fixtures/actual-layout-target-26.7.0.ndjson": "ad77aa207f71366d4a7994718957970380290435c0c02e44c2867ce769f0f658",
+  "test/fixtures/locked/es6-append-order-step2.ndjson": "332bcd035f7d8099e7966ff7b6ad9482b471d263dab1acafe80416f49852fd77",
+  "test/fixtures/todomvc-2309-react-escape-reference-vue.ndjson": "c5343817e88237657e87fce4fd207dcbadc306314f2bca38267247013dc56a1d",
+  "test/fixtures/todomvc-2309-react-escape-target.ndjson": "feb6515873e63908b4356a298cb46911aedc39edb090c249b5170d3f537011d2",
+  "test/fixtures/todomvc-2310-es5-markall-reference-vue.ndjson": "f46f1d1f738bfcfefa796547259f36bc4ee984a4cf92929b06e2f4755342e048",
+  "test/fixtures/todomvc-2310-es5-markall-target.ndjson": "0830616e841ab4d09ca508ea0f53abe3121df09b5ade290846476d299f2ab870",
+  "test/fixtures/todomvc-2311-es6-order-false-pass.ndjson": "705b0209db3e1da05433890cc961846c0b34e4152fa2ad9da42edd73bb6b5b6a",
+  "test/fixtures/todomvc-2311-es6-order-reference-vue.ndjson": "8482c8812ac7af84ee29c4025110996396d3613b3d5c96279c9c3d6f6718d234",
+  "test/fixtures/todomvc-2311-es6-order-target.ndjson": "4258ff11e83ab687e662ee14e1ad829fc9e9e2edd13300f2c309791c35dadf00",
+  "test/fixtures/todomvc-2313-lit-blank-reference-vue.ndjson": "0b893136b80e06d3ba2da18c886deab76a522f8ebac39c9e4e6ab9af444da3c4",
+  "test/fixtures/todomvc-2313-lit-blank-target.ndjson": "2dada117f6d6b522a2f6b30a74453ce79f3092411b7afc13f69f5d73b84827e8",
+  "test/fixtures/todomvc-2314-wc-blank-reference-vue.ndjson": "f1196253a096bdd4e4e7753806ba74ccca4b7e8d11d911a9283a72ba7921582d",
+  "test/fixtures/todomvc-2314-wc-blank-target.ndjson": "3cf6c9518ec061fa9464d1460bfa7dacde1edea3df27b5a786e2d1d722eb71d5",
   "test/fixtures/todomvc-2315-edit-fixed-svelte-hook-untold.ndjson": "6c4e61c66a63eec094cfed0b4e60f5a12e860bf173ef8e0c91f762feb4888129",
   "test/fixtures/todomvc-2315-edit-fixed-svelte.ndjson": "a6666f789d90e5cd7d176cffef857a40f3bc71453d603b555ff9d93bec139d9c",
   "test/fixtures/todomvc-2315-edit-reference-vue.ndjson": "4caf881493eb167282f894f8796db8b0721487a37d3f74c66ab8278e0fdfb83a",
@@ -17,5 +29,8 @@
   "test/fixtures/todomvc-2315-edit-target-svelte.ndjson": "18ce3d7cffb6da1b7dd2a0558b24c5d546cee9ca1060a65ea90a417ad8bfcbee",
   "test/fixtures/todomvc-2315-filter-fixed-svelte-hook.ndjson": "20eaf37b83707d77167e5ca31467ba9f87e47b82819bf67543d2ad69c2adb688",
   "test/fixtures/todomvc-2315-filter-reference-vue.ndjson": "90cb5b60002b9192bea84903f2227294eeda5e995154d0a707735db85431b004",
-  "test/fixtures/todomvc-2315-filter-target-svelte.ndjson": "28d494ede8ce1b953a26a6a78bb77b2e59964ebafef906592ed5935fc0939d8a"
+  "test/fixtures/todomvc-2315-filter-target-svelte.ndjson": "28d494ede8ce1b953a26a6a78bb77b2e59964ebafef906592ed5935fc0939d8a",
+  "test/fixtures/todomvc-wc-clear-recorded-on-wc.ndjson": "a4521a0e67470be1a11c3f601ba420621d40960799f25ea0c63141f5a79c8495",
+  "test/fixtures/todomvc-wc-clear-replay-reference-vue.ndjson": "cc26574b2ffcfb54af4509d901ba1b49e477c3aed2dd89a935b8f6f2f96862f4",
+  "test/fixtures/todomvc-wc-clear-replay-target.ndjson": "7d507231f563ad201b23f77757ea74e8ab216263eca2b56858e2def7ff92ba06"
 }

@@ -19,7 +19,7 @@ export async function watch(cfg: WitnessConfig, log = console.log) {
   const report: any = { date: new Date().toISOString(), nightly: latest.version, release: release.version, results: [] };
   for (const t of cfg.tests) {
     const r = await guard({ ...cfg, target: { dir: tDir, isolation: src.isolation, setup: src.setup }, reference: { dir: rDir, isolation: src.isolation, setup: src.setup } }, t, log);
-    const entry: any = { test: t, verdict: r.decision.verdict, kaneLabel: r.decision.kaneLabel, blind: r.blind, evidence: r.evidenceDir };
+    const entry: any = { test: t, verdict: r.decision.verdict, kaneLabel: r.decision.kaneLabel, blind: r.blind, locked: r.locked, evidence: r.evidenceDir };
     if (r.decision.verdict === 'APP_BUG') {
       const since = nightlies.filter(v => v.time >= release.time);
       log(`  searching ${since.length} nightlies since ${release.version} for the first bad build`);

@@ -6,15 +6,17 @@ import { join } from 'node:path';
 import { parseRun } from '../core/stream.js';
 import { classify, labelDisagrees } from '../core/classify.js';
 import { findBlindChecks } from '../core/blind.js';
+import { lockedFromAction } from '../core/locked.js';
 
 const sha = (p: string) => createHash('sha256').update(readFileSync(p)).digest('hex');
 
 export function verify(root: string, opts: { writeManifest?: boolean } = {}, log = console.log): number {
   const cases = JSON.parse(readFileSync(join(root, 'evidence/cases.json'), 'utf8'));
   const files: string[] = [];
-  for (const p of cases.pairs) files.push(p.target, p.reference);
+  for (const p of cases.pairs) files.push(p.target, p.reference, ...(p.confirm ? [p.confirm] : []));
   for (const f of cases.fixes) files.push(f.run, f.diff);
   files.push(...cases.blind.runs);
+  for (const l of cases.locked ?? []) files.push(l.recording, l.run);
   const uniq = [...new Set(files)].sort();
   const manifestPath = join(root, 'evidence/manifest.json');
   const hashes = Object.fromEntries(uniq.map(f => [f, sha(join(root, f))]));
@@ -45,6 +47,13 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
     const ok1 = fixed.status === 'passed' && !fixed.healed && (fixed.authorDecisions ?? 0) === 0;
     if (!ok1) fixOk = false;
     log(`  agent fix:          the unchanged recording ${ok1 ? 'PASSES' : 'does NOT pass'} on the fixed build (${fixed.replayDecisions ?? '?'}/${fixed.stepsTotal} steps replayed, none recorded again, no heal): ${f.name}`);
+  }
+  for (const l of cases.locked ?? []) {
+    const run = parseRun(readFileSync(join(root, l.run), 'utf8'));
+    const hits = readFileSync(join(root, l.recording), 'utf8').split('\n').filter(Boolean).map(x => lockedFromAction(JSON.parse(x), 0)).filter(Boolean);
+    const okL = run.status === 'passed' && hits.length > 0;
+    if (!okL) ok = false;
+    log(`  locked check:       Kane ${run.status.toUpperCase()} a real bug; WITNESS ${hits.length ? `flagged ${hits.length} locked read(s) in the recording` : 'flagged NOTHING'}: ${l.name}`);
   }
   const blind = cases.blind.runs.map((r: string) => findBlindChecks(readFileSync(join(root, r), 'utf8')).length);
   log(`  blind check:        found in ${blind.filter((n: number) => n > 0).length} of ${blind.length} real runs on the buggy build`);

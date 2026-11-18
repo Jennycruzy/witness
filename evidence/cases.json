@@ -1,5 +1,5 @@
 {
-  "about": "Real Kane CLI runs (kane-cli 0.10.5, 17 Nov 2026). Truth comes from public issues and fixes, never from Kane's label.",
+  "about": "Real Kane CLI runs (kane-cli 0.10.5, 17-18 Nov 2026). Truth comes from public issues and fixes, never from Kane's label.",
   "pairs": [
     {
       "name": "Actual Budget: running balance not updated after an edit",
@@ -54,6 +54,62 @@
       "target_build": "@actual-app/web 26.8.0",
       "reference_build": "@actual-app/web 26.8.0",
       "truth": "TEST_PROBLEM"
+    },
+    {
+      "name": "TodoMVC react: Escape does not leave editing, and the discarded edit is saved",
+      "issue": "https://github.com/tastejs/todomvc/issues/2309",
+      "target": "test/fixtures/todomvc-2309-react-escape-target.ndjson",
+      "reference": "test/fixtures/todomvc-2309-react-escape-reference-vue.ndjson",
+      "target_build": "tastejs/todomvc ff43b02 examples/react",
+      "reference_build": "tastejs/todomvc ff43b02 examples/vue",
+      "truth": "APP_BUG"
+    },
+    {
+      "name": "TodoMVC javascript-es5: 'Mark all as complete' stays unchecked after ticking every todo",
+      "issue": "https://github.com/tastejs/todomvc/issues/2310",
+      "target": "test/fixtures/todomvc-2310-es5-markall-target.ndjson",
+      "reference": "test/fixtures/todomvc-2310-es5-markall-reference-vue.ndjson",
+      "target_build": "tastejs/todomvc ff43b02 examples/javascript-es5",
+      "reference_build": "tastejs/todomvc ff43b02 examples/vue",
+      "truth": "APP_BUG"
+    },
+    {
+      "name": "TodoMVC javascript-es6: new todos go to the top instead of the bottom",
+      "issue": "https://github.com/tastejs/todomvc/issues/2311",
+      "target": "test/fixtures/todomvc-2311-es6-order-target.ndjson",
+      "reference": "test/fixtures/todomvc-2311-es6-order-reference-vue.ndjson",
+      "target_build": "tastejs/todomvc ff43b02 examples/javascript-es6",
+      "reference_build": "tastejs/todomvc ff43b02 examples/vue",
+      "truth": "APP_BUG"
+    },
+    {
+      "name": "TodoMVC lit: a blank todo is added and counted",
+      "issue": "https://github.com/tastejs/todomvc/issues/2313",
+      "target": "test/fixtures/todomvc-2313-lit-blank-target.ndjson",
+      "reference": "test/fixtures/todomvc-2313-lit-blank-reference-vue.ndjson",
+      "target_build": "tastejs/todomvc ff43b02 examples/lit",
+      "reference_build": "tastejs/todomvc ff43b02 examples/vue",
+      "truth": "APP_BUG"
+    },
+    {
+      "name": "TodoMVC web-components: a blank todo is added and counted",
+      "issue": "https://github.com/tastejs/todomvc/issues/2314",
+      "target": "test/fixtures/todomvc-2314-wc-blank-target.ndjson",
+      "reference": "test/fixtures/todomvc-2314-wc-blank-reference-vue.ndjson",
+      "target_build": "tastejs/todomvc ff43b02 examples/web-components",
+      "reference_build": "tastejs/todomvc ff43b02 examples/vue",
+      "truth": "APP_BUG"
+    },
+    {
+      "name": "TodoMVC web-components: a recording made on vue cannot type into the new-todo box as the first step (re-recording on web-components passes that step)",
+      "issue": "https://github.com/tastejs/todomvc/issues/2314",
+      "target": "test/fixtures/todomvc-wc-clear-replay-target.ndjson",
+      "reference": "test/fixtures/todomvc-wc-clear-replay-reference-vue.ndjson",
+      "target_build": "tastejs/todomvc ff43b02 examples/web-components",
+      "reference_build": "tastejs/todomvc ff43b02 examples/vue",
+      "truth": "TEST_PROBLEM",
+      "confirm": "test/fixtures/todomvc-wc-clear-recorded-on-wc.ndjson",
+      "confirm_note": "Recorded on web-components itself, the typing step passes and the test then fails at its check: the real bug (#2314, Clear completed shown with nothing completed)."
     }
   ],
   "blind": {
@@ -82,6 +138,14 @@
       "issue": "https://github.com/tastejs/todomvc/issues/2315",
       "run": "test/fixtures/todomvc-2315-edit-fixed-svelte-hook-untold.ndjson",
       "diff": "evidence/todomvc-svelte-trim-hook-untold.patch"
+    }
+  ],
+  "locked": [
+    {
+      "name": "Kane PASSED 'the first todo is a and the second is b' on javascript-es6 while the list showed b, a: the recorded check finds each todo by its expected text",
+      "issue": "https://github.com/tastejs/todomvc/issues/2311",
+      "recording": "test/fixtures/locked/es6-append-order-step2.ndjson",
+      "run": "test/fixtures/todomvc-2311-es6-order-false-pass.ndjson"
     }
   ]
 }
