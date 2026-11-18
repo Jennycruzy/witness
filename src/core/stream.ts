@@ -25,6 +25,8 @@ export interface RunSummary {
   healed: boolean;
   failed: FailedStep | null;
   creditsReported: number;
+  replayDecisions: number | null;  // steps Kane replayed from the saved recording
+  authorDecisions: number | null;  // steps Kane recorded again instead (costs credits, and is not the saved test)
 }
 
 /** Decide whether a failure happened while checking something or while acting on the page. */
@@ -41,7 +43,7 @@ function stepIndexFromReason(reason: string): number | null {
 }
 
 export function parseRun(ndjson: string): RunSummary {
-  const summary: RunSummary = { status: 'unknown', stepsTotal: null, stepsPassed: null, healed: false, failed: null, creditsReported: 0 };
+  const summary: RunSummary = { status: 'unknown', stepsTotal: null, stepsPassed: null, healed: false, failed: null, creditsReported: 0, replayDecisions: null, authorDecisions: null };
   for (const line of ndjson.split('\n')) {
     const t = line.trim();
     if (!t.startsWith('{')) continue;
@@ -72,6 +74,8 @@ export function parseRun(ndjson: string): RunSummary {
       summary.stepsTotal = ev.steps?.total ?? null;
       summary.stepsPassed = ev.steps?.passed ?? null;
       summary.healed = Boolean(ev.adaptive_heal?.triggered);
+      summary.replayDecisions = typeof ev.steps?.replay_decisions === 'number' ? ev.steps.replay_decisions : null;
+      summary.authorDecisions = typeof ev.steps?.author_decisions === 'number' ? ev.steps.author_decisions : null;
     }
   }
   if (summary.status === 'unknown' && summary.failed) summary.status = 'failed';

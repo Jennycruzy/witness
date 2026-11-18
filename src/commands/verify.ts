@@ -42,9 +42,9 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
   let fixOk = true;
   for (const f of cases.fixes) {
     const fixed = parseRun(readFileSync(join(root, f.run), 'utf8'));
-    const ok1 = fixed.status === 'passed' && !fixed.healed;
+    const ok1 = fixed.status === 'passed' && !fixed.healed && (fixed.authorDecisions ?? 0) === 0;
     if (!ok1) fixOk = false;
-    log(`  agent fix:          the unchanged recording ${ok1 ? 'PASSES' : 'does NOT pass'} on the fixed build (${fixed.stepsPassed}/${fixed.stepsTotal} steps, no heal): ${f.name}`);
+    log(`  agent fix:          the unchanged recording ${ok1 ? 'PASSES' : 'does NOT pass'} on the fixed build (${fixed.replayDecisions ?? '?'}/${fixed.stepsTotal} steps replayed, none recorded again, no heal): ${f.name}`);
   }
   const blind = cases.blind.runs.map((r: string) => findBlindChecks(readFileSync(join(root, r), 'utf8')).length);
   log(`  blind check:        found in ${blind.filter((n: number) => n > 0).length} of ${blind.length} real runs on the buggy build`);

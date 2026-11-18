@@ -1,7 +1,7 @@
 // witness guard: run the test on the target; if it fails, run the same recording on the reference and decide.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, join } from 'node:path';
-import { classify, labelDisagrees, type Decision } from '../core/classify.js';
+import { classify, isStale, labelDisagrees, type Decision } from '../core/classify.js';
 import { buildCard, parseTestSteps } from '../core/card.js';
 import type { RunSummary } from '../core/stream.js';
 import { findBlindChecks, type BlindCheck } from '../core/blind.js';
@@ -35,10 +35,11 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
   } finally { await tgt.close(); }
   log(`  target     ${target.status.toUpperCase()}${target.failed ? ` at test step ${Number(target.failed.runId.replace('run-', '')) + 1} (${target.failed.kind})` : ''}`);
   for (const b of blind) log(`  BLIND      test step ${Number(b.runId.replace('run-', '')) + 1} passed reading ${JSON.stringify(b.value)}: ${b.reason}`);
-  if (target.status === 'passed') {
+  if (target.status === 'passed' || isStale(target)) {
     const decision = classify(target, target);
     writeFileSync(join(evidenceDir, 'decision.json'), JSON.stringify({ test: testFile, decision, blind }, null, 2));
-    log(`  VERDICT    PASS${blind.length ? ' (with blind checks: harden those steps)' : ''}`);
+    if (decision.verdict === 'STALE') log(`  VERDICT    STALE: ${decision.why}\n  next       ${decision.next}`);
+    else log(`  VERDICT    PASS${blind.length ? ' (with blind checks: harden those steps)' : ''}`);
     return { test: testFile, decision, target, evidenceDir, blind };
   }
   const ref = await open(cfg.reference);

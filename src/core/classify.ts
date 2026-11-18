@@ -3,7 +3,7 @@
 
 import type { RunSummary } from './stream.js';
 
-export type Verdict = 'PASS' | 'APP_BUG' | 'TEST_PROBLEM' | 'ENV' | 'UNKNOWN';
+export type Verdict = 'PASS' | 'APP_BUG' | 'TEST_PROBLEM' | 'ENV' | 'STALE' | 'UNKNOWN';
 
 export interface Decision {
   verdict: Verdict;
@@ -18,6 +18,10 @@ export function classify(target: RunSummary, reference: RunSummary): Decision {
   const conf = target.failed?.label.confidence ?? null;
   const base = { kaneLabel: label, kaneConfidence: conf };
 
+  // The target run must replay the saved recording. (A reference run may be the run that made the recording.)
+  if (isStale(target)) {
+    return { ...base, verdict: 'STALE', why: `Kane recorded ${target.authorDecisions} step(s) again instead of replaying the saved recording, so this run is not the saved test.`, next: 'Record the test again on the reference build (witness record), then run it again.' };
+  }
   if (target.status === 'passed') {
     return { ...base, verdict: 'PASS', why: 'Kane passed the test on the target build.', next: 'Nothing to do.' };
   }
@@ -34,6 +38,11 @@ export function classify(target: RunSummary, reference: RunSummary): Decision {
     return { ...base, verdict: 'TEST_PROBLEM', why: 'The page changed where the test acts: it failed at an action, not at a check.', next: 'Re-record the test on the target build, then run it again.' };
   }
   return { ...base, verdict: 'UNKNOWN', why: 'Could not tell whether the failure was at a check or an action.', next: 'Read the evidence.' };
+}
+
+/** True when Kane did not replay the saved recording (it recorded some steps again). */
+export function isStale(r: RunSummary): boolean {
+  return (r.authorDecisions ?? 0) > 0;
 }
 
 /** True when Kane's own label points the agent at the other side from the comparison. */

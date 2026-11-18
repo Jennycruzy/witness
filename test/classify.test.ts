@@ -54,3 +54,13 @@ describe('blame by comparison on real failures', () => {
     expect(rerecord.failed?.label.family).toBe('application_issue');
   });
 });
+
+describe('stale recording', () => {
+  const run = (o: any) => ({ status: 'passed', stepsTotal: 3, stepsPassed: 3, healed: false, failed: null, creditsReported: 0, replayDecisions: 3, authorDecisions: 0, ...o });
+  it('calls a target run that recorded steps again STALE, even when it passed', () => {
+    expect(classify(run({ replayDecisions: 0, authorDecisions: 3 }) as any, run({}) as any).verdict).toBe('STALE');
+  });
+  it('accepts a reference run that made the recording', () => {
+    expect(classify(run({}) as any, run({ replayDecisions: 0, authorDecisions: 3 }) as any).verdict).toBe('PASS');
+  });
+});
