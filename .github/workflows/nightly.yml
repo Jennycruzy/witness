@@ -1,9 +1,9 @@
 name: nightly watch
-# Every night: replay the Actual Budget tests on the newest nightly build and on the newest release.
+# Replay the Actual Budget tests on the newest nightly build and on the newest release.
 # On an APP_BUG, search the nightlies for the first bad build and list the commits in between.
+# Our nightly run happens on a server; run this by hand, or add a schedule here once the
+# repository has the KANE_USERNAME and KANE_ACCESS_KEY secrets.
 on:
-  schedule:
-    - cron: "0 3 * * *"
   workflow_dispatch:
 
 jobs:
