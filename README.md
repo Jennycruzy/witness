@@ -17,7 +17,7 @@ Then Kane proves the fix: the **unchanged** recording (same sha256) must pass on
 
 ## What it found on real software
 
-All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5). Nothing is planted. `npx witness verify` recomputes every number below from the runs committed in [`evidence/`](evidence/) and checks their sha256.
+All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5). Nothing is planted. `witness verify` recomputes every number below from the runs committed in [`evidence/`](evidence/) and checks their sha256.
 
 | | Kane's own label | WITNESS |
 |---|---|---|
@@ -52,11 +52,46 @@ npm ci && npm run build && npm link     # gives you the `witness` command
 ## Check it yourself in 60 seconds (no login)
 
 ```bash
+npx -y github:Jennycruzy/witness demo
+```
+
+One real case from start to finish (Kane's label, the second build, the card, the agent's one-line fix, the unchanged recording passing), then every number above recomputed from the committed runs. No Kane login, no credits, no network calls of its own. Or from a clone:
+
+```bash
 git clone https://github.com/Jennycruzy/witness && cd witness
 npm ci && npm run build
 npm test                    # unit tests on the real runs
+node dist/cli.js demo       # the walk-through above
 node dist/cli.js verify     # recomputes every number above from evidence/, checks sha256
 ```
+
+## Judges: one minute per score
+
+| Score | Look at | What you see |
+|---|---|---|
+| Ships | `npx -y github:Jennycruzy/witness demo` | The full flow on a real bug, from the real Kane runs, in under a second after install |
+| Ships | [`examples/actual`](examples/actual) and [`evidence/actual-8475-search.json`](evidence/actual-8475-search.json) | The nightly watch set up on Actual Budget, and the build search that found the first bad nightly for #8475 (20 June 2026) unattended, with the commits in between |
+| Verified | `node dist/cli.js verify` | Kane's label right on 4 of 9 real app bugs, WITNESS 9 of 9; 3 of 3 real test problems; every evidence file checked by sha256 |
+| Verified | [Reported upstream](#reported-upstream) | Both Kane issues reproduced and fixed by the Kane team; the TodoMVC fix PR |
+| Closed loop | [`evidence/todomvc-svelte-trim-hook-untold.patch`](evidence/todomvc-svelte-trim-hook-untold.patch) and its row in `verify` | A Claude Code session told about one bug tried to stop; the Stop hook blocked it on a second bug it was never told about; it fixed that too, and the unchanged recordings passed |
+| Closed loop | [`src/commands/fix.ts`](src/commands/fix.ts) | Agent edits outside the app source are rolled back; a changed test or recording (sha256) is rejected |
+| Craft | [How I tried to break it](#how-i-tried-to-break-it) | Each way the verdict could be wrong, and the run or test that covers it |
+
+## How I tried to break it
+
+| Attack | What WITNESS does | Covered by |
+|---|---|---|
+| Kane's label blames the test for a real app bug | Ignores the label; the second build decides | 5 of 9 real app bugs in `verify` |
+| Kane self-heals past a bug | Replays with `--no-adaptive-heal`; a fix proof with any heal does not count | [`src/io/kane.ts`](src/io/kane.ts), fix rows in `verify` |
+| Kane records steps again instead of replaying (stale recording) | Verdict STALE; a fix proof must replay every step | [`test/classify.test.ts`](test/classify.test.ts) "stale recording" |
+| A check passes while reading a blank line it strips (`"\nb"`) | BLIND | [`test/blind.test.ts`](test/blind.test.ts), 2 real runs in `verify` |
+| A check finds the item by the text it expects, so it cannot fail | LOCKED, from the recording alone, before any run | [`test/locked.test.ts`](test/locked.test.ts), es6 #2311 in `verify` |
+| The reference build is broken too | ENV: nobody is told to change anything | [`test/classify.test.ts`](test/classify.test.ts) "reference build broken too" |
+| The page layout changed where the test clicks | TEST_PROBLEM, not APP_BUG | 3 real test problems in `verify` |
+| The agent edits the test or its recording to make it pass | Rejected: recording sha256 must not change | [`src/commands/fix.ts`](src/commands/fix.ts) |
+| The agent edits files outside the app source | Rolled back and rejected | [`src/commands/fix.ts`](src/commands/fix.ts) |
+| A click fails because the machine is busy | `witness search` replays that build once more before deciding | [`src/commands/search.ts`](src/commands/search.ts) |
+| Someone edits the evidence | `verify` fails on any sha256 change | [`evidence/manifest.json`](evidence/manifest.json) |
 
 ## Use it
 

@@ -4,3 +4,4 @@ dist/
 .testmuai/
 output-*/.internal/state*
 *.log
+*.tgz

@@ -64,3 +64,11 @@ describe('stale recording', () => {
     expect(classify(run({}) as any, run({ replayDecisions: 0, authorDecisions: 3 }) as any).verdict).toBe('PASS');
   });
 });
+
+describe('reference build broken too', () => {
+  it('calls it ENV, not an app bug, when the same recording fails on the reference as well', () => {
+    // Two real failing runs: the svelte edit failure as target, the 26.1.0 separator failure as a failing reference.
+    const d = classify(run('todomvc-2315-edit-target-svelte'), run('actual-6794-target-26.1.0'));
+    expect(d.verdict).toBe('ENV');
+  });
+});

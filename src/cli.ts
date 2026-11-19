@@ -3,6 +3,7 @@
 // witness fix <test> [witness.json]     app bug -> agent fix -> rebuild -> prove with the unchanged recording
 // witness record <test> [witness.json]   record the test's steps with Kane on the reference build (or newest release)
 // witness classify <target.ndjson> <reference.ndjson>   decide from two saved Kane runs
+// witness demo                           one real case from the committed runs, then every number recomputed (no login)
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { parseRun } from './core/stream.js';
@@ -16,6 +17,7 @@ import { search } from './commands/search.js';
 import { listVersions } from './io/npm.js';
 import { verify } from './commands/verify.js';
 import { record } from './commands/record.js';
+import { demo, evidenceRoot } from './commands/demo.js';
 
 const [cmd, a, b] = process.argv.slice(2);
 
@@ -46,7 +48,8 @@ async function main(): Promise<number> {
     const r = await record(loadConfig(b ?? 'witness.json'), resolve(a));
     return r.ok ? 0 : 2;
   }
-  if (cmd === 'verify') return verify(process.cwd(), { writeManifest: a === '--write-manifest' });
+  if (cmd === 'demo') return demo();
+  if (cmd === 'verify') return verify(evidenceRoot(), { writeManifest: a === '--write-manifest' });
   if (cmd === 'watch') {
     const r = await watch(loadConfig(a ?? 'witness.json'));
     return r.results.some((x: any) => x.verdict === 'APP_BUG') ? 2 : 0;
@@ -81,7 +84,7 @@ async function main(): Promise<number> {
     console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
     return 0;
   }
-  console.error('usage: witness guard [witness.json] | witness record <test_md> [witness.json] | witness fix <test_md> [witness.json] | witness hook | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
+  console.error('usage: witness demo | witness verify | witness guard [witness.json] | witness record <test_md> [witness.json] | witness fix <test_md> [witness.json] | witness hook | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
   return 64;
 }
 
