@@ -125,12 +125,23 @@ Put a `witness.json` next to your Kane tests:
 | `witness install-hook` | Adds a Claude Code Stop hook: the agent cannot stop while a verdict is open | — |
 | `witness install-skill [--global]` | Adds the [Claude Code skill](skills/witness/SKILL.md): when a Kane test fails, the agent runs `witness guard` and acts on the verdict, not on Kane's label | — |
 | `witness guard … --only <test>` | Checks one test | as `guard` |
+| `witness guard … --record-missing` | Records a test once on the reference when it has no recording here, or Kane cannot replay it | ~50 per test recorded |
 | `witness live <live.json>` | Serves the Run it live page: one run at a time, a cap on runs per hour and per visitor | as `guard`, per click |
 | `witness search <test> <good> <bad>` | Replays the test across published builds to find the first bad one, then lists the commits in between | ~5 per failing build |
 | `witness watch` | Checks the newest nightly against the newest release; on an APP_BUG it runs the search | 0 on quiet nights |
 | `witness verify` | Recomputes the headline numbers from `evidence/`, offline | 0 |
 
-Builds can be a URL or a folder that WITNESS serves itself (with cross-origin isolation headers when an app needs them). Apps that need a starting state get a setup command (see [`examples/actual/setup.mjs`](examples/actual/setup.mjs); the full nightly setup for Actual Budget, with its recorded test, is in [`examples/actual`](examples/actual), run from that folder).
+A build (target or reference) can be any of these:
+
+| In `witness.json` | What WITNESS does |
+|---|---|
+| `{ "url": "https://staging.example.com/" }` | Opens that address |
+| `{ "dir": "dist" }` | Serves the folder itself (add `"isolation": true` for apps that need cross-origin isolation) |
+| `{ "npm": "@actual-app/web", "buildDir": "build" }` | Downloads the **newest release** from npm (or `"version": "26.2.0"`) and serves it |
+| `{ "git": "origin/main", "build": "npm ci && npm run build", "dir": "dist" }` | Checks that ref out in its own worktree, builds it once, serves the output |
+| `{ "kane": { "target": "emulator", "app": "builds/app-1.4.apk" } }` | An Android or iOS app build: Kane runs it on a local emulator or simulator (or `"android"`/`"ios"` for TestMu's real devices) |
+
+So a reference needs no hand-made build: the last release, the main branch or yesterday's nightly. Apps that need a starting state get a setup command (see [`examples/actual/setup.mjs`](examples/actual/setup.mjs); the full nightly setup for Actual Budget, with its recorded test, is in [`examples/actual`](examples/actual), run from that folder).
 
 ## How the decision is made
 
@@ -139,12 +150,14 @@ Builds can be a URL or a folder that WITNESS serves itself (with cross-origin is
 3. Read where it failed from Kane's own stream: a check (`assertion_failed`, final verification) or an action (`action_failed: click …`).
 4. Decide by the table above. Kane's label is recorded next to the verdict and never used to decide.
 
-## Limits
+## Limits, and what WITNESS does about each
 
-- Desktop web. Mobile targets need a paid Kane plan and are not covered.
-- A Kane recording belongs to the account that made it. To replay ours, record the tests once with your own account.
-- The comparison needs a reference build that is believed to be right.
-- Replays can fail at a click when the machine is under load; `witness search` replays such a build once more before deciding.
+| Limit | What WITNESS does |
+|---|---|
+| Kane drives desktop web, and mobile apps on emulators, simulators or (paid) real devices | Web builds are compared in Chrome; app builds are passed to Kane as `"kane": { "target", "app" }`, so the same comparison works on two app builds |
+| A Kane recording belongs to the account that made it | `witness guard --record-missing` records the test once on the reference build when there is no recording, or when Kane cannot replay the one it found (STALE), then runs the check. Without the flag it says so and spends nothing |
+| The comparison needs a build believed to be right | The reference can be the newest npm release, a git ref built in a worktree, or the PR's base branch (the [pull request check](.github/workflows/pr-check.yml)). When the reference fails too, the verdict is ENV and nobody is told to change the app |
+| A click can fail when the machine is busy | `guard` replays a failure at a click or typing step once more before deciding; `search` does the same for every build it probes |
 
 ## Licence
 

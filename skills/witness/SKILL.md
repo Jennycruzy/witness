@@ -18,6 +18,7 @@ Kane's own label for a failed run (`automation_bug`, `application_issue`) is oft
    witness guard witness.json --only <name>_test.md   # just the failing test; drop --only to run them all
    ```
    Runs take one to three minutes per test. Wait for the `VERDICT` line before editing anything.
+   If it says `NO RECORDING`, ask the user before adding `--record-missing` (it records the test once on the reference build, about 50 Kane credits).
    A passing test costs no Kane credits. A failing test costs a few (Kane's triage), plus a free replay on the reference.
 3. Act on the `VERDICT` line only:
 

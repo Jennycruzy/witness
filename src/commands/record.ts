@@ -9,7 +9,7 @@ import type { BuildRef, WitnessConfig } from '../io/config.js';
 
 export async function record(cfg: WitnessConfig, testFile: string, log = console.log) {
   let ref: BuildRef = cfg.reference;
-  let label = cfg.reference.url ?? cfg.reference.dir ?? '';
+  let label = cfg.reference.url ?? cfg.reference.dir ?? cfg.reference.npm ?? cfg.reference.git ?? cfg.reference.kane?.app ?? '';
   const src = cfg.nightly;
   if (src) {
     const all = await listVersions(src.npm);
@@ -17,11 +17,11 @@ export async function record(cfg: WitnessConfig, testFile: string, log = console
     ref = { dir: join(await fetchBuild(src.npm, release.version, cfg.cacheDir!), src.buildDir ?? ''), isolation: src.isolation, setup: src.setup };
     label = `${src.npm}@${release.version}`;
   }
-  const b = await open(ref);
+  const b = await open(ref, cfg.cacheDir);
   const name = basename(testFile).replace(/_test\.md$/, '');
   try {
     log(`record   ${basename(testFile)}  on ${label}`);
-    const r = await runKane({ testFile, url: b.url, profileTemplate: b.profile, rerecord: true, keepWorkDir: true, timeoutSec: 1200 });
+    const r = await runKane({ testFile, url: b.url, mobile: b.mobile, profileTemplate: b.profile, rerecord: true, keepWorkDir: true, timeoutSec: 1200 });
     try {
       const evDir = cfg.evidenceDir ?? '.witness/runs';
       mkdirSync(evDir, { recursive: true });

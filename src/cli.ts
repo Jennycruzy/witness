@@ -48,7 +48,8 @@ async function main(): Promise<number> {
     }
     let code = 0;
     const results = [];
-    for (const t of cfg.tests) { const r = await guard(cfg, t); results.push(r); if (r.decision.verdict !== 'PASS') code = 2; }
+    const recordMissing = args.includes('--record-missing');
+    for (const t of cfg.tests) { const r = await guard(cfg, t, console.log, { recordMissing }); results.push(r); if (r.decision.verdict !== 'PASS') code = 2; }
     if (process.env.WITNESS_REPORT) writeFileSync(process.env.WITNESS_REPORT, renderReport(results));
     if (process.env.WITNESS_RESULTS) writeFileSync(process.env.WITNESS_RESULTS, JSON.stringify(results.map(r => ({ test: r.test, verdict: r.decision.verdict, why: r.decision.why, next: r.decision.next, kaneLabel: r.decision.kaneLabel, kaneConfidence: r.decision.kaneConfidence, target: r.target.status, reference: r.reference?.status ?? null, failedStep: r.target.failed?.runId ?? null, kaneSaw: r.target.failed?.label.rootCause ?? null, replayed: r.target.replayDecisions, recordedAgain: r.target.authorDecisions, credits: (r.target.creditsReported ?? 0) + (r.reference?.creditsReported ?? 0), card: r.card ?? null, blind: r.blind, locked: r.locked })), null, 2));
     return code;
@@ -123,7 +124,7 @@ async function main(): Promise<number> {
     console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
     return 0;
   }
-  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] | witness record <test_md> [witness.json] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
+  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] | witness record <test_md> [witness.json] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
   return 64;
 }
 

@@ -12,7 +12,8 @@ export interface KaneRun { summary: RunSummary; ndjson: string; workDir: string;
 
 export interface RunOptions {
   testFile: string;          // path to x_test.md (its output-x/ folder sits next to it)
-  url: string;               // start URL to retarget the recording to
+  url?: string;              // start URL to retarget the recording to (web)
+  mobile?: { target: string; app: string; deviceName?: string; osVersion?: string };  // a mobile app build instead
   profileTemplate?: string;  // optional prepared Chrome profile with app state
   rerecord?: boolean;        // --author: re-record every step on this build (costs credits)
   keepWorkDir?: boolean;
@@ -22,8 +23,13 @@ export interface RunOptions {
 export async function runKane(o: RunOptions): Promise<KaneRun> {
   const workDir = mkdtempSync(join(tmpdir(), 'witness-run-'));
   cpSync(dirname(o.testFile), workDir, { recursive: true });
-  const chrome = await startChrome(o.profileTemplate);
-  const args = ['testmd', 'run', basename(o.testFile), '--agent', '--override-start-url', o.url, '--cdp-endpoint', chrome.endpoint];
+  const chrome = o.mobile ? null : await startChrome(o.profileTemplate);
+  const args = ['testmd', 'run', basename(o.testFile), '--agent'];
+  if (o.mobile) {
+    args.push('--target', o.mobile.target, '--app', o.mobile.app);
+    if (o.mobile.deviceName) args.push('--device-name', o.mobile.deviceName);
+    if (o.mobile.osVersion) args.push('--os-version', o.mobile.osVersion);
+  } else args.push('--override-start-url', o.url!, '--cdp-endpoint', chrome!.endpoint);
   if (o.rerecord) args.push('--author'); else args.push('--no-adaptive-heal');
   let out = '';
   try {
@@ -34,7 +40,7 @@ export async function runKane(o: RunOptions): Promise<KaneRun> {
       const t = setTimeout(() => p.kill('SIGKILL'), (o.timeoutSec ?? 600) * 1000);
       p.on('close', () => { clearTimeout(t); resolve(buf); });
     });
-  } finally { chrome.stop(); }
+  } finally { chrome?.stop(); }
   writeFileSync(join(workDir, 'kane.ndjson'), out);
   const run = { summary: parseRun(out), ndjson: out, workDir };
   if (!o.keepWorkDir) rmSync(workDir, { recursive: true, force: true });
