@@ -139,7 +139,7 @@ A build (target or reference) can be any of these:
 | `{ "dir": "dist" }` | Serves the folder itself (add `"isolation": true` for apps that need cross-origin isolation) |
 | `{ "npm": "@actual-app/web", "buildDir": "build" }` | Downloads the **newest release** from npm (or `"version": "26.2.0"`) and serves it |
 | `{ "git": "origin/main", "build": "npm ci && npm run build", "dir": "dist" }` | Checks that ref out in its own worktree, builds it once, serves the output |
-| `{ "kane": { "target": "emulator", "app": "builds/app-1.4.apk" } }` | An Android or iOS app build: Kane runs it on a local emulator or simulator (or `"android"`/`"ios"` for TestMu's real devices) |
+| `{ "kane": { "target": "emulator", "app": "builds/app-1.4.apk" } }` | An Android or iOS app build: Kane runs it on a local emulator or simulator on macOS (Apple Silicon), or `"android"`/`"ios"` for TestMu's real devices |
 
 So a reference needs no hand-made build: the last release, the main branch or yesterday's nightly. Apps that need a starting state get a setup command (see [`examples/actual/setup.mjs`](examples/actual/setup.mjs); the full nightly setup for Actual Budget, with its recorded test, is in [`examples/actual`](examples/actual), run from that folder).
 
@@ -154,7 +154,7 @@ So a reference needs no hand-made build: the last release, the main branch or ye
 
 | Limit | What WITNESS does |
 |---|---|
-| Kane drives desktop web, and mobile apps on emulators, simulators or (paid) real devices | Web builds are compared in Chrome; app builds are passed to Kane as `"kane": { "target", "app" }`, so the same comparison works on two app builds |
+| Kane drives desktop web anywhere; it runs mobile apps on emulators and simulators only on macOS (Apple Silicon), and on real devices through TestMu's paid plan | Web builds are compared in Chrome. App builds are passed to Kane as `"kane": { "target", "app" }`, so on a Mac, or with real devices, the same comparison works on two app builds |
 | A Kane recording belongs to the account that made it | `witness guard --record-missing` records the test once on the reference build when there is no recording, or when Kane cannot replay the one it found (STALE), then runs the check. Without the flag it says so and spends nothing |
 | The comparison needs a build believed to be right | The reference can be the newest npm release, a git ref built in a worktree, or the PR's base branch (the [pull request check](.github/workflows/pr-check.yml)). When the reference fails too, the verdict is ENV and nobody is told to change the app |
 | A click can fail when the machine is busy | `guard` replays a failure at a click or typing step once more before deciding; `search` does the same for every build it probes |
