@@ -19,6 +19,7 @@ import { verify } from './commands/verify.js';
 import { record } from './commands/record.js';
 import { demo, evidenceRoot } from './commands/demo.js';
 import { renderReport } from './core/report.js';
+import { startLive } from './commands/live.js';
 
 const [cmd, a, b] = process.argv.slice(2);
 
@@ -35,11 +36,21 @@ async function main(): Promise<number> {
     return d.verdict === 'APP_BUG' || d.verdict === 'TEST_PROBLEM' ? 2 : 0;
   }
   if (cmd === 'guard') {
-    const cfg = loadConfig(a ?? 'witness.json');
+    // witness guard [witness.json] [--only <test name or file>]
+    const args = process.argv.slice(3);
+    const oi = args.indexOf('--only');
+    const only = oi >= 0 ? args[oi + 1] : undefined;
+    const cfgArg = args.find((x, i) => !x.startsWith('--') && (oi < 0 || i !== oi + 1));
+    const cfg = loadConfig(cfgArg ?? 'witness.json');
+    if (only) {
+      cfg.tests = cfg.tests.filter(t => t.endsWith(only) || t.endsWith(`${only}_test.md`) || t.endsWith(`/${only}`));
+      if (!cfg.tests.length) { console.error(`no test in witness.json matches ${only}`); return 64; }
+    }
     let code = 0;
     const results = [];
     for (const t of cfg.tests) { const r = await guard(cfg, t); results.push(r); if (r.decision.verdict !== 'PASS') code = 2; }
     if (process.env.WITNESS_REPORT) writeFileSync(process.env.WITNESS_REPORT, renderReport(results));
+    if (process.env.WITNESS_RESULTS) writeFileSync(process.env.WITNESS_RESULTS, JSON.stringify(results.map(r => ({ test: r.test, verdict: r.decision.verdict, why: r.decision.why, next: r.decision.next, kaneLabel: r.decision.kaneLabel, kaneConfidence: r.decision.kaneConfidence, target: r.target.status, reference: r.reference?.status ?? null, failedStep: r.target.failed?.runId ?? null, kaneSaw: r.target.failed?.label.rootCause ?? null, replayed: r.target.replayDecisions, recordedAgain: r.target.authorDecisions, credits: (r.target.creditsReported ?? 0) + (r.reference?.creditsReported ?? 0), card: r.card ?? null, blind: r.blind, locked: r.locked })), null, 2));
     return code;
   }
   if (cmd === 'fix' && a) {
@@ -75,6 +86,31 @@ async function main(): Promise<number> {
     const stdin = await new Promise<string>(res => { let s = ''; process.stdin.on('data', d => { s += d; }); process.stdin.on('end', () => res(s)); });
     return stopHook(stdin);
   }
+  if (cmd === 'live') {
+    // witness live [live.json]: the Run it live page (see examples/todomvc-svelte/live.json)
+    const path = resolve(a ?? 'live.json');
+    const base = dirname(path);
+    const c = JSON.parse(readFileSync(path, 'utf8'));
+    const r = (p: string) => resolve(base, p);
+    startLive({
+      exampleDir: r(c.exampleDir ?? '.'), referenceDir: r(c.referenceDir), tests: c.tests,
+      builds: Object.fromEntries(Object.entries<any>(c.builds).map(([k, v]) => [k, { dir: r(v.dir), label: v.label }])),
+      port: Number(process.env.PORT ?? c.port ?? 8797), host: c.host ?? '127.0.0.1',
+      perHour: c.perHour ?? 6, perVisitorMinutes: c.perVisitorMinutes ?? 10,
+      stateFile: r(c.stateFile ?? '.witness/live-history.json'), cli: resolve(process.argv[1]),
+    });
+    return new Promise<number>(() => {});
+  }
+  if (cmd === 'install-skill') {
+    // witness install-skill [--global]: the Claude Code skill that tells an agent to act on the WITNESS verdict
+    const src = resolve(evidenceRoot(), 'skills/witness/SKILL.md');
+    const home = process.env.HOME ?? '.';
+    const dest = a === '--global' ? resolve(home, '.claude/skills/witness/SKILL.md') : resolve('.claude/skills/witness/SKILL.md');
+    mkdirSync(dirname(dest), { recursive: true });
+    writeFileSync(dest, readFileSync(src, 'utf8'));
+    console.log(`Installed the WITNESS skill in ${dest}`);
+    return 0;
+  }
   if (cmd === 'install-hook') {
     const settings = resolve('.claude/settings.json');
     mkdirSync(dirname(settings), { recursive: true });
@@ -87,7 +123,7 @@ async function main(): Promise<number> {
     console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
     return 0;
   }
-  console.error('usage: witness demo | witness verify | witness guard [witness.json] | witness record <test_md> [witness.json] | witness fix <test_md> [witness.json] | witness hook | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
+  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] | witness record <test_md> [witness.json] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
   return 64;
 }
 

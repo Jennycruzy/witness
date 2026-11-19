@@ -16,3 +16,19 @@ cd examples/todomvc-svelte
 (cd app && npm ci && npm run build)
 node ../../dist/cli.js guard witness.json
 ```
+
+## Run it live
+
+`live.json` serves a page where anyone can start this check and watch it. It needs two builds: the fixed one in `reference/dist`, and the upstream code in `builds/upstream/dist`:
+
+```bash
+# from the repository root
+E=examples/todomvc-svelte
+(cd $E/app && npm ci && npm run build && mkdir -p ../reference && rm -rf ../reference/dist && cp -r dist ../reference/dist)
+rm -rf $E/builds/upstream && mkdir -p $E/builds/upstream && cp -r $E/app $E/builds/upstream/src
+for f in Item.svelte router.js; do curl -sL https://raw.githubusercontent.com/tastejs/todomvc/ff43b02/examples/svelte/src/$f -o $E/builds/upstream/src/src/$f; done
+(cd $E/builds/upstream/src && npm run build && mv dist ../dist)
+node dist/cli.js live $E/live.json     # http://127.0.0.1:8797/
+```
+
+One run at a time; `perHour` and `perVisitorMinutes` cap how many runs (and Kane credits) visitors can start.

@@ -72,3 +72,12 @@ describe('reference build broken too', () => {
     expect(d.verdict).toBe('ENV');
   });
 });
+
+describe('credits', () => {
+  it('counts the triage cost a failing replay reports inside its verdict', () => {
+    expect(run('todomvc-2315-edit-target-svelte').creditsReported).toBeCloseTo(2.20245, 4);
+  });
+  it('a passing replay reports no credits', () => {
+    expect(run('todomvc-2315-edit-fixed-svelte').creditsReported).toBe(0);
+  });
+});

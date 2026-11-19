@@ -51,6 +51,7 @@ export function parseRun(ndjson: string): RunSummary {
     try { ev = JSON.parse(t); } catch { continue; }
     if (ev.type === 'run_end') {
       if (typeof ev.credits_consumed === 'number') summary.creditsReported += ev.credits_consumed;
+      else if (typeof ev.verdict?.credits_consumed === 'number') summary.creditsReported += ev.verdict.credits_consumed;  // a replay reports only the triage cost, inside its verdict
       if (ev.status === 'failed' && !summary.failed) {
         const reason = String(ev.reason ?? '');
         const v = ev.verdict ?? {};

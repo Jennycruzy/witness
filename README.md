@@ -1,6 +1,8 @@
 # WITNESS
 
-**Kane says why a test failed. WITNESS checks it against a second build before your coding agent acts.**
+**Kane's verdict, made safe for a coding agent to act on.**
+
+Kane says why a test failed. WITNESS checks that against a second build before your coding agent acts on it.
 
 When a [Kane CLI](https://www.testmuai.com/kane-cli/) test fails, a coding agent has to choose: fix the app, or fix the test. Kane gives a label for that, and agents act on it. On 9 real app bugs we measured that label pointing at the test in 5. On a 10th, Kane passed the bug outright. An agent that trusts it rewrites the test to accept the bug.
 
@@ -76,6 +78,8 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | Closed loop | [`evidence/todomvc-svelte-trim-hook-untold.patch`](evidence/todomvc-svelte-trim-hook-untold.patch) and its row in `verify` | A Claude Code session told about one bug tried to stop; the Stop hook blocked it on a second bug it was never told about; it fixed that too, and the unchanged recordings passed |
 | Closed loop | [Pull request #1](https://github.com/Jennycruzy/witness/pull/1) | On GitHub: a PR puts back the upstream TodoMVC Svelte code; the check replays the Kane tests on the PR's build and the base build and comments APP_BUG with the card; a separate Claude Code agent given only that comment fixes two app files; the check goes green |
 | Closed loop | [`src/commands/fix.ts`](src/commands/fix.ts) | Agent edits outside the app source are rolled back; a changed test or recording (sha256) is rejected |
+| Closed loop | [`evidence/skill-fresh-session/`](evidence/skill-fresh-session/) and its row in `verify` | A fresh Claude Code session with only the WITNESS skill, asked "The Kane test fails on this TodoMVC app. Sort it out.", loaded the skill by itself; Kane said `automation_bug` 0.9, WITNESS said APP_BUG, the agent wrote *"I didn't go by that label"*, fixed the app only, and the re-run passed |
+| Ships | `witness live examples/todomvc-svelte/live.json` | The Run it live page: pick the upstream build or the fixed build and watch real Kane replays, the verdict, Kane's label and the credits |
 | Craft | [How I tried to break it](#how-i-tried-to-break-it) | Each way the verdict could be wrong, and the run or test that covers it |
 
 ## How I tried to break it
@@ -110,9 +114,13 @@ Put a `witness.json` next to your Kane tests:
 | Command | What it does | Kane credits |
 |---|---|---|
 | `witness record <test>` | Records the test's steps with Kane on the reference build (with an npm channel: the newest release) and keeps the recording | ~50 for a short test |
-| `witness guard` | Runs each test on your build; on a failure replays it on the reference and gives the verdict | 0 when the target passes |
+| `witness demo` | One real case end to end and every number recomputed, from the committed runs; no login | 0 |
+| `witness guard` | Runs each test on your build; on a failure replays it on the reference and gives the verdict | 0 when the target passes; about 2 per failing test (Kane's triage); the reference replay 0 |
 | `witness fix <test>` | APP_BUG → the agent gets the card (it may change only `source/`) → rebuild → the unchanged recording must pass | rebuild + replays |
 | `witness install-hook` | Adds a Claude Code Stop hook: the agent cannot stop while a verdict is open | — |
+| `witness install-skill [--global]` | Adds the [Claude Code skill](skills/witness/SKILL.md): when a Kane test fails, the agent runs `witness guard` and acts on the verdict, not on Kane's label | — |
+| `witness guard … --only <test>` | Checks one test | as `guard` |
+| `witness live <live.json>` | Serves the Run it live page: one run at a time, a cap on runs per hour and per visitor | as `guard`, per click |
 | `witness search <test> <good> <bad>` | Replays the test across published builds to find the first bad one, then lists the commits in between | ~5 per failing build |
 | `witness watch` | Checks the newest nightly against the newest release; on an APP_BUG it runs the search | 0 on quiet nights |
 | `witness verify` | Recomputes the headline numbers from `evidence/`, offline | 0 |

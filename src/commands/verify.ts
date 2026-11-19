@@ -17,6 +17,7 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
   for (const f of cases.fixes) files.push(f.run, f.diff);
   files.push(...cases.blind.runs);
   for (const l of cases.locked ?? []) files.push(l.recording, l.run);
+  for (const x of cases.sessions ?? []) files.push(x.prompt, x.transcript, x.diff);
   const uniq = [...new Set(files)].sort();
   const manifestPath = join(root, 'evidence/manifest.json');
   const hashes = Object.fromEntries(uniq.map(f => [f, sha(join(root, f))]));
@@ -54,6 +55,18 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
     const okL = run.status === 'passed' && hits.length > 0;
     if (!okL) ok = false;
     log(`  locked check:       Kane ${run.status.toUpperCase()} a real bug; WITNESS ${hits.length ? `flagged ${hits.length} locked read(s) in the recording` : 'flagged NOTHING'}: ${l.name}`);
+  }
+  for (const x of cases.sessions ?? []) {
+    const events = readFileSync(join(root, x.transcript), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
+    const tools = events.filter(e => e.type === 'assistant').flatMap(e => e.message.content).filter((c: any) => c.type === 'tool_use');
+    const results = events.filter(e => e.type === 'user').flatMap(e => e.message.content ?? []).filter((c: any) => c?.type === 'tool_result').map((c: any) => typeof c.content === 'string' ? c.content : JSON.stringify(c.content));
+    const skillFirst = tools[0]?.name === 'Skill' && tools[0]?.input?.skill === 'witness';
+    const verdicts = results.flatMap((t: string) => [...t.matchAll(/VERDICT +(\w+)/g)].map(m => m[1]));
+    const disagreed = results.some((t: string) => /disagrees with the comparison/.test(t));
+    const appOnly = readFileSync(join(root, x.diff), 'utf8').split('\n').filter(l => l.startsWith('+++ ')).every(l => l.includes('/app/src/'));
+    const okS = skillFirst && verdicts[0] === 'APP_BUG' && verdicts[verdicts.length - 1] === 'PASS' && disagreed && appOnly;
+    if (!okS) ok = false;
+    log(`  skill session:      ${skillFirst ? 'loaded the WITNESS skill by itself' : 'did NOT load the skill first'}; verdicts ${verdicts.join(' -> ')}; Kane's label ${disagreed ? 'disagreed and was not followed' : 'agreed'}; changed ${appOnly ? 'app source only' : 'files outside the app'}: ${x.name}`);
   }
   const blind = cases.blind.runs.map((r: string) => findBlindChecks(readFileSync(join(root, r), 'utf8')).length);
   log(`  blind check:        found in ${blind.filter((n: number) => n > 0).length} of ${blind.length} real runs on the buggy build`);

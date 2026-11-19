@@ -7,3 +7,4 @@ output-*/.internal/state*
 *.tgz
 reference/
 .witness/
+builds/

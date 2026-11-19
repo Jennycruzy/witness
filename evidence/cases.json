@@ -147,5 +147,14 @@
       "recording": "test/fixtures/locked/es6-append-order-step2.ndjson",
       "run": "test/fixtures/todomvc-2311-es6-order-false-pass.ndjson"
     }
+  ],
+  "sessions": [
+    {
+      "name": "Fresh Claude Code session with only the WITNESS skill installed, asked 'The Kane test tests/edit_trim_test.md fails on this TodoMVC app. Sort it out.'",
+      "issue": "https://github.com/tastejs/todomvc/issues/2315",
+      "prompt": "evidence/skill-fresh-session/prompt.txt",
+      "transcript": "evidence/skill-fresh-session/session.jsonl",
+      "diff": "evidence/skill-fresh-session/fix.patch"
+    }
   ]
 }
