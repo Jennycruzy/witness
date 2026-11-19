@@ -4,6 +4,7 @@ import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 import { fetchBuild, isRelease, listVersions } from '../io/npm.js';
 import { runKane } from '../io/kane.js';
+import { findLooseChecks } from '../core/locked.js';
 import { open } from './guard.js';
 import type { BuildRef, WitnessConfig } from '../io/config.js';
 
@@ -35,6 +36,15 @@ export async function record(cfg: WitnessConfig, testFile: string, log = console
       rmSync(to, { recursive: true, force: true });
       cpSync(from, to, { recursive: true });
       log(`  saved    ${to}`);
+      for (const l of findLooseChecks(testFile)) log(`  LOOSE    test step ${l.step}: "${l.query}" was recorded with expected ${JSON.stringify(l.expected)} but no code to read the page, so a replay cannot check it. Reword that step to name exactly what to read.`);
+      // A recording counts only when it replays on the build it was made on (free when it passes).
+      const check = await runKane({ testFile, url: b.url, mobile: b.mobile, profileTemplate: b.profile });
+      if (check.summary.status !== 'passed' || (check.summary.authorDecisions ?? 0) > 0) {
+        const f = check.summary.failed;
+        log(`  UNSTABLE the new recording does not replay on ${label}${f ? ` (test step ${Number(f.runId.replace('run-', '')) + 1}: ${f.label.rootCause ?? f.reason})` : ''}. Reword that step and record again.`);
+        return { ok: false, unstable: true, summary: check.summary };
+      }
+      log(`  checked  the recording replays on ${label}`);
       return { ok: true, summary: r.summary };
     } finally { rmSync(r.workDir, { recursive: true, force: true }); }
   } finally { await b.close(); }

@@ -29,6 +29,8 @@ Kane's own label for a failed run (`automation_bug`, `application_issue`) is oft
 | `ENV` | Stop. The reference build fails too. Report it and check servers, data, logins | Change the app or the test |
 | `STALE` | The run recorded steps again instead of replaying. Re-record on the reference (ask first: credits) | Trust the result of that run |
 | `PASS` with `BLIND` | The step passed but read text its comparison strips. Rewrite that step's sentence so it states the count or exact list, then re-record (ask first) | Ignore it |
+| `NO_RECORDING` | Tell the user; with their OK run again with `--record-missing` (about 50 credits) | Run Kane on the test yourself |
+| `LOOSE` or `UNSTABLE` (printed by `record` or before the run) | That step's check cannot be replayed. Reword the step to name exactly what to read (for example "the footer reads 1 item left"), then record again (ask first) | Trust a verdict on that step |
 | `LOCKED` (printed before the run) | The check finds the element by the text it expects, so it cannot fail on order or position. Rewrite the step to read the whole list in order | Ignore it on a step about order |
 
 4. After an app fix: rebuild and run `witness guard witness.json --only <name>_test.md` again. The fix counts only when the **unchanged** recording passes. If it still fails, read the new card and try again; stop after three rounds and report.

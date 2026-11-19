@@ -3,7 +3,7 @@ import { basename } from 'node:path';
 import type { GuardResult } from '../commands/guard.js';
 
 export function renderReport(results: GuardResult[]): string {
-  const icon: Record<string, string> = { PASS: '✅', APP_BUG: '❌', TEST_PROBLEM: '🔧', ENV: '⚠️', STALE: '⚠️', UNKNOWN: '⚠️' };
+  const icon: Record<string, string> = { PASS: '✅', APP_BUG: '❌', TEST_PROBLEM: '🔧', ENV: '⚠️', STALE: '⚠️', NO_RECORDING: '⚠️', UNKNOWN: '⚠️' };
   const out: string[] = ['### WITNESS', '', '| Test | Target | Reference | Kane\'s label | Verdict |', '|---|---|---|---|---|'];
   for (const r of results) {
     const label = r.decision.kaneLabel ? `${r.decision.kaneLabel} ${r.decision.kaneConfidence ?? ''}`.trim() : '—';

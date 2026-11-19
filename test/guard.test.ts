@@ -76,15 +76,43 @@ describe('guard decision paths', () => {
       expect(f.calls()[0]).not.toContain('--cdp-endpoint');
     });
   });
-  it('says so when a test has no saved recording, and records it first with --record-missing', async () => {
+  it('stops with NO_RECORDING when a test has no saved recording, and spends nothing', async () => {
+    const p = project(false);
+    await withFake([fx('todomvc-2315-edit-fixed-svelte')], async f => {
+      const r = await guard(p.cfg as any, p.cfg.tests[0], () => {});
+      expect(r.decision.verdict).toBe('NO_RECORDING');
+      expect(existsSync(join(f.dir, 'calls'))).toBe(false);
+    });
+  });
+  it('with --record-missing records once, checks the recording replays, then runs the check', async () => {
+    const p = project(false);
+    await withFake([fx('todomvc-2315-edit-fixed-svelte')], async f => {
+      const r = await guard(p.cfg as any, p.cfg.tests[0], () => {}, { recordMissing: true });
+      const calls = f.calls();
+      expect(calls[0]).toContain('--author');
+      expect(calls[1]).toContain('--no-adaptive-heal');
+      expect(r.decision.verdict).toBe('PASS');
+    });
+  });
+  it('rejects a new recording that does not replay on the reference build', async () => {
     const p = project(false);
     const lines: string[] = [];
-    await withFake([fx('todomvc-2315-edit-fixed-svelte')], async f => {
-      await guard(p.cfg as any, p.cfg.tests[0], s => lines.push(s));
-      expect(lines.join('\n')).toContain('NO RECORDING');
-      await guard(p.cfg as any, p.cfg.tests[0], s => lines.push(s), { recordMissing: true });
-      expect(f.calls().some(c => c.includes('--author'))).toBe(true);
+    await withFake([fx('todomvc-2315-edit-fixed-svelte'), fx('todomvc-2315-edit-target-svelte')], async () => {
+      const r = await guard(p.cfg as any, p.cfg.tests[0], s => lines.push(s), { recordMissing: true });
+      expect(r.decision.verdict).toBe('NO_RECORDING');
+      expect(lines.join('\n')).toContain('UNSTABLE');
     });
+  });
+});
+
+describe('loose checks', () => {
+  it('flags the real recorded check "exactly one todo" saved with expected "1" and no code to read the page', async () => {
+    const { looseFromAction, lockedFromAction } = await import('../src/core/locked.js');
+    const actions = readFileSync(new URL('./fixtures/loose/todomvc-count-step3.ndjson', import.meta.url), 'utf8').trim().split('\n').map(l => JSON.parse(l));
+    const loose = actions.map(a => looseFromAction(a, 3)).filter(Boolean);
+    expect(loose).toHaveLength(1);
+    expect(loose[0]).toMatchObject({ step: 3, expected: '1' });
+    expect(actions.map(a => lockedFromAction(a, 3)).filter(Boolean)).toHaveLength(1);
   });
 });
 

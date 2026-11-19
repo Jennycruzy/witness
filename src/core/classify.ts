@@ -3,7 +3,7 @@
 
 import type { RunSummary } from './stream.js';
 
-export type Verdict = 'PASS' | 'APP_BUG' | 'TEST_PROBLEM' | 'ENV' | 'STALE' | 'UNKNOWN';
+export type Verdict = 'PASS' | 'APP_BUG' | 'TEST_PROBLEM' | 'ENV' | 'STALE' | 'NO_RECORDING' | 'UNKNOWN';
 
 export interface Decision {
   verdict: Verdict;

@@ -5,7 +5,7 @@ import { classify, isStale, labelDisagrees, type Decision } from '../core/classi
 import { buildCard, parseTestSteps } from '../core/card.js';
 import type { RunSummary } from '../core/stream.js';
 import { findBlindChecks, type BlindCheck } from '../core/blind.js';
-import { findLockedChecks, type LockedCheck } from '../core/locked.js';
+import { findLockedChecks, findLooseChecks, type LockedCheck } from '../core/locked.js';
 import { runKane } from '../io/kane.js';
 import { serveDir } from '../io/serve.js';
 import { prepareProfile } from '../io/setup.js';
@@ -30,16 +30,28 @@ const hasRecording = (testFile: string) => existsSync(join(dirname(testFile), `o
 
 export async function guard(cfg: WitnessConfig, testFile: string, log = console.log, opts: GuardOptions = {}): Promise<GuardResult> {
   if (!hasRecording(testFile)) {
-    if (!opts.recordMissing) log(`  NO RECORDING  ${basename(testFile)} has no saved Kane recording here. Run witness record (about 50 credits), or guard --record-missing.`);
-    else { log(`  recording  ${basename(testFile)} once on the reference build (no saved recording here)`); await record(cfg, testFile, log); }
+    if (!opts.recordMissing) return noRecording(cfg, testFile, log, `${basename(testFile)} has no saved Kane recording here, so a run would record it (about 50 credits) instead of replaying it.`, 'Run witness record, or guard --record-missing.');
+    log(`  recording  ${basename(testFile)} once on the reference build (no saved recording here)`);
+    const rec = await record(cfg, testFile, log);
+    if (!rec.ok) return noRecording(cfg, testFile, log, 'The new recording does not replay on the reference build (see UNSTABLE above).', 'Reword the step named above and record again.');
   }
   let r = await guardOnce(cfg, testFile, log);
   if (r.decision.verdict === 'STALE' && opts.recordMissing) {
     log('  recording  again on the reference build: this recording cannot be replayed here (another account, or out of date)');
-    const rec = await record(cfg, testFile, log);
-    if (rec.ok) r = await guardOnce(cfg, testFile, log);
+    const rec2 = await record(cfg, testFile, log);
+    if (rec2.ok) r = await guardOnce(cfg, testFile, log);
   }
   return r;
+}
+
+function noRecording(cfg: WitnessConfig, testFile: string, log: (s: string) => void, why: string, next: string): GuardResult {
+  const evidenceDir = join(cfg.evidenceDir ?? '.witness/runs', `${new Date().toISOString().replace(/[:.]/g, '-')}-${basename(testFile, '.md')}`);
+  mkdirSync(evidenceDir, { recursive: true });
+  const decision: Decision = { verdict: 'NO_RECORDING', why, next, kaneLabel: null, kaneConfidence: null };
+  log(`  VERDICT    NO_RECORDING: ${why}\n  next       ${next}`);
+  writeFileSync(join(evidenceDir, 'decision.json'), JSON.stringify({ test: testFile, decision }, null, 2));
+  const target = { status: 'unknown', stepsTotal: null, stepsPassed: null, healed: false, failed: null, creditsReported: 0, replayDecisions: null, authorDecisions: null } as RunSummary;
+  return { test: testFile, decision, target, evidenceDir, blind: [], locked: [] };
 }
 
 async function guardOnce(cfg: WitnessConfig, testFile: string, log = console.log): Promise<GuardResult> {
@@ -47,6 +59,7 @@ async function guardOnce(cfg: WitnessConfig, testFile: string, log = console.log
   const evidenceDir = join(cfg.evidenceDir ?? '.witness/runs', `${id}-${basename(testFile, '.md')}`);
   mkdirSync(evidenceDir, { recursive: true });
   const locked = findLockedChecks(testFile);
+  for (const l of findLooseChecks(testFile)) log(`  LOOSE      test step ${l.step}: "${l.query}" has an expected value (${JSON.stringify(l.expected)}) but no code to read the page; a replay cannot check it`);
   for (const l of locked) log(`  LOCKED     test step ${l.step} finds the element by its expected text ${JSON.stringify(l.expected)} (${l.locator}), so it only proves that text is somewhere on the page, not which item or where${l.positional ? ' (this step is about position, so it cannot catch a wrong order)' : ''}`);
   const tgt = await open(cfg.target, cfg.cacheDir);
   let target: RunSummary;

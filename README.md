@@ -95,6 +95,9 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | Kane records steps again instead of replaying (stale recording) | Verdict STALE; a fix proof must replay every step | [`test/classify.test.ts`](test/classify.test.ts) "stale recording" |
 | A check passes while reading a blank line it strips (`"\nb"`) | BLIND | [`test/blind.test.ts`](test/blind.test.ts), 2 real runs in `verify` |
 | A check finds the item by the text it expects, so it cannot fail | LOCKED, from the recording alone, before any run | [`test/locked.test.ts`](test/locked.test.ts), es6 #2311 in `verify` |
+| Kane recorded a check with an expected value but no code to read the page (it judged by eye while recording) | LOOSE, from the recording alone: a replay cannot check that step | [`test/guard.test.ts`](test/guard.test.ts) "loose checks", on a real TodoMVC recording |
+| A fresh recording does not replay even on the build it was made on | `record` replays it once there before keeping it; if it fails: UNSTABLE, with the step and Kane's reason | [`test/guard.test.ts`](test/guard.test.ts) |
+| There is no recording, so a run would quietly record (and bill) instead of replaying | NO_RECORDING: nothing runs and nothing is spent unless `--record-missing` is given | [`test/guard.test.ts`](test/guard.test.ts) |
 | The test cannot pass anywhere (Kane recorded a JWT Sign check with the token's own timestamp in its locator) | ENV on both builds: nobody is told to change the app | CyberChef row in `verify` |
 | The reference build is broken too | ENV: nobody is told to change anything | [`test/classify.test.ts`](test/classify.test.ts) "reference build broken too" |
 | The page layout changed where the test clicks | TEST_PROBLEM, not APP_BUG | 3 real test problems in `verify` |
@@ -155,7 +158,7 @@ So a reference needs no hand-made build: the last release, the main branch or ye
 | Limit | What WITNESS does |
 |---|---|
 | Kane drives desktop web anywhere; it runs mobile apps on emulators and simulators only on macOS (Apple Silicon), and on real devices through TestMu's paid plan | Web builds are compared in Chrome. App builds are passed to Kane as `"kane": { "target", "app" }`, so on a Mac, or with real devices, the same comparison works on two app builds |
-| A Kane recording belongs to the account that made it | `witness guard --record-missing` records the test once on the reference build when there is no recording, or when Kane cannot replay the one it found (STALE), then runs the check. Without the flag it says so and spends nothing |
+| A Kane recording belongs to the account that made it | `witness guard --record-missing` records the test once on the reference build when there is no recording, or when Kane cannot replay the one it found (STALE), checks that the new recording replays there, then runs the check. Without the flag the verdict is NO_RECORDING and nothing is spent |
 | The comparison needs a build believed to be right | The reference can be the newest npm release, a git ref built in a worktree, or the PR's base branch (the [pull request check](.github/workflows/pr-check.yml)). When the reference fails too, the verdict is ENV and nobody is told to change the app |
 | A click can fail when the machine is busy | `guard` replays a failure at a click or typing step once more before deciding; `search` does the same for every build it probes |
 
