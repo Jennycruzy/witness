@@ -8,3 +8,4 @@ output-*/.internal/state*
 reference/
 .witness/
 builds/
+examples/*/builds/

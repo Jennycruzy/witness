@@ -30,17 +30,18 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
   } else { ok = false; log('files    evidence/manifest.json is missing'); }
 
   log('\nreal failures: truth vs Kane\'s label vs WITNESS');
-  let appBugs = 0, kaneRight = 0, witnessRight = 0, testProblems = 0, witnessRightTP = 0;
+  let appBugs = 0, kaneRight = 0, witnessRight = 0, testProblems = 0, witnessRightTP = 0, envs = 0, witnessRightEnv = 0;
   for (const p of cases.pairs) {
     const d = classify(parseRun(readFileSync(join(root, p.target), 'utf8')), parseRun(readFileSync(join(root, p.reference), 'utf8')));
     const kaneOk = !labelDisagrees({ ...d, verdict: p.truth });
     const wOk = d.verdict === p.truth;
-    if (p.truth === 'APP_BUG') { appBugs++; if (kaneOk) kaneRight++; if (wOk) witnessRight++; } else { testProblems++; if (wOk) witnessRightTP++; }
-    log(`  ${p.truth.padEnd(12)} Kane ${String(d.kaneLabel).padEnd(17)} ${kaneOk ? 'right' : 'WRONG'}   WITNESS ${d.verdict.padEnd(12)} ${wOk ? 'right' : 'WRONG'}   ${p.name}`);
+    if (p.truth === 'APP_BUG') { appBugs++; if (kaneOk) kaneRight++; if (wOk) witnessRight++; } else if (p.truth === 'ENV') { envs++; if (wOk) witnessRightEnv++; } else { testProblems++; if (wOk) witnessRightTP++; }
+    log(`  ${p.truth.padEnd(12)} Kane ${String(d.kaneLabel).padEnd(17)} ${p.truth === 'ENV' ? 'n/a  ' : kaneOk ? 'right' : 'WRONG'}   WITNESS ${d.verdict.padEnd(12)} ${wOk ? 'right' : 'WRONG'}   ${p.name}`);
     if (!wOk) ok = false;
   }
   log(`\n  real app bugs:      Kane's label right on ${kaneRight} of ${appBugs}; WITNESS right on ${witnessRight} of ${appBugs}`);
   log(`  real test problems: WITNESS right on ${witnessRightTP} of ${testProblems}`);
+  if (envs) log(`  reference fails too: WITNESS said ENV on ${witnessRightEnv} of ${envs} (nobody told to change the app)`);
 
   let fixOk = true;
   for (const f of cases.fixes) {

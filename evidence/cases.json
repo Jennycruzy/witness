@@ -1,5 +1,5 @@
 {
-  "about": "Real Kane CLI runs (kane-cli 0.10.5, 17-18 Nov 2026). Truth comes from public issues and fixes, never from Kane's label.",
+  "about": "Real Kane CLI runs (kane-cli 0.10.5, 17-19 Nov 2026). Truth comes from public issues and fixes, never from Kane's label.",
   "pairs": [
     {
       "name": "Actual Budget: running balance not updated after an edit",
@@ -110,6 +110,42 @@
       "truth": "TEST_PROBLEM",
       "confirm": "test/fixtures/todomvc-wc-clear-recorded-on-wc.ndjson",
       "confirm_note": "Recorded on web-components itself, the typing step passes and the test then fails at its check: the real bug (#2314, Clear completed shown with nothing completed)."
+    },
+    {
+      "name": "CyberChef: JWT Sign and JWT Verify fail with \"Right-hand side of 'instanceof' is not an object\" from v10.23.0",
+      "issue": "https://github.com/gchq/CyberChef/issues/2434",
+      "target": "test/fixtures/cyberchef-2434-jwt-verify-target-v10.23.0.ndjson",
+      "reference": "test/fixtures/cyberchef-2434-jwt-verify-reference-v10.22.1.ndjson",
+      "target_build": "gchq/CyberChef release v10.23.0",
+      "reference_build": "gchq/CyberChef release v10.22.1",
+      "truth": "APP_BUG"
+    },
+    {
+      "name": "IT-Tools: the heart button on a tool's page no longer adds it to favourites (v2024.10.22)",
+      "issue": "https://github.com/CorentinTh/it-tools/issues/1365",
+      "target": "test/fixtures/ittools-favorite-target-v2024.10.22.ndjson",
+      "reference": "test/fixtures/ittools-favorite-reference-v2024.5.13.ndjson",
+      "target_build": "CorentinTh/it-tools release v2024.10.22-7ca5933",
+      "reference_build": "CorentinTh/it-tools release v2024.5.13-a0bc346",
+      "truth": "APP_BUG"
+    },
+    {
+      "name": "Actual Budget: completed schedules stay shown every time the Schedules page is opened again (26.1.0)",
+      "issue": "https://github.com/actualbudget/actual/issues/6606",
+      "target": "test/fixtures/actual-6606-completed-schedules-target-26.1.0.ndjson",
+      "reference": "test/fixtures/actual-6606-completed-schedules-reference-26.2.0.ndjson",
+      "target_build": "@actual-app/web 26.1.0",
+      "reference_build": "@actual-app/web 26.2.0",
+      "truth": "APP_BUG"
+    },
+    {
+      "name": "CyberChef: a JWT Sign check recorded with the token's own timestamp in its locator fails on every build, the good one too",
+      "issue": "https://github.com/gchq/CyberChef/issues/2434",
+      "target": "test/fixtures/cyberchef-jwt-sign-timestamp-locator-target-v10.23.0.ndjson",
+      "reference": "test/fixtures/cyberchef-jwt-sign-timestamp-locator-reference-v10.22.1.ndjson",
+      "target_build": "gchq/CyberChef release v10.23.0",
+      "reference_build": "gchq/CyberChef release v10.22.1",
+      "truth": "ENV"
     }
   ],
   "blind": {

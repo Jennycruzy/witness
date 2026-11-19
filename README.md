@@ -4,7 +4,7 @@
 
 Kane says why a test failed. WITNESS checks that against a second build before your coding agent acts on it.
 
-When a [Kane CLI](https://www.testmuai.com/kane-cli/) test fails, a coding agent has to choose: fix the app, or fix the test. Kane gives a label for that, and agents act on it. On 9 real app bugs we measured that label pointing at the test in 5. On a 10th, Kane passed the bug outright. An agent that trusts it rewrites the test to accept the bug.
+When a [Kane CLI](https://www.testmuai.com/kane-cli/) test fails, a coding agent has to choose: fix the app, or fix the test. Kane gives a label for that, and agents act on it. On 12 real app bugs in four open-source apps (CyberChef, IT-Tools, Actual Budget, TodoMVC) we measured that label pointing at the test in 6. On a 13th, Kane passed the bug outright. An agent that trusts it rewrites the test to accept the bug.
 
 WITNESS replays the **same recording** on a reference build (main, the last release, yesterday's nightly) and decides by comparison:
 
@@ -19,14 +19,18 @@ Then Kane proves the fix: the **unchanged** recording (same sha256) must pass on
 
 ## What it found on real software
 
-All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5). Nothing is planted. `witness verify` recomputes every number below from the runs committed in [`evidence/`](evidence/) and checks their sha256.
+All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5, 17 to 19 November 2026). Nothing is planted. `witness verify` recomputes every number below from the runs committed in [`evidence/`](evidence/) and checks their sha256.
 
 | | Kane's own label | WITNESS |
 |---|---|---|
-| Real app bugs (9) | right on **4 of 9** | right on **9 of 9** |
+| Real app bugs (12) | right on **6 of 12** | right on **12 of 12** |
 | Real test problems (3) | right on 3 of 3 | right on **3 of 3** |
 | Real bug Kane passed (1) | PASS | flagged the check as **LOCKED** from the recording, before any run |
 
+- **Three shipped regressions in well-known apps**, each a plain-English Kane test recorded once on the last good release and replayed on the release that broke it ([`examples/`](examples/)):
+  - **IT-Tools** (41k stars), v2024.5.13 → v2024.10.22: the heart button on a tool's page no longer adds it to favourites ([#1365](https://github.com/CorentinTh/it-tools/issues/1365), still in the latest release). Kane labelled it `automation_bug` (0.96). WITNESS: APP_BUG.
+  - **CyberChef** (36k stars), v10.22.1 → v10.23.0: JWT Sign and Verify fail with *"Right-hand side of 'instanceof' is not an object"* ([#2434](https://github.com/gchq/CyberChef/issues/2434), still in v11.5.0). Kane: `application_issue` (0.98). WITNESS: APP_BUG.
+  - **Actual Budget**, shipped in 26.1.0, fixed in 26.2.0 (the reference): completed schedules stay shown every time the page is opened again ([#6606](https://github.com/actualbudget/actual/issues/6606)). Kane: `application_issue` (0.97). WITNESS: APP_BUG.
 - **TodoMVC Svelte, [#2315](https://github.com/tastejs/todomvc/issues/2315) (open).** Kane failed the edit test and labelled it `automation_bug` (0.88). WITNESS: the same recording passes on the Vue build and fails here at a check, so APP_BUG. Claude Code got WITNESS's card, changed one line in `src/Item.svelte` ([diff](evidence/todomvc-svelte-trim.patch)), WITNESS rebuilt the app, and the unchanged recording passed 5 of 5 with no self-healing.
 - **A check that could not see the bug.** In the same test, Kane's check *"the list shows exactly one todo, b"* passed on the buggy build in every run, reading `"\nb"`: the blank todo was on the page, and the comparison stripped it away. WITNESS flags this as BLIND.
 - **Actual Budget, [#8475](https://github.com/actualbudget/actual/issues/8475).** The running balance stopped updating after an edit. The recording passes on the 17 June 2026 nightly and fails on 20 June at the balance check (reads 20.00, expected 50.00). That bug shipped to everyone in 26.7.0 on 2 July and was first reported on 14 July.
@@ -73,7 +77,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 |---|---|---|
 | Ships | `npx -y github:Jennycruzy/witness demo` | The full flow on a real bug, from the real Kane runs, in under a second after install |
 | Ships | [`examples/actual`](examples/actual) and [`evidence/actual-8475-search.json`](evidence/actual-8475-search.json) | The nightly watch set up on Actual Budget, and the build search that found the first bad nightly for #8475 (20 June 2026) unattended, with the commits in between |
-| Verified | `node dist/cli.js verify` | Kane's label right on 4 of 9 real app bugs, WITNESS 9 of 9; 3 of 3 real test problems; every evidence file checked by sha256 |
+| Verified | `node dist/cli.js verify` | Kane's label right on 6 of 12 real app bugs in four apps, WITNESS 12 of 12; 3 of 3 real test problems; ENV where the good build fails too; every evidence file checked by sha256 |
 | Verified | [Reported upstream](#reported-upstream) | Both Kane issues reproduced and fixed by the Kane team; the TodoMVC fix PR |
 | Closed loop | [`evidence/todomvc-svelte-trim-hook-untold.patch`](evidence/todomvc-svelte-trim-hook-untold.patch) and its row in `verify` | A Claude Code session told about one bug tried to stop; the Stop hook blocked it on a second bug it was never told about; it fixed that too, and the unchanged recordings passed |
 | Closed loop | [Pull request #1](https://github.com/Jennycruzy/witness/pull/1) | On GitHub: a PR puts back the upstream TodoMVC Svelte code; the check replays the Kane tests on the PR's build and the base build and comments APP_BUG with the card; a separate Claude Code agent given only that comment fixes two app files; the check goes green |
@@ -86,11 +90,12 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 
 | Attack | What WITNESS does | Covered by |
 |---|---|---|
-| Kane's label blames the test for a real app bug | Ignores the label; the second build decides | 5 of 9 real app bugs in `verify` |
+| Kane's label blames the test for a real app bug | Ignores the label; the second build decides | 6 of 12 real app bugs in `verify` |
 | Kane self-heals past a bug | Replays with `--no-adaptive-heal`; a fix proof with any heal does not count | [`src/io/kane.ts`](src/io/kane.ts), fix rows in `verify` |
 | Kane records steps again instead of replaying (stale recording) | Verdict STALE; a fix proof must replay every step | [`test/classify.test.ts`](test/classify.test.ts) "stale recording" |
 | A check passes while reading a blank line it strips (`"\nb"`) | BLIND | [`test/blind.test.ts`](test/blind.test.ts), 2 real runs in `verify` |
 | A check finds the item by the text it expects, so it cannot fail | LOCKED, from the recording alone, before any run | [`test/locked.test.ts`](test/locked.test.ts), es6 #2311 in `verify` |
+| The test cannot pass anywhere (Kane recorded a JWT Sign check with the token's own timestamp in its locator) | ENV on both builds: nobody is told to change the app | CyberChef row in `verify` |
 | The reference build is broken too | ENV: nobody is told to change anything | [`test/classify.test.ts`](test/classify.test.ts) "reference build broken too" |
 | The page layout changed where the test clicks | TEST_PROBLEM, not APP_BUG | 3 real test problems in `verify` |
 | The agent edits the test or its recording to make it pass | Rejected: recording sha256 must not change | [`src/commands/fix.ts`](src/commands/fix.ts) |

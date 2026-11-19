@@ -11,7 +11,7 @@ describe('witness demo', () => {
     expect(text).toMatch(/automation_bug.*0\.88/);
     expect(text).toContain('+        const value = event.target.value.trim();');
     expect(text).toMatch(/UNCHANGED recording: PASSED 5\/5/);
-    expect(text).toContain("Kane's label right on 4 of 9; WITNESS right on 9 of 9");
+    expect(text).toContain("Kane's label right on 6 of 12; WITNESS right on 12 of 12");
     expect(text).toContain('verify: OK');
   });
 });

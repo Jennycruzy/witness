@@ -1,0 +1,5 @@
+{
+  "tests": ["tests/completed_schedules_test.md"],
+  "target":    { "dir": "builds/actual-26.1.0/package/build", "isolation": true, "setup": "node setup.mjs {url} {profile}" },
+  "reference": { "dir": "builds/actual-26.2.0/package/build", "isolation": true, "setup": "node setup.mjs {url} {profile}" }
+}

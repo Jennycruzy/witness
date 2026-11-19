@@ -8,8 +8,9 @@ describe('witness verify', () => {
     const code = verify(fileURLToPath(new URL('..', import.meta.url)), {}, s => lines.push(s));
     const out = lines.join('\n');
     expect(code).toBe(0);
-    expect(out).toContain("Kane's label right on 4 of 9; WITNESS right on 9 of 9");
+    expect(out).toContain("Kane's label right on 6 of 12; WITNESS right on 12 of 12");
     expect(out).toContain('WITNESS right on 3 of 3');
+    expect(out).toContain('WITNESS said ENV on 1 of 1');
     expect(out).toContain('Kane PASSED a real bug; WITNESS flagged 2 locked read(s)');
     expect(out).toContain('verify: OK');
   });

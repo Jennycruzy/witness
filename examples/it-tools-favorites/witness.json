@@ -1,0 +1,5 @@
+{
+  "tests": ["tests/favorite_tool_test.md"],
+  "target":    { "dir": "builds/it-tools-v2024.10.22-7ca5933/dist" },
+  "reference": { "dir": "builds/it-tools-v2024.5.13-a0bc346/dist" }
+}

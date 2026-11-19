@@ -1,0 +1,5 @@
+{
+  "tests": ["tests/jwt_verify_test.md"],
+  "target":    { "dir": "builds/cyberchef-v10.23.0" },
+  "reference": { "dir": "builds/cyberchef-v10.22.1" }
+}
