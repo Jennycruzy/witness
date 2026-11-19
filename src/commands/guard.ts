@@ -1,6 +1,6 @@
 // witness guard: run the test on the target; if it fails, run the same recording on the reference and decide.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { basename, join } from 'node:path';
+import { basename, join, relative } from 'node:path';
 import { classify, isStale, labelDisagrees, type Decision } from '../core/classify.js';
 import { buildCard, parseTestSteps } from '../core/card.js';
 import type { RunSummary } from '../core/stream.js';
@@ -58,7 +58,7 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
   if (decision.kaneLabel) log(`  Kane label ${decision.kaneLabel} ${decision.kaneConfidence ?? ''}${labelDisagrees(decision) ? '   <- disagrees with the comparison' : ''}`);
   log(`  VERDICT    ${decision.verdict}: ${decision.why}`);
   log(`  next       ${decision.next}`);
-  const card = buildCard({ testName: basename(testFile), steps: parseTestSteps(readFileSync(testFile, 'utf8')), target, decision, targetUrl: cfg.target.url ?? cfg.target.dir ?? '', referenceUrl: cfg.reference.url ?? cfg.reference.dir ?? '', spec: cfg.spec });
+  const card = buildCard({ testName: basename(testFile), steps: parseTestSteps(readFileSync(testFile, 'utf8')), target, decision, targetUrl: cfg.target.url ?? relative(process.cwd(), cfg.target.dir ?? ''), referenceUrl: cfg.reference.url ?? relative(process.cwd(), cfg.reference.dir ?? ''), spec: cfg.spec });
   writeFileSync(join(evidenceDir, 'card.md'), card);
   writeFileSync(join(evidenceDir, 'decision.json'), JSON.stringify({ test: testFile, decision, target, reference, blind, locked }, null, 2));
   log(`  evidence   ${evidenceDir}`);

@@ -1,0 +1,6 @@
+{
+  "tests": ["tests/edit_trim_test.md", "tests/filter_reload_test.md"],
+  "target":    { "dir": "app/dist" },
+  "reference": { "dir": "reference/dist" },
+  "fix": { "agent": ["claude", "-p", "--allowedTools", "Read,Edit,Glob,Grep"], "cwd": "app", "source": "src", "build": "npm run build" }
+}

@@ -1,0 +1,54 @@
+name: witness pr check
+# On a pull request that changes the TodoMVC Svelte example: replay its Kane tests on the PR's build.
+# When a test fails, replay the same recording on the base branch's build and post the verdict and the card.
+on:
+  pull_request:
+    paths: ["examples/todomvc-svelte/**"]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  witness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      APP: examples/todomvc-svelte
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: "${{ github.event.pull_request.base.sha }}", path: base }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Build WITNESS
+        run: npm ci && npm run build
+      - name: Build the app from this pull request (target)
+        run: cd $APP/app && npm ci && npm run build
+      - name: Build the app from the base branch (reference)
+        run: |
+          cd base/$APP/app && npm ci && npm run build
+          mkdir -p $GITHUB_WORKSPACE/$APP/reference && cp -r dist $GITHUB_WORKSPACE/$APP/reference/dist
+      - name: Kane login
+        run: npm install -g @testmuai/kane-cli && kane-cli login --username "$KANE_USERNAME" --access-key "$KANE_ACCESS_KEY" < /dev/null
+        env:
+          KANE_USERNAME: ${{ secrets.KANE_USERNAME }}
+          KANE_ACCESS_KEY: ${{ secrets.KANE_ACCESS_KEY }}
+      - name: Replay the Kane tests (reference only when a test fails)
+        id: guard
+        working-directory: ${{ env.APP }}
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          WITNESS_REPORT: ${{ github.workspace }}/witness-report.md
+        run: node $GITHUB_WORKSPACE/dist/cli.js guard witness.json
+      - name: Post the verdict on the pull request
+        if: always() && hashFiles('witness-report.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr comment ${{ github.event.pull_request.number }} --body-file witness-report.md
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: witness-runs
+          path: ${{ env.APP }}/.witness/runs
+          if-no-files-found: ignore

@@ -18,6 +18,7 @@ import { listVersions } from './io/npm.js';
 import { verify } from './commands/verify.js';
 import { record } from './commands/record.js';
 import { demo, evidenceRoot } from './commands/demo.js';
+import { renderReport } from './core/report.js';
 
 const [cmd, a, b] = process.argv.slice(2);
 
@@ -36,7 +37,9 @@ async function main(): Promise<number> {
   if (cmd === 'guard') {
     const cfg = loadConfig(a ?? 'witness.json');
     let code = 0;
-    for (const t of cfg.tests) { const r = await guard(cfg, t); if (r.decision.verdict !== 'PASS') code = 2; }
+    const results = [];
+    for (const t of cfg.tests) { const r = await guard(cfg, t); results.push(r); if (r.decision.verdict !== 'PASS') code = 2; }
+    if (process.env.WITNESS_REPORT) writeFileSync(process.env.WITNESS_REPORT, renderReport(results));
     return code;
   }
   if (cmd === 'fix' && a) {

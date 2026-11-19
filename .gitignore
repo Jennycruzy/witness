@@ -5,3 +5,5 @@ dist/
 output-*/.internal/state*
 *.log
 *.tgz
+reference/
+.witness/
