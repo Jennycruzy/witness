@@ -5,13 +5,17 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 
-export interface LockedCheck { step: number; query: string; expected: string; locator: string; positional: boolean; }
+/** kind 'locator': the element is found by the expected text and its text read back.
+ *  kind 'read': the code only extracts the expected text (`(el(N).textContent.match(/1'234\.56/) || [null])[0]`),
+ *  so a wrong value reads as null, never as what the page shows (Actual Budget #6794: the page showed 1.00, Kane read None). */
+export interface LockedCheck { step: number; query: string; expected: string; locator: string; positional: boolean; kind: 'locator' | 'read'; }
 
 /** Words that make a check about position or which item; a locked read cannot check those. */
 export const POSITION_WORDS = /\b(first|second|third|last|top|bottom|order|before|after|next to|beside|above|below|which|selected|highlighted|latest|default|current)\b/i;
 
 const PLAIN_TEXT_READ = /^\s*el\(\d+\)\.(textContent|innerText)(\.trim\(\))?\s*$/;
 const COMPARE_READ = /^\s*el\(\d+\)\.(?:textContent|innerText)(?:\.trim\(\))?\s*===?\s*(['"])(.*)\1\s*$/;
+const MATCH_READ = /^\s*\(\s*el\(\d+\)\.(?:textContent|innerText)(?:\.trim\(\))?\.match\(\/((?:[^/\\]|\\.)+)\/[a-z]*\)\s*\|\|\s*\[\s*null\s*\]\s*\)\s*\[\s*0\s*\]\s*$/;
 
 function literals(locator: string): string[] {
   const out: string[] = [];
@@ -29,15 +33,21 @@ export function lockedFromAction(a: any, step: number): LockedCheck | null {
   const p = a.action_params ?? {};
   const expected = p.expected_value;
   if (typeof expected !== 'string' || !expected.trim() || typeof p.code_js !== 'string') return null;
-  // Two recorded forms: read the text and compare it with the expected value, or compare inside the code
+  // Three recorded forms. The code only extracts the expected text (match ... || null). Or it reads the text and
+  // compares it with the expected value, or compares inside the code
   // (`el(11).textContent.trim() === 'b'`, expected "true"). Either way the answer is fixed by the locator.
+  const query = String(p.query ?? a.action_instruction ?? '');
+  const positional = POSITION_WORDS.test(`${query} ${p.condition ?? ''}`);
+  const mr = p.code_js.match(MATCH_READ);
+  if (mr && norm(mr[1].replace(/\\(.)/g, '$1')) === norm(expected)) {
+    return { step, query, expected, locator: p.code_js, positional, kind: 'read' };
+  }
   const cmp = p.code_js.match(COMPARE_READ);
   const answer = PLAIN_TEXT_READ.test(p.code_js) ? expected : cmp && expected.trim() === 'true' ? cmp[2] : null;
   if (answer == null) return null;
   for (const loc of (p.locators ?? []) as string[]) {
     if (literals(String(loc)).some(l => norm(l) === norm(answer))) {
-      const query = String(p.query ?? a.action_instruction ?? '');
-      return { step, query, expected: answer, locator: String(loc), positional: POSITION_WORDS.test(`${query} ${p.condition ?? ''}`) };
+      return { step, query, expected: answer, locator: String(loc), positional, kind: 'locator' };
     }
   }
   return null;

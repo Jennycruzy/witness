@@ -32,6 +32,7 @@ Kane's own label for a failed run (`automation_bug`, `application_issue`) is oft
 | `NO_RECORDING` | Tell the user; with their OK run again with `--record-missing` (about 50 credits) | Run Kane on the test yourself |
 | `LOOSE` or `UNSTABLE` (printed by `record` or before the run) | That step's check cannot be replayed. Reword the step to name exactly what to read (for example "the footer reads 1 item left"), then record again (ask first) | Trust a verdict on that step |
 | `LOCKED` (printed before the run) | The check finds the element by the text it expects, so it cannot fail on order or position. Rewrite the step to read the whole list in order | Ignore it on a step about order |
+| `LOCKED`, "only extracts its expected text" | The check's code returns the expected text or nothing, so a failure reads `None` and hides what the page showed. Trust the WITNESS verdict, not Kane's label; to see the real value, re-record the step to read the whole field (ask first) | Read `None` as "the value seen" |
 
 4. After an app fix: rebuild and run `witness guard witness.json --only <name>_test.md` again. The fix counts only when the **unchanged** recording passes. If it still fails, read the new card and try again; stop after three rounds and report.
 

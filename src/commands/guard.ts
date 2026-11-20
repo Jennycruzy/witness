@@ -60,7 +60,9 @@ async function guardOnce(cfg: WitnessConfig, testFile: string, log = console.log
   mkdirSync(evidenceDir, { recursive: true });
   const locked = findLockedChecks(testFile);
   for (const l of findLooseChecks(testFile)) log(`  LOOSE      test step ${l.step}: "${l.query}" has an expected value (${JSON.stringify(l.expected)}) but no code to read the page; a replay cannot check it`);
-  for (const l of locked) log(`  LOCKED     test step ${l.step} finds the element by its expected text ${JSON.stringify(l.expected)} (${l.locator}), so it only proves that text is somewhere on the page, not which item or where${l.positional ? ' (this step is about position, so it cannot catch a wrong order)' : ''}`);
+  for (const l of locked) log(l.kind === 'read'
+    ? `  LOCKED     test step ${l.step} only extracts its expected text ${JSON.stringify(l.expected)} (${l.locator}), so on a wrong value it reads None, never what the page shows: Kane's triage and an agent cannot see the wrong value`
+    : `  LOCKED     test step ${l.step} finds the element by its expected text ${JSON.stringify(l.expected)} (${l.locator}), so it only proves that text is somewhere on the page, not which item or where${l.positional ? ' (this step is about position, so it cannot catch a wrong order)' : ''}`);
   const tgt = await open(cfg.target, cfg.cacheDir);
   let target: RunSummary;
   let blind: BlindCheck[] = [];

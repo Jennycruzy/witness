@@ -18,4 +18,13 @@ describe('locked checks', () => {
     const a = { action_type: 'analyze', action_params: { expected_value: '50.00', code_js: 'el(3).textContent', locators: ['internal:testid=[data-testid="balance"s]'] } };
     expect(lockedFromAction(a, 1)).toBeNull();
   });
+  it('flags the real Actual Budget #6794 check that can only read its expected amount (page showed 1.00, Kane read None)', () => {
+    const hits = actions('test/fixtures/locked/actual-6794-deposit-step3.ndjson').map(a => lockedFromAction(a, 3)).filter(Boolean);
+    expect(hits).toHaveLength(1);
+    expect(hits[0]).toMatchObject({ kind: 'read', expected: "1'234.56", positional: false });
+  });
+  it('does not flag a match read for a different value than the expected one', () => {
+    const a = { action_type: 'analyze', action_params: { expected_value: '50.00', code_js: '(el(3).textContent.match(/[0-9.]+/) || [null])[0]', locators: [] } };
+    expect(lockedFromAction(a, 1)).toBeNull();
+  });
 });

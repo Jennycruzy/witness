@@ -42,9 +42,20 @@ All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5, 17
 
 | Where | What we sent | Outcome |
 |---|---|---|
-| Kane CLI [#232](https://github.com/LambdaTest/kane-cli/issues/232) | Replay triage labels real app bugs `automation_bug`, so agents fix the test instead of the app | **Reproduced and fixed by the Kane team** (3 of 3 runs wrong before, 4 of 4 right after); the fix ships in kane-cli 0.10.7 |
-| Kane CLI [#233](https://github.com/LambdaTest/kane-cli/issues/233) | A list check passes on a blank todo because the comparison strips the blank line | **Reproduced and fixed by the Kane team**: list checks are now recorded item by item, so the blank todo fails the check; ships in kane-cli 0.10.7 |
+| Kane CLI [#232](https://github.com/LambdaTest/kane-cli/issues/232) | Replay triage labels real app bugs `automation_bug`, so agents fix the test instead of the app | **Reproduced and fixed by the Kane team** (3 of 3 runs wrong before, 4 of 4 right after); the fix shipped in kane-cli 0.10.7. We re-ran our recordings on it: [below](#kane-cli-0107-on-our-recordings) |
+| Kane CLI [#233](https://github.com/LambdaTest/kane-cli/issues/233) | A list check passes on a blank todo because the comparison strips the blank line | **Reproduced and fixed by the Kane team**: list checks are now recorded item by item, so the blank todo fails the check; shipped in kane-cli 0.10.7 |
 | TodoMVC [#2320](https://github.com/tastejs/todomvc/pull/2320) | Svelte fix for [#2315](https://github.com/tastejs/todomvc/issues/2315): trim edited todos, restore the filter on reload | The fixed build passes both Kane tests, and all 36 rules of TodoMVC's app spec in a Playwright check |
+
+### kane-cli 0.10.7 on our recordings
+
+The same recordings from #232, replayed without self-healing on 0.10.5 and on 0.10.7 (20 November 2026). Every run is in [`evidence/kane-cli-232/`](evidence/kane-cli-232/).
+
+| Real app bug | Kane 0.10.5 label | Kane 0.10.7 label | WITNESS |
+|---|---|---|---|
+| TodoMVC Svelte [#2315](https://github.com/tastejs/todomvc/issues/2315), edit test | `automation_bug` 0.88, 0.93 | **`application_issue` 0.98, 0.99** | APP_BUG |
+| Actual Budget [#6794](https://github.com/actualbudget/actual/issues/6794), 1'234.56 saved as 1.00 | `automation_bug` 0.87 | `application_issue` 0.96 in one run, `automation_bug` 0.96 in the other, same path | APP_BUG |
+
+The fix works on the TodoMVC case. On Actual Budget the recorded check is `match(/1'234\.56/) || null`: on the buggy build it reads `None`, not `1.00`, so Kane's triage cannot see the wrong value. That is a LOCKED check, and WITNESS flags it from the recording. WITNESS's verdict does not depend on Kane's label: the same recording passes on 26.2.0 and fails on 26.1.0, so APP_BUG on either Kane version. We sent these results back on [#232](https://github.com/LambdaTest/kane-cli/issues/232#issuecomment-7046401902).
 
 ## Install
 
@@ -95,6 +106,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | Kane records steps again instead of replaying (stale recording) | Verdict STALE; a fix proof must replay every step | [`test/classify.test.ts`](test/classify.test.ts) "stale recording" |
 | A check passes while reading a blank line it strips (`"\nb"`) | BLIND | [`test/blind.test.ts`](test/blind.test.ts), 2 real runs in `verify` |
 | A check finds the item by the text it expects, so it cannot fail | LOCKED, from the recording alone, before any run | [`test/locked.test.ts`](test/locked.test.ts), es6 #2311 in `verify` |
+| A check's code can only read back its expected value (`match(/expected/) \|\| null`), so a wrong value reads as `None` | LOCKED, from the recording alone, before any run | [`test/locked.test.ts`](test/locked.test.ts), the real Actual Budget #6794 recording |
 | Kane recorded a check with an expected value but no code to read the page (it judged by eye while recording) | LOOSE, from the recording alone: a replay cannot check that step | [`test/guard.test.ts`](test/guard.test.ts) "loose checks", on a real TodoMVC recording |
 | A fresh recording does not replay even on the build it was made on | `record` replays it once there before keeping it; if it fails: UNSTABLE, with the step and Kane's reason | [`test/guard.test.ts`](test/guard.test.ts) |
 | There is no recording, so a run would quietly record (and bill) instead of replaying | NO_RECORDING: nothing runs and nothing is spent unless `--record-missing` is given | [`test/guard.test.ts`](test/guard.test.ts) |
