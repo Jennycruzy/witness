@@ -1,0 +1,18 @@
+{
+  "commit_id": "c0a2bdcc-83bd-4182-b4d6-303568df3441",
+  "test_id": "9d9e7ce4-0b6b-4eaa-ade5-aa7303862f88",
+  "testcase_id": "01M7N9BJKP33WST2YX3PAK8KMN",
+  "project_id": "<removed>",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "<removed>",
+  "session_name": "edit_trim",
+  "executions": [
+    {
+      "execution_id": "50795053-91a1-47ae-8c4f-b454ffaefc26",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T17:42:46.036Z"
+    }
+  ]
+}
