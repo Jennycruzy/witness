@@ -4,7 +4,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseRun } from '../core/stream.js';
-import { classify } from '../core/classify.js';
+import { classify, classifyCarried } from '../core/classify.js';
 import { buildCard, failedTestStep, parseTestSteps } from '../core/card.js';
 import { findBlindChecks } from '../core/blind.js';
 import { lockedFromAction } from '../core/locked.js';
@@ -66,7 +66,20 @@ export function demo(root = evidenceRoot(), log = console.log): number {
     if (hit) log(`   ${yellow('LOCKED')}  "${hit.query}" finds the todo by the text it expects (${hit.expected}), so it cannot see the order. Real bug: ${l.issue}`);
   }
   log('');
-  log(bold('6. Every number, recomputed from the committed runs'));
+  const cs = cases.carried?.[0];
+  if (cs) {
+    log(bold('6. A bug a clean test run cannot see') + dim(`  (${cs.issue}, ${cs.kane})`));
+    const [t, cl, r] = [cs.target, cs.clean, cs.reference].map((f: string) => parseRun(read(f)));
+    const d = classifyCarried(t, cl, r);
+    const T = cs.target_short ?? cs.target_build, R = cs.reference_short ?? cs.reference_build;
+    log(`   ${T}, clean browser (what Kane does):    ${cl.status === 'passed' ? green('PASSED') : red(cl.status.toUpperCase())}, the bug is missed`);
+    log(`   ${T}, with the data ${R} saved:  ${t.status === 'passed' ? green('PASSED') : red(`FAILED at a ${t.failed?.kind}`)}`);
+    log(`   ${R}, with the data it saved:                ${r.status === 'passed' ? green('PASSED') : red(r.status.toUpperCase())}`);
+    log(`   Kane saw: "${t.failed?.label.rootCause ?? ''}"`);
+    log(`   WITNESS: ${red(d.verdict)}. ${d.why}`);
+    log('');
+  }
+  log(bold(`${cs ? 7 : 6}. Every number, recomputed from the committed runs`));
   const code = verify(root, {}, (s: string) => log('   ' + s.replace(/\n/g, '\n   ')));
   log('');
   log(dim('Next: run it on your own app with a Kane login. README: https://github.com/Jennycruzy/witness'));

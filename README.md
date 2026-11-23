@@ -14,6 +14,7 @@ WITNESS replays the **same recording** on a reference build (main, the last rele
 | passes | fails at a click or typing step | **TEST_PROBLEM** | The page changed where the test acts: re-record it |
 | fails too | fails | **ENV** | Check the environment before changing anything |
 | — | passes, but a check read hidden text | **BLIND** | That step cannot see the bug it should catch: harden it |
+| passes with the data it saved | passes in a clean browser, fails **only with the data the reference saved** (`--carry-state`) | **STATE_BUG** | Fix the app so it opens data saved by the earlier build: do not edit the test or clear the data |
 
 Then Kane proves the fix: the **unchanged** recording (same sha256) must pass on the rebuilt app.
 
@@ -36,6 +37,7 @@ All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5, 17
 - **Actual Budget, [#8475](https://github.com/actualbudget/actual/issues/8475).** The running balance stopped updating after an edit. The recording passes on the 17 June 2026 nightly and fails on 20 June at the balance check (reads 20.00, expected 50.00). That bug shipped to everyone in 26.7.0 on 2 July and was first reported on 14 July.
 - **Six more open TodoMVC bugs** ([#2309](https://github.com/tastejs/todomvc/issues/2309) react, [#2310](https://github.com/tastejs/todomvc/issues/2310) es5, [#2311](https://github.com/tastejs/todomvc/issues/2311) es6, [#2313](https://github.com/tastejs/todomvc/issues/2313) lit, [#2314](https://github.com/tastejs/todomvc/issues/2314) web-components), each a plain-English Kane test recorded once on the Vue build and replayed on the buggy one. Kane labelled three of them `automation_bug` (0.78 to 0.98). WITNESS: APP_BUG on all.
 - **A check locked to its own answer.** On javascript-es6 ([#2311](https://github.com/tastejs/todomvc/issues/2311)), Kane passed *"the first todo is a and the second is b"* while the list showed b, a. Its recording finds each todo *by the text it expects* and reads that text back, so it can never see the order. WITNESS flags this as LOCKED from the recording alone (free, no run). Given only WITNESS's message, Claude Code rewrote the step to *"the todo list reads, from top to bottom: a, b"*; re-recorded, it fails on es6 and passes on Vue.
+- **A bug a clean test run cannot see: Actual Budget, [#6574](https://github.com/actualbudget/actual/issues/6574), still in the newest release (26.11.0).** One device on 25.11.0 imports a bank file; another device on the new version imports too, and the server now holds the old and the new name of the same setting. When the first browser updates, the budget will not open: `UNIQUE constraint failed: preferences.id`. Kane starts every run in a clean browser, so its replay on 26.11.0 **passes**. `witness guard --carry-state` plays that history first, on one fixed port, and carries the browser's saved data into the run: the same recording **fails at the check** on 26.11.0 (Kane: *"The app remained on the Files screen"*), passes on 25.11.0 with the data it saved, and passes on 26.11.0 in a clean browser. STATE_BUG ([runs](evidence/actual-6574-saved-state/), [setup](examples/actual-6574/), kane-cli 0.10.8, 23 November 2026).
 - **Actual Budget, a layout change between 26.8.0 and 26.7.0.** The replay failed at a click: TEST_PROBLEM. Re-recording on 26.7.0 passed the click, then failed at the balance check: the real #8475 bug, now an APP_BUG.
 
 ## Reported upstream
@@ -91,6 +93,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | Ships | [`examples/actual`](examples/actual) and [`evidence/actual-8475-search.json`](evidence/actual-8475-search.json) | The nightly watch set up on Actual Budget, and the build search that found the first bad nightly for #8475 (20 June 2026) unattended, with the commits in between |
 | Verified | `node dist/cli.js verify` | Kane's label right on 6 of 12 real app bugs in four apps, WITNESS 12 of 12; 3 of 3 real test problems; ENV where the good build fails too; every evidence file checked by sha256 |
 | Verified | [Reported upstream](#reported-upstream) | Both Kane issues reproduced and fixed by the Kane team; the TodoMVC fix PR |
+| Verified | [`evidence/actual-6574-saved-state/`](evidence/actual-6574-saved-state/) and its row in `verify` | A live Actual Budget bug that a clean Kane run passes on the newest release; with the browser data the previous release saved, the same recording fails: STATE_BUG |
 | Closed loop | [`evidence/todomvc-svelte-trim-hook-untold.patch`](evidence/todomvc-svelte-trim-hook-untold.patch) and its row in `verify` | A Claude Code session told about one bug tried to stop; the Stop hook blocked it on a second bug it was never told about; it fixed that too, and the unchanged recordings passed |
 | Closed loop | [Pull request #1](https://github.com/Jennycruzy/witness/pull/1) | On GitHub: a PR puts back the upstream TodoMVC Svelte code; the check replays the Kane tests on the PR's build and the base build and comments APP_BUG with the card; a separate Claude Code agent given only that comment fixes two app files; the check goes green |
 | Closed loop | [`src/commands/fix.ts`](src/commands/fix.ts) | Agent edits outside the app source are rolled back; a changed test or recording (sha256) is rejected |
@@ -113,6 +116,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | There is no recording, so a run would quietly record (and bill) instead of replaying | NO_RECORDING: nothing runs and nothing is spent unless `--record-missing` is given | [`test/guard.test.ts`](test/guard.test.ts) |
 | The test cannot pass anywhere (Kane recorded a JWT Sign check with the token's own timestamp in its locator) | ENV on both builds: nobody is told to change the app | CyberChef row in `verify` |
 | The reference build is broken too | ENV: nobody is told to change anything | [`test/classify.test.ts`](test/classify.test.ts) "reference build broken too" |
+| The bug only shows with data an older build saved, and Kane starts every run in a clean browser | `--carry-state`: the user's history runs first on the builds it names, on one port (browser storage belongs to an origin); the target runs with that saved data and in a clean browser; the reference runs with the data it saved itself, copied before a newer build could change it. STATE_BUG only when the saved data alone makes the difference | [`test/carry.test.ts`](test/carry.test.ts), Actual #6574 row in `verify` |
 | The page layout changed where the test clicks | TEST_PROBLEM, not APP_BUG | 3 real test problems in `verify` |
 | The agent edits the test or its recording to make it pass | Rejected: recording sha256 must not change | [`src/commands/fix.ts`](src/commands/fix.ts) |
 | The agent edits files outside the app source | Rolled back and rejected | [`src/commands/fix.ts`](src/commands/fix.ts) |
@@ -141,6 +145,7 @@ Put a `witness.json` next to your Kane tests:
 | `witness install-hook` | Adds a Claude Code Stop hook: the agent cannot stop while a verdict is open | — |
 | `witness install-skill [--global]` | Adds the [Claude Code skill](skills/witness/SKILL.md): when a Kane test fails, the agent runs `witness guard` and acts on the verdict, not on Kane's label | — |
 | `witness guard … --only <test>` | Checks one test | as `guard` |
+| `witness guard … --carry-state` | Also checks each test with the browser data earlier builds saved (`carryState` below); works in `record`, `fix` and `install-hook` too | as `guard`, plus the clean and reference replays |
 | `witness guard … --record-missing` | Records a test once on the reference when it has no recording here, or Kane cannot replay it | ~50 per test recorded |
 | `witness live <live.json>` | Serves the Run it live page: one run at a time, a cap on runs per hour and per visitor | as `guard`, per click |
 | `witness search <test> <good> <bad>` | Replays the test across published builds to find the first bad one, then lists the commits in between | ~5 per failing build |
@@ -155,9 +160,23 @@ A build (target or reference) can be any of these:
 | `{ "dir": "dist" }` | Serves the folder itself (add `"isolation": true` for apps that need cross-origin isolation) |
 | `{ "npm": "@actual-app/web", "buildDir": "build" }` | Downloads the **newest release** from npm (or `"version": "26.2.0"`) and serves it |
 | `{ "git": "origin/main", "build": "npm ci && npm run build", "dir": "dist" }` | Checks that ref out in its own worktree, builds it once, serves the output |
+| `{ "serve": "PORT={port} DATA={data} node server.js" }` | Starts an app that has its own server with that command, waits until it answers, stops it after the run |
 | `{ "kane": { "target": "emulator", "app": "builds/app-1.4.apk" } }` | An Android or iOS app build: Kane runs it on a local emulator or simulator on macOS (Apple Silicon), or `"android"`/`"ios"` for TestMu's real devices |
 
 So a reference needs no hand-made build: the last release, the main branch or yesterday's nightly. Apps that need a starting state get a setup command (see [`examples/actual/setup.mjs`](examples/actual/setup.mjs); the full nightly setup for Actual Budget, with its recorded test, is in [`examples/actual`](examples/actual), run from that folder).
+
+For bugs that need saved data, add what the user did before the test. Every build runs on the same `port`; `{profile}` is the browser that gets carried into the test, `{dir}` holds any other device; `upgrade` runs on the target first, as a user accepting an update prompt ([full example](examples/actual-6574/witness.json)):
+
+```json
+"carryState": {
+  "port": 47120,
+  "history": [
+    { "build": "reference", "run": "node device.mjs {url} {profile} import bank-old.csv" },
+    { "build": "target",    "run": "node device.mjs {url} {dir}/phone import bank-new.csv" }
+  ],
+  "upgrade": "node device.mjs {url} {profile} upgrade"
+}
+```
 
 ## How the decision is made
 

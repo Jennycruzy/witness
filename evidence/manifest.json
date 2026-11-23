@@ -1,4 +1,7 @@
 {
+  "evidence/actual-6574-saved-state/reference.ndjson": "02a8d30166bfe9f0d95671ddafac1e708fe745f68765c27c78087a5d65d6d159",
+  "evidence/actual-6574-saved-state/target-clean.ndjson": "513210e730cd624011bfab1f11af3655033c5a251981efb7c73f1840024e04cd",
+  "evidence/actual-6574-saved-state/target.ndjson": "2e70d42f6bc24144d6286075fde9017cba7d4e0cbc21ef6b09def927641e82b9",
   "evidence/skill-fresh-session/fix.patch": "0eadf9402c465a7f3c3ece6f3f075dc1a51cafcf2d46d6b75cd6cdaf50f5a964",
   "evidence/skill-fresh-session/prompt.txt": "3aaaa5d1edb502f4f667be02f953ce8a46f4a91f737c288bfaaefee0c01ca8f6",
   "evidence/skill-fresh-session/session.jsonl": "d1287f04f1a455949b55ee5fc049081321178049af112a54ab5ff02e8c051764",

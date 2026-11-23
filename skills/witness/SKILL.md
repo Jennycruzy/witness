@@ -17,6 +17,7 @@ Kane's own label for a failed run (`automation_bug`, `application_issue`) is oft
    ```bash
    witness guard witness.json --only <name>_test.md   # just the failing test; drop --only to run them all
    ```
+   If `witness.json` has `carryState` and the bug may need data an older version saved (it appears after an update, or "clearing site data fixes it"), add `--carry-state`.
    Runs take one to three minutes per test. Wait for the `VERDICT` line before editing anything.
    If it says `NO RECORDING`, ask the user before adding `--record-missing` (it records the test once on the reference build, about 50 Kane credits).
    A passing test costs no Kane credits. A failing test costs a few (Kane's triage), plus a free replay on the reference.
@@ -25,6 +26,7 @@ Kane's own label for a failed run (`automation_bug`, `application_issue`) is oft
 | Verdict | What you do | What you never do |
 |---|---|---|
 | `APP_BUG` | Read the card (`.witness/runs/<run>/card.md`) and change the **application source** at the step marked FAILED HERE | Edit the test, its recording (`output-<name>/`), or build config |
+| `STATE_BUG` | The app fails only with the browser data the older build saved. Read the card and fix the **application source** so it opens that data (often a migration) | Edit the test, clear the saved data, or call it flaky |
 | `TEST_PROBLEM` | Tell the user the page changed where the test acts; re-record with `witness record <test> witness.json` (costs about 50 credits: ask first) | Change the app to suit the old recording |
 | `ENV` | Stop. The reference build fails too. Report it and check servers, data, logins | Change the app or the test |
 | `STALE` | The run recorded steps again instead of replaying. Re-record on the reference (ask first: credits) | Trust the result of that run |
@@ -39,7 +41,7 @@ Kane's own label for a failed run (`automation_bug`, `application_issue`) is oft
 ## Hands-off loop
 
 `witness fix <test> witness.json` runs steps 2 to 4 with a coding agent and rejects any change to the test, its recording, or files outside the app source.
-`witness install-hook` adds a Claude Code Stop hook that runs `witness guard` when you try to finish and blocks you while an APP_BUG is open.
+`witness install-hook` adds a Claude Code Stop hook that runs `witness guard` when you try to finish and blocks you while an APP_BUG or STATE_BUG is open (`witness install-hook --carry-state` adds the saved-data check).
 
 ## Say what you did
 

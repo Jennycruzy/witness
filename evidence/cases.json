@@ -192,5 +192,20 @@
       "transcript": "evidence/skill-fresh-session/session.jsonl",
       "diff": "evidence/skill-fresh-session/fix.patch"
     }
+  ],
+  "carried": [
+    {
+      "name": "Actual Budget: budget will not open after an upgrade when another device synced a renamed setting (UNIQUE constraint failed: preferences.id)",
+      "issue": "https://github.com/actualbudget/actual/issues/6574",
+      "target": "evidence/actual-6574-saved-state/target.ndjson",
+      "clean": "evidence/actual-6574-saved-state/target-clean.ndjson",
+      "reference": "evidence/actual-6574-saved-state/reference.ndjson",
+      "target_build": "@actual-app/sync-server 26.11.0 (newest release)",
+      "reference_build": "@actual-app/sync-server 25.11.0",
+      "kane": "kane-cli 0.10.8",
+      "truth": "STATE_BUG",
+      "target_short": "Actual 26.11.0 (newest)",
+      "reference_short": "Actual 25.11.0"
+    }
   ]
 }

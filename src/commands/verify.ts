@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseRun } from '../core/stream.js';
-import { classify, labelDisagrees } from '../core/classify.js';
+import { classify, classifyCarried, labelDisagrees } from '../core/classify.js';
 import { findBlindChecks } from '../core/blind.js';
 import { lockedFromAction } from '../core/locked.js';
 
@@ -18,6 +18,7 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
   files.push(...cases.blind.runs);
   for (const l of cases.locked ?? []) files.push(l.recording, l.run);
   for (const x of cases.sessions ?? []) files.push(x.prompt, x.transcript, x.diff);
+  for (const x of cases.carried ?? []) files.push(x.target, x.clean, x.reference);
   const uniq = [...new Set(files)].sort();
   const manifestPath = join(root, 'evidence/manifest.json');
   const hashes = Object.fromEntries(uniq.map(f => [f, sha(join(root, f))]));
@@ -68,6 +69,13 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
     const okS = skillFirst && verdicts[0] === 'APP_BUG' && verdicts[verdicts.length - 1] === 'PASS' && disagreed && appOnly;
     if (!okS) ok = false;
     log(`  skill session:      ${skillFirst ? 'loaded the WITNESS skill by itself' : 'did NOT load the skill first'}; verdicts ${verdicts.join(' -> ')}; Kane's label ${disagreed ? 'disagreed and was not followed' : 'agreed'}; changed ${appOnly ? 'app source only' : 'files outside the app'}: ${x.name}`);
+  }
+  for (const x of cases.carried ?? []) {
+    const [t, c, r] = [x.target, x.clean, x.reference].map((f: string) => parseRun(readFileSync(join(root, f), 'utf8')));
+    const d = classifyCarried(t, c, r);
+    const okC = d.verdict === x.truth && c.status === 'passed';
+    if (!okC) ok = false;
+    log(`  saved data:         clean browser ${c.status.toUpperCase()} (a plain Kane run misses it); with the old build's saved data ${t.status.toUpperCase()}${t.failed ? ` at a ${t.failed.kind}` : ''}; reference ${r.status.toUpperCase()}; WITNESS ${d.verdict} ${okC ? 'right' : 'WRONG'}: ${x.name}`);
   }
   const blind = cases.blind.runs.map((r: string) => findBlindChecks(readFileSync(join(root, r), 'utf8')).length);
   log(`  blind check:        found in ${blind.filter((n: number) => n > 0).length} of ${blind.length} real runs on the buggy build`);
