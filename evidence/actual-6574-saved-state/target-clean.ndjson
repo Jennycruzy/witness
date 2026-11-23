@@ -1,0 +1,43 @@
+{"type":"stream_start","cli_version":"0.10.8","surface":"testmd","pid":632704,"v":1,"ts":"2026-11-23T19:35:02.304Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Check the budget is open","ref":null,"v":1,"ts":"2026-11-23T19:35:07.770Z"}
+{"type":"run_start","objective":"Wait for the app to finish loading, then verify the page shows the budget with the text \"To Budget\".","timestamp":1795462507,"environment":{"resolution":"1920x1080"},"override_start_url":"http://127.0.0.1:47120/","recorded_start_url":"http://127.0.0.1:47120/","override_applied":true,"v":1,"ts":"2026-11-23T19:35:07.892Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 4 actions","recording_length":4,"v":1,"ts":"2026-11-23T19:35:07.892Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-23T19:35:07.892Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-23T19:35:07.974Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:47120/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-23T19:35:08.510Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:47120/","action_type":"navigate","v":1,"ts":"2026-11-23T19:35:08.510Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.6,"summary":"navigate: Navigate to http://127.0.0.1:47120/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"80960ac8-01b9-4307-aab7-c5de24672eea","v":1,"ts":"2026-11-23T19:35:08.511Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-23T19:35:08.511Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:47120/","v":1,"ts":"2026-11-23T19:35:09.699Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Waiting for the app to finish loading","action_type":"wait","success":true,"v":1,"ts":"2026-11-23T19:35:16.813Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Waiting for the app to finish loading","action_type":"wait","v":1,"ts":"2026-11-23T19:35:16.813Z"}
+{"type":"step_end","index":2,"status":"passed","duration":8.3,"summary":"wait: Waiting for the app to finish loading","ordinal":2,"id":"0-2","kind":"wait","screenshot":"screenshot.jpg","action_id":"89b2d92c-e869-48dc-b9e4-2ddc3431b0e8","v":1,"ts":"2026-11-23T19:35:16.815Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-23T19:35:16.815Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:47120/budget","v":1,"ts":"2026-11-23T19:35:16.878Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Checking whether the budget text is present","action_type":"analyze","success":true,"v":1,"ts":"2026-11-23T19:35:16.961Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Checking whether the budget text is present","action_type":"analyze","v":1,"ts":"2026-11-23T19:35:16.961Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.1,"summary":"analyze: Checking whether the budget text is present","ordinal":3,"id":"0-3","kind":"analyze","screenshot":"screenshot.jpg","action_id":"3c81320e-a395-4f84-8e52-b0e2ef56c4dd","v":1,"ts":"2026-11-23T19:35:16.962Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-23T19:35:16.962Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:47120/budget","v":1,"ts":"2026-11-23T19:35:17.018Z"}
+{"type":"step_event","index":4,"event":"assertion","detail":"the page shows the budget with the text \"To Budget\"","passed":true,"v":1,"ts":"2026-11-23T19:35:17.022Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.1,"summary":"assert: the page shows the budget with the text \"To Budget\"","ordinal":4,"id":"0-4","kind":"assert","screenshot":"screenshot.jpg","action_id":"d8de311a-8f76-48c3-9739-2f17c9cd0273","v":1,"ts":"2026-11-23T19:35:17.023Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":9.26,"final_url":"http://127.0.0.1:47120/budget","actions_executed":4,"screenshot_path":"<local>","run_dir":"<local>","total_runs":1,"context":{"memory":{},"variables":{"to_budget_text_visible":{"syntax":"{{to_budget_text_visible}}","value":"true","secret":false}},"pointer":""},"variables_out":{"to_budget_text_visible":{"syntax":"{{to_budget_text_visible}}","value":"true","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-23T19:35:17.050Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":9.26,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-23T19:35:17.050Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Check the account balance","ref":null,"v":1,"ts":"2026-11-23T19:35:17.051Z"}
+{"type":"run_start","objective":"Verify the sidebar shows the account \"Checking\".","timestamp":1795462517,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-23T19:35:17.136Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-23T19:35:17.136Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-23T19:35:17.149Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:47120/budget","v":1,"ts":"2026-11-23T19:35:17.205Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Checking whether the Checking account is present in the sidebar","action_type":"analyze","success":true,"v":1,"ts":"2026-11-23T19:35:17.280Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Checking whether the Checking account is present in the sidebar","action_type":"analyze","v":1,"ts":"2026-11-23T19:35:17.280Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.1,"summary":"analyze: Checking whether the Checking account is present in the sidebar","ordinal":5,"id":"1-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"70042613-5020-41fb-b8bb-cbaa3cd27c48","v":1,"ts":"2026-11-23T19:35:17.280Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-23T19:35:17.281Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:47120/budget","v":1,"ts":"2026-11-23T19:35:17.332Z"}
+{"type":"step_event","index":2,"event":"assertion","detail":"the sidebar shows the account \"Checking\"","passed":true,"v":1,"ts":"2026-11-23T19:35:17.336Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.1,"summary":"assert: the sidebar shows the account \"Checking\"","ordinal":6,"id":"1-2","kind":"assert","screenshot":"screenshot.jpg","action_id":"870770ec-cf04-4365-8ead-8d53e62a7a6e","v":1,"ts":"2026-11-23T19:35:17.337Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":0.21,"final_url":"http://127.0.0.1:47120/budget","actions_executed":2,"screenshot_path":"<local>","run_dir":"<local>","total_runs":1,"context":{"memory":{},"variables":{"sidebar_check_account_check":{"syntax":"{{sidebar_check_account_check}}","value":"true","secret":false}},"pointer":""},"variables_out":{"sidebar_check_account_check":{"syntax":"{{sidebar_check_account_check}}","value":"true","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-23T19:35:17.338Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":0.21,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-23T19:35:17.338Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"a8ef23eb-53aa-46c2-9fa6-9dafcc6d8cfc","v":1,"ts":"2026-11-23T19:35:18.781Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":15,"steps":{"total":2,"passed":2,"failed":0,"skipped":0,"replay_decisions":2,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"http://127.0.0.1:47120/","v":1,"ts":"2026-11-23T19:35:18.782Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>","v":1,"ts":"2026-11-23T19:35:18.787Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":15,"session_id":"9a38b6f6-7da0-480a-af34-b2322dd9ab00","coverage":{"status":"skipped"},"override_start_url":"http://127.0.0.1:47120/","v":1,"ts":"2026-11-23T19:35:18.787Z"}

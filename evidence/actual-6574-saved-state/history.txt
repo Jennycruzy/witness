@@ -1,0 +1,12 @@
+### 1. reference: node device.mjs {url} {profile} bootstrap
+bootstrap: App: v25.11.0 budget not open
+
+### 2. reference: node device.mjs {url} {profile} create
+create:  budget not open
+
+### 3. reference: node device.mjs {url} {profile} import bank-old.csv
+import:  budget not open
+
+### 4. target: node device.mjs {url} {dir}/phone import bank-new.csv
+import:  budget not open
+

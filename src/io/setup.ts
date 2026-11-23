@@ -29,3 +29,19 @@ async function prepareOnce(command: string, url: string): Promise<{ dir: string;
   if (code !== 0) { rmSync(dir, { recursive: true, force: true }); throw new Error(`setup failed (${code}): ${cmd}\n${output.trim().split('\n').slice(-12).join('\n')}`); }
   return { dir, remove: () => rmSync(dir, { recursive: true, force: true }) };
 }
+
+/** Runs one shell command with {name} placeholders filled in; throws with the last lines of output when it fails. */
+export async function runCommand(command: string, vars: Record<string, string>, timeoutSec = 300): Promise<string> {
+  let cmd = command;
+  for (const [k, v] of Object.entries(vars)) cmd = cmd.replaceAll(`{${k}}`, v);
+  const { code, output } = await new Promise<{ code: number | null; output: string }>((resolve) => {
+    const p = spawn(cmd, { shell: true, stdio: ['ignore', 'pipe', 'pipe'] });
+    let output = '';
+    p.stdout.on('data', d => { output += d; });
+    p.stderr.on('data', d => { output += d; });
+    const t = setTimeout(() => p.kill('SIGKILL'), timeoutSec * 1000);
+    p.on('close', (c) => { clearTimeout(t); resolve({ code: c, output }); });
+  });
+  if (code !== 0) throw new Error(`command failed (${code}): ${cmd}\n${output.trim().split('\n').slice(-12).join('\n')}`);
+  return output;
+}

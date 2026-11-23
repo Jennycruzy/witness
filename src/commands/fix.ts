@@ -24,12 +24,12 @@ function changedEntries(cwd: string): [string, string][] {
 }
 function changedFiles(cwd: string): string[] { return changedEntries(cwd).map(([p]) => p).filter(p => !p.startsWith('dist/')); }
 
-export async function fix(cfg: WitnessConfig, testFile: string, log = console.log): Promise<FixResult> {
+export async function fix(cfg: WitnessConfig, testFile: string, log = console.log, opts: { carryState?: boolean } = {}): Promise<FixResult> {
   if (!cfg.fix) throw new Error('witness.json has no "fix" section');
   const f = cfg.fix;
   const before = recordingHash(testFile);
-  let last = await guard(cfg, testFile, log);
-  if (last.decision.verdict !== 'APP_BUG') return { outcome: 'NOT_AN_APP_BUG', rounds: 0, changedFiles: [], recordingSha256: before, last };
+  let last = await guard(cfg, testFile, log, { carryState: opts.carryState });
+  if (last.decision.verdict !== 'APP_BUG' && last.decision.verdict !== 'STATE_BUG') return { outcome: 'NOT_AN_APP_BUG', rounds: 0, changedFiles: [], recordingSha256: before, last };
   const rounds = f.rounds ?? 3;
   const src = f.source.replace(/\/?$/, '/');
   const ignore = f.ignore ?? ['dist/'];
@@ -58,7 +58,7 @@ export async function fix(cfg: WitnessConfig, testFile: string, log = console.lo
     writeFileSync(join(last.evidenceDir, `diff-round-${i}.patch`), execSync('git diff', { cwd: f.cwd, encoding: 'utf8' }));
     log(`  rebuild    ${f.build}`);
     execSync(f.build, { cwd: f.cwd, stdio: 'ignore' });
-    last = await guard(cfg, testFile, log);
+    last = await guard(cfg, testFile, log, { carryState: opts.carryState });
     if (last.decision.verdict === 'PASS') {
       log(`  PROVEN     the unchanged recording (sha256 ${before.slice(0, 12)}…) passes on the rebuilt app`);
       writeFileSync(join(last.evidenceDir, 'proof.json'), JSON.stringify({ outcome: 'PROVEN', rounds: i, changed, recordingSha256: before, test: relative(process.cwd(), testFile) }, null, 2));

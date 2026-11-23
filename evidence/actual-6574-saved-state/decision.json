@@ -1,0 +1,55 @@
+{
+  "test": "<repo>/examples/actual-6574/tests/open_budget_test.md",
+  "carryState": true,
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.9,
+    "verdict": "STATE_BUG",
+    "why": "The same recording passes on the reference build with this saved data and on the target build in a clean browser, and fails on the target build only with the data the reference build saved (at a check). A clean test run cannot see this bug.",
+    "next": "Fix the app so it opens data saved by the earlier build (for example a migration). Do not edit the test or clear the saved data."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 2,
+    "stepsPassed": 0,
+    "healed": false,
+    "failed": {
+      "runId": "run-0",
+      "stepIndex": 4,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 4",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_state_mismatch",
+        "confidence": 0.9,
+        "rootCause": "The app remained on the Files screen and did not show the expected budget view after loading."
+      },
+      "screenshot": "<local>"
+    },
+    "creditsReported": 2.8808499999999997,
+    "replayDecisions": 2,
+    "authorDecisions": 0
+  },
+  "targetClean": {
+    "status": "passed",
+    "stepsTotal": 2,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 2,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 2,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 2,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

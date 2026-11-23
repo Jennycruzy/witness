@@ -49,18 +49,20 @@ async function main(): Promise<number> {
     let code = 0;
     const results = [];
     const recordMissing = args.includes('--record-missing');
-    for (const t of cfg.tests) { const r = await guard(cfg, t, console.log, { recordMissing }); results.push(r); if (r.decision.verdict !== 'PASS') code = 2; }
+    const carryState = args.includes('--carry-state');
+    for (const t of cfg.tests) { const r = await guard(cfg, t, console.log, { recordMissing, carryState }); results.push(r); if (r.decision.verdict !== 'PASS') code = 2; }
     if (process.env.WITNESS_REPORT) writeFileSync(process.env.WITNESS_REPORT, renderReport(results));
     if (process.env.WITNESS_RESULTS) writeFileSync(process.env.WITNESS_RESULTS, JSON.stringify(results.map(r => ({ test: r.test, verdict: r.decision.verdict, why: r.decision.why, next: r.decision.next, kaneLabel: r.decision.kaneLabel, kaneConfidence: r.decision.kaneConfidence, target: r.target.status, reference: r.reference?.status ?? null, failedStep: r.target.failed?.runId ?? null, kaneSaw: r.target.failed?.label.rootCause ?? null, replayed: r.target.replayDecisions, recordedAgain: r.target.authorDecisions, credits: (r.target.creditsReported ?? 0) + (r.reference?.creditsReported ?? 0), card: r.card ?? null, blind: r.blind, locked: r.locked })), null, 2));
     return code;
   }
   if (cmd === 'fix' && a) {
     const cfg = loadConfig(b ?? 'witness.json');
-    const r = await fix(cfg, resolve(a));
+    const r = await fix(cfg, resolve(a), console.log, { carryState: process.argv.includes('--carry-state') });
     return r.outcome === 'PROVEN' ? 0 : 2;
   }
   if (cmd === 'record' && a) {
-    const r = await record(loadConfig(b ?? 'witness.json'), resolve(a));
+    const rest = process.argv.slice(4).filter(x => !x.startsWith('--'));
+    const r = await record(loadConfig(rest[0] ?? 'witness.json'), resolve(a), console.log, { carryState: process.argv.includes('--carry-state') });
     return r.ok ? 0 : 2;
   }
   if (cmd === 'demo') return demo();
@@ -85,7 +87,7 @@ async function main(): Promise<number> {
   }
   if (cmd === 'hook') {
     const stdin = await new Promise<string>(res => { let s = ''; process.stdin.on('data', d => { s += d; }); process.stdin.on('end', () => res(s)); });
-    return stopHook(stdin);
+    return stopHook(stdin, 3, { carryState: process.argv.includes('--carry-state') });
   }
   if (cmd === 'live') {
     // witness live [live.json]: the Run it live page (see examples/todomvc-svelte/live.json)
@@ -117,14 +119,14 @@ async function main(): Promise<number> {
     mkdirSync(dirname(settings), { recursive: true });
     const cur = existsSync(settings) ? JSON.parse(readFileSync(settings, 'utf8')) : {};
     cur.hooks = cur.hooks ?? {};
-    const command = `node ${JSON.stringify(resolve(process.argv[1]))} hook`;
+    const command = `node ${JSON.stringify(resolve(process.argv[1]))} hook${a === '--carry-state' ? ' --carry-state' : ''}`;
     const already = JSON.stringify(cur.hooks.Stop ?? []).includes(' hook');
     if (!already) (cur.hooks.Stop = cur.hooks.Stop ?? []).push({ hooks: [{ type: 'command', command, timeout: 1200 }] });
     writeFileSync(settings, JSON.stringify(cur, null, 2) + '\n');
     console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
     return 0;
   }
-  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] | witness record <test_md> [witness.json] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
+  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
   return 64;
 }
 

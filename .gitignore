@@ -9,3 +9,4 @@ reference/
 .witness/
 builds/
 examples/*/builds/
+examples/*/servers/

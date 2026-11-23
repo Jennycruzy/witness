@@ -1,0 +1,15 @@
+{
+  "tests": ["tests/open_budget_test.md"],
+  "reference": { "label": "Actual 25.11.0", "serve": "ACTUAL_PORT={port} ACTUAL_HOSTNAME=127.0.0.1 ACTUAL_DATA_DIR={data} node servers/25.11.0/node_modules/@actual-app/sync-server/build/bin/actual-server.js" },
+  "target":    { "label": "Actual 26.11.0", "serve": "ACTUAL_PORT={port} ACTUAL_HOSTNAME=127.0.0.1 ACTUAL_DATA_DIR={data} node servers/26.11.0/node_modules/@actual-app/sync-server/build/bin/actual-server.js", "setup": "node device.mjs {url} {profile} login" },
+  "carryState": {
+    "port": 47120,
+    "history": [
+      { "build": "reference", "run": "node device.mjs {url} {profile} bootstrap" },
+      { "build": "reference", "run": "node device.mjs {url} {profile} create" },
+      { "build": "reference", "run": "node device.mjs {url} {profile} import bank-old.csv" },
+      { "build": "target",    "run": "node device.mjs {url} {dir}/phone import bank-new.csv" }
+    ],
+    "upgrade": "node device.mjs {url} {profile} upgrade"
+  }
+}

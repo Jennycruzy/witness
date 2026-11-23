@@ -1,5 +1,8 @@
 // witness guard: run the test on the target; if it fails, run the same recording on the reference and decide.
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { freePort } from '../io/chrome.js';
+import { guardCarried } from './carry.js';
 import { basename, dirname, join, relative } from 'node:path';
 import { classify, isStale, labelDisagrees, type Decision } from '../core/classify.js';
 import { buildCard, parseTestSteps } from '../core/card.js';
@@ -7,7 +10,7 @@ import type { RunSummary } from '../core/stream.js';
 import { findBlindChecks, type BlindCheck } from '../core/blind.js';
 import { findLockedChecks, findLooseChecks, type LockedCheck } from '../core/locked.js';
 import { runKane } from '../io/kane.js';
-import { serveDir } from '../io/serve.js';
+import { serveCommand, serveDir } from '../io/serve.js';
 import { prepareProfile } from '../io/setup.js';
 import type { BuildRef, WitnessConfig } from '../io/config.js';
 import { resolveBuild } from '../io/reference.js';
@@ -15,16 +18,18 @@ import { record } from './record.js';
 
 export interface GuardResult { test: string; decision: Decision; target: RunSummary; reference?: RunSummary; card?: string; evidenceDir: string; blind: BlindCheck[]; locked: LockedCheck[]; }
 
-export async function open(ref: BuildRef, cacheDir = '.witness/builds') {
+/** at: serve a `serve` build on this port with this data folder (saved-state runs); otherwise a free port and a fresh folder. */
+export async function open(ref: BuildRef, cacheDir = '.witness/builds', at?: { port: number; data: string }, opts: { setup?: boolean } = {}) {
   ref = await resolveBuild(ref, cacheDir);
   if (ref.kane) return { url: `${ref.kane.target}: ${ref.kane.app}`, mobile: ref.kane, profile: undefined, close: async () => {} };
-  const s = ref.url ? { url: ref.url, close: async () => {} } : ref.dir ? await serveDir(ref.dir, { isolation: ref.isolation }) : null;
-  if (!s) throw new Error('a build needs url or dir');
-  const prof = ref.setup ? await prepareProfile(ref.setup, s.url) : null;
+  const s = ref.serve ? await serveCommand(ref.serve, at?.port ?? await freePort(), at?.data ?? mkdtempSync(join(tmpdir(), 'witness-data-')))
+    : ref.url ? { url: ref.url, close: async () => {} } : ref.dir ? await serveDir(ref.dir, { isolation: ref.isolation }) : null;
+  if (!s) throw new Error('a build needs url, dir or serve');
+  const prof = ref.setup && opts.setup !== false ? await prepareProfile(ref.setup, s.url) : null;
   return { url: s.url, mobile: undefined, profile: prof?.dir ?? ref.profile, close: async () => { prof?.remove(); await s.close(); } };
 }
 
-export interface GuardOptions { recordMissing?: boolean; }
+export interface GuardOptions { recordMissing?: boolean; carryState?: boolean; }
 
 const hasRecording = (testFile: string) => existsSync(join(dirname(testFile), `output-${basename(testFile).replace(/_test\.md$/, '')}`, '.internal'));
 
@@ -32,14 +37,16 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
   if (!hasRecording(testFile)) {
     if (!opts.recordMissing) return noRecording(cfg, testFile, log, `${basename(testFile)} has no saved Kane recording here, so a run would record it (about 50 credits) instead of replaying it.`, 'Run witness record, or guard --record-missing.');
     log(`  recording  ${basename(testFile)} once on the reference build (no saved recording here)`);
-    const rec = await record(cfg, testFile, log);
+    const rec = await record(cfg, testFile, log, { carryState: opts.carryState });
     if (!rec.ok) return noRecording(cfg, testFile, log, 'The new recording does not replay on the reference build (see UNSTABLE above).', 'Reword the step named above and record again.');
   }
-  let r = await guardOnce(cfg, testFile, log);
+  if (opts.carryState && !cfg.carryState) throw new Error('--carry-state needs "carryState" in witness.json');
+  const once = () => (opts.carryState ? guardCarried(cfg, testFile, log) : guardOnce(cfg, testFile, log));
+  let r = await once();
   if (r.decision.verdict === 'STALE' && opts.recordMissing) {
     log('  recording  again on the reference build: this recording cannot be replayed here (another account, or out of date)');
-    const rec2 = await record(cfg, testFile, log);
-    if (rec2.ok) r = await guardOnce(cfg, testFile, log);
+    const rec2 = await record(cfg, testFile, log, { carryState: opts.carryState });
+    if (rec2.ok) r = await once();
   }
   return r;
 }

@@ -29,3 +29,34 @@ export async function serveDir(root: string, opts: { isolation?: boolean } = {})
   const port = typeof a === 'object' && a ? a.port : 0;
   return { url: `http://127.0.0.1:${port}/`, close: () => new Promise(r => server.close(() => r())) };
 }
+
+/**
+ * Starts a build that has its own server (for example an app plus its sync server) with a shell command that gets
+ * {port} and {data}, and waits until it answers on 127.0.0.1:{port}. close() stops the whole process group.
+ */
+export async function serveCommand(command: string, port: number, data: string, waitSec = 120): Promise<Served> {
+  const { spawn } = await import('node:child_process');
+  const cmd = command.replaceAll('{port}', String(port)).replaceAll('{data}', data);
+  const url = `http://127.0.0.1:${port}/`;
+  const answers = async () => { try { await fetch(url); return true; } catch { return false; } };
+  // The build before may still hold the port for a moment: wait until it is free.
+  for (let i = 0; i < 80 && await answers(); i++) await new Promise(r => setTimeout(r, 250));
+  if (await answers()) throw new Error(`port ${port} is still in use by another server`);
+  const p = spawn(cmd, { shell: true, stdio: ['ignore', 'pipe', 'pipe'], detached: true });
+  let output = '';
+  const keep = (d: Buffer) => { output = (output + d).slice(-4000); };
+  p.stdout!.on('data', keep); p.stderr!.on('data', keep);
+  let up = false;
+  for (let i = 0; i < waitSec * 4 && p.exitCode === null; i++) {
+    if (await answers()) { up = true; break; }
+    await new Promise(r => setTimeout(r, 250));
+  }
+  const stop = async () => {
+    try { process.kill(-p.pid!, 'SIGTERM'); } catch { /* gone */ }
+    for (let i = 0; i < 40; i++) { if (!await answers()) break; await new Promise(r => setTimeout(r, 250)); }
+    try { process.kill(-p.pid!, 'SIGKILL'); } catch { /* gone */ }
+    await new Promise(r => setTimeout(r, 500));
+  };
+  if (!up) { await stop(); throw new Error(`the build did not answer on ${url}${p.exitCode !== null ? ` (it exited with ${p.exitCode})` : ''}: ${cmd}\n${output.trim().split('\n').slice(-15).join('\n')}`); }
+  return { url, close: stop };
+}

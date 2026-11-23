@@ -9,7 +9,7 @@ export interface Chrome { endpoint: string; stop: () => void; }
 
 const CHROME = process.env.CHROME_PATH || '/usr/bin/google-chrome';
 
-async function freePort(): Promise<number> {
+export async function freePort(): Promise<number> {
   return new Promise((resolve, reject) => {
     const s = createServer();
     s.listen(0, '127.0.0.1', () => { const a = s.address(); s.close(() => (typeof a === 'object' && a ? resolve(a.port) : reject(new Error('no port')))); });

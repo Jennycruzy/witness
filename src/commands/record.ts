@@ -6,11 +6,12 @@ import { fetchBuild, isRelease, listVersions } from '../io/npm.js';
 import { runKane } from '../io/kane.js';
 import { findLooseChecks } from '../core/locked.js';
 import { open } from './guard.js';
+import { prepareCarried, type Carried } from './carry.js';
 import type { BuildRef, WitnessConfig } from '../io/config.js';
 
-export async function record(cfg: WitnessConfig, testFile: string, log = console.log) {
+export async function record(cfg: WitnessConfig, testFile: string, log = console.log, opts: { carryState?: boolean } = {}) {
   let ref: BuildRef = cfg.reference;
-  let label = cfg.reference.url ?? cfg.reference.dir ?? cfg.reference.npm ?? cfg.reference.git ?? cfg.reference.kane?.app ?? '';
+  let label = cfg.reference.label ?? cfg.reference.url ?? cfg.reference.dir ?? cfg.reference.npm ?? cfg.reference.git ?? cfg.reference.kane?.app ?? '';
   const src = cfg.nightly;
   if (src) {
     const all = await listVersions(src.npm);
@@ -18,7 +19,11 @@ export async function record(cfg: WitnessConfig, testFile: string, log = console
     ref = { dir: join(await fetchBuild(src.npm, release.version, cfg.cacheDir!), src.buildDir ?? ''), isolation: src.isolation, setup: src.setup };
     label = `${src.npm}@${release.version}`;
   }
-  const b = await open(ref, cfg.cacheDir);
+  // Saved-state tests are recorded on the reference in the profile the user's history leaves behind.
+  let carried: Carried | undefined;
+  if (opts.carryState) { carried = await prepareCarried(cfg, log); label += ' (saved data)'; }
+  const b0 = await open(ref, cfg.cacheDir, carried ? { port: cfg.carryState!.port, data: carried.refData } : undefined, { setup: !carried });
+  const b = carried ? { ...b0, profile: carried.refProfile, close: async () => { await b0.close(); carried!.remove(); } } : b0;
   const name = basename(testFile).replace(/_test\.md$/, '');
   try {
     log(`record   ${basename(testFile)}  on ${label}`);

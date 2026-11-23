@@ -35,7 +35,7 @@ export function buildCard(o: { testName: string; steps: TestStep[]; target: RunS
   const rc = o.target.failed?.label.rootCause;
   if (rc) lines.push('', `What Kane saw: ${rc}`);
   lines.push('', `Target build: ${o.targetUrl}   Reference build: ${o.referenceUrl}`);
-  if (o.decision.verdict === 'APP_BUG') lines.push('Change only the application source. Do not edit tests, recordings or build config.');
+  if (o.decision.verdict === 'APP_BUG' || o.decision.verdict === 'STATE_BUG') lines.push('Change only the application source. Do not edit tests, recordings or build config.');
   if (o.spec) lines.push('', `Spec: ${o.spec}`);
   lines.push('', 'When done, say which file and lines you changed and why.');
   return lines.join('\n');

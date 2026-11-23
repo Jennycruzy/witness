@@ -1,0 +1,18 @@
+{
+  "test_id": "0eba44f2-f24c-4ee4-9204-5ccdc781ae94",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "open_budget",
+  "commit_id": "30297515-7f47-4828-a62c-c36d024944fe",
+  "testcase_id": "01M84Y2EN22MBVBHMJ1HJV7KFF",
+  "executions": [
+    {
+      "execution_id": "5fdfad74-8ccd-42f8-a95d-1bbb3fc54bfb",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-23T19:28:57.316Z"
+    }
+  ]
+}

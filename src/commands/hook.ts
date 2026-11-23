@@ -8,7 +8,7 @@ import { guard } from './guard.js';
 
 interface HookInput { stop_hook_active?: boolean; session_id?: string; cwd?: string; }
 
-export async function stopHook(stdin: string, maxRepeats = 3): Promise<number> {
+export async function stopHook(stdin: string, maxRepeats = 3, opts: { carryState?: boolean } = {}): Promise<number> {
   let input: HookInput = {};
   try { input = JSON.parse(stdin || '{}'); } catch { /* run anyway */ }
   const cwd = input.cwd ?? process.cwd();
@@ -27,8 +27,8 @@ export async function stopHook(stdin: string, maxRepeats = 3): Promise<number> {
   const quiet: string[] = [];
   const problems: string[] = [];
   for (const t of cfg.tests) {
-    const r = await guard(cfg, t, (s) => quiet.push(s));
-    if (r.decision.verdict === 'APP_BUG' || r.decision.verdict === 'TEST_PROBLEM') problems.push(r.card ?? r.decision.why);
+    const r = await guard(cfg, t, (s) => quiet.push(s), { carryState: opts.carryState });
+    if (r.decision.verdict === 'APP_BUG' || r.decision.verdict === 'STATE_BUG' || r.decision.verdict === 'TEST_PROBLEM') problems.push(r.card ?? r.decision.why);
     for (const l of r.locked.filter(x => x.positional && x.kind === 'locator')) problems.push(`LOCKED check in ${t}, test step ${l.step}: Kane finds the element by the text it expects (${JSON.stringify(l.expected)}) and reads it back, so this step passes wherever that text is, even on the wrong item or in the wrong place. Rewrite the step so it states what must be true about position or the whole list (for example: "the todo list reads, from top to bottom: a, b"), then re-record it with witness record.`);
     for (const b of r.blind) problems.push(`BLIND check in ${t}, test step ${Number(b.runId.replace('run-', '')) + 1}: it passed reading ${JSON.stringify(b.value)}; ${b.reason}. Make that step check each item separately (or count items), then re-record it.`);
   }

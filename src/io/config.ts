@@ -4,6 +4,7 @@ import { dirname, isAbsolute, resolve } from 'node:path';
 
 export interface BuildRef {
   url?: string; dir?: string; isolation?: boolean; profile?: string; setup?: string;
+  serve?: string;                                              // shell command that serves this build (an app with its own server); gets {port} and {data}
   npm?: string; version?: string; buildDir?: string;          // a published build on npm (newest release when no version)
   git?: string; build?: string; repo?: string; workdir?: string; // a git ref, built in a worktree; dir = its output folder
   kane?: { target: 'emulator' | 'simulator' | 'android' | 'ios'; app: string; deviceName?: string; osVersion?: string };  // a mobile app build instead of a web page
@@ -28,6 +29,13 @@ export interface FixConfig {
   ignore?: string[];    // build output the agent run may leave changed (default: dist/)
 }
 
+/** Saved-state check (guard --carry-state): a browser profile with data saved by earlier builds is carried into the target run. */
+export interface CarryState {
+  port: number;            // every build is served on this one port: browser storage belongs to an origin, so a new port is a new, empty browser
+  history: { build: 'reference' | 'target'; run: string }[];   // what the user did before, in order; each gets {url}, {profile} (the carried profile), {dir} (scratch for other devices)
+  upgrade?: string;        // run on the target in a copy of the carried profile before Kane, e.g. accept the app's update prompt; gets {url} and {profile}
+}
+
 export interface WitnessConfig {
   tests: string[];
   target: BuildRef;
@@ -37,6 +45,7 @@ export interface WitnessConfig {
   evidenceDir?: string;
   nightly?: NpmSource;
   cacheDir?: string;
+  carryState?: CarryState;
 }
 
 export function loadConfig(path: string): WitnessConfig {

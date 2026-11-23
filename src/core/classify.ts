@@ -3,7 +3,7 @@
 
 import type { RunSummary } from './stream.js';
 
-export type Verdict = 'PASS' | 'APP_BUG' | 'TEST_PROBLEM' | 'ENV' | 'STALE' | 'NO_RECORDING' | 'UNKNOWN';
+export type Verdict = 'PASS' | 'APP_BUG' | 'STATE_BUG' | 'TEST_PROBLEM' | 'ENV' | 'STALE' | 'NO_RECORDING' | 'UNKNOWN';
 
 export interface Decision {
   verdict: Verdict;
@@ -40,6 +40,23 @@ export function classify(target: RunSummary, reference: RunSummary): Decision {
   return { ...base, verdict: 'UNKNOWN', why: 'Could not tell whether the failure was at a check or an action.', next: 'Read the evidence.' };
 }
 
+/**
+ * Saved-state check. carried = the target run in a browser profile that holds data saved by the reference build;
+ * clean = the target run in a fresh profile; reference = the reference run in the same carried profile.
+ */
+export function classifyCarried(carried: RunSummary, clean: RunSummary, reference: RunSummary): Decision {
+  if (isStale(carried) || isStale(clean)) return classify(isStale(carried) ? carried : clean, reference);
+  if (carried.status === 'passed') return classify(carried, reference);
+  if (carried.status === 'failed' && carried.failed && clean.status === 'passed' && reference.status === 'passed') {
+    return {
+      kaneLabel: carried.failed.label.family ?? null, kaneConfidence: carried.failed.label.confidence ?? null, verdict: 'STATE_BUG',
+      why: `The same recording passes on the reference build with this saved data and on the target build in a clean browser, and fails on the target build only with the data the reference build saved (at a${carried.failed.kind === 'action' ? 'n action' : ' check'}). A clean test run cannot see this bug.`,
+      next: 'Fix the app so it opens data saved by the earlier build (for example a migration). Do not edit the test or clear the saved data.',
+    };
+  }
+  return classify(carried, reference);
+}
+
 /** True when Kane did not replay the saved recording (it recorded some steps again). */
 export function isStale(r: RunSummary): boolean {
   return (r.authorDecisions ?? 0) > 0;
@@ -48,7 +65,7 @@ export function isStale(r: RunSummary): boolean {
 /** True when Kane's own label points the agent at the other side from the comparison. */
 export function labelDisagrees(d: Decision): boolean {
   if (!d.kaneLabel) return false;
-  if (d.verdict === 'APP_BUG') return d.kaneLabel !== 'application_issue';
+  if (d.verdict === 'APP_BUG' || d.verdict === 'STATE_BUG') return d.kaneLabel !== 'application_issue';
   if (d.verdict === 'TEST_PROBLEM') return d.kaneLabel === 'application_issue';
   return false;
 }
