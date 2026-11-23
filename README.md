@@ -46,7 +46,7 @@ All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5, 17
 |---|---|---|
 | Kane CLI [#232](https://github.com/LambdaTest/kane-cli/issues/232) | Replay triage labels real app bugs `automation_bug`, so agents fix the test instead of the app | **Reproduced and fixed by the Kane team** (3 of 3 runs wrong before, 4 of 4 right after); closed as fixed in kane-cli 0.10.8. Our recordings already flip on 0.10.7: [below](#kane-cli-0107-on-our-recordings) |
 | Kane CLI [#233](https://github.com/LambdaTest/kane-cli/issues/233) | A list check passes on a blank todo because the comparison strips the blank line | **Reproduced and fixed by the Kane team**: list checks are now recorded item by item, so the blank todo fails the check; closed as fixed in kane-cli 0.10.8 |
-| Kane CLI [#241](https://github.com/LambdaTest/kane-cli/issues/241) | Kane's bug memory recalls a bug marked real and rca-wrong with a note, then repeats the root cause marked wrong ([repro pack](evidence/kane-cli-241/)) | **Reproduced by the Kane team**, all four causes confirmed: the note was cut at 120 characters, the wrong root cause was still shown as fact, recall matched the exact page including the port, and the diagnosis saw only the failing step. Fix in progress: recall by similarity, full notes, wrong root causes labelled as wrong, earlier steps given to the diagnosis |
+| Kane CLI [#241](https://github.com/LambdaTest/kane-cli/issues/241) | Kane's bug memory recalls a bug marked real and rca-wrong with a note, then repeats the root cause marked wrong ([repro pack](evidence/kane-cli-241/)) | **Reproduced by the Kane team**, all four causes confirmed: the note was cut at 120 characters, the wrong root cause was still shown as fact, recall matched the exact page including the port, and the diagnosis saw only the failing step. Fix in progress: recall by similarity, full notes, wrong root causes labelled as wrong, earlier steps given to the diagnosis. A short note (112 characters, all inside the limit) is recalled and still not used on 0.10.8 (runs 6 and 7 in the pack). `witness guard --teach` writes these marks and a short note for every verdict |
 | TodoMVC [#2320](https://github.com/tastejs/todomvc/pull/2320) | Svelte fix for [#2315](https://github.com/tastejs/todomvc/issues/2315): trim edited todos, restore the filter on reload | The fixed build passes both Kane tests, and all 36 rules of TodoMVC's app spec in a Playwright check |
 
 ### kane-cli 0.10.7 on our recordings
@@ -146,6 +146,8 @@ Put a `witness.json` next to your Kane tests:
 | `witness install-skill [--global]` | Adds the [Claude Code skill](skills/witness/SKILL.md): when a Kane test fails, the agent runs `witness guard` and acts on the verdict, not on Kane's label | — |
 | `witness guard … --only <test>` | Checks one test | as `guard` |
 | `witness guard … --carry-state` | Also checks each test with the browser data earlier builds saved (`carryState` below); works in `record`, `fix` and `install-hook` too | as `guard`, plus the clean and reference replays |
+| `witness guard … --teach` | After each verdict, writes it into Kane's bug memory: marks the bug Kane filed for that run real or not, its root cause right or wrong, and adds one note under Kane's 120-character limit. It never closes a bug: that stays a person's call | 0 |
+| `witness teach <run folder> <test>` | The same for a run that already has a verdict | 0 |
 | `witness guard … --record-missing` | Records a test once on the reference when it has no recording here, or Kane cannot replay it | ~50 per test recorded |
 | `witness live <live.json>` | Serves the Run it live page: one run at a time, a cap on runs per hour and per visitor | as `guard`, per click |
 | `witness search <test> <good> <bad>` | Replays the test across published builds to find the first bad one, then lists the commits in between | ~5 per failing build |
@@ -160,6 +162,7 @@ A build (target or reference) can be any of these:
 | `{ "dir": "dist" }` | Serves the folder itself (add `"isolation": true` for apps that need cross-origin isolation) |
 | `{ "npm": "@actual-app/web", "buildDir": "build" }` | Downloads the **newest release** from npm (or `"version": "26.2.0"`) and serves it |
 | `{ "git": "origin/main", "build": "npm ci && npm run build", "dir": "dist" }` | Checks that ref out in its own worktree, builds it once, serves the output |
+| `"port": 42443` (with `dir` or `serve`) | Serves on that port every time. Kane remembers a bug by its page, port included, so `--teach` needs the same port on every run |
 | `{ "serve": "PORT={port} DATA={data} node server.js" }` | Starts an app that has its own server with that command, waits until it answers, stops it after the run |
 | `{ "kane": { "target": "emulator", "app": "builds/app-1.4.apk" } }` | An Android or iOS app build: Kane runs it on a local emulator or simulator on macOS (Apple Silicon), or `"android"`/`"ios"` for TestMu's real devices |
 

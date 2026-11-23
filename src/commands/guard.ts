@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 
 import { tmpdir } from 'node:os';
 import { freePort } from '../io/chrome.js';
 import { guardCarried } from './carry.js';
+import { teach } from './teach.js';
 import { basename, dirname, join, relative } from 'node:path';
 import { classify, isStale, labelDisagrees, type Decision } from '../core/classify.js';
 import { buildCard, parseTestSteps } from '../core/card.js';
@@ -22,14 +23,14 @@ export interface GuardResult { test: string; decision: Decision; target: RunSumm
 export async function open(ref: BuildRef, cacheDir = '.witness/builds', at?: { port: number; data: string }, opts: { setup?: boolean } = {}) {
   ref = await resolveBuild(ref, cacheDir);
   if (ref.kane) return { url: `${ref.kane.target}: ${ref.kane.app}`, mobile: ref.kane, profile: undefined, close: async () => {} };
-  const s = ref.serve ? await serveCommand(ref.serve, at?.port ?? await freePort(), at?.data ?? mkdtempSync(join(tmpdir(), 'witness-data-')))
-    : ref.url ? { url: ref.url, close: async () => {} } : ref.dir ? await serveDir(ref.dir, { isolation: ref.isolation }) : null;
+  const s = ref.serve ? await serveCommand(ref.serve, at?.port ?? ref.port ?? await freePort(), at?.data ?? mkdtempSync(join(tmpdir(), 'witness-data-')))
+    : ref.url ? { url: ref.url, close: async () => {} } : ref.dir ? await serveDir(ref.dir, { isolation: ref.isolation, port: ref.port }) : null;
   if (!s) throw new Error('a build needs url, dir or serve');
   const prof = ref.setup && opts.setup !== false ? await prepareProfile(ref.setup, s.url) : null;
   return { url: s.url, mobile: undefined, profile: prof?.dir ?? ref.profile, close: async () => { prof?.remove(); await s.close(); } };
 }
 
-export interface GuardOptions { recordMissing?: boolean; carryState?: boolean; }
+export interface GuardOptions { recordMissing?: boolean; carryState?: boolean; teach?: boolean; }
 
 const hasRecording = (testFile: string) => existsSync(join(dirname(testFile), `output-${basename(testFile).replace(/_test\.md$/, '')}`, '.internal'));
 
@@ -47,6 +48,10 @@ export async function guard(cfg: WitnessConfig, testFile: string, log = console.
     log('  recording  again on the reference build: this recording cannot be replayed here (another account, or out of date)');
     const rec2 = await record(cfg, testFile, log, { carryState: opts.carryState });
     if (rec2.ok) r = await once();
+  }
+  if (opts.teach && r.evidenceDir && r.decision.verdict !== 'PASS') {
+    try { await teach(r.evidenceDir, testFile, cfg.reference.label ?? 'the reference build', log, opts.carryState ? cfg.carryState?.port : cfg.target.port); }
+    catch (e: any) { log(`  teach      could not reach Kane's bug memory: ${String(e.message).split('\n')[0]}`); }
   }
   return r;
 }

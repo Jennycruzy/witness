@@ -19,7 +19,11 @@ Each run is `kane-cli testmd run blank_ignored_test.md --agent --no-adaptive-hea
 | `runs/3-after-note-other-port-b.ndjson` | 00:20 | 40809 | failed at step 3 | automation_bug 0.96 | (none) |
 | `runs/4-after-note-port-42443-a.ndjson` | 01:26 | 42443 | failed at step 3 | automation_bug 0.99 | BUG-5 |
 | `runs/5-after-note-port-42443-b.ndjson` | 01:30 | 42443 | failed at step 3 | automation_bug 0.98 | BUG-5 |
+| `runs/6-short-note-port-42443-a.ndjson` | 20:01 | 42443 | failed at step 3 | automation_bug 0.98 | BUG-5 |
+| `runs/7-short-note-port-42443-b.ndjson` | 20:02 | 42443 | failed at step 3 | automation_bug 0.98 | BUG-5 |
 
 The feedback was given at 00:13, between runs 1 and 2: `bugs mark BUG-5 real`, `bugs mark BUG-5 rca-wrong`, and `bugs note BUG-5 "..."`. `BUG-5.json` is `kane-cli bugs show BUG-5 --agent` after run 5. It shows the three pieces of feedback and their times, status `confirmed`, and every occurrence: `new` for run 1, `similar` for runs 2 and 3, and `claim_confirmed` for runs 4 and 5.
+
+Runs 6 and 7 test a short note, after the cause "the note is cut at 120 characters" was confirmed on the issue. At 19:59 a new note of 112 characters was added, so all of it fits: *"Real app bug: Enter on a blank entry adds an empty todo and the counter counts it. Same recording passes on vue."* Both runs recalled BUG-5 and still said automation_bug 0.98. On 0.10.8 the length of the note is not what keeps it from being used.
 
 Runs 2 and 3 were served on other ports. The bug's page key is `127.0.0.1:42443/`, so their diagnosis was not told about BUG-5. Runs 4 and 5 are the ones that test the note.

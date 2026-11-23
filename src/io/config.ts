@@ -4,6 +4,7 @@ import { dirname, isAbsolute, resolve } from 'node:path';
 
 export interface BuildRef {
   url?: string; dir?: string; isolation?: boolean; profile?: string; setup?: string;
+  port?: number;                                               // serve on this port (Kane remembers bugs per page, port included)
   serve?: string;                                              // shell command that serves this build (an app with its own server); gets {port} and {data}
   npm?: string; version?: string; buildDir?: string;          // a published build on npm (newest release when no version)
   git?: string; build?: string; repo?: string; workdir?: string; // a git ref, built in a worktree; dir = its output folder

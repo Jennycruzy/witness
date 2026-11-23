@@ -11,7 +11,7 @@ const TYPES: Record<string, string> = {
 
 export interface Served { url: string; close: () => Promise<void>; }
 
-export async function serveDir(root: string, opts: { isolation?: boolean } = {}): Promise<Served> {
+export async function serveDir(root: string, opts: { isolation?: boolean; port?: number } = {}): Promise<Served> {
   const server: Server = createServer(async (req, res) => {
     const path = normalize(decodeURIComponent(new URL(req.url ?? '/', 'http://x').pathname)).replace(/^(\.\.[/\\])+/, '');
     let file = join(root, path);
@@ -24,7 +24,7 @@ export async function serveDir(root: string, opts: { isolation?: boolean } = {})
       res.writeHead(200, headers).end(body);
     } catch { res.writeHead(404).end(); }
   });
-  await new Promise<void>(r => server.listen(0, '127.0.0.1', r));
+  await new Promise<void>((r, j) => { server.once('error', j); server.listen(opts.port ?? 0, '127.0.0.1', r); });
   const a = server.address();
   const port = typeof a === 'object' && a ? a.port : 0;
   return { url: `http://127.0.0.1:${port}/`, close: () => new Promise(r => server.close(() => r())) };

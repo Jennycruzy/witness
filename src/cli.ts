@@ -12,6 +12,7 @@ import { loadConfig } from './io/config.js';
 import { guard } from './commands/guard.js';
 import { fix } from './commands/fix.js';
 import { stopHook } from './commands/hook.js';
+import { teach } from './commands/teach.js';
 import { watch } from './commands/watch.js';
 import { search } from './commands/search.js';
 import { listVersions } from './io/npm.js';
@@ -49,8 +50,8 @@ async function main(): Promise<number> {
     let code = 0;
     const results = [];
     const recordMissing = args.includes('--record-missing');
-    const carryState = args.includes('--carry-state');
-    for (const t of cfg.tests) { const r = await guard(cfg, t, console.log, { recordMissing, carryState }); results.push(r); if (r.decision.verdict !== 'PASS') code = 2; }
+    const carryState = args.includes('--carry-state'), teach = args.includes('--teach');
+    for (const t of cfg.tests) { const r = await guard(cfg, t, console.log, { recordMissing, carryState, teach }); results.push(r); if (r.decision.verdict !== 'PASS') code = 2; }
     if (process.env.WITNESS_REPORT) writeFileSync(process.env.WITNESS_REPORT, renderReport(results));
     if (process.env.WITNESS_RESULTS) writeFileSync(process.env.WITNESS_RESULTS, JSON.stringify(results.map(r => ({ test: r.test, verdict: r.decision.verdict, why: r.decision.why, next: r.decision.next, kaneLabel: r.decision.kaneLabel, kaneConfidence: r.decision.kaneConfidence, target: r.target.status, reference: r.reference?.status ?? null, failedStep: r.target.failed?.runId ?? null, kaneSaw: r.target.failed?.label.rootCause ?? null, replayed: r.target.replayDecisions, recordedAgain: r.target.authorDecisions, credits: (r.target.creditsReported ?? 0) + (r.reference?.creditsReported ?? 0), card: r.card ?? null, blind: r.blind, locked: r.locked })), null, 2));
     return code;
@@ -64,6 +65,13 @@ async function main(): Promise<number> {
     const rest = process.argv.slice(4).filter(x => !x.startsWith('--'));
     const r = await record(loadConfig(rest[0] ?? 'witness.json'), resolve(a), console.log, { carryState: process.argv.includes('--carry-state') });
     return r.ok ? 0 : 2;
+  }
+  if (cmd === 'teach' && a && b) {
+    // witness teach <evidence dir> <test_md> [witness.json]: tell Kane's bug memory what a finished guard run decided
+    const cfgPath = process.argv[5] ?? 'witness.json';
+    const label = existsSync(cfgPath) ? loadConfig(cfgPath).reference.label : undefined;
+    const r = await teach(resolve(a), resolve(b), label ?? 'the reference build');
+    return r.bug || r.why?.startsWith('no teaching') ? 0 : 2;
   }
   if (cmd === 'demo') return demo();
   if (cmd === 'verify') return verify(evidenceRoot(), { writeManifest: a === '--write-manifest' });
@@ -126,7 +134,7 @@ async function main(): Promise<number> {
     console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
     return 0;
   }
-  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
+  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] [--teach] | witness teach <evidence dir> <test_md> [witness.json] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
   return 64;
 }
 
