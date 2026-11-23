@@ -1,0 +1,223 @@
+{
+    "ok": true,
+    "bug": {
+        "id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+        "ref": "BUG-5",
+        "project_id": "<removed>",
+        "display_no": 5,
+        "schema_version": 1,
+        "status": "confirmed",
+        "disputed": false,
+        "card": {
+            "title": "Footer-counter assertion runs without required todo state",
+            "root_cause": "The recording did not establish the list state needed for this check. The page shown during the replay has two unfinished todos, so its counter correctly shows two items left rather than one.",
+            "family": "automation_bug",
+            "category": "state_transition_bug",
+            "severity": "minor",
+            "page_pattern": "127.0.0.1:42443/"
+        },
+        "first_seen_at": "2026-11-23T00:06:12.715Z",
+        "last_seen_at": "2026-11-23T01:30:55.488Z",
+        "occurrence_count": 5,
+        "testcase_count": 1,
+        "finding_refs": [],
+        "votes": 1,
+        "rca_votes": -1
+    },
+    "occurrences": [
+        {
+            "id": "01a205ba-4f2f-73c5-a1b0-f73c321e3f38",
+            "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+            "project_id": "<removed>",
+            "schema_version": 1,
+            "role": "bug",
+            "evidence_id": "039a90ad-43f6-4d5b-abaf-8850708e981c",
+            "extra_evidence_ids": [],
+            "run_key": "79bbc311-a086-4a32-8235-8ed9accfa157",
+            "step_sid": "2-2",
+            "step_ordinal": 9,
+            "testcase_id": "01M7Q7HSB481RKW0F1D4WC5BY7",
+            "test_id": "b10a4830-53d1-4d3d-b5d2-fe811e52893a",
+            "commit_id": "4c9eb265-7213-4c18-896d-584af701ea23",
+            "sub_node": "replay",
+            "family": "automation_bug",
+            "category": "state_transition_bug",
+            "verdict_status": "broken",
+            "confidence": 0.96,
+            "match": {
+                "how": "new",
+                "score": 0.8815758071992412,
+                "matcher_version": "1"
+            },
+            "seen_at": "2026-11-23T00:06:12.715Z",
+            "ingested_at": "2026-11-23T00:07:07.703741Z"
+        },
+        {
+            "id": "01a205c3-a5cf-77d3-9744-9ede92652be7",
+            "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+            "project_id": "<removed>",
+            "schema_version": 1,
+            "role": "bug",
+            "evidence_id": "410634e3-1944-4924-82a5-78c68c6d580d",
+            "extra_evidence_ids": [],
+            "run_key": "f7d78977-472e-4ffa-a624-5efa0ad2c995",
+            "step_sid": "2-2",
+            "step_ordinal": 9,
+            "testcase_id": "01M7Q7HSB481RKW0F1D4WC5BY7",
+            "test_id": "b10a4830-53d1-4d3d-b5d2-fe811e52893a",
+            "commit_id": "4c9eb265-7213-4c18-896d-584af701ea23",
+            "sub_node": "replay",
+            "family": "automation_bug",
+            "category": "state_transition_bug",
+            "verdict_status": "broken",
+            "confidence": 0.96,
+            "match": {
+                "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+                "how": "similar",
+                "score": 0.9593127841001958,
+                "matcher_version": "1"
+            },
+            "seen_at": "2026-11-23T00:16:11.303Z",
+            "ingested_at": "2026-11-23T00:17:18.179212Z"
+        },
+        {
+            "id": "01a205c9-a91c-7b1f-87ad-2e02db1369ad",
+            "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+            "project_id": "<removed>",
+            "schema_version": 1,
+            "role": "bug",
+            "evidence_id": "8f7d83ea-534c-4a32-8b9c-10e937385d9d",
+            "extra_evidence_ids": [],
+            "run_key": "675562a4-b2da-47a0-b02d-565385b28eb6",
+            "step_sid": "2-2",
+            "step_ordinal": 9,
+            "testcase_id": "01M7Q7HSB481RKW0F1D4WC5BY7",
+            "test_id": "b10a4830-53d1-4d3d-b5d2-fe811e52893a",
+            "commit_id": "4c9eb265-7213-4c18-896d-584af701ea23",
+            "sub_node": "replay",
+            "family": "automation_bug",
+            "category": "state_transition_bug",
+            "verdict_status": "broken",
+            "confidence": 0.96,
+            "match": {
+                "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+                "how": "similar",
+                "score": 0.9545463014242336,
+                "matcher_version": "1"
+            },
+            "seen_at": "2026-11-23T00:20:40.216Z",
+            "ingested_at": "2026-11-23T00:23:52.264348Z"
+        },
+        {
+            "id": "01a20606-f82b-701d-9878-d9dbb7781e66",
+            "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+            "project_id": "<removed>",
+            "schema_version": 1,
+            "role": "bug",
+            "evidence_id": "f5a1005f-ae85-49ec-8b6d-e2a1dfb892ac",
+            "extra_evidence_ids": [],
+            "run_key": "355e9e47-1252-436b-a9aa-0ed46d23e587",
+            "step_sid": "2-2",
+            "step_ordinal": 9,
+            "testcase_id": "01M7Q7HSB481RKW0F1D4WC5BY7",
+            "test_id": "b10a4830-53d1-4d3d-b5d2-fe811e52893a",
+            "commit_id": "4c9eb265-7213-4c18-896d-584af701ea23",
+            "sub_node": "replay",
+            "family": "automation_bug",
+            "category": "state_transition_bug",
+            "verdict_status": "broken",
+            "confidence": 0.99,
+            "known_bug_id": "BUG-5",
+            "match": {
+                "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+                "how": "claim_confirmed",
+                "score": 0.9094480240538917,
+                "matcher_version": "1"
+            },
+            "seen_at": "2026-11-23T01:26:33.482Z",
+            "ingested_at": "2026-11-23T01:30:51.705411Z"
+        },
+        {
+            "id": "01a20609-a7a1-7537-a9e2-e62b34312a55",
+            "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+            "project_id": "<removed>",
+            "schema_version": 1,
+            "role": "bug",
+            "evidence_id": "11137e27-d1aa-48f6-82c5-05cd82c78d64",
+            "extra_evidence_ids": [],
+            "run_key": "75b0e5c4-5786-42d1-866f-3510eb44f60b",
+            "step_sid": "2-2",
+            "step_ordinal": 9,
+            "testcase_id": "01M7Q7HSB481RKW0F1D4WC5BY7",
+            "test_id": "b10a4830-53d1-4d3d-b5d2-fe811e52893a",
+            "commit_id": "4c9eb265-7213-4c18-896d-584af701ea23",
+            "sub_node": "replay",
+            "family": "automation_bug",
+            "category": "state_transition_bug",
+            "verdict_status": "broken",
+            "confidence": 0.98,
+            "known_bug_id": "BUG-5",
+            "match": {
+                "bug_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+                "how": "claim_confirmed",
+                "score": 0.9562483064358818,
+                "matcher_version": "1"
+            },
+            "seen_at": "2026-11-23T01:30:55.488Z",
+            "ingested_at": "2026-11-23T01:33:46.195387Z"
+        }
+    ],
+    "feedback": [
+        {
+            "id": "01a205bf-db2d-732a-b860-becedc4103dc",
+            "project_id": "<removed>",
+            "schema_version": 1,
+            "target_kind": "bug",
+            "target_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+            "type": "vote_real",
+            "value": "1",
+            "ref_occurrence_ids": [],
+            "author": {
+                "kind": "agent",
+                "id": "<removed>"
+            },
+            "created_at": "2026-11-23T00:13:09.284591Z",
+            "retired_at": null,
+            "author_kind": "agent"
+        },
+        {
+            "id": "01a205bf-e0dc-78cd-8956-4a1ac5b01673",
+            "project_id": "<removed>",
+            "schema_version": 1,
+            "target_kind": "bug",
+            "target_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+            "type": "vote_rca",
+            "value": "-1",
+            "ref_occurrence_ids": [],
+            "author": {
+                "kind": "agent",
+                "id": "<removed>"
+            },
+            "created_at": "2026-11-23T00:13:10.740324Z",
+            "retired_at": null,
+            "author_kind": "agent"
+        },
+        {
+            "id": "01a205bf-e662-73cb-86eb-bb3a6b753327",
+            "project_id": "<removed>",
+            "schema_version": 1,
+            "target_kind": "bug",
+            "target_id": "01a205ba-56af-778f-9b74-7ec9e3d76f2b",
+            "type": "note",
+            "text": "Not a test problem. The same recording, replayed unchanged with no healing, passes on a known-good build (TodoMVC vue at ff43b02): there the blank entry is ignored and the counter shows the right number. On this build pressing Enter on a blank entry adds an empty todo and counts it (tastejs/todomvc#2313). The app is wrong, not the recording.",
+            "ref_occurrence_ids": [],
+            "author": {
+                "kind": "agent",
+                "id": "<removed>"
+            },
+            "created_at": "2026-11-23T00:13:12.153674Z",
+            "retired_at": null,
+            "author_kind": "agent"
+        }
+    ]
+}
