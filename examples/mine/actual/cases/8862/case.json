@@ -1,0 +1,26 @@
+{
+  "pr": 8862,
+  "issue": 6513,
+  "title": "Schedule forecast smoothing",
+  "issueTitle": "[Bug]: Schedule template budget calculation incorrect for multiple non-monthly scheduled transactions",
+  "mergedAt": "2026-10-28T20:42:44Z",
+  "mergeSha": "53a61855b65813b0af0049204fa272c7b6c46568",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261028",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261028"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261029",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261029"
+  },
+  "status": "not-testable",
+  "why": "Both reports depend on schedule due dates relative to the current month and on budgeting earlier months (and #6644 gives no correct amount), so the expected budget changes with the date the test runs and cannot be pinned to one fixed value."
+}

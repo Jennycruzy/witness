@@ -1,0 +1,22 @@
+{
+  "pr": 2285,
+  "issue": 2240,
+  "title": "fix: From Base operation produces wrong results for fractional inputs",
+  "issueTitle": "Bug report: From Base operation produces NaN for fractional inputs",
+  "mergedAt": "2026-06-20T07:48:49Z",
+  "mergeSha": "0fd6190b4676142f56e0c11a05a14e1a95af1e4f",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report gives the exact input (10.1 with radix 2) and the correct output (2.5), while the buggy build shows a NaN error instead."
+}

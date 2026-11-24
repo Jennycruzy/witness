@@ -1,0 +1,26 @@
+{
+  "pr": 9402,
+  "issue": 3664,
+  "title": "fix: custom reports showing excluded empty category rows",
+  "issueTitle": "[Bug]: Custom Reports - show empty rows option ignores unchecked catgeories",
+  "mergedAt": "2026-11-03T22:12:32Z",
+  "mergeSha": "821bcc2a13b4555d0f77e30c8d1579be775524e2",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261103",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261103"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261105",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261105"
+  },
+  "status": "not-testable",
+  "why": "The only difference the report describes is that categories the user unchecked show up as extra $0.00 rows in the buggy build, so the fixed build has no single visible text of its own to check: the test would have to check that rows are absent or count them, and it would rely on the custom-report category-checkbox screen, which the report does not describe clearly enough to script."
+}

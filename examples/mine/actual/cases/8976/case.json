@@ -1,0 +1,26 @@
+{
+  "pr": 8976,
+  "issue": 2939,
+  "title": "[AI] Show commit hash on edge/nightly builds",
+  "issueTitle": "[Tech Debt] Incorrect `edge` version shown in app",
+  "mergedAt": "2026-10-12T11:04:36Z",
+  "mergeSha": "c679c5825377c88b88d856de8638930a1218a0d3",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261012",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261012"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261013",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261013"
+  },
+  "status": "not-testable",
+  "why": "The correct output is a build-specific commit hash or other unique identifier that the report does not give, and it depends on how the edge build was deployed, so no exact expected text can be named."
+}

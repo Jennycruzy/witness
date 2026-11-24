@@ -1,0 +1,22 @@
+{
+  "pr": 2071,
+  "issue": 2067,
+  "title": "Improve SQL Beautify: use sql-formatter and support bind variables",
+  "issueTitle": "SQL Beautify operation cannot beautify upsert commands",
+  "mergedAt": "2026-03-02T12:55:54Z",
+  "mergeSha": "813a543baf8ef644b092869f09e69f946250c730",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "written",
+  "why": "The report gives an exact input and says the beautified output joins \"KEY\" and \"UPDATE\" into \"KEYUPDATE\" when they should be separated by a space, so the fixed build shows \"DUPLICATE KEY UPDATE\" and the buggy build does not."
+}

@@ -1,0 +1,22 @@
+{
+  "pr": 2025,
+  "issue": 2024,
+  "title": "Fix email regex",
+  "issueTitle": "Bug report: Extract email addresses does not match IP domains correctly",
+  "mergedAt": "2025-05-12T15:06:53Z",
+  "mergeSha": "2b1ceef6a3b57d207d13f12dbfec8292e69eec22",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.19.4",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.19.4"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.20.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.20.0"
+  },
+  "status": "written",
+  "why": "The report gives an exact input, the recipe, and the expected output: the fixed build extracts example@[127.0.0.1], and the buggy build's regex cannot match a bracketed IP that ends in a number, so its output stays empty."
+}

@@ -1,0 +1,26 @@
+{
+  "pr": 9386,
+  "issue": 9373,
+  "title": "[AI] Retry incomplete schedule advancement without blocking healthy schedules",
+  "issueTitle": "Distinguish unexpected schedule advancement failures while preserving schedule isolation",
+  "mergedAt": "2026-11-03T22:18:35Z",
+  "mergeSha": "479db6081b4ad4d92524999d92a300b8e2425e91",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261103",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261103"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261105",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261105"
+  },
+  "status": "not-testable",
+  "why": "The issue covers internal schedule-service error handling and retry bookkeeping (setNextDate failures, lastScheduleRun marking during sync) that only shows up through sync, corrupt schedule rules and date-dependent same-day retries, so no single visible fact a user could check on screen separates the fixed build from the buggy one."
+}

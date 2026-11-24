@@ -1,0 +1,22 @@
+{
+  "pr": 2161,
+  "issue": 1874,
+  "title": "[bugfix] #1874 Add Bootstrap form style for CodeMirror editor",
+  "issueTitle": "Bug report: CSS issue - Unable to focus 'Find' field using cursor",
+  "mergedAt": "2026-03-07T08:20:27Z",
+  "mergeSha": "15d7d5507ef2ebccb8cf2e1d314ad4283162d7f4",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "not-testable",
+  "why": "The bug only appears at certain panel widths, which you have to set by dragging the right-panel divider, and it is a CSS mouse-blocking problem rather than a wrong Output value, so there is no reliable visible fact to check at the default layout."
+}

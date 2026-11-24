@@ -1,0 +1,26 @@
+{
+  "pr": 9316,
+  "issue": 9315,
+  "title": "Fix template over-budget when a rule's schedule has a split with no category",
+  "issueTitle": "[Bug]: Schedule template over-budgets a category when the schedule's rule has a split with no category",
+  "mergedAt": "2026-10-29T15:02:31Z",
+  "mergeSha": "72924f9b270c6d5bbf7e846df558bed291f10784",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261029",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261029"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261030",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261030"
+  },
+  "status": "written",
+  "why": "The report gives exact reproduction steps and the exact correct result (30.00 budgeted, not 100.00), and everything happens locally with no server."
+}

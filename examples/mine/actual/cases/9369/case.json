@@ -1,0 +1,26 @@
+{
+  "pr": 9369,
+  "issue": 5957,
+  "title": "fix: keep line breaks in transaction notes when the notes field is only focused",
+  "issueTitle": "[Bug]: When focusing Notes field to select text - it removes a space in the text on unfocus",
+  "mergedAt": "2026-11-08T02:10:01Z",
+  "mergeSha": "68b660ece721d52297ae1a0afd40e5553a93ffc4",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261108",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261108"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261109",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261109"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows on notes imported from a bank (GoCardless/Danske Bank) that probably contain a hidden character such as a line break, which a user cannot type into the single-line Notes field, and the report says it does not know whether manually entered notes are affected."
+}

@@ -1,0 +1,26 @@
+{
+  "pr": 9307,
+  "issue": 5012,
+  "title": "[AI] Keep split child fields when updating a transaction through the API",
+  "issueTitle": "[Bug]: Calling API updateTransaction for a sub-transaction clears the category & amount",
+  "mergedAt": "2026-10-25T15:35:48Z",
+  "mergeSha": "160b2c99aa285362523eef4b63cb355778fcd954",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261025",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261025"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261026",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261026"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows up when the @actual-app/api Node package calls updateTransaction on a sub-transaction, and the report never says that editing a split's notes in the browser UI causes it, so a UI-only test can't reliably reproduce it."
+}

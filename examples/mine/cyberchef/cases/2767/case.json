@@ -1,0 +1,22 @@
+{
+  "pr": 2767,
+  "issue": 2746,
+  "title": "fix: preserve anchor tags with pre-existing target attribute in RenderMarkdown",
+  "issueTitle": "Bug report: six small defects found tracking master (duplicate operation, RenderMarkdown drops <a>, stale JSDoc, brittle test regexes, bare Error in 3 operations)",
+  "mergedAt": "2026-09-06T21:40:38Z",
+  "mergeSha": "ed31d45afdd13041e57a7fd6224f22f7d0e0ca4c",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.4.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.4.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.5.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.5.0"
+  },
+  "status": "not-testable",
+  "why": "Of the six defects, only #2 (RenderMarkdown) shows up in the UI, and its suggested repro doesn't trigger it: markdown-it passes a raw HTML <a ...target=...> tag through as inline HTML and never calls the link_open rule, while plain Markdown links never already have a target. Even when the bug fires, the visible text is the same; only whether it is a link changes, so no exact Output text tells the fixed build from the buggy one. The other five defects (a duplicate source file, stale JSDoc, test regexes, a test polyfill branch, and a test assertion) are not visible in the app at all."
+}

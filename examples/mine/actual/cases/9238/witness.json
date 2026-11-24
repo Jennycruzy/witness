@@ -1,0 +1,23 @@
+{
+  "tests": [
+    "rule_condition_notes_matches_accepts_a_v_test.md"
+  ],
+  "target": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261016",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261016"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261018",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261018"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

@@ -1,0 +1,22 @@
+{
+  "pr": 2461,
+  "issue": 2267,
+  "title": "Fix pgp tests",
+  "issueTitle": "Bug report: ECC keys from \"Generate PGP Key Pair\" operation are invalid",
+  "mergedAt": "2026-05-28T08:17:43Z",
+  "mergeSha": "772f7866bfcf243629a9134169b8d21ff37bc245",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.0.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.0.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.1.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.1.0"
+  },
+  "status": "not-testable",
+  "why": "Generated PGP keys and encrypted output are random, so there is no fixed text to check; seeing the bug means copying a generated key into PGP Encrypt (clipboard), and the second issue only affects expired keys in the test suite, which a user cannot see on screen."
+}

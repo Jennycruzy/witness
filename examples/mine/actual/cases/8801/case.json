@@ -1,0 +1,26 @@
+{
+  "pr": 8801,
+  "issue": 8743,
+  "title": "fix schedules not showing as paid",
+  "issueTitle": "[Bug]: Schedules not staying at top of list as [PAID] on the day they are scheduled for",
+  "mergedAt": "2026-08-28T09:32:59Z",
+  "mergeSha": "0f7957924934310d6fa88dd310c1cca12a3dd6d6",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260828",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260828"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260829",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260829"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows for a schedule that falls due on today's date and runs automatically, so the test would depend on the current date and on when the schedule runs, and the report never says exactly what text or position the fixed Schedules page shows."
+}

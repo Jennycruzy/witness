@@ -1,0 +1,22 @@
+{
+  "pr": 2058,
+  "issue": 2033,
+  "title": "Fix: Correctly parse xxd odd byte hexdumps",
+  "issueTitle": "Bug report: Hexdump format is not compatible with xxd",
+  "mergedAt": "2026-02-04T09:38:25Z",
+  "mergeSha": "fa34e2fafc5df9c7153676c5df6d8263094c12cb",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.20.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.20.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.21.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.21.0"
+  },
+  "status": "written",
+  "why": "The report gives an exact xxd hexdump of 'abcde' with an odd number of bytes. From Hexdump should turn it back into 'abcde', but the buggy build drops the last byte."
+}

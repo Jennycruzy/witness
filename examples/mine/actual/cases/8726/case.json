@@ -1,0 +1,26 @@
+{
+  "pr": 8726,
+  "issue": 8725,
+  "title": "[AI] Default new transaction amount filters to positive values",
+  "issueTitle": "[Bug]: Filter on \"Amount\" field is not working as expected",
+  "mergedAt": "2026-08-21T10:04:56Z",
+  "mergeSha": "543622a5bb8e13d44d230c4e12243df54022979a",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260821",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260821"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260822",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260822"
+  },
+  "status": "written",
+  "why": "The report gives a clear expected result (an Amount 'greater than 150' filter lists only transactions above 150), and two deposits on either side of 150 show it on screen without needing a server, sync or special setup."
+}

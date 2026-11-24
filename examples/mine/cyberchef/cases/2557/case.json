@@ -1,0 +1,22 @@
+{
+  "pr": 2557,
+  "issue": 2556,
+  "title": "Security: Add fix, and tests, for Lorem Ipsum DoS issue",
+  "issueTitle": "Bug report: (Security) DoS vulnerability in Lorem Ipsum Operation",
+  "mergedAt": "2026-06-13T07:53:15Z",
+  "mergeSha": "894560f6ce2ef91d62290ad9745e5fa4ca29e321",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.0.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.0.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.1.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.1.0"
+  },
+  "status": "not-testable",
+  "why": "The report only says the fixed app should show 'an error' without giving its text, and the buggy behavior is a long hang and tab crash, so the test would depend on slowness rather than on one exact visible fact."
+}

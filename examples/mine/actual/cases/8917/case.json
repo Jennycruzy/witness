@@ -1,0 +1,26 @@
+{
+  "pr": 8917,
+  "issue": 7297,
+  "title": "[AI] Only show stacked bar tooltip truncation indicator when categories are hidden",
+  "issueTitle": "[Bug]: Custom report widget of barchart mouseover legend is truncated incorrectly",
+  "mergedAt": "2026-09-29T01:00:09Z",
+  "mergeSha": "2420942e889f0dfdb4ff119bec90ca2bb2de40e1",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260929",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260929"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260930",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260930"
+  },
+  "status": "not-testable",
+  "why": "Reproducing it needs spending in more than four categories across several months, plus a saved custom report added as a dashboard widget. You then have to hover over chart bars to see a tooltip, and the report never says what the tooltip should show, so there is no exact text to check."
+}

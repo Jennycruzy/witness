@@ -1,0 +1,26 @@
+{
+  "pr": 9173,
+  "issue": 9167,
+  "title": "[AI] Preserve skipped schedule dates when editing schedules",
+  "issueTitle": "[Bug]: Editing a schedule brings back an occurrence that was skipped",
+  "mergedAt": "2026-10-30T03:59:04Z",
+  "mergeSha": "8e6eb272a792fbdfdb70d03e0bc9ec551d9eccb2",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261030",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261030"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261031",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261031"
+  },
+  "status": "written",
+  "why": "The report says that after you skip the next occurrence of a monthly schedule with an account and then rename it, the buggy build puts the status back to Due, while the fixed build keeps it Scheduled."
+}

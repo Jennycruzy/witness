@@ -1,0 +1,26 @@
+{
+  "pr": 9056,
+  "issue": 9047,
+  "title": "fix: keep loading off-screen dashboard widgets after toggling edit mode",
+  "issueTitle": "[Bug]: Off screen reports don't load if editing page quickly",
+  "mergedAt": "2026-10-02T18:08:52Z",
+  "mergeSha": "a74830ff8b2e14f774cb8cd29bf73f8893b991d1",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261003",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261003"
+  },
+  "status": "not-testable",
+  "why": "The bug depends on timing (clicking Edit Dashboard while widgets are still loading), needs a dashboard with many widgets that are off screen, and the report gives no exact visible text to check, so the outcome cannot be checked reliably."
+}

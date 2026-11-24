@@ -1,0 +1,26 @@
+{
+  "pr": 9360,
+  "issue": 9359,
+  "title": "[AI] Keep the search applied after toggling reconciled transactions",
+  "issueTitle": "[Bug]: Search is no longer applied after toggling reconciled transactions",
+  "mergedAt": "2026-10-28T18:16:23Z",
+  "mergeSha": "38ba95dcdc2c602b95d3a727420f9f44b5172d6c",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261028",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261028"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261029",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261029"
+  },
+  "status": "written",
+  "why": "The report gives clear steps and the expected result: after toggling reconciled transactions, the list should still show only the transactions that match the search text, so a transaction that does not match must stay hidden."
+}

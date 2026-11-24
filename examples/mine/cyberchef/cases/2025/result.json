@@ -1,0 +1,11 @@
+{
+  "pr": 2025,
+  "issue": 2024,
+  "result": "KEPT",
+  "why": "The email extraction feature did not recognize or return the supplied valid bracketed-IP email address.",
+  "at": "2026-11-24T19:41:27.240Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.98,
+  "credits": 2.1128
+}

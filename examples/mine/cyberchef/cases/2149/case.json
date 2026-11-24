@@ -1,0 +1,22 @@
+{
+  "pr": 2149,
+  "issue": 2411,
+  "title": "Add Modular Exponentiation operation",
+  "issueTitle": "Bug report: `npm run testui` fails intermittently",
+  "mergedAt": "2026-07-25T07:00:07Z",
+  "mergeSha": "f6a46311301c9b51e5805f2741dd07c2e388e627",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.4.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.4.0"
+  },
+  "status": "not-testable",
+  "why": "The report describes an intermittent timing failure in the Nightwatch UI test suite (the stale indicator sometimes stays visible past a 5-second timeout), so it depends on timing and slowness, and it names no deterministic output a user could check."
+}

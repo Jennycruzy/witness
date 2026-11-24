@@ -1,0 +1,19 @@
+{
+  "tests": [
+    "loading_a_saved_recipe_keeps_the_transla_test.md"
+  ],
+  "target": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.0.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v11.0.0"
+  },
+  "reference": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.1.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v11.1.0"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

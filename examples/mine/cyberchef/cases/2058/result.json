@@ -1,0 +1,11 @@
+{
+  "pr": 2058,
+  "issue": 2033,
+  "result": "KEPT",
+  "why": "The hex conversion stopped before processing the final byte, so the last character was left out.",
+  "at": "2026-11-24T19:46:16.180Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.99,
+  "credits": 2.14325
+}

@@ -1,0 +1,22 @@
+{
+  "pr": 2290,
+  "issue": 2247,
+  "title": "fix Dechunk HTTP Response leaks terminating chunk and trailers into output",
+  "issueTitle": "Bug report: Dechunk HTTP Response leaks terminating chunk and trailers into output",
+  "mergedAt": "2026-06-20T09:49:48Z",
+  "mergeSha": "08e5c13da4b2404e824a8e358f1093393ee41780",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report's own reproduction input, a chunked body ending in a zero-length chunk followed by an Expires trailer, should decode to just the chunk data, but the buggy build adds the trailer text to the output."
+}

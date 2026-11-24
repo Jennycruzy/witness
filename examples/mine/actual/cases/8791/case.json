@@ -1,0 +1,26 @@
+{
+  "pr": 8791,
+  "issue": 8775,
+  "title": "[AI] Fix schedule service shutdown race",
+  "issueTitle": "[Bug]: API: schedule service crashes when shutdown wins the race with its queued run",
+  "mergedAt": "2026-10-30T09:06:46Z",
+  "mergeSha": "e82ea4dc3594e7e0c32ba7b1039913c19e6ce9f9",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261030",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261030"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261031",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261031"
+  },
+  "status": "not-testable",
+  "why": "The bug is a rare timing race in the Node API (@actual-app/api) between shutdown() and a queued schedule service, and it needs a sync server, a specific budget metadata.json, and many repeated runs, none of which a single browser test can reproduce."
+}

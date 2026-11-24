@@ -1,0 +1,22 @@
+{
+  "pr": 2391,
+  "issue": 419,
+  "title": "feat: add Escape Smart Characters operation",
+  "issueTitle": "Operation request: Escape Smart Characters",
+  "mergedAt": "2026-06-05T12:44:21Z",
+  "mergeSha": "c9298191890e46b77479a079523728f261e59653",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.0.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.0.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.1.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.1.0"
+  },
+  "status": "not-testable",
+  "why": "This is a request for a new operation, so the operation's name in the fixed build is unknown, and the report's own example is inconsistent (the space before the arrow disappears and the arrow and dash mappings are unclear), so the exact correct output cannot be known for certain."
+}

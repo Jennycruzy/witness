@@ -1,0 +1,26 @@
+{
+  "pr": 8763,
+  "issue": 8760,
+  "title": "[AI] Fix category and group menus not opening after a rename",
+  "issueTitle": "[Bug]: Dropdown menu for groups/categories disabled after rename unless you refresh browser tab",
+  "mergedAt": "2026-08-31T05:00:52Z",
+  "mergeSha": "5cf13920d569c1143f16444c73c23a476fbe4f72",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260831",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260831"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260901",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260901"
+  },
+  "status": "written",
+  "why": "The report gives clear local steps: rename a category on the Budget page, then open its dropdown menu again. On the buggy build the menu does not appear, and on the fixed build it opens with its Rename option."
+}

@@ -1,0 +1,10 @@
+{
+  "repo": "gchq/CyberChef",
+  "since": "2024-01-01",
+  "until": "2026-11-15",
+  "paths": ["src/core/", "src/web/"],
+  "skip": ["file", "upload", "download", "clipboard", "drag", "node api", "worker", "firefox", "safari", "mobile", "magic", "dependency", "bump"],
+  "builds": { "release": "gchq/CyberChef", "asset": "^CyberChef_.*\\.zip$" },
+  "notes": "notes.md",
+  "max": 30
+}

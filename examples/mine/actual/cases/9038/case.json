@@ -1,0 +1,26 @@
+{
+  "pr": 9038,
+  "issue": 8853,
+  "title": "fix: point the tour's \"To Budget\" step at a displayed month",
+  "issueTitle": "[Bug]: tour points to non-existent \"To Budget\" when non-current month is selected",
+  "mergedAt": "2026-09-29T12:34:17Z",
+  "mergeSha": "6da9f6ac7842495d55d51270f767b9cd4aef6a0e",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260929",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260929"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260930",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260930"
+  },
+  "status": "not-testable",
+  "why": "The report says the tour's \"To Budget\" step points at the wrong place when another month is shown, but it never says what the fixed tour should show (jump back to the current month, skip the step, or point at a different element), so there is no exact visible text to check for."
+}

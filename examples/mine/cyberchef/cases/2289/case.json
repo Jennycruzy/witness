@@ -1,0 +1,22 @@
+{
+  "pr": 2289,
+  "issue": 2245,
+  "title": "fix TLV Parser BER long-form length parsing",
+  "issueTitle": "Bug report: TLV Parser produces incorrect BER-encoded lengths",
+  "mergedAt": "2026-06-20T07:59:31Z",
+  "mergeSha": "0a0d95bcbd7fece2004b77b540f2d3089f171b46",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report gives a concrete input where the long-form BER length bytes 82 00 05 must be read as 5. The fixed parser shows a length of 5 for the first entry. The buggy parser misreads it as 130, so a length of 5 never appears."
+}

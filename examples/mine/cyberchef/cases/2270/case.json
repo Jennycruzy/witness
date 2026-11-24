@@ -1,0 +1,22 @@
+{
+  "pr": 2270,
+  "issue": 2217,
+  "title": "fix: fromDecimal Auto delimiter now correctly parses multiple numbers",
+  "issueTitle": "Bug report: fromDecimal(...) function does not correctly handle delim parameter passed as default (\"Auto\")",
+  "mergedAt": "2026-07-18T10:10:41Z",
+  "mergeSha": "5a01c710986db2dd774a836dc1194123366c8191",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "not-testable",
+  "why": "The bug is in the internal fromDecimal helper when its delimiter is \"Auto\" or left unset, but the From Decimal operation's Delimiter dropdown only offers fixed choices like Space and Comma, and the report doesn't say which visible operation (only a pointer to #2139) or which input and expected output would show the bug on screen."
+}

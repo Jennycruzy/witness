@@ -1,0 +1,18 @@
+{
+  "test_id": "7abe7f12-38c0-4c72-a9dc-ffb1f328916e",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "parse_ip_range_reports_the_network_addre",
+  "commit_id": "5a8a0ee7-5212-454e-a13f-58940579b7f7",
+  "testcase_id": "01M872C9EBTEQ5YTQT9WWK66FK",
+  "executions": [
+    {
+      "execution_id": "3dad2cec-6a9b-4f0c-99b3-f37864093874",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T15:23:38.589Z"
+    }
+  ]
+}

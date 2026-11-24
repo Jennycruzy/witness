@@ -1,0 +1,22 @@
+{
+  "pr": 2210,
+  "issue": 2209,
+  "title": "Fix Jq issue",
+  "issueTitle": "Bug report: jq operation broken in latest update",
+  "mergedAt": "2026-03-19T11:47:31Z",
+  "mergeSha": "d9dacf6b8fe064ff56037f1a52b0ada509d5dda4",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "written",
+  "why": "The report gives a concrete recipe (jq filter \".a\" on {\"a\": 1}): a working jq returns the value of a, but the buggy build always shows an error message in the Output box."
+}

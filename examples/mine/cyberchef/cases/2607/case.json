@@ -1,0 +1,22 @@
+{
+  "pr": 2607,
+  "issue": 2567,
+  "title": "Fix BigNumber deserialisation in Dish, and add tests",
+  "issueTitle": "Bug report: Sum not working on list of numbers",
+  "mergedAt": "2026-06-26T12:07:33Z",
+  "mergeSha": "275b594f7c8b0e39880f55e7c1f67dc0a4e73f92",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report gives the exact recipe and input, and the expected result is the sum of the listed numbers (92+21392+20437+20221+10857+12474+16607+19655+18221+20587+14631+17175+20496+16385+16188+14440+12327+5393 = 277578). The buggy build stays on Baking and never shows it."
+}

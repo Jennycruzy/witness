@@ -1,0 +1,26 @@
+{
+  "pr": 8756,
+  "issue": 8754,
+  "title": "[AI] Fix phantom overspending after deleting a category",
+  "issueTitle": "[Bug]: Deleting Certain Categories Creates Irreconcilable Phantom Overspend",
+  "mergedAt": "2026-08-20T14:33:54Z",
+  "mergeSha": "8f2b8fcb61e53f45a286a303b103cebd710b9596",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260820",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260820"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260821",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260821"
+  },
+  "status": "written",
+  "why": "The report gives a full from-scratch repro using one account, two categories, a deposit, a budget transfer and a category delete. In the next month the fixed app should show no overspend, while the buggy app shows a phantom 10.00 overspent."
+}

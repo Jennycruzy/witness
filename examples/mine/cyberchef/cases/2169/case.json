@@ -1,0 +1,22 @@
+{
+  "pr": 2169,
+  "issue": 2168,
+  "title": "Remove version 10 message from banner",
+  "issueTitle": "CyberChef banner is outdated",
+  "mergedAt": "2026-02-03T15:12:41Z",
+  "mergeSha": "96c93b95f21ffd63dc5619541681cf07641fc56c",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.20.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.20.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.21.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.21.0"
+  },
+  "status": "not-testable",
+  "why": "The report only asks to replace or remove the 'Version 10 is here!' banner and never says what the fixed app should show, so there is no exact expected text to check."
+}

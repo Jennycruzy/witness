@@ -1,0 +1,26 @@
+{
+  "pr": 9374,
+  "issue": 8856,
+  "title": "fix: reject invalid category group updates (#8856)",
+  "issueTitle": "[Bug]: A category with group=null is silently dropped by getCategories() and crashes updateCategory()",
+  "mergedAt": "2026-10-31T16:36:37Z",
+  "mergeSha": "5897cfa65afec3d0252d7467e5b7a033fb66900b",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261031",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261031"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261101",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261101"
+  },
+  "status": "not-testable",
+  "why": "The bug can only be triggered through the @actual-app/api scripting interface (setting a category's group to null), which a user cannot do on screen, and the report says nothing about any visible symptom in the UI."
+}

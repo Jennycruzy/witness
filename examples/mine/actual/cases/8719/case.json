@@ -1,0 +1,26 @@
+{
+  "pr": 8719,
+  "issue": 6486,
+  "title": "[AI] Fix duplicate payees in rules after merging payees (#6486)",
+  "issueTitle": "[Bug]: Duplicate entry in rule one of list after payee name merge",
+  "mergedAt": "2026-08-21T02:54:07Z",
+  "mergeSha": "668c96fdc53a59b42b3b6ba30789f97024f5fd58",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260821",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260821"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260822",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260822"
+  },
+  "status": "not-testable",
+  "why": "The report gives no exact text for how the fixed rule should look after the merge, and the only visible difference is how many times one payee name appears in the \"one of\" list, which is a count rather than one fixed piece of text; setting it up also takes payee creation, rule creation and a rule-merging payee merge, which does not fit reliably in 2 to 6 steps."
+}

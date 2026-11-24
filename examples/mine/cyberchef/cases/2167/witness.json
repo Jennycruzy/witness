@@ -1,0 +1,19 @@
+{
+  "tests": [
+    "regular_expression_built_in_email_addres_test.md"
+  ],
+  "target": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "reference": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.24.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v10.24.0"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

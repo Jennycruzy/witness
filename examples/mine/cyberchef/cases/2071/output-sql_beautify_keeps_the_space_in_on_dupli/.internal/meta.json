@@ -1,0 +1,18 @@
+{
+  "test_id": "844bc6de-1f9e-4ccf-84fe-bb16baf8b1fb",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "sql_beautify_keeps_the_space_in_on_dupli",
+  "commit_id": "b50d5a91-5dcf-4e43-9cd5-93351b7f845f",
+  "testcase_id": "01M87HRV8183GCE0E9C2JQATAG",
+  "executions": [
+    {
+      "execution_id": "937312d6-19cd-4c12-8d07-75e4286e3512",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T19:52:33.976Z"
+    }
+  ]
+}

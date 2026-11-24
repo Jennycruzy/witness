@@ -1,0 +1,19 @@
+{
+  "tests": [
+    "offset_checker_shows_an_html_sample_deli_test.md"
+  ],
+  "target": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "reference": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

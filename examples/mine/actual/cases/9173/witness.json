@@ -1,0 +1,23 @@
+{
+  "tests": [
+    "renaming_a_schedule_keeps_its_skipped_oc_test.md"
+  ],
+  "target": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261030",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261030"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261031",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261031"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

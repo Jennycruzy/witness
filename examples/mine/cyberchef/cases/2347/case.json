@@ -1,0 +1,22 @@
+{
+  "pr": 2347,
+  "issue": 1960,
+  "title": "Node version update from 22 to 24",
+  "issueTitle": "Support Node 24",
+  "mergedAt": "2026-04-28T12:18:03Z",
+  "mergeSha": "1fdd2ecf208720eab3385eb75896b5d944558419",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.24.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.24.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.0.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.0.0"
+  },
+  "status": "not-testable",
+  "why": "This is an infrastructure task to upgrade the Node version and dependencies, and it describes no user-visible wrong behavior or correct output in the browser app."
+}

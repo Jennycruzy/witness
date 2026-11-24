@@ -1,0 +1,26 @@
+{
+  "pr": 8733,
+  "issue": 6056,
+  "title": "Fix amount resetting to zero (#6056)",
+  "issueTitle": "[Bug]: Entering an amount and then pressing Cleared toggle clears the amount",
+  "mergedAt": "2026-08-17T17:12:52Z",
+  "mergeSha": "fa3cced1d163eaa2bd43caf53d663139513e89b0",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260817",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260817"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260818",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260818"
+  },
+  "status": "not-testable",
+  "why": "The bug is only in the mobile Add Transaction page with its Cleared toggle and on-screen keyboard, which needs a mobile layout; the rules exclude that, so this desktop Chrome 1920x1080 run can't reproduce it."
+}

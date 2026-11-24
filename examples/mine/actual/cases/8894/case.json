@@ -1,0 +1,26 @@
+{
+  "pr": 8894,
+  "issue": 8522,
+  "title": "[AI] Keep focus on parent payment when enabling split",
+  "issueTitle": "[Bug]: Creating a split transaction directly jumps to the first split line.",
+  "mergedAt": "2026-10-05T16:00:43Z",
+  "mergeSha": "c72ce699b3f17850b647b9ab99c7d8d8bb00b1c7",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261005",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261005"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261006",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261006"
+  },
+  "status": "not-testable",
+  "why": "The bug is only about where keyboard focus lands after choosing Split with the keyboard, and the report names no visible text that differs; Kane replays typing into the field it recorded, so the test would pass on the buggy build too."
+}

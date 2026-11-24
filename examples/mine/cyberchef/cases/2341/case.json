@@ -1,0 +1,22 @@
+{
+  "pr": 2341,
+  "issue": 646,
+  "title": "Fix option ingredients being overwriten",
+  "issueTitle": "Bug report: Translate_DateTime_Format doesn't use included parameters when loading from a saved recipe",
+  "mergedAt": "2026-06-02T19:35:22Z",
+  "mergeSha": "89b5c7dee32a811f7c7cb06c07aaec1f8f226f44",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.0.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.0.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.1.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.1.0"
+  },
+  "status": "written",
+  "why": "The report gives the exact saved recipe and shows the app replacing the input format argument with the default, so loading that recipe and reading the Input format field shows whether the saved value was kept."
+}

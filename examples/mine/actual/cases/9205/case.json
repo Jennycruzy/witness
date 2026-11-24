@@ -1,0 +1,26 @@
+{
+  "pr": 9205,
+  "issue": 9200,
+  "title": "[AI] preserve category when making transfer between on/off-budget accounts",
+  "issueTitle": "[Bug]: Category is cleared when transactions are changed to a transfer",
+  "mergedAt": "2026-10-14T13:35:09Z",
+  "mergeSha": "1c852e48828921f8e14687a2f3ca7c2d5be932cb",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261014",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261014"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261015",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261015"
+  },
+  "status": "written",
+  "why": "The report gives clear local steps: on fixed builds the on-budget transaction keeps its category when it becomes a transfer to an off-budget account, and on buggy builds the Category cell is empty."
+}

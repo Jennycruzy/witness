@@ -1,0 +1,19 @@
+{
+  "tests": [
+    "to_html_entity_encodes_as_a_well_formed__test.md"
+  ],
+  "target": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "reference": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

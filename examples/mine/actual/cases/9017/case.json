@@ -1,0 +1,26 @@
+{
+  "pr": 9017,
+  "issue": 5724,
+  "title": "fix: match \"is nothing\" rule conditions on transactions without a payee or category",
+  "issueTitle": "[Bug]: Rule with payee is \"nothing\" never matching",
+  "mergedAt": "2026-10-03T14:15:23Z",
+  "mergeSha": "b490e3e76e43dd0920445bc1a2382afe7c99fbf8",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261003",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261003"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261004",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261004"
+  },
+  "status": "not-testable",
+  "why": "The report is about rules not running on transactions imported by bank sync (Pluggy), and the rule's conditions and actions are only in a screenshot I can't see, so the correct result can't be worked out with certainty or reproduced without a sync server."
+}

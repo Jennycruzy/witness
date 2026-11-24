@@ -1,0 +1,19 @@
+{
+  "tests": [
+    "from_hexdump_keeps_the_final_byte_of_an__test.md"
+  ],
+  "target": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.20.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v10.20.0"
+  },
+  "reference": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.21.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v10.21.0"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

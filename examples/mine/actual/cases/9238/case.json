@@ -1,0 +1,26 @@
+{
+  "pr": 9238,
+  "issue": 6317,
+  "title": "[AI] Match nothing for an invalid regex instead of failing the rule preview",
+  "issueTitle": "[Bug]: Rules notes with matches has a bug",
+  "mergedAt": "2026-10-16T23:37:23Z",
+  "mergeSha": "253823d390dce8c460fdc3da1c3a20552931da06",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261016",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261016"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261018",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261018"
+  },
+  "status": "written",
+  "why": "The report says typing a backslash into a Notes 'matches' rule condition makes the app show an error ('A bug happened!'), so a fixed build should still show the rule editor with the typed text in the value field."
+}

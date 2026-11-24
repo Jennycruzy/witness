@@ -1,0 +1,22 @@
+{
+  "pr": 2766,
+  "issue": 2746,
+  "title": "fix: use OperationError instead of bare Error in MOD, LuhnChecksum, a…",
+  "issueTitle": "Bug report: six small defects found tracking master (duplicate operation, RenderMarkdown drops <a>, stale JSDoc, brittle test regexes, bare Error in 3 operations)",
+  "mergedAt": "2026-09-05T07:31:52Z",
+  "mergeSha": "d3a9667c92cd3745a38180999f81a9db5c13ec38",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.4.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.4.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.5.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.5.0"
+  },
+  "status": "not-testable",
+  "why": "Only defect 2 touches the UI, and its visible text is the same either way: a missing opening <a> tag leaves the link text \"x\" in the rendered Output, and the report gives no on-screen result that differs between the fixed and buggy builds (raw HTML anchors are likely html_inline tokens that never reach link_open anyway); the other five defects are in source code, tests or JSDoc."
+}

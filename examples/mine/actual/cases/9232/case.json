@@ -1,0 +1,26 @@
+{
+  "pr": 9232,
+  "issue": 3175,
+  "title": "[AI] fix transaction search treating digits inside a word as an amount",
+  "issueTitle": "[Bug]: Search not working as expected.",
+  "mergedAt": "2026-10-30T08:15:38Z",
+  "mergeSha": "a6a989823b65b8cd096cbd2b68525721d74266ff",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261030",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261030"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261031",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261031"
+  },
+  "status": "written",
+  "why": "The report says a search for XF 35mm does not find transactions that contain that text, so a transaction with \"XF 35mm\" in its notes should show up when the account is searched for XF 35mm."
+}

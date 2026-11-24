@@ -1,0 +1,11 @@
+{
+  "pr": 2694,
+  "issue": 1950,
+  "result": "KEPT",
+  "why": "The IP-range result is showing the entered device address on the Network line rather than the network address calculated from the /24 range.",
+  "at": "2026-11-24T15:21:46.553Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.99,
+  "credits": 2.1620999999999997
+}

@@ -1,0 +1,26 @@
+{
+  "pr": 9318,
+  "issue": 7419,
+  "title": "fix: exclude income from spending analysis budget",
+  "issueTitle": "[Bug]: Spending Analysis in Tracking Budget uses wrong amount.",
+  "mergedAt": "2026-10-25T16:26:01Z",
+  "mergeSha": "e1254b5ac9f8a21f1c3dba31041d5adec6d693bd",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261025",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261025"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261026",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261026"
+  },
+  "status": "not-testable",
+  "why": "The reporter says their steps may not be correct, the wrong and right values exist only in screenshots, and the check means reading the last point of a day-based chart, so I can't name one certain visible value the fixed app shows and the buggy app doesn't."
+}

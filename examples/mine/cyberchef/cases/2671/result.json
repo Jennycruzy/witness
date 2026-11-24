@@ -1,0 +1,11 @@
+{
+  "pr": 2671,
+  "issue": 2645,
+  "result": "KEPT",
+  "why": "The HTML entity conversion produces an extra semicolon at the end of the output.",
+  "at": "2026-11-24T15:16:57.982Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.99,
+  "credits": 2.01245
+}

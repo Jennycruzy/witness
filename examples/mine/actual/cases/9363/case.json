@@ -1,0 +1,26 @@
+{
+  "pr": 9363,
+  "issue": 8574,
+  "title": "[AI] Keep transactions after sorting by date with hidden reconciled ones",
+  "issueTitle": "[Bug]: Sorting descending by date causes entries to disappear",
+  "mergedAt": "2026-10-29T15:59:41Z",
+  "mergeSha": "c7904f00db5eb5f8e410595f3ee58655521fe405",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261029",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261029"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261030",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261030"
+  },
+  "status": "written",
+  "why": "The report gives clear steps (sort an on-budget account by date descending) and says what should happen: the entries should stay visible, so a transaction added beforehand must still be listed after sorting."
+}

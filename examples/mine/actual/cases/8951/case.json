@@ -1,0 +1,26 @@
+{
+  "pr": 8951,
+  "issue": 8865,
+  "title": "[AI] fix(schedules): allow auto-posting to run again the same day",
+  "issueTitle": "[Bug]: Automatic scheduled transaction posting a day late— Desktop 26.9.0",
+  "mergedAt": "2026-10-02T18:15:43Z",
+  "mergeSha": "df4dc0d6cccbaf7d3e3ced6b703b15b69e895965",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261003",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261003"
+  },
+  "status": "not-testable",
+  "why": "The bug depends on today's date, the time zone and the schedule's due-date timing (it posts a day late, on the Windows desktop app), so no fixed visible fact can be checked the same way on every run without dates or a time zone."
+}

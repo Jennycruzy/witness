@@ -1,0 +1,26 @@
+{
+  "pr": 8946,
+  "issue": 6959,
+  "title": ":hedgehog:  Speeding up large budgets by only running rules when needed",
+  "issueTitle": "[Bug]: Balance calculation for rule application making schedule preview transactions slow",
+  "mergedAt": "2026-09-18T16:23:53Z",
+  "mergeSha": "df0cfe3489b046532b655bb9d227944ab77cdeff",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260918",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260918"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260919",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260919"
+  },
+  "status": "not-testable",
+  "why": "The report is about performance: preview transactions load slowly in very large accounts because rules recalculate the balance. The fixed and buggy builds show the same values on screen, so the only difference is timing, and that needs a large data set."
+}

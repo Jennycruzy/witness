@@ -1,0 +1,22 @@
+{
+  "pr": 2412,
+  "issue": 2411,
+  "title": "Fix flaky `npm run testui`",
+  "issueTitle": "Bug report: `npm run testui` fails intermittently",
+  "mergedAt": "2026-05-20T17:33:40Z",
+  "mergeSha": "ad20c91f5b14072d39c1f8f2651bd44dc746c2b6",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.0.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.0.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.1.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.1.0"
+  },
+  "status": "not-testable",
+  "why": "The report is about the test suite intermittently timing out on the stale indicator. It is a timing and flakiness problem with no clear correct output, so the fixed and buggy builds cannot be told apart by one fixed visible result."
+}

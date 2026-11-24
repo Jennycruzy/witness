@@ -1,0 +1,26 @@
+{
+  "pr": 9212,
+  "issue": 3808,
+  "title": "[AI] Show the running balance when sorted by date oldest first",
+  "issueTitle": "[Bug]: Running balance not visible when sortin by oldest transaction first",
+  "mergedAt": "2026-11-09T16:00:26Z",
+  "mergeSha": "5c9a81833d2f4314ad11eda9e3ccd60a5c3cbd3e",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261109",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261109"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261110",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261110"
+  },
+  "status": "written",
+  "why": "The report gives clear steps and an exact expected result: the running balance column should still show after sorting by Date oldest-first. With a single deposit, the balance value is certain."
+}

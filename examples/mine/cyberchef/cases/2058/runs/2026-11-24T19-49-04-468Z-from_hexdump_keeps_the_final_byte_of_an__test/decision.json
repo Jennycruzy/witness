@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2058/from_hexdump_keeps_the_final_byte_of_an__test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.99,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.99,
+        "rootCause": "The hex conversion stopped before processing the final byte, so the last character was left out."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/f7957e36-066c-4623-bb61-3f72300c4135/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.14325,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

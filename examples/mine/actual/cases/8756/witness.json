@@ -1,0 +1,23 @@
+{
+  "tests": [
+    "deleting_a_category_that_had_a_deposit_a_test.md"
+  ],
+  "target": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260820",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260820"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260821",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260821"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

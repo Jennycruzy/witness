@@ -8,6 +8,7 @@ export interface BuildRef {
   serve?: string;                                              // shell command that serves this build (an app with its own server); gets {port} and {data}
   npm?: string; version?: string; buildDir?: string;          // a published build on npm (newest release when no version)
   git?: string; build?: string; repo?: string; workdir?: string; // a git ref, built in a worktree; dir = its output folder
+  release?: string; tag?: string; asset?: string;              // a GitHub release asset (zip or tar.gz of a static build): owner/name, tag, asset name pattern
   kane?: { target: 'emulator' | 'simulator' | 'android' | 'ios'; app: string; deviceName?: string; osVersion?: string };  // a mobile app build instead of a web page
   label?: string;
 }
@@ -54,7 +55,7 @@ export function loadConfig(path: string): WitnessConfig {
   const c = JSON.parse(readFileSync(path, 'utf8')) as WitnessConfig;
   const abs = (p?: string) => (p && !isAbsolute(p) ? resolve(base, p) : p);
   c.tests = c.tests.map(t => abs(t)!);
-  for (const b of [c.target, c.reference]) { if (!b.git) b.dir = abs(b.dir); b.profile = abs(b.profile); b.repo = abs(b.repo); if (b.kane?.app && !/^APP/.test(b.kane.app)) b.kane.app = abs(b.kane.app)!; }
+  for (const b of [c.target, c.reference]) { if (!b.git && !b.release) b.dir = abs(b.dir); b.profile = abs(b.profile); b.repo = abs(b.repo); if (b.kane?.app && !/^APP/.test(b.kane.app)) b.kane.app = abs(b.kane.app)!; }
   if (c.fix) c.fix.cwd = abs(c.fix.cwd)!;
   c.evidenceDir = abs(c.evidenceDir ?? '.witness/runs');
   c.cacheDir = abs(c.cacheDir ?? '.witness/builds');

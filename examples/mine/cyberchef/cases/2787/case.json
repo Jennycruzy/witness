@@ -1,0 +1,22 @@
+{
+  "pr": 2787,
+  "issue": 1807,
+  "title": "fix: prevent LM Hash crash on inputs that expand when uppercased (#1807)",
+  "issueTitle": "Bug report: Generate all hashes - RangeError. Message: Out of range index",
+  "mergedAt": "2026-09-09T17:13:46Z",
+  "mergeSha": "4855e6a406cb4f68d490e01d69108da5ad304777",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.4.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.4.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.5.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.5.0"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows with random bytes from the Pseudo-Random Number Generator, so the input and the hash list change on every run, and the report does not give any fixed input that is known to cause the error."
+}

@@ -1,0 +1,26 @@
+{
+  "pr": 8829,
+  "issue": 8633,
+  "title": "[AI] Keep net worth stable across transfer dates",
+  "issueTitle": "[Bug]: Net worth widget incorrectly shows change when transferring between accounts",
+  "mergedAt": "2026-09-06T22:54:08Z",
+  "mergeSha": "1e1c203582792895e22c83f08e043948d870b12a",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260906",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260906"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260908",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260908"
+  },
+  "status": "not-testable",
+  "why": "The bug shows up only as a shape in the net worth graph across months relative to today's date, and the report doesn't give an exact visible text value that the fixed app shows and the buggy app doesn't, so there's no single reliable fact to verify."
+}

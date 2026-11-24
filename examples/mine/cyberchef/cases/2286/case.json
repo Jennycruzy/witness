@@ -1,0 +1,22 @@
+{
+  "pr": 2286,
+  "issue": 2241,
+  "title": "fix Set Difference and Set Intersection preserve duplicates from first sample",
+  "issueTitle": "Bug report: Set Difference and Set Intersection preserve duplicates from first sample",
+  "mergedAt": "2026-06-20T07:52:57Z",
+  "mergeSha": "5a2eeed06680080e0a29c31ce3740740b840f0fe",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report gives exact input and expected output for Set Difference with the default delimiters: the fixed app shows \"red\" and the buggy app shows \"red,red\"."
+}

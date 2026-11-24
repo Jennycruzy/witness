@@ -3,6 +3,7 @@
 // witness fix <test> [witness.json]     app bug -> agent fix -> rebuild -> prove with the unchanged recording
 // witness record <test> [witness.json]   record the test's steps with Kane on the reference build (or newest release)
 // witness classify <target.ndjson> <reference.ndjson>   decide from two saved Kane runs
+// witness mine plan|run <mine.json>     merged bug fixes -> agent-written Kane tests -> kept when fixed passes and buggy fails
 // witness demo                           one real case from the committed runs, then every number recomputed (no login)
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -21,6 +22,7 @@ import { record } from './commands/record.js';
 import { demo, evidenceRoot } from './commands/demo.js';
 import { renderReport } from './core/report.js';
 import { startLive } from './commands/live.js';
+import { minePlan, mineRun, summarize, loadMine } from './commands/mine.js';
 
 const [cmd, a, b] = process.argv.slice(2);
 
@@ -35,6 +37,14 @@ async function main(): Promise<number> {
     console.log(`  VERDICT    ${d.verdict}: ${d.why}`);
     console.log(`  next       ${d.next}`);
     return d.verdict === 'APP_BUG' || d.verdict === 'TEST_PROBLEM' ? 2 : 0;
+  }
+  if (cmd === 'mine' && (a === 'plan' || a === 'run' || a === 'summary') && b) {
+    // witness mine plan|run|summary <mine.json> [--only <pr>]
+    const oi = process.argv.indexOf('--only');
+    if (a === 'plan') await minePlan(b);
+    else if (a === 'run') await mineRun(b, console.log, oi > 0 ? process.argv[oi + 1] : undefined);
+    else summarize(loadMine(b).outDir);
+    return 0;
   }
   if (cmd === 'guard') {
     // witness guard [witness.json] [--only <test name or file>]
@@ -134,7 +144,7 @@ async function main(): Promise<number> {
     console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
     return 0;
   }
-  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] [--teach] | witness teach <evidence dir> <test_md> [witness.json] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness classify <target.ndjson> <reference.ndjson>');
+  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] [--teach] | witness teach <evidence dir> <test_md> [witness.json] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness mine plan|run|summary <mine.json> [--only <pr>] | witness classify <target.ndjson> <reference.ndjson>');
   return 64;
 }
 

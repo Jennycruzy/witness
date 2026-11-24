@@ -1,0 +1,22 @@
+{
+  "pr": 2223,
+  "issue": 2209,
+  "title": "fix: `jq-web` -> `jq-wasm`, includes `jq` verison `1.8.1`",
+  "issueTitle": "Bug report: jq operation broken in latest update",
+  "mergedAt": "2026-03-06T12:04:41Z",
+  "mergeSha": "0c6454e10cea224f48d263bd4c22fb2d83db714d",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "written",
+  "why": "The report gives a concrete recipe (Jq with filter .a on input {\"a\": 1}): the fixed app outputs 1, while the buggy app shows a JSON or jq error instead."
+}

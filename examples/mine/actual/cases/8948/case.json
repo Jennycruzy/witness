@@ -1,0 +1,26 @@
+{
+  "pr": 8948,
+  "issue": 5633,
+  "title": "[AI] Expose tag splitting and scope selection in custom reports",
+  "issueTitle": "[Feature] Ability to create report widgets splitting category with tags in notes",
+  "mergedAt": "2026-10-12T15:20:55Z",
+  "mergeSha": "fab0ab1b9a24baef6d7e71f4991a7ba704d798e2",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261012",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261012"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261013",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261013"
+  },
+  "status": "not-testable",
+  "why": "This is a feature request with no described correct output, so I can't derive a concrete UI or expected value with certainty from the report: it doesn't say what the widget is called, how tags are picked up, or how the pie labels and amounts appear."
+}

@@ -1,0 +1,23 @@
+{
+  "tests": [
+    "category_is_kept_when_an_on_budget_and_a_test.md"
+  ],
+  "target": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261014",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261014"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261015",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261015"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

@@ -1,0 +1,26 @@
+{
+  "pr": 8715,
+  "issue": 5902,
+  "title": "[AI] Respect the date format preference in daily and weekly report intervals",
+  "issueTitle": "[Bug]: Custom reports based on weekly or daily interval display do not respect date style preference",
+  "mergedAt": "2026-09-01T16:42:47Z",
+  "mergeSha": "c85a03136e0c17614ee94448591c445c58ede173",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260902",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260902"
+  },
+  "status": "not-testable",
+  "why": "The report never says exactly what the fixed date labels look like (full year or not, which separators), and the labels depend on transaction dates and the report's date range, which change from run to run, so no exact expected text can be stated with certainty."
+}

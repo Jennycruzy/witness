@@ -1,0 +1,26 @@
+{
+  "pr": 9529,
+  "issue": 6345,
+  "title": "[AI] Fix linked account balances shown wrong or crashing for decimal amounts",
+  "issueTitle": "[Bug]: Error when linking account with pluggy.ai",
+  "mergedAt": "2026-11-13T00:54:11Z",
+  "mergeSha": "f5f06896c228522d6f09ed8b43828d8dec5931f4",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261113",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261113"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261114",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261114"
+  },
+  "status": "not-testable",
+  "why": "The bug only happens when linking a bank account through the pluggy.ai bank-sync service, which needs an external server, an account and bank sync that this local setup does not have."
+}

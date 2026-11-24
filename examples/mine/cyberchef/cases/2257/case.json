@@ -1,0 +1,22 @@
+{
+  "pr": 2257,
+  "issue": 2248,
+  "title": "fix(A1Z26): return empty string instead of empty array for empty input",
+  "issueTitle": "Bug report: A1Z26 Cipher Decode returns wrong type for empty input",
+  "mergedAt": "2026-03-19T10:10:36Z",
+  "mergeSha": "eef8d55d86742a3fd46ddfc5540cebfcb2ec012e",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "not-testable",
+  "why": "The report never says what the buggy app actually shows on screen for empty input (it only says downstream consumers 'may' throw or garble), and an empty array may render as the same empty Output box as the fixed empty string, so there is no visible fact that reliably differs between builds."
+}

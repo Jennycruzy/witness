@@ -1,0 +1,22 @@
+{
+  "pr": 2249,
+  "issue": 2246,
+  "title": "fix: return empty output for zero-length To Modhex input",
+  "issueTitle": "Bug report: To Modhex crashes on empty ArrayBuffer input",
+  "mergedAt": "2026-03-23T12:26:09Z",
+  "mergeSha": "ff63ec97b75706b7e12442c7c814e96c89f2db55",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "written",
+  "why": "The report says an empty input through a recipe containing To Modhex should return an empty string, but it shows an error instead. The fixed app should show an empty Output box and the buggy app should show an error."
+}

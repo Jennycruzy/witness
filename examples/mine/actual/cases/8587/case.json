@@ -1,0 +1,26 @@
+{
+  "pr": 8587,
+  "issue": 8498,
+  "title": "[AI] Fix category_group rule conditions never matching live transactions",
+  "issueTitle": "[Bug]: \"category group\" rule condition only works via the rule editor's own Apply actions - fails via \"Run rules\" and auto-run-on-save",
+  "mergedAt": "2026-08-11T14:19:23Z",
+  "mergeSha": "26352c32d69223cecdefb6360c099fd28162885f",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260811",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260811"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260812",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260812"
+  },
+  "status": "written",
+  "why": "The report says a rule with a 'category group' condition does not run when a new transaction in a category of that group is saved, so on the buggy build the rule's notes action never shows in the register; on the fixed build it does."
+}

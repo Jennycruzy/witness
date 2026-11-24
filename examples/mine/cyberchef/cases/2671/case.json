@@ -1,0 +1,22 @@
+{
+  "pr": 2671,
+  "issue": 2645,
+  "title": "Consolidate HTML entity tables into a single spec-generated source (#2645)",
+  "issueTitle": "Bug report: Malformed and mis-mapped entries in the To HTML Entity byteToEntity table",
+  "mergedAt": "2026-07-17T16:36:56Z",
+  "mergeSha": "d771ea2cc008c3a17d5032f04bf46da497b49636",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report says To HTML Entity turns the character ⇌ (U+21CC) into the malformed \"&rlhar;;\" when it should be \"&rlhar;\", so the whole Output box text tells the buggy and fixed builds apart."
+}

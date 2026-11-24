@@ -1,0 +1,22 @@
+{
+  "pr": 2273,
+  "issue": 1960,
+  "title": "Make compatible with node >=22",
+  "issueTitle": "Support Node 24",
+  "mergedAt": "2026-04-28T06:18:44Z",
+  "mergeSha": "864afa85aaf736514de79dcd751bfac5b8ec05f0",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.24.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.24.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.0.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.0.0"
+  },
+  "status": "not-testable",
+  "why": "This is a Node.js and dependency upgrade task with no user-visible bug and no wrong or expected Output that a browser test could check."
+}

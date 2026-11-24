@@ -1,0 +1,18 @@
+{
+  "test_id": "f4f5a7bf-807e-4026-a90b-950c3f581541",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "modulo_operation_returns_16_mod_3_1",
+  "commit_id": "1bcf310a-69d9-45c2-8622-1f7baf80b1ac",
+  "testcase_id": "01M87J1RGK26WBWFQ9D9V080T2",
+  "executions": [
+    {
+      "execution_id": "692e2e66-389c-4207-9850-85c76bb303cf",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T19:57:28.557Z"
+    }
+  ]
+}

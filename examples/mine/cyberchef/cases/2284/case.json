@@ -1,0 +1,22 @@
+{
+  "pr": 2284,
+  "issue": 2239,
+  "title": "fix Median operation returns incorrect result for unsorted odd-length inputs",
+  "issueTitle": "Bug report: Median operation returns incorrect result for unsorted odd-length inputs",
+  "mergedAt": "2026-06-20T07:21:07Z",
+  "mergeSha": "f0468d391d974b046e4b2757f09d2c9a79667107",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report gives an exact input (10,1,2 with comma delimiter) and an exact expected output (2), while the buggy build shows 1."
+}

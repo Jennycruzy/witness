@@ -1,0 +1,26 @@
+{
+  "pr": 9466,
+  "issue": 9463,
+  "title": "[AI] Advance recurring schedules without an assigned account when paid",
+  "issueTitle": "[Bug]: Recurring schedule with no account never advances its next date after being paid",
+  "mergedAt": "2026-11-08T02:14:03Z",
+  "mergeSha": "a03e899debebd98b4dc53741152a93bdf096ee29",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261108",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261108"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261109",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261109"
+  },
+  "status": "not-testable",
+  "why": "Reproducing this needs a schedule dated last month, then opening the budget on a later day, and the expected result is a next date that depends on when the test runs, so no fixed visible text can be checked."
+}

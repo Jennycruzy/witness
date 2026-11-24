@@ -1,0 +1,26 @@
+{
+  "pr": 8699,
+  "issue": 7822,
+  "title": "[AI] Fix scheduled split transfer previews",
+  "issueTitle": "[Bug]: Scheduled split transfers do not show as upcoming transactions on destination accounts",
+  "mergedAt": "2026-08-11T13:25:32Z",
+  "mergeSha": "435f2d51ee312ed9a6925bad506fc3b7132d8017",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260811",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260811"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260812",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260812"
+  },
+  "status": "not-testable",
+  "why": "Reproducing this needs a second account, a new schedule turned into a split, and one split line set as a transfer, which takes well over 6 short steps; it also depends on a schedule date showing as upcoming, which ties it to the run date."
+}

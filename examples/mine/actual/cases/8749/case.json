@@ -1,0 +1,26 @@
+{
+  "pr": 8749,
+  "issue": 8739,
+  "title": "Skip overspent sources when a named cleanup pool collects funds",
+  "issueTitle": "[Bug]: Named pool sources process negative balances instead of being ignored",
+  "mergedAt": "2026-08-18T15:58:35Z",
+  "mergeSha": "adf5d198282218f06ce0a6cbe847bee66f483332",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260818",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260818"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260819",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260819"
+  },
+  "status": "not-testable",
+  "why": "The report does not say how to set up the named pool or which cleanup notes and settings to use (it only says \"configured via the UI\"), and the cleanup feature may need an experimental setting, so the setup steps can't be written with certainty from the report alone."
+}

@@ -1,0 +1,26 @@
+{
+  "pr": 9154,
+  "issue": 3759,
+  "title": "[AI] Don't learn a category rule that a \"one of\" rule already covers",
+  "issueTitle": "[Bug]: Automatic rules don't check if a rule exists with that payee in the \"one of\" list",
+  "mergedAt": "2026-10-12T11:03:15Z",
+  "mergeSha": "db42f652e0eee38068939adf2d09a9403cfbf54f",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261012",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261012"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261013",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261013"
+  },
+  "status": "not-testable",
+  "why": "The report only says an extra rule should not appear, and it does not say when Actual creates automatic rules (for example, after how many transactions), so the one difference between the builds is something missing rather than a fixed visible fact a single Verify step could read."
+}

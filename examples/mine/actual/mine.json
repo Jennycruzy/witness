@@ -1,0 +1,11 @@
+{
+  "repo": "actualbudget/actual",
+  "since": "2026-01-01",
+  "until": "2026-11-15",
+  "paths": ["packages/desktop-client/src/", "packages/loot-core/src/"],
+  "skip": ["mobile", "sync", "server", "import", "export", "bank", "electron", "desktop app", "ios", "android", "safari", "firefox", "csv", "ofx", "qif", "translation", "i18n", "openid", "login", "plugin", "goal template", "crdt", "dark theme", "theme"],
+  "builds": { "npm": "@actual-app/web", "buildDir": "build", "isolation": true, "settleHours": 3 },
+  "setup": "node setup.mjs {url} {profile}",
+  "notes": "notes.md",
+  "max": 30
+}

@@ -1,0 +1,22 @@
+{
+  "pr": 2307,
+  "issue": 2306,
+  "title": "Properly escape HTML entities in sampleDelim to avoid XSS issue",
+  "issueTitle": "Bug report: XSS vulnerability due to unescaped value in OffsetChecker.mjs",
+  "mergedAt": "2026-04-04T11:13:05Z",
+  "mergeSha": "167cc398ce56d2d32ce3af09a311fc919644d478",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "written",
+  "why": "The report says the Offset checker's sample delimiter goes into the output without escaping, so a delimiter containing HTML tags should show up as literal text in the fixed build, while the buggy build renders it as markup and the tags disappear."
+}

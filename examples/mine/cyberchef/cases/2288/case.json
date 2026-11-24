@@ -1,0 +1,22 @@
+{
+  "pr": 2288,
+  "issue": 2243,
+  "title": "fix: Gzip comment with header checksum produces corrupt streams",
+  "issueTitle": "Bug report: Gzip operation produces invalid streams when using comments with header checksum",
+  "mergedAt": "2026-06-20T08:03:13Z",
+  "mergeSha": "8105e3eb070aedac8b10aaa895ecbeb14279b147",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report gives the exact setup (Gzip with Comment \"test\" and Include file checksum, input \"hello hello hello\") and says decompressing with Gunzip fails with an invalid header crc16 error, so on the fixed build a Gzip-then-Gunzip round trip should output the original text."
+}

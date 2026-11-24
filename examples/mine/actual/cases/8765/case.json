@@ -1,0 +1,26 @@
+{
+  "pr": 8765,
+  "issue": 8654,
+  "title": "[AI] Fix bulk edit date picker formatting regression",
+  "issueTitle": "[Bug]: Bulk edit date picker modal visual regression",
+  "mergedAt": "2026-08-21T18:24:37Z",
+  "mergeSha": "1372f7b56484b991f531c2df25ee0eefb0df48ed",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260821",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260821"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260822",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260822"
+  },
+  "status": "not-testable",
+  "why": "The report describes only a visual layout regression of the bulk-edit date picker modal (shown in screenshots), with no text, value, or behavior change that a Verify step could read, and it says the functionality is unchanged."
+}

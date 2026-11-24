@@ -1,0 +1,22 @@
+{
+  "pr": 2291,
+  "issue": 2280,
+  "title": "fix: MIME Decoding corrupts non-ASCII characters in Base64-encoded words",
+  "issueTitle": "Bug report: MIME Decoding operation corrupts non-ASCII characters in Base64-encoded words",
+  "mergedAt": "2026-06-20T09:41:53Z",
+  "mergeSha": "64fc664479bb03f3f026832141d4af2e34ef9091",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report gives an ASCII-only input and the exact correct output, \"Subject: café\", while the buggy build shows \"Subject: caf退\" in the Output box."
+}

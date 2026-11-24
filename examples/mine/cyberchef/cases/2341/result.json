@@ -1,0 +1,7 @@
+{
+  "pr": 2341,
+  "issue": 646,
+  "result": "ERROR",
+  "why": "no asset matching ^CyberChef_v.*\\.zip$ in gchq/CyberChef@v11.1.0",
+  "at": "2026-11-24T15:12:31.056Z"
+}

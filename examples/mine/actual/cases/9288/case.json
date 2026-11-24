@@ -1,0 +1,26 @@
+{
+  "pr": 9288,
+  "issue": 6682,
+  "title": "[AI] fix: Preserve disappearing split payees (in account) after posting transactions",
+  "issueTitle": "[Bug]: Converted schedule is incorrect for split transactions with multiple payees",
+  "mergedAt": "2026-10-21T00:29:18Z",
+  "mergeSha": "e35036803af3d194197f595fc4ef49b2c9e30dc7",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261021",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261021"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261022",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261022"
+  },
+  "status": "not-testable",
+  "why": "Reproducing this needs a transaction with a future date, which the rules forbid, and the flow (build a split with two payees, convert it to a schedule, post it from the Schedules list, then check the child payees) cannot fit in 2 to 6 steps."
+}

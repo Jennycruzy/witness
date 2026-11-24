@@ -1,0 +1,22 @@
+{
+  "pr": 2200,
+  "issue": 2196,
+  "title": "Paste spreadsheets as text",
+  "issueTitle": "Bug report: Copy-paste from spreadsheet inserts as PNG",
+  "mergedAt": "2026-02-20T17:08:11Z",
+  "mergeSha": "98fb680a921c89d65fb5d85bb4635a80230120c9",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows when pasting from the clipboard while it holds both an image and text copied from a spreadsheet app (Numbers on macOS, in Firefox), which needs the clipboard, another app, a specific OS and a non-Chrome browser."
+}

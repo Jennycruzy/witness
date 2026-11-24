@@ -1,0 +1,22 @@
+{
+  "pr": 2721,
+  "issue": 2720,
+  "title": "fix: accept hexadecimal values for Disassemble x86 address arguments",
+  "issueTitle": "Bug report: Disassemble x86: Unable to specify hexadecimal values for code segment",
+  "mergedAt": "2026-08-20T10:42:33Z",
+  "mergeSha": "2e048b0290854781db61e20638dca62978379032",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.4.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.4.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.5.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.5.0"
+  },
+  "status": "not-testable",
+  "why": "The report does not show the correct output for a hex code segment (how the address prefix is formatted, or whether 10 should then be read as hex), and the error it quotes comes from loading a recipe link rather than from typing in the on-screen field, so there is no exact visible text to check with certainty."
+}

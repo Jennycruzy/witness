@@ -1,0 +1,26 @@
+{
+  "pr": 9125,
+  "issue": 7833,
+  "title": "[AI] Fix running balance text selection in draggable transaction rows",
+  "issueTitle": "[Bug]: Running balance text selection partially broken",
+  "mergedAt": "2026-10-07T21:05:17Z",
+  "mergeSha": "ec78d7c4d7e4af8135d65098db3e278bdea1a070",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261007",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261007"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261008",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261008"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows in Firefox (the reporter says Chromium works fine) and it needs a mouse drag to select text, so a Chrome replay can't tell the fixed and buggy builds apart."
+}

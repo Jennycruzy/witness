@@ -1,0 +1,22 @@
+{
+  "pr": 2017,
+  "issue": 2016,
+  "title": "Fix hint tooltip display issues",
+  "issueTitle": "Bug report: hint (tooltip) not displayed for text-type inputs",
+  "mergedAt": "2026-03-01T17:24:46Z",
+  "mergeSha": "2979f2ebb4399b6950a88d39d012438a42d3b8ba",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "not-testable",
+  "why": "The bug is about a hover tooltip not appearing over a text-field label, which depends on mouse hover and transient tooltip popups rather than a stable value in the Output box or another field, and the report does not give the hint text a correct tooltip should show."
+}

@@ -1,0 +1,26 @@
+{
+  "pr": 8866,
+  "issue": 8864,
+  "title": "[AI] Add Tags to bulk edit notes",
+  "issueTitle": "[Feature] Show Tags when Bulk-editing Notes",
+  "mergedAt": "2026-09-06T18:21:54Z",
+  "mergeSha": "a7b797007ee755306a13d6dbd7abcaeeb5d0303f",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260906",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260906"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.10.0-nightly.20260907",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.10.0-nightly.20260907"
+  },
+  "status": "not-testable",
+  "why": "This is a feature request with no described solution, so the report never says what the bulk-edit Notes field should show (for example, which suggestion list or text) and no exact visible fact can be derived with certainty."
+}

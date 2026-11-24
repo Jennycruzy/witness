@@ -1,0 +1,22 @@
+{
+  "pr": 2199,
+  "issue": 2197,
+  "title": "Fix Roboto Mono font",
+  "issueTitle": "Bug report: Text to Image with Roboto Mono font gives error",
+  "mergedAt": "2026-02-20T16:10:16Z",
+  "mergeSha": "d71dad8568f8f732a52b599eacf61ee7ffe8d2bf",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.22.1",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.22.1"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "status": "not-testable",
+  "why": "The steps need a real image as input (the report loads one by uploading), and the fixed app shows a rendered image in the Output box, not exact text a test can check; the report only says the expected result is \"Text with image\"."
+}

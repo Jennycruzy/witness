@@ -1,0 +1,23 @@
+{
+  "tests": [
+    "running_balance_stays_visible_when_trans_test.md"
+  ],
+  "target": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261109",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261109"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.12.0-nightly.20261110",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.12.0-nightly.20261110"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

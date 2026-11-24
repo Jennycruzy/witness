@@ -1,0 +1,22 @@
+{
+  "pr": 2103,
+  "issue": 2102,
+  "title": "feat: add modulo operation",
+  "issueTitle": "Operation request: modulo",
+  "mergedAt": "2026-07-23T07:27:50Z",
+  "mergeSha": "1343a107cbfc7e9633493b53b62c8a5cf822b5f2",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report asks for a modulo operation and gives a concrete example (input 16, mod 3, output 1); the fixed build should list the operation and the buggy build should not."
+}

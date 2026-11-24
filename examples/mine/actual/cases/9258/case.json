@@ -1,0 +1,26 @@
+{
+  "pr": 9258,
+  "issue": 8857,
+  "title": "fix: api allow partial category updates without name (#8857)",
+  "issueTitle": "[Bug]: api.updateCategory throws TypeError on any partial update that omits name",
+  "mergedAt": "2026-10-21T09:51:15Z",
+  "mergeSha": "9e80790d6813de89304dad3a7452d7ee31dea816",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261021",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261021"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261022",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261022"
+  },
+  "status": "not-testable",
+  "why": "The bug is only in the @actual-app/api updateCategory call made from code (the report says no browser is involved), so moving or hiding a category in the web UI may not go through the broken code and a UI test cannot show the TypeError."
+}

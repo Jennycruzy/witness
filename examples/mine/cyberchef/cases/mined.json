@@ -1,0 +1,998 @@
+{
+  "summary": {
+    "candidates": 41,
+    "notTestable": 19,
+    "noBuild": 0,
+    "written": 22,
+    "run": 8,
+    "kept": 5,
+    "missed": 0,
+    "unrecordable": 1,
+    "other": 2,
+    "kaneRightOnKept": 5
+  },
+  "cases": [
+    {
+      "pr": 2017,
+      "issue": 2016,
+      "title": "Fix hint tooltip display issues",
+      "issueTitle": "Bug report: hint (tooltip) not displayed for text-type inputs",
+      "mergedAt": "2026-03-01T17:24:46Z",
+      "mergeSha": "2979f2ebb4399b6950a88d39d012438a42d3b8ba",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "not-testable",
+      "why": "The bug is about a hover tooltip not appearing over a text-field label, which depends on mouse hover and transient tooltip popups rather than a stable value in the Output box or another field, and the report does not give the hint text a correct tooltip should show."
+    },
+    {
+      "pr": 2025,
+      "issue": 2024,
+      "title": "Fix email regex",
+      "issueTitle": "Bug report: Extract email addresses does not match IP domains correctly",
+      "mergedAt": "2025-05-12T15:06:53Z",
+      "mergeSha": "2b1ceef6a3b57d207d13f12dbfec8292e69eec22",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.19.4",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.19.4"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.20.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.20.0"
+      },
+      "status": "written",
+      "why": "The report gives an exact input, the recipe, and the expected output: the fixed build extracts example@[127.0.0.1], and the buggy build's regex cannot match a bracketed IP that ends in a number, so its output stays empty.",
+      "result": {
+        "pr": 2025,
+        "issue": 2024,
+        "result": "KEPT",
+        "why": "The email extraction feature did not recognize or return the supplied valid bracketed-IP email address.",
+        "at": "2026-11-24T19:41:27.240Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.98,
+        "credits": 2.1128
+      }
+    },
+    {
+      "pr": 2058,
+      "issue": 2033,
+      "title": "Fix: Correctly parse xxd odd byte hexdumps",
+      "issueTitle": "Bug report: Hexdump format is not compatible with xxd",
+      "mergedAt": "2026-02-04T09:38:25Z",
+      "mergeSha": "fa34e2fafc5df9c7153676c5df6d8263094c12cb",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.20.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.20.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.21.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.21.0"
+      },
+      "status": "written",
+      "why": "The report gives an exact xxd hexdump of 'abcde' with an odd number of bytes. From Hexdump should turn it back into 'abcde', but the buggy build drops the last byte.",
+      "result": {
+        "pr": 2058,
+        "issue": 2033,
+        "result": "KEPT",
+        "why": "The hex conversion stopped before processing the final byte, so the last character was left out.",
+        "at": "2026-11-24T19:46:16.180Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.99,
+        "credits": 2.14325
+      }
+    },
+    {
+      "pr": 2071,
+      "issue": 2067,
+      "title": "Improve SQL Beautify: use sql-formatter and support bind variables",
+      "issueTitle": "SQL Beautify operation cannot beautify upsert commands",
+      "mergedAt": "2026-03-02T12:55:54Z",
+      "mergeSha": "813a543baf8ef644b092869f09e69f946250c730",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "written",
+      "why": "The report gives an exact input and says the beautified output joins \"KEY\" and \"UPDATE\" into \"KEYUPDATE\" when they should be separated by a space, so the fixed build shows \"DUPLICATE KEY UPDATE\" and the buggy build does not.",
+      "result": {
+        "pr": 2071,
+        "issue": 2067,
+        "result": "KEPT",
+        "why": "The SQL formatting operation joins the words \"KEY\" and \"UPDATE\" in its output, changing the SQL text.",
+        "at": "2026-11-24T19:50:47.210Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.96,
+        "credits": 2.2053
+      }
+    },
+    {
+      "pr": 2103,
+      "issue": 2102,
+      "title": "feat: add modulo operation",
+      "issueTitle": "Operation request: modulo",
+      "mergedAt": "2026-07-23T07:27:50Z",
+      "mergeSha": "1343a107cbfc7e9633493b53b62c8a5cf822b5f2",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report asks for a modulo operation and gives a concrete example (input 16, mod 3, output 1); the fixed build should list the operation and the buggy build should not.",
+      "result": {
+        "pr": 2103,
+        "issue": 2102,
+        "result": "TEST_PROBLEM",
+        "why": "The page changed where the test acts: it failed at an action, not at a check.",
+        "at": "2026-11-24T19:55:40.685Z",
+        "verdict": "TEST_PROBLEM",
+        "kaneLabel": "automation_bug",
+        "kaneConfidence": 0.98,
+        "credits": 1.4947
+      }
+    },
+    {
+      "pr": 2149,
+      "issue": 2411,
+      "title": "Add Modular Exponentiation operation",
+      "issueTitle": "Bug report: `npm run testui` fails intermittently",
+      "mergedAt": "2026-07-25T07:00:07Z",
+      "mergeSha": "f6a46311301c9b51e5805f2741dd07c2e388e627",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.4.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.4.0"
+      },
+      "status": "not-testable",
+      "why": "The report describes an intermittent timing failure in the Nightwatch UI test suite (the stale indicator sometimes stays visible past a 5-second timeout), so it depends on timing and slowness, and it names no deterministic output a user could check."
+    },
+    {
+      "pr": 2161,
+      "issue": 1874,
+      "title": "[bugfix] #1874 Add Bootstrap form style for CodeMirror editor",
+      "issueTitle": "Bug report: CSS issue - Unable to focus 'Find' field using cursor",
+      "mergedAt": "2026-03-07T08:20:27Z",
+      "mergeSha": "15d7d5507ef2ebccb8cf2e1d314ad4283162d7f4",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "not-testable",
+      "why": "The bug only appears at certain panel widths, which you have to set by dragging the right-panel divider, and it is a CSS mouse-blocking problem rather than a wrong Output value, so there is no reliable visible fact to check at the default layout."
+    },
+    {
+      "pr": 2167,
+      "issue": 2150,
+      "title": "Regular Expression operation email address regex: Support IPv4 domains",
+      "issueTitle": "Regular Expression operation email address regex does not support IPv4 domains",
+      "mergedAt": "2026-04-13T12:04:34Z",
+      "mergeSha": "535838146c0491fd337fd0d4ca6f3b0d21ed7cc2",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.24.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.24.0"
+      },
+      "status": "written",
+      "why": "The report says the built-in Email address regex fails to match an address with an IPv4 domain such as false_negative@[1.2.3.4]; with List matches output, the fixed build lists the address and the buggy build lists nothing."
+    },
+    {
+      "pr": 2169,
+      "issue": 2168,
+      "title": "Remove version 10 message from banner",
+      "issueTitle": "CyberChef banner is outdated",
+      "mergedAt": "2026-02-03T15:12:41Z",
+      "mergeSha": "96c93b95f21ffd63dc5619541681cf07641fc56c",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.20.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.20.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.21.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.21.0"
+      },
+      "status": "not-testable",
+      "why": "The report only asks to replace or remove the 'Version 10 is here!' banner and never says what the fixed app should show, so there is no exact expected text to check."
+    },
+    {
+      "pr": 2199,
+      "issue": 2197,
+      "title": "Fix Roboto Mono font",
+      "issueTitle": "Bug report: Text to Image with Roboto Mono font gives error",
+      "mergedAt": "2026-02-20T16:10:16Z",
+      "mergeSha": "d71dad8568f8f732a52b599eacf61ee7ffe8d2bf",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "not-testable",
+      "why": "The steps need a real image as input (the report loads one by uploading), and the fixed app shows a rendered image in the Output box, not exact text a test can check; the report only says the expected result is \"Text with image\"."
+    },
+    {
+      "pr": 2200,
+      "issue": 2196,
+      "title": "Paste spreadsheets as text",
+      "issueTitle": "Bug report: Copy-paste from spreadsheet inserts as PNG",
+      "mergedAt": "2026-02-20T17:08:11Z",
+      "mergeSha": "98fb680a921c89d65fb5d85bb4635a80230120c9",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows when pasting from the clipboard while it holds both an image and text copied from a spreadsheet app (Numbers on macOS, in Firefox), which needs the clipboard, another app, a specific OS and a non-Chrome browser."
+    },
+    {
+      "pr": 2210,
+      "issue": 2209,
+      "title": "Fix Jq issue",
+      "issueTitle": "Bug report: jq operation broken in latest update",
+      "mergedAt": "2026-03-19T11:47:31Z",
+      "mergeSha": "d9dacf6b8fe064ff56037f1a52b0ada509d5dda4",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "written",
+      "why": "The report gives a concrete recipe (jq filter \".a\" on {\"a\": 1}): a working jq returns the value of a, but the buggy build always shows an error message in the Output box."
+    },
+    {
+      "pr": 2223,
+      "issue": 2209,
+      "title": "fix: `jq-web` -> `jq-wasm`, includes `jq` verison `1.8.1`",
+      "issueTitle": "Bug report: jq operation broken in latest update",
+      "mergedAt": "2026-03-06T12:04:41Z",
+      "mergeSha": "0c6454e10cea224f48d263bd4c22fb2d83db714d",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "written",
+      "why": "The report gives a concrete recipe (Jq with filter .a on input {\"a\": 1}): the fixed app outputs 1, while the buggy app shows a JSON or jq error instead."
+    },
+    {
+      "pr": 2249,
+      "issue": 2246,
+      "title": "fix: return empty output for zero-length To Modhex input",
+      "issueTitle": "Bug report: To Modhex crashes on empty ArrayBuffer input",
+      "mergedAt": "2026-03-23T12:26:09Z",
+      "mergeSha": "ff63ec97b75706b7e12442c7c814e96c89f2db55",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "written",
+      "why": "The report says an empty input through a recipe containing To Modhex should return an empty string, but it shows an error instead. The fixed app should show an empty Output box and the buggy app should show an error."
+    },
+    {
+      "pr": 2257,
+      "issue": 2248,
+      "title": "fix(A1Z26): return empty string instead of empty array for empty input",
+      "issueTitle": "Bug report: A1Z26 Cipher Decode returns wrong type for empty input",
+      "mergedAt": "2026-03-19T10:10:36Z",
+      "mergeSha": "eef8d55d86742a3fd46ddfc5540cebfcb2ec012e",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "not-testable",
+      "why": "The report never says what the buggy app actually shows on screen for empty input (it only says downstream consumers 'may' throw or garble), and an empty array may render as the same empty Output box as the fixed empty string, so there is no visible fact that reliably differs between builds."
+    },
+    {
+      "pr": 2270,
+      "issue": 2217,
+      "title": "fix: fromDecimal Auto delimiter now correctly parses multiple numbers",
+      "issueTitle": "Bug report: fromDecimal(...) function does not correctly handle delim parameter passed as default (\"Auto\")",
+      "mergedAt": "2026-07-18T10:10:41Z",
+      "mergeSha": "5a01c710986db2dd774a836dc1194123366c8191",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "not-testable",
+      "why": "The bug is in the internal fromDecimal helper when its delimiter is \"Auto\" or left unset, but the From Decimal operation's Delimiter dropdown only offers fixed choices like Space and Comma, and the report doesn't say which visible operation (only a pointer to #2139) or which input and expected output would show the bug on screen."
+    },
+    {
+      "pr": 2273,
+      "issue": 1960,
+      "title": "Make compatible with node >=22",
+      "issueTitle": "Support Node 24",
+      "mergedAt": "2026-04-28T06:18:44Z",
+      "mergeSha": "864afa85aaf736514de79dcd751bfac5b8ec05f0",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.24.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.24.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.0.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.0.0"
+      },
+      "status": "not-testable",
+      "why": "This is a Node.js and dependency upgrade task with no user-visible bug and no wrong or expected Output that a browser test could check."
+    },
+    {
+      "pr": 2284,
+      "issue": 2239,
+      "title": "fix Median operation returns incorrect result for unsorted odd-length inputs",
+      "issueTitle": "Bug report: Median operation returns incorrect result for unsorted odd-length inputs",
+      "mergedAt": "2026-06-20T07:21:07Z",
+      "mergeSha": "f0468d391d974b046e4b2757f09d2c9a79667107",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report gives an exact input (10,1,2 with comma delimiter) and an exact expected output (2), while the buggy build shows 1."
+    },
+    {
+      "pr": 2285,
+      "issue": 2240,
+      "title": "fix: From Base operation produces wrong results for fractional inputs",
+      "issueTitle": "Bug report: From Base operation produces NaN for fractional inputs",
+      "mergedAt": "2026-06-20T07:48:49Z",
+      "mergeSha": "0fd6190b4676142f56e0c11a05a14e1a95af1e4f",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report gives the exact input (10.1 with radix 2) and the correct output (2.5), while the buggy build shows a NaN error instead."
+    },
+    {
+      "pr": 2286,
+      "issue": 2241,
+      "title": "fix Set Difference and Set Intersection preserve duplicates from first sample",
+      "issueTitle": "Bug report: Set Difference and Set Intersection preserve duplicates from first sample",
+      "mergedAt": "2026-06-20T07:52:57Z",
+      "mergeSha": "5a2eeed06680080e0a29c31ce3740740b840f0fe",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report gives exact input and expected output for Set Difference with the default delimiters: the fixed app shows \"red\" and the buggy app shows \"red,red\"."
+    },
+    {
+      "pr": 2287,
+      "issue": 2242,
+      "title": "fix: Unescape Unicode Characters accepts 4-6 hex digits for U+ prefix",
+      "issueTitle": "Bug report: Unescape Unicode Characters only accepts exactly 4 hex digits for U+",
+      "mergedAt": "2026-06-20T07:56:10Z",
+      "mergeSha": "9a8a279b826f066916a3673c78cb39c79f13175f",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report says that with the U+ prefix, the 6-digit code U+000041 should decode to \"A\", but the buggy build reads only 4 hex digits and cannot decode it."
+    },
+    {
+      "pr": 2288,
+      "issue": 2243,
+      "title": "fix: Gzip comment with header checksum produces corrupt streams",
+      "issueTitle": "Bug report: Gzip operation produces invalid streams when using comments with header checksum",
+      "mergedAt": "2026-06-20T08:03:13Z",
+      "mergeSha": "8105e3eb070aedac8b10aaa895ecbeb14279b147",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report gives the exact setup (Gzip with Comment \"test\" and Include file checksum, input \"hello hello hello\") and says decompressing with Gunzip fails with an invalid header crc16 error, so on the fixed build a Gzip-then-Gunzip round trip should output the original text."
+    },
+    {
+      "pr": 2289,
+      "issue": 2245,
+      "title": "fix TLV Parser BER long-form length parsing",
+      "issueTitle": "Bug report: TLV Parser produces incorrect BER-encoded lengths",
+      "mergedAt": "2026-06-20T07:59:31Z",
+      "mergeSha": "0a0d95bcbd7fece2004b77b540f2d3089f171b46",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report gives a concrete input where the long-form BER length bytes 82 00 05 must be read as 5. The fixed parser shows a length of 5 for the first entry. The buggy parser misreads it as 130, so a length of 5 never appears."
+    },
+    {
+      "pr": 2290,
+      "issue": 2247,
+      "title": "fix Dechunk HTTP Response leaks terminating chunk and trailers into output",
+      "issueTitle": "Bug report: Dechunk HTTP Response leaks terminating chunk and trailers into output",
+      "mergedAt": "2026-06-20T09:49:48Z",
+      "mergeSha": "08e5c13da4b2404e824a8e358f1093393ee41780",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report's own reproduction input, a chunked body ending in a zero-length chunk followed by an Expires trailer, should decode to just the chunk data, but the buggy build adds the trailer text to the output."
+    },
+    {
+      "pr": 2291,
+      "issue": 2280,
+      "title": "fix: MIME Decoding corrupts non-ASCII characters in Base64-encoded words",
+      "issueTitle": "Bug report: MIME Decoding operation corrupts non-ASCII characters in Base64-encoded words",
+      "mergedAt": "2026-06-20T09:41:53Z",
+      "mergeSha": "64fc664479bb03f3f026832141d4af2e34ef9091",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report gives an ASCII-only input and the exact correct output, \"Subject: café\", while the buggy build shows \"Subject: caf退\" in the Output box."
+    },
+    {
+      "pr": 2307,
+      "issue": 2306,
+      "title": "Properly escape HTML entities in sampleDelim to avoid XSS issue",
+      "issueTitle": "Bug report: XSS vulnerability due to unescaped value in OffsetChecker.mjs",
+      "mergedAt": "2026-04-04T11:13:05Z",
+      "mergeSha": "167cc398ce56d2d32ce3af09a311fc919644d478",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.22.1",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.22.1"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.23.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.23.0"
+      },
+      "status": "written",
+      "why": "The report says the Offset checker's sample delimiter goes into the output without escaping, so a delimiter containing HTML tags should show up as literal text in the fixed build, while the buggy build renders it as markup and the tags disappear."
+    },
+    {
+      "pr": 2340,
+      "issue": 584,
+      "title": "Fix URL encoding incorrectly converting input to UTF-8",
+      "issueTitle": "Bug report: Possibly incorrect output",
+      "mergedAt": "2026-06-19T13:01:20Z",
+      "mergeSha": "4a70dff3f2c6aacd8a8bbca42c440082efe88069",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report gives the exact correct output: converting hex byte 0x80 and then URL-encoding it should give %80, but the buggy build adds an extra %C2 and gives %C2%80."
+    },
+    {
+      "pr": 2341,
+      "issue": 646,
+      "title": "Fix option ingredients being overwriten",
+      "issueTitle": "Bug report: Translate_DateTime_Format doesn't use included parameters when loading from a saved recipe",
+      "mergedAt": "2026-06-02T19:35:22Z",
+      "mergeSha": "89b5c7dee32a811f7c7cb06c07aaec1f8f226f44",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.0.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.0.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.1.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.1.0"
+      },
+      "status": "written",
+      "why": "The report gives the exact saved recipe and shows the app replacing the input format argument with the default, so loading that recipe and reading the Input format field shows whether the saved value was kept.",
+      "result": {
+        "pr": 2341,
+        "issue": 646,
+        "result": "ERROR",
+        "why": "no asset matching ^CyberChef_v.*\\.zip$ in gchq/CyberChef@v11.1.0",
+        "at": "2026-11-24T15:12:31.056Z"
+      }
+    },
+    {
+      "pr": 2347,
+      "issue": 1960,
+      "title": "Node version update from 22 to 24",
+      "issueTitle": "Support Node 24",
+      "mergedAt": "2026-04-28T12:18:03Z",
+      "mergeSha": "1fdd2ecf208720eab3385eb75896b5d944558419",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v10.24.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v10.24.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.0.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.0.0"
+      },
+      "status": "not-testable",
+      "why": "This is an infrastructure task to upgrade the Node version and dependencies, and it describes no user-visible wrong behavior or correct output in the browser app."
+    },
+    {
+      "pr": 2391,
+      "issue": 419,
+      "title": "feat: add Escape Smart Characters operation",
+      "issueTitle": "Operation request: Escape Smart Characters",
+      "mergedAt": "2026-06-05T12:44:21Z",
+      "mergeSha": "c9298191890e46b77479a079523728f261e59653",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.0.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.0.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.1.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.1.0"
+      },
+      "status": "not-testable",
+      "why": "This is a request for a new operation, so the operation's name in the fixed build is unknown, and the report's own example is inconsistent (the space before the arrow disappears and the arrow and dash mappings are unclear), so the exact correct output cannot be known for certain."
+    },
+    {
+      "pr": 2412,
+      "issue": 2411,
+      "title": "Fix flaky `npm run testui`",
+      "issueTitle": "Bug report: `npm run testui` fails intermittently",
+      "mergedAt": "2026-05-20T17:33:40Z",
+      "mergeSha": "ad20c91f5b14072d39c1f8f2651bd44dc746c2b6",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.0.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.0.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.1.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.1.0"
+      },
+      "status": "not-testable",
+      "why": "The report is about the test suite intermittently timing out on the stale indicator. It is a timing and flakiness problem with no clear correct output, so the fixed and buggy builds cannot be told apart by one fixed visible result."
+    },
+    {
+      "pr": 2461,
+      "issue": 2267,
+      "title": "Fix pgp tests",
+      "issueTitle": "Bug report: ECC keys from \"Generate PGP Key Pair\" operation are invalid",
+      "mergedAt": "2026-05-28T08:17:43Z",
+      "mergeSha": "772f7866bfcf243629a9134169b8d21ff37bc245",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.0.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.0.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.1.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.1.0"
+      },
+      "status": "not-testable",
+      "why": "Generated PGP keys and encrypted output are random, so there is no fixed text to check; seeing the bug means copying a generated key into PGP Encrypt (clipboard), and the second issue only affects expired keys in the test suite, which a user cannot see on screen."
+    },
+    {
+      "pr": 2557,
+      "issue": 2556,
+      "title": "Security: Add fix, and tests, for Lorem Ipsum DoS issue",
+      "issueTitle": "Bug report: (Security) DoS vulnerability in Lorem Ipsum Operation",
+      "mergedAt": "2026-06-13T07:53:15Z",
+      "mergeSha": "894560f6ce2ef91d62290ad9745e5fa4ca29e321",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.0.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.0.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.1.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.1.0"
+      },
+      "status": "not-testable",
+      "why": "The report only says the fixed app should show 'an error' without giving its text, and the buggy behavior is a long hang and tab crash, so the test would depend on slowness rather than on one exact visible fact."
+    },
+    {
+      "pr": 2569,
+      "issue": 2568,
+      "title": "Chart operation prototype protection",
+      "issueTitle": "Prototype pollution security vulnerability",
+      "mergedAt": "2026-06-17T10:41:56Z",
+      "mergeSha": "85db3be5d0096859b810f0e8d3e151d5dc9b948f",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.1.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.1.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "status": "not-testable",
+      "why": "The report gives the exploit input but never says what the fixed app's Output box should show (an error, escaped text or a chart), and the buggy result is a script alert rather than a stable output text, so no exact expected text can be derived with certainty."
+    },
+    {
+      "pr": 2607,
+      "issue": 2567,
+      "title": "Fix BigNumber deserialisation in Dish, and add tests",
+      "issueTitle": "Bug report: Sum not working on list of numbers",
+      "mergedAt": "2026-06-26T12:07:33Z",
+      "mergeSha": "275b594f7c8b0e39880f55e7c1f67dc0a4e73f92",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report gives the exact recipe and input, and the expected result is the sum of the listed numbers (92+21392+20437+20221+10857+12474+16607+19655+18221+20587+14631+17175+20496+16385+16188+14440+12327+5393 = 277578). The buggy build stays on Baking and never shows it.",
+      "result": {
+        "pr": 2607,
+        "issue": 2567,
+        "result": "UNRECORDABLE",
+        "why": "the recording does not replay on the fixed build",
+        "at": "2026-11-24T15:12:31.354Z"
+      }
+    },
+    {
+      "pr": 2671,
+      "issue": 2645,
+      "title": "Consolidate HTML entity tables into a single spec-generated source (#2645)",
+      "issueTitle": "Bug report: Malformed and mis-mapped entries in the To HTML Entity byteToEntity table",
+      "mergedAt": "2026-07-17T16:36:56Z",
+      "mergeSha": "d771ea2cc008c3a17d5032f04bf46da497b49636",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.2.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.2.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.3.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.3.0"
+      },
+      "status": "written",
+      "why": "The report says To HTML Entity turns the character ⇌ (U+21CC) into the malformed \"&rlhar;;\" when it should be \"&rlhar;\", so the whole Output box text tells the buggy and fixed builds apart.",
+      "result": {
+        "pr": 2671,
+        "issue": 2645,
+        "result": "KEPT",
+        "why": "The HTML entity conversion produces an extra semicolon at the end of the output.",
+        "at": "2026-11-24T15:16:57.982Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.99,
+        "credits": 2.01245
+      }
+    },
+    {
+      "pr": 2694,
+      "issue": 1950,
+      "title": "fix(ParseIPRange): mask host bits in Network output for CIDR ranges",
+      "issueTitle": "Bug report: Wrong Network output in Parse IP Range recipe.",
+      "mergedAt": "2026-08-27T08:00:25Z",
+      "mergeSha": "30f9b3194709c7e2aed9decc14c9d7ec42ed6f0a",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.4.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.4.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.5.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.5.0"
+      },
+      "status": "written",
+      "why": "The report gives an exact input (10.1.2.3/24) and the correct network line (Network: 10.1.2.0), which the buggy build shows as Network: 10.1.2.3.",
+      "result": {
+        "pr": 2694,
+        "issue": 1950,
+        "result": "KEPT",
+        "why": "The IP-range result is showing the entered device address on the Network line rather than the network address calculated from the /24 range.",
+        "at": "2026-11-24T15:21:46.553Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.99,
+        "credits": 2.1620999999999997
+      }
+    },
+    {
+      "pr": 2721,
+      "issue": 2720,
+      "title": "fix: accept hexadecimal values for Disassemble x86 address arguments",
+      "issueTitle": "Bug report: Disassemble x86: Unable to specify hexadecimal values for code segment",
+      "mergedAt": "2026-08-20T10:42:33Z",
+      "mergeSha": "2e048b0290854781db61e20638dca62978379032",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.4.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.4.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.5.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.5.0"
+      },
+      "status": "not-testable",
+      "why": "The report does not show the correct output for a hex code segment (how the address prefix is formatted, or whether 10 should then be read as hex), and the error it quotes comes from loading a recipe link rather than from typing in the on-screen field, so there is no exact visible text to check with certainty."
+    },
+    {
+      "pr": 2766,
+      "issue": 2746,
+      "title": "fix: use OperationError instead of bare Error in MOD, LuhnChecksum, a…",
+      "issueTitle": "Bug report: six small defects found tracking master (duplicate operation, RenderMarkdown drops <a>, stale JSDoc, brittle test regexes, bare Error in 3 operations)",
+      "mergedAt": "2026-09-05T07:31:52Z",
+      "mergeSha": "d3a9667c92cd3745a38180999f81a9db5c13ec38",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.4.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.4.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.5.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.5.0"
+      },
+      "status": "not-testable",
+      "why": "Only defect 2 touches the UI, and its visible text is the same either way: a missing opening <a> tag leaves the link text \"x\" in the rendered Output, and the report gives no on-screen result that differs between the fixed and buggy builds (raw HTML anchors are likely html_inline tokens that never reach link_open anyway); the other five defects are in source code, tests or JSDoc."
+    },
+    {
+      "pr": 2767,
+      "issue": 2746,
+      "title": "fix: preserve anchor tags with pre-existing target attribute in RenderMarkdown",
+      "issueTitle": "Bug report: six small defects found tracking master (duplicate operation, RenderMarkdown drops <a>, stale JSDoc, brittle test regexes, bare Error in 3 operations)",
+      "mergedAt": "2026-09-06T21:40:38Z",
+      "mergeSha": "ed31d45afdd13041e57a7fd6224f22f7d0e0ca4c",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.4.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.4.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.5.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.5.0"
+      },
+      "status": "not-testable",
+      "why": "Of the six defects, only #2 (RenderMarkdown) shows up in the UI, and its suggested repro doesn't trigger it: markdown-it passes a raw HTML <a ...target=...> tag through as inline HTML and never calls the link_open rule, while plain Markdown links never already have a target. Even when the bug fires, the visible text is the same; only whether it is a link changes, so no exact Output text tells the fixed build from the buggy one. The other five defects (a duplicate source file, stale JSDoc, test regexes, a test polyfill branch, and a test assertion) are not visible in the app at all."
+    },
+    {
+      "pr": 2787,
+      "issue": 1807,
+      "title": "fix: prevent LM Hash crash on inputs that expand when uppercased (#1807)",
+      "issueTitle": "Bug report: Generate all hashes - RangeError. Message: Out of range index",
+      "mergedAt": "2026-09-09T17:13:46Z",
+      "mergeSha": "4855e6a406cb4f68d490e01d69108da5ad304777",
+      "buggy": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.4.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.4.0"
+      },
+      "fixed": {
+        "release": "gchq/CyberChef",
+        "tag": "v11.5.0",
+        "asset": "^CyberChef_v.*\\.zip$",
+        "label": "gchq/CyberChef@v11.5.0"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows with random bytes from the Pseudo-Random Number Generator, so the input and the hash list change on every run, and the report does not give any fixed input that is known to cause the error."
+    }
+  ]
+}

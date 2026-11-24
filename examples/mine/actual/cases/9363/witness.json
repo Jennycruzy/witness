@@ -1,0 +1,23 @@
+{
+  "tests": [
+    "account_transactions_stay_visible_after__test.md"
+  ],
+  "target": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261029",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261029"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261030",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261030"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

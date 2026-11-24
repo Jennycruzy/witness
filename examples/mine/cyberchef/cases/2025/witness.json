@@ -1,0 +1,19 @@
+{
+  "tests": [
+    "extract_email_addresses_matches_an_email_test.md"
+  ],
+  "target": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.19.4",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v10.19.4"
+  },
+  "reference": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.20.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v10.20.0"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

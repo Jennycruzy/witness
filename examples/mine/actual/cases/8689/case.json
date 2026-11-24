@@ -1,0 +1,26 @@
+{
+  "pr": 8689,
+  "issue": 8682,
+  "title": "[AI] fix(api): translate default rule stage at API boundary",
+  "issueTitle": "Docs: rules API says stage must be pre/default/post, but \"default\" is rejected and null is undocumented",
+  "mergedAt": "2026-08-21T21:20:05Z",
+  "mergeSha": "d5aef429ec56edad5ad8caed44087b6918df642b",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260821",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260821"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260823",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260823"
+  },
+  "status": "not-testable",
+  "why": "The report covers the API reference docs and the rules API validator, which a user reaches only by calling @actual-app/api against a server, so no action in the local web app shows a difference between the fixed and buggy builds."
+}

@@ -1,0 +1,11 @@
+{
+  "pr": 2071,
+  "issue": 2067,
+  "result": "KEPT",
+  "why": "The SQL formatting operation joins the words \"KEY\" and \"UPDATE\" in its output, changing the SQL text.",
+  "at": "2026-11-24T19:50:47.210Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.96,
+  "credits": 2.2053
+}

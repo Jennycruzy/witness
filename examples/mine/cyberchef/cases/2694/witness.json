@@ -1,0 +1,19 @@
+{
+  "tests": [
+    "parse_ip_range_reports_the_network_addre_test.md"
+  ],
+  "target": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.4.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v11.4.0"
+  },
+  "reference": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.5.0",
+    "asset": "^CyberChef_.*\\.zip$",
+    "label": "gchq/CyberChef@v11.5.0"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

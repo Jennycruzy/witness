@@ -1,0 +1,22 @@
+{
+  "pr": 2167,
+  "issue": 2150,
+  "title": "Regular Expression operation email address regex: Support IPv4 domains",
+  "issueTitle": "Regular Expression operation email address regex does not support IPv4 domains",
+  "mergedAt": "2026-04-13T12:04:34Z",
+  "mergeSha": "535838146c0491fd337fd0d4ca6f3b0d21ed7cc2",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.23.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.23.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v10.24.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v10.24.0"
+  },
+  "status": "written",
+  "why": "The report says the built-in Email address regex fails to match an address with an IPv4 domain such as false_negative@[1.2.3.4]; with List matches output, the fixed build lists the address and the buggy build lists nothing."
+}

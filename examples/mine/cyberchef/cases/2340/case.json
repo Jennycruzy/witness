@@ -1,0 +1,22 @@
+{
+  "pr": 2340,
+  "issue": 584,
+  "title": "Fix URL encoding incorrectly converting input to UTF-8",
+  "issueTitle": "Bug report: Possibly incorrect output",
+  "mergedAt": "2026-06-19T13:01:20Z",
+  "mergeSha": "4a70dff3f2c6aacd8a8bbca42c440082efe88069",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report gives the exact correct output: converting hex byte 0x80 and then URL-encoding it should give %80, but the buggy build adds an extra %C2 and gives %C2%80."
+}

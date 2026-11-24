@@ -1,0 +1,26 @@
+{
+  "pr": 8778,
+  "issue": 2415,
+  "title": "[AI] Surface the real GoCardless error reason in the UI",
+  "issueTitle": "[Bug]: Gocardless error messages are not shown in actual budget UI",
+  "mergedAt": "2026-10-21T00:28:30Z",
+  "mergeSha": "6e68ee1de1c54cf3b8c69d17aa1c4fde219f64e2",
+  "buggy": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261021",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261021"
+  },
+  "fixed": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261022",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261022"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows during GoCardless bank sync, which needs a sync server, a GoCardless account and a network connection to a bank provider, and none of these exist in a local app with no server."
+}

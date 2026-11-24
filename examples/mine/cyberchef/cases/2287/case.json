@@ -1,0 +1,22 @@
+{
+  "pr": 2287,
+  "issue": 2242,
+  "title": "fix: Unescape Unicode Characters accepts 4-6 hex digits for U+ prefix",
+  "issueTitle": "Bug report: Unescape Unicode Characters only accepts exactly 4 hex digits for U+",
+  "mergedAt": "2026-06-20T07:56:10Z",
+  "mergeSha": "9a8a279b826f066916a3673c78cb39c79f13175f",
+  "buggy": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.2.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.2.0"
+  },
+  "fixed": {
+    "release": "gchq/CyberChef",
+    "tag": "v11.3.0",
+    "asset": "^CyberChef_v.*\\.zip$",
+    "label": "gchq/CyberChef@v11.3.0"
+  },
+  "status": "written",
+  "why": "The report says that with the U+ prefix, the 6-digit code U+000041 should decode to \"A\", but the buggy build reads only 4 hex digits and cannot decode it."
+}
