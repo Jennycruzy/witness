@@ -1,0 +1,11 @@
+{
+  "pr": 2340,
+  "issue": 584,
+  "result": "KEPT",
+  "why": "The encoding step is treating the byte 0x80 as a text character and converting it to two UTF-8 bytes before URL encoding it.",
+  "at": "2026-11-24T21:00:15.829Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.98,
+  "credits": 2.18955
+}

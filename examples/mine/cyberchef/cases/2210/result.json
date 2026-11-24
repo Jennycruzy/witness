@@ -1,0 +1,11 @@
+{
+  "pr": 2210,
+  "issue": 2209,
+  "result": "MISSED",
+  "why": "the buggy build passes too: the test does not reach the bug",
+  "at": "2026-11-24T20:08:48.195Z",
+  "verdict": "PASS",
+  "kaneLabel": null,
+  "kaneConfidence": null,
+  "credits": 0
+}

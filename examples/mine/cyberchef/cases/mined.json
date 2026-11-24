@@ -4,12 +4,12 @@
     "notTestable": 19,
     "noBuild": 0,
     "written": 22,
-    "run": 8,
-    "kept": 5,
-    "missed": 0,
-    "unrecordable": 1,
-    "other": 2,
-    "kaneRightOnKept": 5
+    "run": 22,
+    "kept": 11,
+    "missed": 1,
+    "unrecordable": 7,
+    "other": 3,
+    "kaneRightOnKept": 11
   },
   "cases": [
     {
@@ -230,7 +230,18 @@
         "label": "gchq/CyberChef@v10.24.0"
       },
       "status": "written",
-      "why": "The report says the built-in Email address regex fails to match an address with an IPv4 domain such as false_negative@[1.2.3.4]; with List matches output, the fixed build lists the address and the buggy build lists nothing."
+      "why": "The report says the built-in Email address regex fails to match an address with an IPv4 domain such as false_negative@[1.2.3.4]; with List matches output, the fixed build lists the address and the buggy build lists nothing.",
+      "result": {
+        "pr": 2167,
+        "issue": 2150,
+        "result": "TEST_PROBLEM",
+        "why": "The page changed where the test acts: it failed at an action, not at a check.",
+        "at": "2026-11-24T20:01:31.732Z",
+        "verdict": "TEST_PROBLEM",
+        "kaneLabel": "automation_bug",
+        "kaneConfidence": 0.92,
+        "credits": 2.9484
+      }
     },
     {
       "pr": 2169,
@@ -318,7 +329,18 @@
         "label": "gchq/CyberChef@v10.23.0"
       },
       "status": "written",
-      "why": "The report gives a concrete recipe (jq filter \".a\" on {\"a\": 1}): a working jq returns the value of a, but the buggy build always shows an error message in the Output box."
+      "why": "The report gives a concrete recipe (jq filter \".a\" on {\"a\": 1}): a working jq returns the value of a, but the buggy build always shows an error message in the Output box.",
+      "result": {
+        "pr": 2210,
+        "issue": 2209,
+        "result": "MISSED",
+        "why": "the buggy build passes too: the test does not reach the bug",
+        "at": "2026-11-24T20:08:48.195Z",
+        "verdict": "PASS",
+        "kaneLabel": null,
+        "kaneConfidence": null,
+        "credits": 0
+      }
     },
     {
       "pr": 2223,
@@ -340,7 +362,14 @@
         "label": "gchq/CyberChef@v10.23.0"
       },
       "status": "written",
-      "why": "The report gives a concrete recipe (Jq with filter .a on input {\"a\": 1}): the fixed app outputs 1, while the buggy app shows a JSON or jq error instead."
+      "why": "The report gives a concrete recipe (Jq with filter .a on input {\"a\": 1}): the fixed app outputs 1, while the buggy app shows a JSON or jq error instead.",
+      "result": {
+        "pr": 2223,
+        "issue": 2209,
+        "result": "UNRECORDABLE",
+        "why": "the fixed build fails the test: The Jq query field was empty while the input was {\"a\": 1}. With no query selecting the a value, the output correctly remained the whole object instead of 1.",
+        "at": "2026-11-24T20:12:49.201Z"
+      }
     },
     {
       "pr": 2249,
@@ -362,7 +391,18 @@
         "label": "gchq/CyberChef@v10.23.0"
       },
       "status": "written",
-      "why": "The report says an empty input through a recipe containing To Modhex should return an empty string, but it shows an error instead. The fixed app should show an empty Output box and the buggy app should show an error."
+      "why": "The report says an empty input through a recipe containing To Modhex should return an empty string, but it shows an error instead. The fixed app should show an empty Output box and the buggy app should show an error.",
+      "result": {
+        "pr": 2249,
+        "issue": 2246,
+        "result": "KEPT",
+        "why": "The To Modhex step tries to use an empty value as though it has content, then shows an error message in the Output box.",
+        "at": "2026-11-24T20:14:45.106Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.97,
+        "credits": 2.9356999999999998
+      }
     },
     {
       "pr": 2257,
@@ -450,7 +490,18 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report gives an exact input (10,1,2 with comma delimiter) and an exact expected output (2), while the buggy build shows 1."
+      "why": "The report gives an exact input (10,1,2 with comma delimiter) and an exact expected output (2), while the buggy build shows 1.",
+      "result": {
+        "pr": 2284,
+        "issue": 2239,
+        "result": "UNKNOWN",
+        "why": "Could not tell whether the failure was at a check or an action.",
+        "at": "2026-11-24T20:21:57.694Z",
+        "verdict": "UNKNOWN",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.98,
+        "credits": 1.4174
+      }
     },
     {
       "pr": 2285,
@@ -472,7 +523,18 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report gives the exact input (10.1 with radix 2) and the correct output (2.5), while the buggy build shows a NaN error instead."
+      "why": "The report gives the exact input (10.1 with radix 2) and the correct output (2.5), while the buggy build shows a NaN error instead.",
+      "result": {
+        "pr": 2285,
+        "issue": 2240,
+        "result": "KEPT",
+        "why": "The conversion is treating the calculated value \"20.5\" as invalid, so a valid binary fractional input cannot be converted.",
+        "at": "2026-11-24T20:27:28.358Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.99,
+        "credits": 2.33985
+      }
     },
     {
       "pr": 2286,
@@ -494,7 +556,14 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report gives exact input and expected output for Set Difference with the default delimiters: the fixed app shows \"red\" and the buggy app shows \"red,red\"."
+      "why": "The report gives exact input and expected output for Set Difference with the default delimiters: the fixed app shows \"red\" and the buggy app shows \"red,red\".",
+      "result": {
+        "pr": 2286,
+        "issue": 2241,
+        "result": "UNRECORDABLE",
+        "why": "the fixed build fails the test: The run used Set Difference with a single value instead of the multiple sets the operation needs. The page therefore displayed an input error rather than “red.”",
+        "at": "2026-11-24T20:32:51.879Z"
+      }
     },
     {
       "pr": 2287,
@@ -516,7 +585,14 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report says that with the U+ prefix, the 6-digit code U+000041 should decode to \"A\", but the buggy build reads only 4 hex digits and cannot decode it."
+      "why": "The report says that with the U+ prefix, the 6-digit code U+000041 should decode to \"A\", but the buggy build reads only 4 hex digits and cannot decode it.",
+      "result": {
+        "pr": 2287,
+        "issue": 2242,
+        "result": "UNRECORDABLE",
+        "why": "the recording does not replay on the fixed build",
+        "at": "2026-11-24T20:34:54.365Z"
+      }
     },
     {
       "pr": 2288,
@@ -538,7 +614,14 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report gives the exact setup (Gzip with Comment \"test\" and Include file checksum, input \"hello hello hello\") and says decompressing with Gunzip fails with an invalid header crc16 error, so on the fixed build a Gzip-then-Gunzip round trip should output the original text."
+      "why": "The report gives the exact setup (Gzip with Comment \"test\" and Include file checksum, input \"hello hello hello\") and says decompressing with Gunzip fails with an invalid header crc16 error, so on the fixed build a Gzip-then-Gunzip round trip should output the original text.",
+      "result": {
+        "pr": 2288,
+        "issue": 2243,
+        "result": "UNRECORDABLE",
+        "why": "the recording does not replay on the fixed build",
+        "at": "2026-11-24T20:38:49.841Z"
+      }
     },
     {
       "pr": 2289,
@@ -560,7 +643,14 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report gives a concrete input where the long-form BER length bytes 82 00 05 must be read as 5. The fixed parser shows a length of 5 for the first entry. The buggy parser misreads it as 130, so a length of 5 never appears."
+      "why": "The report gives a concrete input where the long-form BER length bytes 82 00 05 must be read as 5. The fixed parser shows a length of 5 for the first entry. The buggy parser misreads it as 130, so a length of 5 never appears.",
+      "result": {
+        "pr": 2289,
+        "issue": 2245,
+        "result": "UNRECORDABLE",
+        "why": "the recording does not replay on the fixed build",
+        "at": "2026-11-24T20:42:38.383Z"
+      }
     },
     {
       "pr": 2290,
@@ -582,7 +672,18 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report's own reproduction input, a chunked body ending in a zero-length chunk followed by an Expires trailer, should decode to just the chunk data, but the buggy build adds the trailer text to the output."
+      "why": "The report's own reproduction input, a chunked body ending in a zero-length chunk followed by an Expires trailer, should decode to just the chunk data, but the buggy build adds the trailer text to the output.",
+      "result": {
+        "pr": 2290,
+        "issue": 2247,
+        "result": "KEPT",
+        "why": "The dechunk operation does not stop cleanly after the zero-length final chunk, so it adds part of the trailing header to the result.",
+        "at": "2026-11-24T20:46:12.169Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.99,
+        "credits": 2.13715
+      }
     },
     {
       "pr": 2291,
@@ -604,7 +705,18 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report gives an ASCII-only input and the exact correct output, \"Subject: café\", while the buggy build shows \"Subject: caf退\" in the Output box."
+      "why": "The report gives an ASCII-only input and the exact correct output, \"Subject: café\", while the buggy build shows \"Subject: caf退\" in the Output box.",
+      "result": {
+        "pr": 2291,
+        "issue": 2280,
+        "result": "KEPT",
+        "why": "The decoder is interpreting the UTF-8 encoded character incorrectly, so the Output box shows a corrupted character.",
+        "at": "2026-11-24T20:50:40.619Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.99,
+        "credits": 2.068
+      }
     },
     {
       "pr": 2307,
@@ -626,7 +738,18 @@
         "label": "gchq/CyberChef@v10.23.0"
       },
       "status": "written",
-      "why": "The report says the Offset checker's sample delimiter goes into the output without escaping, so a delimiter containing HTML tags should show up as literal text in the fixed build, while the buggy build renders it as markup and the tags disappear."
+      "why": "The report says the Offset checker's sample delimiter goes into the output without escaping, so a delimiter containing HTML tags should show up as literal text in the fixed build, while the buggy build renders it as markup and the tags disappear.",
+      "result": {
+        "pr": 2307,
+        "issue": 2306,
+        "result": "KEPT",
+        "why": "The Output box is treating the angle-bracket text as formatting instead of showing it as ordinary text.",
+        "at": "2026-11-24T20:55:03.512Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.99,
+        "credits": 2.1803
+      }
     },
     {
       "pr": 2340,
@@ -648,7 +771,18 @@
         "label": "gchq/CyberChef@v11.3.0"
       },
       "status": "written",
-      "why": "The report gives the exact correct output: converting hex byte 0x80 and then URL-encoding it should give %80, but the buggy build adds an extra %C2 and gives %C2%80."
+      "why": "The report gives the exact correct output: converting hex byte 0x80 and then URL-encoding it should give %80, but the buggy build adds an extra %C2 and gives %C2%80.",
+      "result": {
+        "pr": 2340,
+        "issue": 584,
+        "result": "KEPT",
+        "why": "The encoding step is treating the byte 0x80 as a text character and converting it to two UTF-8 bytes before URL encoding it.",
+        "at": "2026-11-24T21:00:15.829Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.98,
+        "credits": 2.18955
+      }
     },
     {
       "pr": 2341,
@@ -674,9 +808,9 @@
       "result": {
         "pr": 2341,
         "issue": 646,
-        "result": "ERROR",
-        "why": "no asset matching ^CyberChef_v.*\\.zip$ in gchq/CyberChef@v11.1.0",
-        "at": "2026-11-24T15:12:31.056Z"
+        "result": "UNRECORDABLE",
+        "why": "the fixed build fails the test: The run assumed the current recipe would be Translate DateTime Format, but it was actually a different recipe containing only Fork.",
+        "at": "2026-11-24T21:06:06.074Z"
       }
     },
     {

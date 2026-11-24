@@ -1,7 +1,7 @@
 {
   "pr": 2341,
   "issue": 646,
-  "result": "ERROR",
-  "why": "no asset matching ^CyberChef_v.*\\.zip$ in gchq/CyberChef@v11.1.0",
-  "at": "2026-11-24T15:12:31.056Z"
+  "result": "UNRECORDABLE",
+  "why": "the fixed build fails the test: The run assumed the current recipe would be Translate DateTime Format, but it was actually a different recipe containing only Fork.",
+  "at": "2026-11-24T21:06:06.074Z"
 }

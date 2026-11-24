@@ -1,0 +1,18 @@
+{
+  "test_id": "1fa83f65-31bf-486e-a165-d4616e39b9ba",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "to_modhex_with_empty_input_gives_empty_o",
+  "commit_id": "5a687a7d-e551-433a-85d8-782ef6ccbc96",
+  "testcase_id": "01M87K4NZNFRH9JZVH8D54Y6G9",
+  "executions": [
+    {
+      "execution_id": "01609085-e8ee-44f1-8042-903f3a02fce9",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T20:17:21.789Z"
+    }
+  ]
+}

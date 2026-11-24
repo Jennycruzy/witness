@@ -1,0 +1,18 @@
+{
+  "test_id": "567da9a2-e4df-4c7f-806b-9c805588e17d",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "dechunk_http_response_drops_the_terminat",
+  "commit_id": "9ae9792b-3aa6-4cea-b222-4d4d425f9c21",
+  "testcase_id": "01M87MY995SF5QGJ8QSK13FP27",
+  "executions": [
+    {
+      "execution_id": "7a2e9146-65d2-4a2e-ad18-628039233c0f",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T20:47:44.384Z"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "pr": 2291,
+  "issue": 2280,
+  "result": "KEPT",
+  "why": "The decoder is interpreting the UTF-8 encoded character incorrectly, so the Output box shows a corrupted character.",
+  "at": "2026-11-24T20:50:40.619Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.99,
+  "credits": 2.068
+}

@@ -1,0 +1,18 @@
+{
+  "test_id": "2a0744d8-0104-4b05-8ece-48bb56993ce2",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "from_base_with_radix_2_converts_fraction",
+  "commit_id": "553e2016-791c-4d92-abc6-34b77d0ab3d1",
+  "testcase_id": "01M87KVZK1XNAJNYM501DDG6NB",
+  "executions": [
+    {
+      "execution_id": "eaa63915-0165-4805-8a7e-a2b4972459a5",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T20:29:14.603Z"
+    }
+  ]
+}

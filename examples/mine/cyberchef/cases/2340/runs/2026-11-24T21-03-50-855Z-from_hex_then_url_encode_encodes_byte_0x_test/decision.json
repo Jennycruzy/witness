@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2340/from_hex_then_url_encode_encodes_byte_0x_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.98,
+        "rootCause": "The encoding step is treating the byte 0x80 as a text character and converting it to two UTF-8 bytes before URL encoding it."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/fa290033-c9e8-44bc-8214-d953d90b0267/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.18955,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

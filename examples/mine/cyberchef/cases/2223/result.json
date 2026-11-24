@@ -1,0 +1,7 @@
+{
+  "pr": 2223,
+  "issue": 2209,
+  "result": "UNRECORDABLE",
+  "why": "the fixed build fails the test: The Jq query field was empty while the input was {\"a\": 1}. With no query selecting the a value, the output correctly remained the whole object instead of 1.",
+  "at": "2026-11-24T20:12:49.201Z"
+}

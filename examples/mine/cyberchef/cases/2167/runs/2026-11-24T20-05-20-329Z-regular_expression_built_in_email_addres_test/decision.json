@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2167/regular_expression_built_in_email_addres_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.92,
+    "verdict": "TEST_PROBLEM",
+    "why": "The page changed where the test acts: it failed at an action, not at a check.",
+    "next": "Re-record the test on the target build, then run it again."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 0,
+    "healed": false,
+    "failed": {
+      "runId": "run-0",
+      "stepIndex": 3,
+      "kind": "action",
+      "reason": "action_failed: click @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "agent_misstep",
+        "confidence": 0.92,
+        "rootCause": "The search successfully showed the Regular expression operation, but the next recorded action did not match the required double-click interaction."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/26701095-2841-4229-be84-b43753cea823/scratch/0/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.9484,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

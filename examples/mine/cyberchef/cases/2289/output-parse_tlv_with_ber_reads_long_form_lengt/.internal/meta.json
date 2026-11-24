@@ -1,0 +1,18 @@
+{
+  "test_id": "4b89cea3-6d42-4b52-94fd-0dedd161a7e4",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "parse_tlv_with_ber_reads_long_form_lengt",
+  "commit_id": "39d41186-2278-493f-aaf6-1e29591a1014",
+  "testcase_id": "01M87MQR3WWAWESW37GN0YM7BK",
+  "executions": [
+    {
+      "execution_id": "d6f03282-d6a3-4c1f-8e19-b424a6cfad87",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T20:44:53.390Z"
+    }
+  ]
+}

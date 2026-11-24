@@ -1,0 +1,11 @@
+{
+  "pr": 2249,
+  "issue": 2246,
+  "result": "KEPT",
+  "why": "The To Modhex step tries to use an empty value as though it has content, then shows an error message in the Output box.",
+  "at": "2026-11-24T20:14:45.106Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.97,
+  "credits": 2.9356999999999998
+}

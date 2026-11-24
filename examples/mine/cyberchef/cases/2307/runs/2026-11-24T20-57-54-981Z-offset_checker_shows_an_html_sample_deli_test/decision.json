@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2307/offset_checker_shows_an_html_sample_deli_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.99,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.99,
+        "rootCause": "The Output box is treating the angle-bracket text as formatting instead of showing it as ordinary text."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/fe41634c-f554-4d31-a14b-d625676c22ef/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.1803,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

@@ -1,0 +1,11 @@
+{
+  "pr": 2285,
+  "issue": 2240,
+  "result": "KEPT",
+  "why": "The conversion is treating the calculated value \"20.5\" as invalid, so a valid binary fractional input cannot be converted.",
+  "at": "2026-11-24T20:27:28.358Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.99,
+  "credits": 2.33985
+}

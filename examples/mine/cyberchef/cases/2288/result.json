@@ -1,0 +1,7 @@
+{
+  "pr": 2288,
+  "issue": 2243,
+  "result": "UNRECORDABLE",
+  "why": "the recording does not replay on the fixed build",
+  "at": "2026-11-24T20:38:49.841Z"
+}

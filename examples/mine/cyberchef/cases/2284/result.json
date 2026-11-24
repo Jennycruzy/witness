@@ -1,0 +1,11 @@
+{
+  "pr": 2284,
+  "issue": 2239,
+  "result": "UNKNOWN",
+  "why": "Could not tell whether the failure was at a check or an action.",
+  "at": "2026-11-24T20:21:57.694Z",
+  "verdict": "UNKNOWN",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.98,
+  "credits": 1.4174
+}

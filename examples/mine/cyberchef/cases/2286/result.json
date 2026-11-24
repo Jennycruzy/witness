@@ -1,0 +1,7 @@
+{
+  "pr": 2286,
+  "issue": 2241,
+  "result": "UNRECORDABLE",
+  "why": "the fixed build fails the test: The run used Set Difference with a single value instead of the multiple sets the operation needs. The page therefore displayed an input error rather than “red.”",
+  "at": "2026-11-24T20:32:51.879Z"
+}

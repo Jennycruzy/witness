@@ -1,0 +1,11 @@
+{
+  "pr": 2307,
+  "issue": 2306,
+  "result": "KEPT",
+  "why": "The Output box is treating the angle-bracket text as formatting instead of showing it as ordinary text.",
+  "at": "2026-11-24T20:55:03.512Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.99,
+  "credits": 2.1803
+}

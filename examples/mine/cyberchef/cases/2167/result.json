@@ -1,0 +1,11 @@
+{
+  "pr": 2167,
+  "issue": 2150,
+  "result": "TEST_PROBLEM",
+  "why": "The page changed where the test acts: it failed at an action, not at a check.",
+  "at": "2026-11-24T20:01:31.732Z",
+  "verdict": "TEST_PROBLEM",
+  "kaneLabel": "automation_bug",
+  "kaneConfidence": 0.92,
+  "credits": 2.9484
+}

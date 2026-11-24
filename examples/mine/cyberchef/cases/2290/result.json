@@ -1,0 +1,11 @@
+{
+  "pr": 2290,
+  "issue": 2247,
+  "result": "KEPT",
+  "why": "The dechunk operation does not stop cleanly after the zero-length final chunk, so it adds part of the trailing header to the result.",
+  "at": "2026-11-24T20:46:12.169Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.99,
+  "credits": 2.13715
+}
