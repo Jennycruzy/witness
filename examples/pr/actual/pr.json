@@ -1,0 +1,14 @@
+{
+  "repo": "actualbudget/actual",
+  "preview": "^https://deploy-preview-{n}\\.demo\\.actualbudget\\.org/?",
+  "live": { "url": "https://edge.actualbudget.org", "label": "Actual main branch, live (edge.actualbudget.org)" },
+  "setup": "node {base}/../../mine/actual/setup.mjs {url} {profile}",
+  "tests": [
+    "../../mine/actual/cases/9360/search_filter_stays_applied_after_toggli_test.md",
+    "../../mine/actual/cases/8726/amount_is_greater_than_filter_hides_tran_test.md",
+    "../../mine/actual/cases/8763/category_dropdown_menu_opens_again_after_test.md",
+    "../../mine/actual/cases/9173/renaming_a_schedule_keeps_its_skipped_oc_test.md",
+    "../../mine/actual/cases/8587/rule_with_a_category_group_condition_run_test.md"
+  ],
+  "evidenceDir": "runs"
+}

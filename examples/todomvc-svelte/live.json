@@ -1,14 +1,27 @@
 {
   "exampleDir": ".",
-  "tests": ["tests/edit_trim_test.md", "tests/filter_reload_test.md"],
+  "tests": [
+    "tests/edit_trim_test.md",
+    "tests/filter_reload_test.md"
+  ],
   "builds": {
-    "buggy": { "dir": "builds/upstream/dist", "label": "the upstream code (with the #2315 bugs)" },
-    "fixed": { "dir": "reference/dist", "label": "the fixed code" }
+    "buggy": {
+      "dir": "builds/upstream/dist",
+      "label": "the upstream code (with the #2315 bugs)"
+    },
+    "fixed": {
+      "dir": "reference/dist",
+      "label": "the fixed code"
+    }
   },
   "referenceDir": "reference/dist",
   "port": 8797,
   "host": "127.0.0.1",
   "perHour": 6,
   "perVisitorMinutes": 10,
-  "stateFile": ".witness/live-history.json"
+  "stateFile": ".witness/live-history.json",
+  "pr": {
+    "config": "../pr/actual/pr.json",
+    "app": "Actual Budget"
+  }
 }

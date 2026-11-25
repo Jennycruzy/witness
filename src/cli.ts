@@ -4,6 +4,7 @@
 // witness record <test> [witness.json]   record the test's steps with Kane on the reference build (or newest release)
 // witness classify <target.ndjson> <reference.ndjson>   decide from two saved Kane runs
 // witness mine plan|run <mine.json>     merged bug fixes -> agent-written Kane tests -> kept when fixed passes and buggy fails
+// witness pr list|check <pr.json> [n]   open pull requests of a real app: Kane replays saved tests on each live preview
 // witness demo                           one real case from the committed runs, then every number recomputed (no login)
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -23,6 +24,7 @@ import { demo, evidenceRoot } from './commands/demo.js';
 import { renderReport } from './core/report.js';
 import { startLive } from './commands/live.js';
 import { minePlan, mineRun, summarize, loadMine } from './commands/mine.js';
+import { checkPr, listOpenPrs, loadPrConfig } from './commands/pr.js';
 
 const [cmd, a, b] = process.argv.slice(2);
 
@@ -45,6 +47,21 @@ async function main(): Promise<number> {
     else if (a === 'run') await mineRun(b, console.log, oi > 0 ? process.argv[oi + 1] : undefined);
     else summarize(loadMine(b).outDir);
     return 0;
+  }
+  if (cmd === 'pr' && (a === 'list' || a === 'check') && b) {
+    // witness pr list <pr.json>                 open pull requests and their live previews
+    // witness pr check <pr.json> <n> [--only t] Kane replays the saved tests on the preview of pull request n
+    const c = loadPrConfig(b);
+    if (a === 'list') {
+      for (const p of listOpenPrs(c)) console.log(`#${p.number}  ${p.preview ? 'preview' : 'no preview'}  ${p.ai ? '[AI] ' : ''}${p.title.replace(/^\s*\[AI\]\s*/i, '')}`);
+      return 0;
+    }
+    const n = Number(process.argv[5]);
+    if (!n) { console.error('usage: witness pr check <pr.json> <pull request number> [--only <test>]'); return 64; }
+    const oi = process.argv.indexOf('--only');
+    const r = await checkPr(c, n, console.log, oi > 0 ? process.argv[oi + 1] : undefined);
+    if (process.env.WITNESS_RESULTS) writeFileSync(process.env.WITNESS_RESULTS, JSON.stringify(r, null, 2));
+    return r.results.some(x => x.verdict === 'APP_BUG') ? 2 : 0;
   }
   if (cmd === 'guard') {
     // witness guard [witness.json] [--only <test name or file>]
@@ -119,6 +136,7 @@ async function main(): Promise<number> {
       port: Number(process.env.PORT ?? c.port ?? 8797), host: c.host ?? '127.0.0.1',
       perHour: c.perHour ?? 6, perVisitorMinutes: c.perVisitorMinutes ?? 10,
       stateFile: r(c.stateFile ?? '.witness/live-history.json'), cli: resolve(process.argv[1]),
+      pr: c.pr ? { config: r(c.pr.config), app: c.pr.app } : undefined, lock: c.lock,
     });
     return new Promise<number>(() => {});
   }
