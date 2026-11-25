@@ -7,7 +7,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { tmpdir } from 'node:os';
-import { listOpenPrsAsync, loadPrConfig, type OpenPr } from './pr.js';
+import { listOpenPrsAsync, loadPrConfig, pastChecks, type OpenPr } from './pr.js';
 
 export interface LiveOptions {
   exampleDir: string;       // examples/todomvc-svelte (tests + recordings)
@@ -103,6 +103,11 @@ export function startLive(o: LiveOptions) {
     if (req.method === 'GET' && url.pathname === '/api/status') {
       return json(res, 200, { busy: !!current, current: current ? { id: current.id, build: current.build, pr: current.pr, started: current.started } : null, runsThisHour: lastHour(), perHour: o.perHour, history: history.slice(-20).reverse() });
     }
+    if (req.method === 'GET' && url.pathname === '/api/checks') {
+      const all = prConfig ? pastChecks(prConfig) : [];
+      const titles: Record<string, string> = Object.fromEntries((prConfig?.tests ?? []).map(t => [t.split('/').pop()!, (readFileSync(t, 'utf8').match(/^# (.+)$/m)?.[1] ?? '').trim()]).filter(([, v]) => v));
+      return json(res, 200, { repo: prConfig?.repo ?? null, checks: all.slice(0, 200).map(c => ({ number: c.number, title: c.title, ai: c.ai, headSha: c.headSha.slice(0, 9), started: c.started, seconds: c.seconds, results: c.results.map(r => ({ test: titles[r.test] ?? r.test, verdict: r.verdict, kaneLabel: r.kaneLabel, kaneConfidence: r.kaneConfidence })) })) });
+    }
     if (req.method === 'GET' && url.pathname === '/api/prs') {
       return json(res, 200, { app: o.pr?.app ?? null, repo: prConfig?.repo ?? null, live: prConfig?.live ?? null, tests: (prConfig?.tests ?? []).map(t => ({ file: t.split('/').pop(), title: (readFileSync(t, 'utf8').match(/^# (.+)$/m)?.[1] ?? t.split('/').pop()!).trim() })), prs: openPrs(), loading: refreshing && !prs.list.length });
     }
@@ -184,6 +189,9 @@ ${o.pr ? `<h1>Check a pull request of ${app} before it merges</h1>
 <div id="prmsg" class="msg muted"></div></div></div>` : ''}
 <div class="box"><div class="box-h"><span>Log</span><span id="timer" class="muted"></span></div><pre id="log">Pick a pull request${o.pr ? '' : ' or a build'} to start.</pre></div>
 <div id="result"></div>
+${o.pr ? `<h2>Checked automatically</h2>
+<p class="muted" id="autosum">Every few hours WITNESS checks each open pull request whose newest commit it has not checked yet, with the tests for the areas that pull request changes (<code>witness pr watch</code>). Every check is listed here and committed in the repository.</p>
+<div class="box tw"><table><thead><tr><th>When (UTC)</th><th>Pull request</th><th>Commit</th><th>Tests</th><th>WITNESS</th></tr></thead><tbody id="auto"><tr><td colspan="5" class="muted">Loading...</td></tr></tbody></table></div>` : ''}
 <h2>${o.pr ? 'Also: watch it decide on a known bug' : 'Watch WITNESS decide who is at fault'}</h2>
 <p>The TodoMVC Svelte example, with its upstream code, has the bugs in <a href="https://github.com/tastejs/todomvc/issues/2315">tastejs/todomvc#2315</a>: an edit made of spaces leaves an empty todo, and the filter is lost on reload. WITNESS replays the saved Kane recording on the build you pick; if a test fails, it replays the same recording on the fixed build and decides. Kane's own label is shown next to it and never used to decide. About two minutes.</p>
 <div class="btns">${buttons}</div>
@@ -239,6 +247,14 @@ async function loadPrs(){
 document.querySelectorAll('.btn[data-build]').forEach(b=>b.onclick=()=>start('build='+encodeURIComponent(b.dataset.build),'#msg'));
 if($('#prgo'))$('#prgo').onclick=()=>{const n=$('#pr').value;if(!n)return;start('pr='+encodeURIComponent(n)+($('#test').value?'&test='+encodeURIComponent($('#test').value):''),'#prmsg')};
 loadPrs();
+async function loadChecks(){
+  if(!$('#auto'))return;
+  const j=await (await fetch('/api/checks')).json();const c=j.checks||[];
+  const prs=new Set(c.map(x=>x.number)).size,runs=c.reduce((n,x)=>n+x.results.length,0),bugs=c.filter(x=>x.results.some(r=>r.verdict==='APP_BUG'));
+  $('#autosum').insertAdjacentHTML('beforeend',' So far: '+c.length+' checks of '+prs+' pull requests, '+runs+' test runs; '+(bugs.length?'<b class="bad">'+bugs.length+' found a bug the pull request adds</b>.':'none found a bug the pull request adds.'));
+  $('#auto').innerHTML=c.map(x=>'<tr><td>'+esc(x.started.slice(0,16).replace('T',' '))+'</td><td><a href="https://github.com/'+esc(j.repo)+'/pull/'+x.number+'" target="_blank" rel="noopener">#'+x.number+'</a> '+esc(x.title)+'</td><td><code>'+esc(x.headSha)+'</code></td><td>'+x.results.map(r=>esc(r.test.replace(/_test\.md$/,'').replace(/_/g,' '))).join('<br>')+'</td><td>'+x.results.map(r=>'<span class="lbl '+cls(r.verdict)+'">'+esc(r.verdict)+'</span>').join('<br>')+'</td></tr>').join('')||'<tr><td colspan="5" class="muted">None yet.</td></tr>';
+}
+loadChecks();
 loadStatus().then(s=>{if(s.busy){$('#msg').textContent='A run is in progress:';watch(s.current.id)}});
 </script></body></html>`;
 }

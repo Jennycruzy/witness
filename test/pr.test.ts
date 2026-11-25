@@ -33,3 +33,15 @@ describe('witness pr', () => {
     expect(summaryLine({ ...base, results: [r('a', 'ENV')] })).toMatch(/no bug added by this pull request; a ENV/);
   });
 });
+
+describe('witness pr watch', () => {
+  it('gives a pull request only the tests for the areas it changes', async () => {
+    const { testsFor } = await import('../src/commands/pr.js');
+    const c = loadPrConfig(cfgPath);
+    const names = (files: string[]) => testsFor(c, files).map(t => t.split('/').pop());
+    expect(names(['packages/desktop-client/src/components/schedules/ScheduleDetails.tsx'])).toEqual(['renaming_a_schedule_keeps_its_skipped_oc_test.md']);
+    expect(names(['packages/desktop-client/src/components/accounts/Account.tsx', 'packages/desktop-client/src/components/budget/BudgetTable.tsx'])).toEqual(['search_filter_stays_applied_after_toggli_test.md', 'category_dropdown_menu_opens_again_after_test.md']);
+    expect(names(['docs/README.md', 'packages/sync-server/src/app.ts'])).toEqual([]);
+    expect(names(['packages/desktop-client/src/components/schedules/ScheduleDetails.test.tsx'])).toEqual([]);
+  });
+});

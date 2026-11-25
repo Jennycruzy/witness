@@ -4,7 +4,7 @@
 // witness record <test> [witness.json]   record the test's steps with Kane on the reference build (or newest release)
 // witness classify <target.ndjson> <reference.ndjson>   decide from two saved Kane runs
 // witness mine plan|run <mine.json>     merged bug fixes -> agent-written Kane tests -> kept when fixed passes and buggy fails
-// witness pr list|check <pr.json> [n]   open pull requests of a real app: Kane replays saved tests on each live preview
+// witness pr list|check|watch <pr.json> [n]   open pull requests of a real app: Kane replays saved tests on each live preview
 // witness demo                           one real case from the committed runs, then every number recomputed (no login)
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -24,7 +24,7 @@ import { demo, evidenceRoot } from './commands/demo.js';
 import { renderReport } from './core/report.js';
 import { startLive } from './commands/live.js';
 import { minePlan, mineRun, summarize, loadMine } from './commands/mine.js';
-import { checkPr, listOpenPrs, loadPrConfig } from './commands/pr.js';
+import { checkPr, listOpenPrs, loadPrConfig, watchPrs } from './commands/pr.js';
 
 const [cmd, a, b] = process.argv.slice(2);
 
@@ -47,6 +47,15 @@ async function main(): Promise<number> {
     else if (a === 'run') await mineRun(b, console.log, oi > 0 ? process.argv[oi + 1] : undefined);
     else summarize(loadMine(b).outDir);
     return 0;
+  }
+  if (cmd === 'pr' && a === 'watch' && b) {
+    // witness pr watch <pr.json> [--max n] [--plan]: check every open pull request whose newest commit has not been checked yet
+    const mi = process.argv.indexOf('--max');
+    // --plan prints "<number> <tests>" per pull request to check and runs nothing (for a scheduler that runs each check on its own)
+    const plan = process.argv.includes('--plan') ? (n: number, t: string) => console.log(`${n} ${t}`) : undefined;
+    const r = await watchPrs(loadPrConfig(b), plan ? () => {} : console.log, mi > 0 ? Number(process.argv[mi + 1]) : 10, { plan });
+    if (plan) return 0;
+    return r.checked.some(x => x.results.some(y => y.verdict === 'APP_BUG')) ? 2 : 0;
   }
   if (cmd === 'pr' && (a === 'list' || a === 'check') && b) {
     // witness pr list <pr.json>                 open pull requests and their live previews

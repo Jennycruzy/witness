@@ -12,5 +12,31 @@
     "tests/renaming_a_schedule_keeps_its_skipped_oc_test.md",
     "tests/rule_with_a_category_group_condition_run_test.md"
   ],
-  "evidenceDir": "runs"
+  "evidenceDir": "runs",
+  "areas": {
+    "search_filter_stays": [
+      "desktop-client/src/components/(accounts|transactions)/",
+      "desktop-client/src/hooks/useTransactions",
+      "loot-core/src/(shared|server)/transactions?/"
+    ],
+    "category_dropdown": [
+      "desktop-client/src/components/budget/",
+      "desktop-client/src/components/common/(Menu|Popover)",
+      "ContextMenu",
+      "useRefEventListener",
+      "desktop-client/src/components/sidebar/"
+    ],
+    "renaming_a_schedule": [
+      "desktop-client/src/components/schedules/",
+      "loot-core/src/server/schedules/",
+      "loot-core/src/shared/schedules"
+    ],
+    "rule_with_a_category": [
+      "loot-core/src/server/rules/",
+      "loot-core/src/server/transactions/transaction-rules",
+      "desktop-client/src/components/rules/",
+      "ManageRules",
+      "RuleEditor"
+    ]
+  }
 }

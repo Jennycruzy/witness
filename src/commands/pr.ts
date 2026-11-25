@@ -3,7 +3,7 @@
 // saved tests on that preview; when one fails, the same recording runs on the app's live main build and decides.
 import { execFile, execFileSync } from 'node:child_process';
 import { promisify } from 'node:util';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, isAbsolute, join, resolve } from 'node:path';
 import type { WitnessConfig } from '../io/config.js';
 import { guard, type GuardResult } from './guard.js';
@@ -15,6 +15,7 @@ export interface PrConfig {
   setup?: string;               // prepares app state before each Kane run: gets {url}, {profile} and {base} (this file's folder)
   tests: string[];              // saved Kane tests (_test.md with output-<name>/ next to it)
   evidenceDir?: string;
+  areas?: Record<string, string[]>;   // test file (or a part of its name) -> regexes over changed file paths; a pull request gets the tests whose area it changes
   base: string;                 // folder of the config file
 }
 
@@ -123,4 +124,43 @@ export function summaryLine(c: PrCheck): string {
   const other = c.results.filter(r => r.verdict !== 'PASS');
   if (other.length) return `no bug added by this pull request; ${other.map(o => `${o.test} ${o.verdict}`).join(', ')}`;
   return `all ${c.results.length} tests pass on the preview`;
+}
+
+/** The tests whose area a pull request changes (all tests when the config names no areas). */
+export function testsFor(c: PrConfig, files: string[]): string[] {
+  if (!c.areas) return c.tests;
+  const code = files.filter(f => !/\.test\.|\/e2e\/|\.md$/.test(f));
+  return c.tests.filter(t => Object.entries(c.areas!).some(([name, rxs]) => t.includes(name) && rxs.some(rx => code.some(f => new RegExp(rx).test(f)))));
+}
+
+/** Every finished check in the evidence folder, newest first. */
+export function pastChecks(c: PrConfig): PrCheck[] {
+  const dir = c.evidenceDir!;
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir).filter(d => d.startsWith('pr-')).map(d => join(dir, d, 'pr.json')).filter(existsSync)
+    .map(f => JSON.parse(readFileSync(f, 'utf8')) as PrCheck).sort((a, b) => b.started.localeCompare(a.started));
+}
+
+/** witness pr watch: checks each open pull request with a finished preview whose newest commit has not been checked,
+ *  with the tests for the areas it changes. Pull requests that change none of them are listed and skipped. */
+export async function watchPrs(c: PrConfig, log = console.log, max = 10, opts: { plan?: (n: number, tests: string) => void } = {}): Promise<{ checked: PrCheck[]; skipped: number[]; noPreview: number[]; planned: number }> {
+  const done = new Set(pastChecks(c).map(p => `${p.number}@${p.headSha}`));
+  const open = JSON.parse(gh(['pr', 'list', '-R', c.repo, '--state', 'open', '--limit', '100', '--json', 'number,title,headRefOid,files'])) as any[];
+  const checked: PrCheck[] = [], skipped: number[] = [], noPreview: number[] = [];
+  let planned = 0;
+  for (const p of open) {
+    if (checked.length + planned >= max) break;
+    if (done.has(`${p.number}@${p.headRefOid}`)) continue;
+    const tests = testsFor(c, (p.files ?? []).map((f: any) => f.path));
+    if (!tests.length) { skipped.push(p.number); continue; }
+    const links = previewLinks(c.repo, p.headRefOid);
+    if (!findPreview(links, c.preview, p.number)) { noPreview.push(p.number); continue; }
+    const only = tests.map(t => t.split('/').pop()!).join(',');
+    if (opts.plan) { opts.plan(p.number, only); planned++; continue; }
+    try { checked.push(await checkPr(c, p.number, log, only)); }
+    catch (e) { log(`  #${p.number}: ${(e as Error).message}`); }
+  }
+  if (opts.plan) return { checked, skipped, noPreview, planned };
+  log(`watch      ${checked.length} checked, ${skipped.length} change no tested area, ${noPreview.length} without a finished preview`);
+  return { checked, skipped, noPreview, planned };
 }
