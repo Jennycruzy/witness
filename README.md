@@ -109,7 +109,7 @@ The fix works on the TodoMVC case. On Actual Budget the recorded check is `match
 
 ## Install
 
-Needs Node 20+, Google Chrome, and a [Kane CLI](https://www.testmuai.com/kane-cli/) login (`npm i -g @testmuai/kane-cli && kane-cli login`).
+Needs Node 20+, Google Chrome, and a [Kane CLI](https://www.testmuai.com/kane-cli/) login (`npm i -g @testmuai/kane-cli && kane-cli login`). The `witness pr` commands also read pull requests through the [GitHub CLI](https://cli.github.com/) (`gh auth login`).
 
 ```bash
 git clone https://github.com/Jennycruzy/witness && cd witness
