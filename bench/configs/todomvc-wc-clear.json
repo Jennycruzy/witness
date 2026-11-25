@@ -1,0 +1,12 @@
+{
+ "tests": [
+  "../tests/todomvc/clear_hidden_test.md"
+ ],
+ "target": {
+  "dir": "../builds/todomvc/web-components/dist"
+ },
+ "reference": {
+  "dir": "../builds/todomvc/vue/dist"
+ },
+ "cacheDir": "builds/cache"
+}

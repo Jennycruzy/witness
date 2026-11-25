@@ -1,0 +1,34 @@
+{
+  "cases": "cases.json",
+  "sha256": "16991f08da63ac0f86f02f14c8772a399c94ad0984acef66e224a2f7b1732f25",
+  "count": 43,
+  "byTruth": {
+    "APP_BUG": 28,
+    "TEST_PROBLEM": 2,
+    "PASS": 13
+  },
+  "heldOut": [
+    "todomvc-react-escape",
+    "todomvc-es5-markall",
+    "todomvc-es6-order",
+    "todomvc-lit-blank",
+    "todomvc-wc-blank",
+    "todomvc-svelte-edit",
+    "cyberchef-2434-control",
+    "actual-6794",
+    "actual-8475",
+    "actual-layout-test-problem",
+    "mined-cyberchef-2025-control",
+    "mined-cyberchef-2058",
+    "mined-cyberchef-2058-control",
+    "mined-cyberchef-2071",
+    "mined-cyberchef-2249-control",
+    "mined-cyberchef-2285",
+    "mined-cyberchef-2285-control",
+    "mined-cyberchef-2290",
+    "mined-cyberchef-2291",
+    "mined-cyberchef-2671",
+    "mined-actual-8763-control"
+  ],
+  "registeredAt": "2026-11-25T16:01:25.676Z"
+}

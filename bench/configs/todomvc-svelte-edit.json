@@ -1,0 +1,12 @@
+{
+ "tests": [
+  "../../examples/todomvc-svelte/tests/edit_trim_test.md"
+ ],
+ "target": {
+  "dir": "../../examples/todomvc-svelte/builds/upstream/dist"
+ },
+ "reference": {
+  "dir": "../../examples/todomvc-svelte/reference/dist"
+ },
+ "cacheDir": "builds/cache"
+}

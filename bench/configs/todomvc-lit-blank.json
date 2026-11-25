@@ -1,0 +1,12 @@
+{
+ "tests": [
+  "../tests/todomvc/blank_ignored_test.md"
+ ],
+ "target": {
+  "dir": "../builds/todomvc/lit/dist"
+ },
+ "reference": {
+  "dir": "../builds/todomvc/vue/dist"
+ },
+ "cacheDir": "builds/cache"
+}

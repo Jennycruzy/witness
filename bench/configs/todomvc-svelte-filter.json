@@ -1,0 +1,12 @@
+{
+ "tests": [
+  "../../examples/todomvc-svelte/tests/filter_reload_test.md"
+ ],
+ "target": {
+  "dir": "../../examples/todomvc-svelte/builds/upstream/dist"
+ },
+ "reference": {
+  "dir": "../../examples/todomvc-svelte/reference/dist"
+ },
+ "cacheDir": "builds/cache"
+}

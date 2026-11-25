@@ -1,0 +1,18 @@
+{
+  "test_id": "dc87dad8-835e-452b-b86f-b634ab5811fa",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "markall_sync",
+  "commit_id": "54a2ad40-7635-41e4-a9ad-b352f937021b",
+  "testcase_id": "01M7Q7CSDKHY2HZX8P35P4DG8J",
+  "executions": [
+    {
+      "execution_id": "f946bda5-80e6-410f-99e4-6d936c16ac95",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-18T11:44:09.001Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "test_id": "5ac34548-9516-4d99-b680-5ace1db585d8",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "finance",
+  "commit_id": "902bad97-7a69-4f26-9a58-1e45c9df93b4",
+  "testcase_id": "01M7MZNP9TTGPEMR2CWP2STQTB",
+  "executions": [
+    {
+      "execution_id": "b31f8108-7c12-4a57-9d5c-179fdc4b35d4",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T15:00:45.755Z"
+    }
+  ]
+}

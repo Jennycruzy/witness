@@ -1,0 +1,298 @@
+{
+ "about": "WITNESS triage bench. Each case is a real Kane test and two real builds; truth is the answer written before any run. PASS cases are controls: the good build as target, where nothing should be flagged.",
+ "cases": [
+  {
+   "id": "todomvc-react-escape",
+   "truth": "APP_BUG",
+   "config": "configs/todomvc-react-escape.json",
+   "test": "escape_discards_test.md",
+   "note": "tastejs/todomvc ff43b02, examples/react vs examples/vue"
+  },
+  {
+   "id": "todomvc-es5-markall",
+   "truth": "APP_BUG",
+   "config": "configs/todomvc-es5-markall.json",
+   "test": "markall_sync_test.md",
+   "note": "tastejs/todomvc ff43b02, examples/javascript-es5 vs examples/vue"
+  },
+  {
+   "id": "todomvc-es6-order",
+   "truth": "APP_BUG",
+   "config": "configs/todomvc-es6-order.json",
+   "test": "append_order_test.md",
+   "note": "tastejs/todomvc ff43b02, examples/javascript-es6 vs examples/vue"
+  },
+  {
+   "id": "todomvc-lit-blank",
+   "truth": "APP_BUG",
+   "config": "configs/todomvc-lit-blank.json",
+   "test": "blank_ignored_test.md",
+   "note": "tastejs/todomvc ff43b02, examples/lit vs examples/vue"
+  },
+  {
+   "id": "todomvc-wc-blank",
+   "truth": "APP_BUG",
+   "config": "configs/todomvc-wc-blank.json",
+   "test": "blank_ignored_test.md",
+   "note": "tastejs/todomvc ff43b02, examples/web-components vs examples/vue"
+  },
+  {
+   "id": "todomvc-wc-clear-test-problem",
+   "truth": "TEST_PROBLEM",
+   "config": "configs/todomvc-wc-clear.json",
+   "test": "clear_hidden_test.md",
+   "note": "recorded on vue; cannot type into the web-components new-todo box as its first step; re-recorded on web-components it passes that step"
+  },
+  {
+   "id": "todomvc-svelte-edit",
+   "truth": "APP_BUG",
+   "config": "configs/todomvc-svelte-edit.json",
+   "test": "edit_trim_test.md",
+   "note": "tastejs/todomvc#2315"
+  },
+  {
+   "id": "todomvc-svelte-edit-control",
+   "truth": "PASS",
+   "config": "configs/todomvc-svelte-edit.json",
+   "test": "edit_trim_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "todomvc-svelte-filter",
+   "truth": "APP_BUG",
+   "config": "configs/todomvc-svelte-filter.json",
+   "test": "filter_reload_test.md",
+   "note": "tastejs/todomvc#2315"
+  },
+  {
+   "id": "cyberchef-2434",
+   "truth": "APP_BUG",
+   "config": "../examples/cyberchef-jwt/witness.json",
+   "test": "jwt_verify_test.md"
+  },
+  {
+   "id": "cyberchef-2434-control",
+   "truth": "PASS",
+   "config": "../examples/cyberchef-jwt/witness.json",
+   "test": "jwt_verify_test.md",
+   "swap": true,
+   "note": "the good build as target"
+  },
+  {
+   "id": "ittools-favorites",
+   "truth": "APP_BUG",
+   "config": "../examples/it-tools-favorites/witness.json",
+   "test": "favorite_tool_test.md"
+  },
+  {
+   "id": "ittools-favorites-control",
+   "truth": "PASS",
+   "config": "../examples/it-tools-favorites/witness.json",
+   "test": "favorite_tool_test.md",
+   "swap": true,
+   "note": "the good build as target"
+  },
+  {
+   "id": "actual-6606",
+   "truth": "APP_BUG",
+   "config": "../examples/actual-schedules/witness.json",
+   "test": "completed_schedules_test.md"
+  },
+  {
+   "id": "actual-6794",
+   "truth": "APP_BUG",
+   "config": "configs/actual-6794.json",
+   "test": "separator_test.md"
+  },
+  {
+   "id": "actual-8475",
+   "truth": "APP_BUG",
+   "config": "configs/actual-8475.json",
+   "test": "running_balance_test.md"
+  },
+  {
+   "id": "actual-layout-test-problem",
+   "truth": "TEST_PROBLEM",
+   "config": "configs/actual-layout.json",
+   "test": "running_balance_test.md",
+   "note": "recorded on 26.8.0; the 26.7.0 layout differs where it clicks; re-recorded on 26.7.0 it passes the clicks"
+  },
+  {
+   "id": "mined-cyberchef-2025",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2025/witness.json",
+   "test": "extract_email_addresses_matches_an_email_test.md"
+  },
+  {
+   "id": "mined-cyberchef-2025-control",
+   "truth": "PASS",
+   "config": "../examples/mine/cyberchef/cases/2025/witness.json",
+   "test": "extract_email_addresses_matches_an_email_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-cyberchef-2058",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2058/witness.json",
+   "test": "from_hexdump_keeps_the_final_byte_of_an__test.md"
+  },
+  {
+   "id": "mined-cyberchef-2058-control",
+   "truth": "PASS",
+   "config": "../examples/mine/cyberchef/cases/2058/witness.json",
+   "test": "from_hexdump_keeps_the_final_byte_of_an__test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-cyberchef-2071",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2071/witness.json",
+   "test": "sql_beautify_keeps_the_space_in_on_dupli_test.md"
+  },
+  {
+   "id": "mined-cyberchef-2071-control",
+   "truth": "PASS",
+   "config": "../examples/mine/cyberchef/cases/2071/witness.json",
+   "test": "sql_beautify_keeps_the_space_in_on_dupli_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-cyberchef-2249",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2249/witness.json",
+   "test": "to_modhex_with_empty_input_gives_empty_o_test.md"
+  },
+  {
+   "id": "mined-cyberchef-2249-control",
+   "truth": "PASS",
+   "config": "../examples/mine/cyberchef/cases/2249/witness.json",
+   "test": "to_modhex_with_empty_input_gives_empty_o_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-cyberchef-2285",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2285/witness.json",
+   "test": "from_base_with_radix_2_converts_fraction_test.md"
+  },
+  {
+   "id": "mined-cyberchef-2285-control",
+   "truth": "PASS",
+   "config": "../examples/mine/cyberchef/cases/2285/witness.json",
+   "test": "from_base_with_radix_2_converts_fraction_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-cyberchef-2290",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2290/witness.json",
+   "test": "dechunk_http_response_drops_the_terminat_test.md"
+  },
+  {
+   "id": "mined-cyberchef-2291",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2291/witness.json",
+   "test": "mime_decoding_correctly_decodes_a_utf_8__test.md"
+  },
+  {
+   "id": "mined-cyberchef-2307",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2307/witness.json",
+   "test": "offset_checker_shows_an_html_sample_deli_test.md"
+  },
+  {
+   "id": "mined-cyberchef-2340",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2340/witness.json",
+   "test": "from_hex_then_url_encode_encodes_byte_0x_test.md"
+  },
+  {
+   "id": "mined-cyberchef-2671",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2671/witness.json",
+   "test": "to_html_entity_encodes_as_a_well_formed__test.md"
+  },
+  {
+   "id": "mined-cyberchef-2694",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/cyberchef/cases/2694/witness.json",
+   "test": "parse_ip_range_reports_the_network_addre_test.md"
+  },
+  {
+   "id": "mined-actual-8587",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/actual/cases/8587/witness.json",
+   "test": "rule_with_a_category_group_condition_run_test.md"
+  },
+  {
+   "id": "mined-actual-8587-control",
+   "truth": "PASS",
+   "config": "../examples/mine/actual/cases/8587/witness.json",
+   "test": "rule_with_a_category_group_condition_run_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-actual-8726",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/actual/cases/8726/witness.json",
+   "test": "amount_is_greater_than_filter_hides_tran_test.md"
+  },
+  {
+   "id": "mined-actual-8726-control",
+   "truth": "PASS",
+   "config": "../examples/mine/actual/cases/8726/witness.json",
+   "test": "amount_is_greater_than_filter_hides_tran_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-actual-8763",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/actual/cases/8763/witness.json",
+   "test": "category_dropdown_menu_opens_again_after_test.md"
+  },
+  {
+   "id": "mined-actual-8763-control",
+   "truth": "PASS",
+   "config": "../examples/mine/actual/cases/8763/witness.json",
+   "test": "category_dropdown_menu_opens_again_after_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-actual-9173",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/actual/cases/9173/witness.json",
+   "test": "renaming_a_schedule_keeps_its_skipped_oc_test.md"
+  },
+  {
+   "id": "mined-actual-9173-control",
+   "truth": "PASS",
+   "config": "../examples/mine/actual/cases/9173/witness.json",
+   "test": "renaming_a_schedule_keeps_its_skipped_oc_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  },
+  {
+   "id": "mined-actual-9360",
+   "truth": "APP_BUG",
+   "config": "../examples/mine/actual/cases/9360/witness.json",
+   "test": "search_filter_stays_applied_after_toggli_test.md"
+  },
+  {
+   "id": "mined-actual-9360-control",
+   "truth": "PASS",
+   "config": "../examples/mine/actual/cases/9360/witness.json",
+   "test": "search_filter_stays_applied_after_toggli_test.md",
+   "swap": true,
+   "note": "the fixed build as target"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "tests": [
+  "../../examples/actual/tests/running_balance_test.md"
+ ],
+ "target": {
+  "npm": "@actual-app/web",
+  "version": "26.7.0-nightly.20260620",
+  "buildDir": "build",
+  "isolation": true,
+  "setup": "node ../setups/wallet.mjs {url} {profile}"
+ },
+ "reference": {
+  "npm": "@actual-app/web",
+  "version": "26.7.0-nightly.20260617",
+  "buildDir": "build",
+  "isolation": true,
+  "setup": "node ../setups/wallet.mjs {url} {profile}"
+ },
+ "cacheDir": "builds/cache"
+}

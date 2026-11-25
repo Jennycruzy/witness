@@ -5,6 +5,7 @@
 // witness classify <target.ndjson> <reference.ndjson>   decide from two saved Kane runs
 // witness mine plan|run <mine.json>     merged bug fixes -> agent-written Kane tests -> kept when fixed passes and buggy fails
 // witness pr list|check|watch <pr.json> [n]   open pull requests of a real app: Kane replays saved tests on each live preview
+// witness bench register|run|score <cases.json>   the triage bench: pre-registered answers, Kane's label vs WITNESS
 // witness demo                           one real case from the committed runs, then every number recomputed (no login)
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -25,6 +26,7 @@ import { renderReport } from './core/report.js';
 import { startLive } from './commands/live.js';
 import { minePlan, mineRun, summarize, loadMine } from './commands/mine.js';
 import { checkPr, listOpenPrs, loadPrConfig, watchPrs } from './commands/pr.js';
+import { register, runBench, scoreAll } from './commands/bench.js';
 
 const [cmd, a, b] = process.argv.slice(2);
 
@@ -47,6 +49,19 @@ async function main(): Promise<number> {
     else if (a === 'run') await mineRun(b, console.log, oi > 0 ? process.argv[oi + 1] : undefined);
     else summarize(loadMine(b).outDir);
     return 0;
+  }
+  if (cmd === 'bench' && a && b) {
+    // witness bench register <cases.json>          hash the cases and their answers (commit that before any run)
+    // witness bench run <cases.json> <label> [--only id,id]   replay every case with the Kane on PATH; resumable
+    // witness bench score <cases.json>             Kane's label and WITNESS's verdict against the answers, per run
+    if (a === 'register') { console.log(JSON.stringify(register(b), null, 2)); return 0; }
+    if (a === 'run') {
+      const oi = process.argv.indexOf('--only');
+      const s = await runBench(b, process.argv[5], console.log, oi > 0 ? process.argv[oi + 1].split(',') : undefined);
+      console.log(JSON.stringify(s, null, 2));
+      return 0;
+    }
+    if (a === 'score') { scoreAll(b); return 0; }
   }
   if (cmd === 'pr' && a === 'watch' && b) {
     // witness pr watch <pr.json> [--max n] [--plan]: check every open pull request whose newest commit has not been checked yet

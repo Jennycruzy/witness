@@ -1,0 +1,12 @@
+{
+ "tests": [
+  "../tests/todomvc/escape_discards_test.md"
+ ],
+ "target": {
+  "dir": "../builds/todomvc/react/dist"
+ },
+ "reference": {
+  "dir": "../builds/todomvc/vue/dist"
+ },
+ "cacheDir": "builds/cache"
+}
