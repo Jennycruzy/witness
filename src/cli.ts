@@ -8,7 +8,7 @@
 // witness bench register|run|score <cases.json>   the triage bench: pre-registered answers, Kane's label vs WITNESS
 // witness demo                           one real case from the committed runs, then every number recomputed (no login)
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { dirname, relative, resolve } from 'node:path';
 import { parseRun } from './core/stream.js';
 import { classify, labelDisagrees } from './core/classify.js';
 import { loadConfig } from './io/config.js';
@@ -23,7 +23,7 @@ import { verify } from './commands/verify.js';
 import { record } from './commands/record.js';
 import { demo, evidenceRoot } from './commands/demo.js';
 import { renderReport } from './core/report.js';
-import { startLive } from './commands/live.js';
+import { exportSite, startLive } from './commands/live.js';
 import { minePlan, mineRun, summarize, loadMine } from './commands/mine.js';
 import { checkPr, listOpenPrs, loadPrConfig, watchPrs } from './commands/pr.js';
 import { register, runBench, scoreAll } from './commands/bench.js';
@@ -154,13 +154,23 @@ async function main(): Promise<number> {
     const base = dirname(path);
     const c = JSON.parse(readFileSync(path, 'utf8'));
     const r = (p: string) => resolve(base, p);
+    const rest = process.argv.slice(3);
+    const ex = rest.indexOf('--export');
+    if (ex >= 0) {
+      // witness live <live.json> --export <dir> --api <url>: the site's pages as static files (for Vercel)
+      const api = rest[rest.indexOf('--api') + 1];
+      if (rest.indexOf('--api') < 0 || !api) throw new Error('--export needs --api <url of the witness live server>');
+      const files = exportSite({ builds: Object.fromEntries(Object.entries<any>(c.builds).map(([k, v]) => [k, { dir: '', label: v.label }])), perHour: c.perHour ?? 6, perVisitorMinutes: c.perVisitorMinutes ?? 10, pr: c.pr ? { config: '', app: c.pr.app } : undefined }, resolve(rest[ex + 1]), api);
+      for (const f of files) console.log(`wrote ${relative(process.cwd(), f)}`);
+      return 0;
+    }
     startLive({
       exampleDir: r(c.exampleDir ?? '.'), referenceDir: r(c.referenceDir), tests: c.tests,
       builds: Object.fromEntries(Object.entries<any>(c.builds).map(([k, v]) => [k, { dir: r(v.dir), label: v.label }])),
       port: Number(process.env.PORT ?? c.port ?? 8797), host: c.host ?? '127.0.0.1',
       perHour: c.perHour ?? 6, perVisitorMinutes: c.perVisitorMinutes ?? 10,
       stateFile: r(c.stateFile ?? '.witness/live-history.json'), cli: resolve(process.argv[1]),
-      pr: c.pr ? { config: r(c.pr.config), app: c.pr.app } : undefined, lock: c.lock,
+      pr: c.pr ? { config: r(c.pr.config), app: c.pr.app } : undefined, lock: c.lock, origins: c.origins,
     });
     return new Promise<number>(() => {});
   }

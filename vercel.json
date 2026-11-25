@@ -1,0 +1,8 @@
+{
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build && node dist/cli.js live examples/todomvc-svelte/live.json --export public --api https://witness.38-49-216-59.sslip.io",
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "trailingSlash": false
+}

@@ -12,3 +12,4 @@ examples/*/builds/
 examples/*/servers/
 examples/mine/*/cases/.builds/
 bench/builds/
+public/
