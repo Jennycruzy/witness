@@ -121,6 +121,19 @@ require('http').createServer((q, s) => s.end('old')).listen(Number(process.argv[
     expect(r.decision.verdict).toBe('STATE_BUG');
     expect(r.reference?.status).toBe('passed');
   }, 60_000);
+  it('each target attempt starts on a fresh copy of the saved server data, so one attempt cannot change what the next sees', async () => {
+    const { dir, bin } = setup(); const port = await freePort();
+    // The target server writes to its data folder on every request, as an app that saves on load would.
+    writeFileSync(join(dir, 'srv-writes.js'), `const fs = require('fs'); fs.appendFileSync(process.argv[4], 'start:' + fs.readdirSync(process.argv[3]).join(',') + '\\n');
+require('http').createServer((q, s) => { fs.writeFileSync(process.argv[3] + '/written-by-attempt', 'x'); s.end('new'); }).listen(Number(process.argv[2]), '127.0.0.1');`);
+    const c = cfg(dir, port, `curl -s {url} > /dev/null; mkdir -p {profile} && echo x > {profile}/saved`) as any;
+    c.target.serve = `node ${dir}/srv-writes.js {port} {data} ${dir}/seen`;
+    const r = await withEnv(bin, () => guard(c, c.tests[0], () => {}, { carryState: true }));
+    expect(r.decision.verdict).toBe('STATE_BUG');
+    const seen = readFileSync(join(dir, 'seen'), 'utf8').trim().split('\n');
+    expect(seen.length).toBe(2);                                    // saved-data run and clean run, each on its own server start
+    expect(seen.some(l => l.includes('written-by-attempt'))).toBe(false);
+  }, 60_000);
   it('refuses --carry-state without carryState in witness.json', async () => {
     const { dir } = setup();
     const c = cfg(dir, 1, ''); delete (c as any).carryState;

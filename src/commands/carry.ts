@@ -45,13 +45,6 @@ export async function prepareCarried(cfg: WitnessConfig, log = console.log): Pro
 
 const step = (s: RunSummary) => (s.failed ? ` at test step ${Number(s.failed.runId.replace('run-', '')) + 1} (${s.failed.kind})` : '');
 
-/** One replay; a click or typing failure is replayed once more, as in plain guard. */
-async function replay(testFile: string, url: string, profileTemplate?: string): Promise<KaneRun> {
-  let r = await runKane({ testFile, url, profileTemplate });
-  if (r.summary.status === 'failed' && r.summary.failed?.kind === 'action' && (r.summary.authorDecisions ?? 0) === 0) r = await runKane({ testFile, url, profileTemplate });
-  return r;
-}
-
 export async function guardCarried(cfg: WitnessConfig, testFile: string, log = console.log): Promise<GuardResult> {
   const cs = cfg.carryState!;
   const evidenceDir = join(cfg.evidenceDir ?? '.witness/runs', `${new Date().toISOString().replace(/[:.]/g, '-')}-${basename(testFile, '.md')}-carried`);
@@ -62,29 +55,46 @@ export async function guardCarried(cfg: WitnessConfig, testFile: string, log = c
   writeFileSync(join(evidenceDir, 'history.txt'), c.log);
   let target: RunSummary, clean: RunSummary | undefined, reference: RunSummary | undefined;
   try {
+    // Every target attempt (first try, its retry, the clean-browser run) starts on its own copy of the server data the
+    // history left, so an attempt that writes to the server cannot change what the next attempt sees.
+    let n = 0;
+    const attempt = async (savedProfile: boolean): Promise<KaneRun> => {
+      const data = join(c.dir, `target-data-${++n}`); cpSync(c.data, data, { recursive: true });
+      const t = await open(cfg.target, cfg.cacheDir, { port: cs.port, data }, { setup: false });
+      let p: { dir: string; remove: () => void } | null = null;
+      try {
+        let prof: string | undefined;
+        if (savedProfile) {
+          prof = c.profile;
+          if (cs.upgrade) {
+            prof = join(c.dir, `upgraded-${n}`); cpSync(c.profile, prof, { recursive: true });
+            writeFileSync(join(evidenceDir, 'upgrade.txt'), await runCommand(cs.upgrade, { url: t.url, profile: prof, dir: c.dir }));
+          }
+        } else {
+          p = cfg.target.setup ? await prepareProfile(cfg.target.setup, t.url) : null;
+          prof = p?.dir;
+        }
+        return await runKane({ testFile, url: t.url, profileTemplate: prof });
+      } finally { p?.remove(); await t.close(); }
+    };
+    // A click or typing failure is replayed once more, as in plain guard, on fresh data.
+    const tryTwice = async (savedProfile: boolean) => {
+      let r = await attempt(savedProfile);
+      if (r.summary.status === 'failed' && r.summary.failed?.kind === 'action' && (r.summary.authorDecisions ?? 0) === 0) r = await attempt(savedProfile);
+      return r;
+    };
     // 1. Target, in the profile the earlier builds saved (after the upgrade step, when there is one).
-    const t = await open(cfg.target, cfg.cacheDir, { port: cs.port, data: c.data }, { setup: false });
-    try {
-      let prof = c.profile;
-      if (cs.upgrade) {
-        prof = join(c.dir, 'upgraded'); cpSync(c.profile, prof, { recursive: true });
-        writeFileSync(join(evidenceDir, 'upgrade.txt'), await runCommand(cs.upgrade, { url: t.url, profile: prof, dir: c.dir }));
-      }
-      const r = await replay(testFile, t.url, prof);
-      writeFileSync(join(evidenceDir, 'target.ndjson'), r.ndjson);
-      target = r.summary;
-      log(`  target     ${target.status.toUpperCase()}${step(target)}  (saved data)`);
-      if (target.status !== 'passed') {
-        // 2. Target, clean browser: what a plain Kane run sees.
-        const p = cfg.target.setup ? await prepareProfile(cfg.target.setup, t.url) : null;
-        try {
-          const r2 = await replay(testFile, t.url, p?.dir);
-          writeFileSync(join(evidenceDir, 'target-clean.ndjson'), r2.ndjson);
-          clean = r2.summary;
-          log(`  target     ${clean.status.toUpperCase()}${step(clean)}  (clean browser)`);
-        } finally { p?.remove(); }
-      }
-    } finally { await t.close(); }
+    const r = await tryTwice(true);
+    writeFileSync(join(evidenceDir, 'target.ndjson'), r.ndjson);
+    target = r.summary;
+    log(`  target     ${target.status.toUpperCase()}${step(target)}  (saved data)`);
+    if (target.status !== 'passed') {
+      // 2. Target, clean browser: what a plain Kane run sees.
+      const r2 = await tryTwice(false);
+      writeFileSync(join(evidenceDir, 'target-clean.ndjson'), r2.ndjson);
+      clean = r2.summary;
+      log(`  target     ${clean.status.toUpperCase()}${step(clean)}  (clean browser)`);
+    }
     // 3. Reference, with the data it saved itself (taken after its last history step).
     if (target.status !== 'passed') {
       const b = await open(cfg.reference, cfg.cacheDir, { port: cs.port, data: c.refData }, { setup: false });
