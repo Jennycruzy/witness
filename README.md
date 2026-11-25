@@ -131,6 +131,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | The page layout changed where the test clicks | TEST_PROBLEM, not APP_BUG | 3 real test problems in `verify` |
 | The agent edits the test or its recording to make it pass | Rejected: recording sha256 must not change | [`src/commands/fix.ts`](src/commands/fix.ts) |
 | The agent edits files outside the app source | Rolled back and rejected | [`src/commands/fix.ts`](src/commands/fix.ts) |
+| The build given to `witness search` as good has the bug too, so any window it names is wrong (this happened on Actual Budget #9359: 2 September was given as good and fails as well) | `witness search` replays both ends first and stops with GOOD_FAILS or BAD_PASSES | [`test/search.test.ts`](test/search.test.ts) |
 | A click fails because the machine is busy | `witness search` replays that build once more before deciding | [`src/commands/search.ts`](src/commands/search.ts) |
 | Someone edits the evidence | `verify` fails on any sha256 change | [`evidence/manifest.json`](evidence/manifest.json) |
 

@@ -31,10 +31,18 @@ async function commitsBetween(repo: string, since: string, until: string) {
   return j.map(c => ({ sha: c.sha.slice(0, 9), date: c.commit.committer.date, title: String(c.commit.message).split('\n')[0] }));
 }
 
-/** versions: ordered oldest -> newest; versions[0] is known good, last is known bad. */
-export async function search(src: NpmSource, versions: { version: string; time: string }[], testFile: string, cacheDir: string, log = console.log): Promise<SearchResult> {
+/** versions: ordered oldest -> newest; versions[0] should be good, the last bad. Unless the caller has just run both
+ *  (checkEnds false), both ends are replayed first: a "good" build that fails too would make any window it gives wrong. */
+export async function search(src: NpmSource, versions: { version: string; time: string }[], testFile: string, cacheDir: string, log = console.log, opts: { checkEnds?: boolean } = {}): Promise<SearchResult> {
   mkdirSync(cacheDir, { recursive: true });
   const probes: Probe[] = [];
+  if (opts.checkEnds !== false) {
+    const once = async (v: string) => { let p = await probe(src, v, testFile, cacheDir, log); if (p.status === 'failed' && p.failedKind !== 'check') p = await probe(src, v, testFile, cacheDir, log); probes.push(p); return p; };
+    const g = await once(versions[0].version);
+    if (g.status !== 'passed') throw new Error(`GOOD_FAILS: the test does not pass on ${versions[0].version}, the build given as good (${g.status}${g.failedKind ? ` at ${g.failedKind}` : ''}); pick an older good build`);
+    const b = await once(versions[versions.length - 1].version);
+    if (!(b.status === 'failed' && b.failedKind === 'check')) throw new Error(`BAD_PASSES: the test does not fail at a check on ${versions[versions.length - 1].version}, the build given as bad (${b.status}${b.failedKind ? ` at ${b.failedKind}` : ''})`);
+  }
   let lo = 0, hi = versions.length - 1;               // lo = good, hi = bad (an app bug, failed at a check)
   while (hi - lo > 1) {
     const mid = Math.floor((lo + hi) / 2);

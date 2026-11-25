@@ -23,7 +23,7 @@ export async function watch(cfg: WitnessConfig, log = console.log) {
     if (r.decision.verdict === 'APP_BUG') {
       const since = nightlies.filter(v => v.time >= release.time);
       log(`  searching ${since.length} nightlies since ${release.version} for the first bad build`);
-      entry.search = await search(src, [release, ...since], t, cache, log);
+      entry.search = await search(src, [release, ...since], t, cache, log, { checkEnds: false });
       log(`  first bad ${entry.search.firstBad}  (last good ${entry.search.lastGood}); ${entry.search.commits.length} commits in between`);
     }
     report.results.push(entry);
