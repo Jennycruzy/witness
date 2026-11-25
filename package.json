@@ -10,7 +10,8 @@
     "dist",
     "evidence",
     "test/fixtures",
-    "skills"
+    "skills",
+    "examples/mine/*/cases/*/runs/*/*.ndjson"
   ],
   "engines": {
     "node": ">=20"
