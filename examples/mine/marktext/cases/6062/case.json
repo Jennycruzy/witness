@@ -1,0 +1,36 @@
+{
+  "pr": 6062,
+  "issue": 6050,
+  "title": "fix: #6050 hide the block button while scrolling",
+  "issueTitle": "[Bug] Block button is repositioned on every scroll event, causing layout and hit-test work while scrolling",
+  "mergedAt": "2026-11-12T16:53:47Z",
+  "mergeSha": "3d331df6e036b930189ccd2453f80757b662bafd",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.2",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.2"
+  },
+  "status": "not-testable",
+  "why": "The report is about layout and hit-test work done during scrolling, which is a performance and timing problem that shows up only in a DevTools profile; it does not say which visible result is correct, since either suggested fix (hiding the button or moving it with the content) would be acceptable."
+}

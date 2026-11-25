@@ -1,0 +1,36 @@
+{
+  "pr": 5972,
+  "issue": 5971,
+  "title": "fix(desktop): treat folders named ..something as inside their parent",
+  "issueTitle": "[Bug] Files in a folder whose name starts with \"..\" are treated as outside their parent folder",
+  "mergedAt": "2026-11-02T08:56:37Z",
+  "mergeSha": "41151384d6626b243b97b1b750cd8949a97a23db",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "Reproducing the bug means creating a folder whose name starts with \"..\" and opening a file in it from the file manager or command line while two MarkText windows are open. The fixed and buggy builds differ only in which window gets the file, and in-editor keyboard and click steps on a single window with note.md can do none of that."
+}

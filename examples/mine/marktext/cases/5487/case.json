@@ -1,0 +1,36 @@
+{
+  "pr": 5487,
+  "issue": 5076,
+  "title": "fix(muya): keep footnote definitions packed one per line as siblings",
+  "issueTitle": "[Bug] Footnotes are finnicky",
+  "mergedAt": "2026-09-21T23:23:09Z",
+  "mergeSha": "1e5cecde31800388d59ca071dfaa4f4515089e21",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "The report bundles several vague complaints. For the one concrete bug, the definition label showing as [^1], it never says what the label should show instead (for example \"1\", a superscript 1, or \"1.\"), so no exact expected text can be derived."
+}

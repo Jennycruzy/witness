@@ -1,0 +1,36 @@
+{
+  "pr": 5999,
+  "issue": 5968,
+  "title": "fix: #5968 accept tabs in reference definition separators",
+  "issueTitle": "[Bug] [CommonMark] tab handled differently than space(s)",
+  "mergedAt": "2026-11-03T02:25:34Z",
+  "mergeSha": "b788c598b28c4ea953171c699b94594d5d982dc9",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "The bug needs a literal tab character between the URL and the title in a link reference definition, and in MarkText the Tab key is handled by the editor itself (it may indent or insert spaces), so typing it does not reliably produce a tab, and the tests cannot open a prepared file or paste text."
+}

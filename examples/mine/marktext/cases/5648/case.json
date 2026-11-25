@@ -1,0 +1,36 @@
+{
+  "pr": 5648,
+  "issue": 3110,
+  "title": "feat: render inline markdown in the TOC (#3110)",
+  "issueTitle": "support Markdown formatting/styling in TOC",
+  "mergedAt": "2026-10-07T15:22:41Z",
+  "mergeSha": "67ea037f679980aad1fd5ed00ce373fdc3c9dfef",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.0"
+  },
+  "status": "written",
+  "why": "The report says a heading written as *italic* shows its raw asterisks in the table of contents, and the fixed app should show the rendered text instead."
+}

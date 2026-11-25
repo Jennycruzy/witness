@@ -1,0 +1,36 @@
+{
+  "pr": 5645,
+  "issue": 3203,
+  "title": "fix: #3203 make the trailing soft-break line navigable with the arrow keys",
+  "issueTitle": "Cursor behaviour when navigating around blank lines",
+  "mergedAt": "2026-10-07T11:07:28Z",
+  "mergeSha": "14eab778a9e9681bb14a872661e6ebc96a8d3105",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.0"
+  },
+  "status": "written",
+  "why": "The report gives the expected result: after Shift+Enter blank lines, pressing Up should move the cursor to the previous blank line instead of jumping to the paragraph above \"test\", so a letter typed after Up shows where the cursor went."
+}

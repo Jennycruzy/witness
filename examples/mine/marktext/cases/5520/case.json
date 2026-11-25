@@ -1,0 +1,36 @@
+{
+  "pr": 5520,
+  "issue": 5322,
+  "title": "fix(desktop): retry a save whose rename an SMB share refused (#5322)",
+  "issueTitle": "[Bug] 0.20.0-rc.2: saving files on an SMB/UNC path fails with EPERM (regression from #4778)",
+  "mergedAt": "2026-09-23T02:14:19Z",
+  "mergeSha": "548f6d9217c335d45e4d047f38624a73c32494ef",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "The bug only happens when saving a file to an SMB/UNC network share on Windows, which needs a network server, a specific operating system and file saving, and none of these can be checked from inside the editor."
+}

@@ -1,0 +1,36 @@
+{
+  "pr": 5905,
+  "issue": 2114,
+  "title": "feat: #2052 indent and outdent selected lines and list items",
+  "issueTitle": "Intent with tabs at code blocks",
+  "mergedAt": "2026-10-27T06:30:57Z",
+  "mergeSha": "6b192ba96ce12de727b3a639f4dd32ae21f51d8d",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "Both reports are about whitespace (tabs turning into spaces, how far Shift-Tab moves a line, a 2-space versus 4-space indent step), and on screen a tab looks the same as spaces, so no exact visible text tells the fixed build from the buggy one; the first report is also a feature request that never says what correct output looks like."
+}

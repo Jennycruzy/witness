@@ -1,0 +1,36 @@
+{
+  "pr": 5562,
+  "issue": 2377,
+  "title": "fix(muya): parse link destinations the way CommonMark does (#2377)",
+  "issueTitle": "inline link rendering is not Common Mark compliant",
+  "mergedAt": "2026-09-26T11:22:16Z",
+  "mergeSha": "660a8de16d052b47d46f6c4f93a09fb5a84f4949",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "status": "written",
+  "why": "Per CommonMark and the report, a link whose address is in angle brackets with a space, like [a](</b c>), should show as a link, but the buggy build leaves the raw Markdown text on screen."
+}

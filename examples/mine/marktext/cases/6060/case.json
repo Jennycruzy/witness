@@ -1,0 +1,36 @@
+{
+  "pr": 6060,
+  "issue": 6054,
+  "title": "fix: #6054 preserve heading folds when switching tabs",
+  "issueTitle": "[Bug] 文件A点击H1~H6折叠内容后，切换到文件B，再切换回文件A，文件A之前的折叠内容被还原",
+  "mergedAt": "2026-11-13T01:29:43Z",
+  "mergeSha": "2689fc800adaa1d985353984d98377554c66d49f",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.2",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.2"
+  },
+  "status": "written",
+  "why": "The report gives a clear expected result: after you fold a heading, switch to another tab and switch back, the content under that heading should still be hidden. A tab switch and a fold click can both be done inside the editor."
+}

@@ -1,0 +1,36 @@
+{
+  "pr": 5652,
+  "issue": 5651,
+  "title": "fix(muya): keep the search highlight across a full re-render (#5651)",
+  "issueTitle": "[Bug] Toggling a rendering preference clears the active search highlight",
+  "mergedAt": "2026-10-08T06:08:27Z",
+  "mergeSha": "ad1e1cfdf7d924010b4fe186eeb2772eb5c83c5b",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.0"
+  },
+  "status": "not-testable",
+  "why": "Reproducing the bug means changing a rendering preference, which is only possible in MarkText's separate Preferences window. The test is limited to keyboard and clicks inside the editor and can't open other windows, so the re-render that clears the highlight can't be triggered."
+}

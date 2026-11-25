@@ -2,6 +2,7 @@
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { freePort } from '../io/chrome.js';
+import { startElectron } from '../io/electron.js';
 import { guardCarried } from './carry.js';
 import { teach } from './teach.js';
 import { basename, dirname, join, relative } from 'node:path';
@@ -22,12 +23,16 @@ export interface GuardResult { test: string; decision: Decision; target: RunSumm
 /** at: serve a `serve` build on this port with this data folder (saved-state runs); otherwise a free port and a fresh folder. */
 export async function open(ref: BuildRef, cacheDir = '.witness/builds', at?: { port: number; data: string }, opts: { setup?: boolean } = {}) {
   ref = await resolveBuild(ref, cacheDir);
-  if (ref.kane) return { url: `${ref.kane.target}: ${ref.kane.app}`, mobile: ref.kane, profile: undefined, close: async () => {} };
+  if (ref.kane) return { url: `${ref.kane.target}: ${ref.kane.app}`, mobile: ref.kane, profile: undefined, cdp: undefined, close: async () => {} };
+  if (ref.electron) {
+    const app = await startElectron(join(ref.dir!, ref.electron.bin), ref.electron.args, { setup: opts.setup === false ? undefined : ref.setup, profileTemplate: ref.profile });
+    return { url: app.url, mobile: undefined, profile: undefined, cdp: app.cdp, close: app.close };
+  }
   const s = ref.serve ? await serveCommand(ref.serve, at?.port ?? ref.port ?? await freePort(), at?.data ?? mkdtempSync(join(tmpdir(), 'witness-data-')))
     : ref.url ? { url: ref.url, close: async () => {} } : ref.dir ? await serveDir(ref.dir, { isolation: ref.isolation, port: ref.port }) : null;
   if (!s) throw new Error('a build needs url, dir or serve');
   const prof = ref.setup && opts.setup !== false ? await prepareProfile(ref.setup, s.url) : null;
-  return { url: s.url, mobile: undefined, profile: prof?.dir ?? ref.profile, close: async () => { prof?.remove(); await s.close(); } };
+  return { url: s.url, mobile: undefined, profile: prof?.dir ?? ref.profile, cdp: undefined as string | undefined, close: async () => { prof?.remove(); await s.close(); } };
 }
 
 export interface GuardOptions { recordMissing?: boolean; carryState?: boolean; teach?: boolean; }
@@ -80,12 +85,15 @@ async function guardOnce(cfg: WitnessConfig, testFile: string, log = console.log
   let blind: BlindCheck[] = [];
   try {
     log(`witness  ${basename(testFile)}  target ${tgt.url}`);
-    let t = await runKane({ testFile, url: tgt.url, mobile: tgt.mobile, profileTemplate: tgt.profile });
+    let t = await runKane({ testFile, url: tgt.url, mobile: tgt.mobile, profileTemplate: tgt.profile, cdp: tgt.cdp });
     if (t.summary.status === 'failed' && t.summary.failed?.kind === 'action' && (t.summary.authorDecisions ?? 0) === 0) {
       // A click or typing step can fail when the machine is busy. Replay once more before calling it a test problem.
       writeFileSync(join(evidenceDir, 'target-first-try.ndjson'), t.ndjson);
       log(`  target     failed at an action (${t.summary.failed.reason}); replaying once more`);
-      t = await runKane({ testFile, url: tgt.url, mobile: tgt.mobile, profileTemplate: tgt.profile });
+      if (tgt.cdp) {   // a desktop app keeps what the first try did to its document: replay on a freshly opened copy
+        const again = await open(cfg.target, cfg.cacheDir);
+        try { t = await runKane({ testFile, url: again.url, profileTemplate: again.profile, cdp: again.cdp }); } finally { await again.close(); }
+      } else t = await runKane({ testFile, url: tgt.url, mobile: tgt.mobile, profileTemplate: tgt.profile, cdp: tgt.cdp });
     }
     writeFileSync(join(evidenceDir, 'target.ndjson'), t.ndjson);
     target = t.summary;
@@ -104,7 +112,7 @@ async function guardOnce(cfg: WitnessConfig, testFile: string, log = console.log
   let reference: RunSummary;
   try {
     log(`  reference  ${ref.url}`);
-    const r = await runKane({ testFile, url: ref.url, mobile: ref.mobile, profileTemplate: ref.profile });
+    const r = await runKane({ testFile, url: ref.url, mobile: ref.mobile, profileTemplate: ref.profile, cdp: ref.cdp });
     writeFileSync(join(evidenceDir, 'reference.ndjson'), r.ndjson);
     reference = r.summary;
   } finally { await ref.close(); }

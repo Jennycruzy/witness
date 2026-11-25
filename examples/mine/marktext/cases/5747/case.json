@@ -1,0 +1,36 @@
+{
+  "pr": 5747,
+  "issue": 3510,
+  "title": "fix: keep typewriter scrolling stable at wrapped line starts",
+  "issueTitle": "The page scrolls when the cursor is positioned at the beginning of the line in typewiter mode",
+  "mergedAt": "2026-10-14T07:19:55Z",
+  "mergeSha": "4be8a06fdd5ebdca9d7f8b1ca36979e11e3f94ab",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.2",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.2"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.22.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.22.0"
+  },
+  "status": "not-testable",
+  "why": "The bug is a small unwanted page scroll in typewriter mode, so checking it depends on the scroll position and on the window's line wrapping, and there is no text, field or output that differs between the fixed and buggy builds."
+}

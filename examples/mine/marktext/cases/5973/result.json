@@ -1,0 +1,11 @@
+{
+  "pr": 5973,
+  "issue": 5967,
+  "result": "KEPT",
+  "why": "The editor is rendering extra visible characters in the first line before the line break.",
+  "at": "2026-11-25T22:13:18.150Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.98,
+  "credits": 3.1106999999999996
+}

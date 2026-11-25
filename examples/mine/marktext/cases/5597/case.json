@@ -1,0 +1,36 @@
+{
+  "pr": 5597,
+  "issue": 1691,
+  "title": "feat(muya): support ordered task lists (#1691)",
+  "issueTitle": "[bug]Ordered task lists are not handled according to spec",
+  "mergedAt": "2026-09-30T16:29:02Z",
+  "mergeSha": "13b973805430d950b947457f8b14c6317e9111dc",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "status": "written",
+  "why": "The report gives the exact Markdown and the correct result: in an ordered list, a '[x]' marker should show as a checkbox, not as the literal text '[x]' in the item."
+}

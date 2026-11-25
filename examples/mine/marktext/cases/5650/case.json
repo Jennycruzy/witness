@@ -1,0 +1,36 @@
+{
+  "pr": 5650,
+  "issue": 3261,
+  "title": "fix(muya): highlight regexp newline search matches (#3261)",
+  "issueTitle": "Regex search doesn't highlight newlines",
+  "mergedAt": "2026-10-08T04:32:40Z",
+  "mergeSha": "4d15c812165bc9b89b5ff5c90ef7ff3a83379f4f",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.0"
+  },
+  "status": "not-testable",
+  "why": "The report shows the expected result only as a screenshot of highlighted newlines, so there is no exact visible text (such as a match count or highlighted string) that I can be sure the fixed app shows and the buggy one does not."
+}

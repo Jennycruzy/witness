@@ -1,0 +1,33 @@
+{
+  "tests": [
+    "link_with_a_spaced_address_in_angle_brac_test.md"
+  ],
+  "target": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "reference": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

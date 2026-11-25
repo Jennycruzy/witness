@@ -1,0 +1,36 @@
+{
+  "pr": 5856,
+  "issue": 3211,
+  "title": "fix: #3211 avoid quadratic search highlighting in large paragraphs",
+  "issueTitle": "Reaction become slow when the markdown file is large.",
+  "mergedAt": "2026-10-23T01:10:57Z",
+  "mergeSha": "bc83455d6bb81646dd2225ea062cc2c2719d732c",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "The report describes only slowness or freezing on large files over 1000 lines, which is a timing and performance problem with no visible fact that differs between the fixed and buggy builds."
+}

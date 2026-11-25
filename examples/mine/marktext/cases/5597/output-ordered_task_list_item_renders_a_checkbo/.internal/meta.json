@@ -1,0 +1,18 @@
+{
+  "test_id": "2112e1e5-eace-445e-ab24-479411b25947",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "ordered_task_list_item_renders_a_checkbo",
+  "commit_id": "6afc0a88-d8c9-4206-9720-e432ea7bdf54",
+  "testcase_id": "01M8AD0FRXHWXDGD76XD5K9A58",
+  "executions": [
+    {
+      "execution_id": "0d77d82e-218b-4c09-8486-1a25db029e53",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-25T22:26:21.011Z"
+    }
+  ]
+}

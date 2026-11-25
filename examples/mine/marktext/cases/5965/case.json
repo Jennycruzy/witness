@@ -1,0 +1,36 @@
+{
+  "pr": 5965,
+  "issue": 5960,
+  "title": "fix: align file find navigation and retained sessions with VS Code",
+  "issueTitle": "[Feature] Search from current position",
+  "mergedAt": "2026-11-02T23:27:24Z",
+  "mergeSha": "8f23d42b2322bf336f7f6c0e9e73b261883d7764",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "This is a feature request, and the report does not say what the fixed app would show on screen (for example, the exact match-counter text or which match gets highlighted), so no single exact visible fact can be checked with certainty."
+}

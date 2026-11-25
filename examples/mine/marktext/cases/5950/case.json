@@ -1,0 +1,36 @@
+{
+  "pr": 5950,
+  "issue": 5898,
+  "title": "Fix word counter not shown when using native title",
+  "issueTitle": "[Bug] Word Count info disappear when using native title bar style after v0.19.1",
+  "mergedAt": "2026-10-30T03:33:18Z",
+  "mergeSha": "c5dc9414865601a40370f5dabfd13694ccf9d9ef",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "To reproduce it you have to switch Title Bar Style to Native in Preferences and restart the app, and the word count sits in the native window title bar, an operating-system window element the test can't reach or read."
+}

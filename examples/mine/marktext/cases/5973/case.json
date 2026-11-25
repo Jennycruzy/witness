@@ -1,0 +1,36 @@
+{
+  "pr": 5973,
+  "issue": 5967,
+  "title": "fix: #5967 support backslash hard line breaks in the editor",
+  "issueTitle": "[Bug]  [CommonMark] backslash at the end of a line is taken literally",
+  "mergedAt": "2026-11-02T04:24:50Z",
+  "mergeSha": "178b7d4bc05cc1bdfe28fcb645487a08ce771e74",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "written",
+  "why": "The report gives the exact input and the expected result: a backslash at the end of a line should become a hidden hard line break, but the buggy build shows the backslash as text."
+}

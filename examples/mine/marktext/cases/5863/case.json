@@ -1,0 +1,36 @@
+{
+  "pr": 5863,
+  "issue": 5860,
+  "title": "fix: #5860 reduce layout work when switching large files",
+  "issueTitle": "[Bug] Slow reaction to large file",
+  "mergedAt": "2026-10-23T05:45:18Z",
+  "mergeSha": "a6a7843c5773b8bfd01ae5575cf4e99c3ea847f0",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "The report is about slowness when switching tabs between large files, which needs large files opened from disk, several tabs and timing, and the test cannot check any of those."
+}

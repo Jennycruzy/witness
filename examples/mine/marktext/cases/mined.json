@@ -1,0 +1,1960 @@
+{
+  "summary": {
+    "candidates": 53,
+    "notTestable": 41,
+    "noBuild": 0,
+    "written": 12,
+    "run": 4,
+    "kept": 2,
+    "missed": 0,
+    "unrecordable": 2,
+    "other": 0,
+    "kaneRightOnKept": 2
+  },
+  "cases": [
+    {
+      "pr": 5443,
+      "issue": 5442,
+      "title": "fix(muya): ignore a table tool click once its table left the document (#5442)",
+      "issueTitle": "[Bug] Table row/column tools throw after Undo removes the table they point at",
+      "mergedAt": "2026-09-18T04:35:38Z",
+      "mergeSha": "a3e4a64f898bb1289e3f53d868890f5905489a81",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.4",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.4"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "status": "not-testable",
+      "why": "The report gives no visible positive result for the fixed build: the document stays the same either way, the only difference is a native \"Unexpected error\" dialog that the test agent cannot see, and it does not say whether the fixed app closes the menu or ignores the click."
+    },
+    {
+      "pr": 5468,
+      "issue": 5467,
+      "title": "fix(desktop): put the unsaved dot back on the left of the title bar path (#5467)",
+      "issueTitle": "Unsaved dot moved from the left of the title bar path to the right of the filename",
+      "mergedAt": "2026-09-19T23:56:33Z",
+      "mergeSha": "8ff36bcc326d73c9d9e262779fcc0c449a670d59",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "The only difference is where a small text-less dot sits relative to the title-bar path, and that depends on the custom title bar style being on for Linux, so there is no exact visible text to check and the result is unreliable."
+    },
+    {
+      "pr": 5478,
+      "issue": 5477,
+      "title": "fix(muya): show the text cursor over the whole editable column (#5477)",
+      "issueTitle": "[Bug] 编辑光标未正确显示",
+      "mergedAt": "2026-09-21T02:28:37Z",
+      "mergeSha": "9449bf738c60c57a060b55f7a402117978c2e3ac",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "The bug is about the mouse pointer's hover shape (I-beam versus arrow) over body text and code blocks, and the editor shows no text or element that differs between builds, so no step could reliably check it."
+    },
+    {
+      "pr": 5487,
+      "issue": 5076,
+      "title": "fix(muya): keep footnote definitions packed one per line as siblings",
+      "issueTitle": "[Bug] Footnotes are finnicky",
+      "mergedAt": "2026-09-21T23:23:09Z",
+      "mergeSha": "1e5cecde31800388d59ca071dfaa4f4515089e21",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "The report bundles several vague complaints. For the one concrete bug, the definition label showing as [^1], it never says what the label should show instead (for example \"1\", a superscript 1, or \"1.\"), so no exact expected text can be derived."
+    },
+    {
+      "pr": 5492,
+      "issue": 5488,
+      "title": "fix(muya): give each repeated footnote reference its own id and backref",
+      "issueTitle": "[Bug] Referencing the same footnote twice emits a duplicate DOM id and an unreachable backlink",
+      "mergedAt": "2026-09-21T23:30:42Z",
+      "mergeSha": "96e368b41d3f3ee1f93f47a03938b9ae790f3075",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "The bug is a duplicate DOM id and a backlink that cannot be reached, which shows mainly in HTML/PDF export; turning on the footnote option needs the Preferences window, and the report does not say what the in-editor footnote should look like once fixed."
+    },
+    {
+      "pr": 5505,
+      "issue": 5504,
+      "title": "test(muya): stop the deepClone spec from overflowing the stack itself",
+      "issueTitle": "deepClone spec flakes on CI: expect() recurses over the 600-level fixture",
+      "mergedAt": "2026-09-22T02:39:53Z",
+      "mergeSha": "c754f2c6330e9f917b0ef50850d83de8fa99526a",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "The report is about a flaky unit test on CI that overflows the stack inside Vitest's expect() at the 600-level fixture, so nothing changes in the editor that a user could see."
+    },
+    {
+      "pr": 5506,
+      "issue": 4749,
+      "title": "fix(desktop): resolve local link paths without decoding the document folder (#4749)",
+      "issueTitle": "[Bug] Malformed percent-encoded local link throws an unhandled URIError in the main process",
+      "mergedAt": "2026-09-22T02:59:15Z",
+      "mergeSha": "b5641603501d68310b122487f54eabe81532d1eb",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "On the buggy build the only symptom is an exception in the main-process terminal log, which the test cannot see, and the report allows several fixed behaviours (a notification, a create-file prompt, or silently ignoring the click), so there is no visible text that only the fixed app shows."
+    },
+    {
+      "pr": 5520,
+      "issue": 5322,
+      "title": "fix(desktop): retry a save whose rename an SMB share refused (#5322)",
+      "issueTitle": "[Bug] 0.20.0-rc.2: saving files on an SMB/UNC path fails with EPERM (regression from #4778)",
+      "mergedAt": "2026-09-23T02:14:19Z",
+      "mergeSha": "548f6d9217c335d45e4d047f38624a73c32494ef",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "The bug only happens when saving a file to an SMB/UNC network share on Windows, which needs a network server, a specific operating system and file saving, and none of these can be checked from inside the editor."
+    },
+    {
+      "pr": 5526,
+      "issue": 4257,
+      "title": "Drop the legacy muya ambient bridge and its aliases (#4257)",
+      "issueTitle": "TS migration: finalize muya bridge once upstream TS muya lands",
+      "mergedAt": "2026-09-23T11:55:42Z",
+      "mergeSha": "350acd4268358332d1cbdee87244e999d7f41a50",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "This issue tracks future TypeScript and ESLint cleanup (removing `any` type shims and extending a lint rule) with no change in user-visible behavior, so there is nothing for a browser test to see that differs between builds."
+    },
+    {
+      "pr": 5536,
+      "issue": 5415,
+      "title": "fix(muya): cut a cross-block selection from beforeinput too (#5415)",
+      "issueTitle": "[Bug] Cmd+Backspace across two blocks detaches the second block, and Enter on a list then throws \"Failed to execute 'insertBefore'\"",
+      "mergedAt": "2026-09-23T15:33:41Z",
+      "mergeSha": "978d71df281c7b52b4383fa17bfe14e5f7b9c5f8",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.5",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.5"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "status": "not-testable",
+      "why": "Every route the report gives is specific to macOS (Cmd+Backspace, macOS Ctrl+K/D/H/Y, the emoji picker or dictation), and it never says whether any Linux key combination triggers the bug; the only visible failure is a renderer error dialog or a saved-file difference, which this setup cannot reliably check."
+    },
+    {
+      "pr": 5553,
+      "issue": 5539,
+      "title": "fix: restore code block legibility and text crispness (#5539)",
+      "issueTitle": "问题与建议",
+      "mergedAt": "2026-09-25T02:54:00Z",
+      "mergeSha": "423967a5edb494b75170429656f3a1f7dd345885",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.7",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.7"
+      },
+      "status": "not-testable",
+      "why": "The report is about how code blocks wrap in PDF export, which needs a file export, and about code block colors being hard to read, which is a matter of taste with no exact visible text to check."
+    },
+    {
+      "pr": 5556,
+      "issue": 2094,
+      "title": "fix(muya): keep a hard line break's glyph on the line it ends (#2094)",
+      "issueTitle": "newline glyph consumes entire line",
+      "mergedAt": "2026-09-25T03:49:49Z",
+      "mergeSha": "7fa72e786b234417b3b9b923024f607beeca9eab",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.7",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.7"
+      },
+      "status": "not-testable",
+      "why": "The bug only appears after resizing the window so a line barely wraps, and the result is a change in vertical spacing; window resizing is an operating-system action and the spacing has no exact visible text to check."
+    },
+    {
+      "pr": 5562,
+      "issue": 2377,
+      "title": "fix(muya): parse link destinations the way CommonMark does (#2377)",
+      "issueTitle": "inline link rendering is not Common Mark compliant",
+      "mergedAt": "2026-09-26T11:22:16Z",
+      "mergeSha": "660a8de16d052b47d46f6c4f93a09fb5a84f4949",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.7",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.7"
+      },
+      "status": "written",
+      "why": "Per CommonMark and the report, a link whose address is in angle brackets with a space, like [a](</b c>), should show as a link, but the buggy build leaves the raw Markdown text on screen.",
+      "result": {
+        "pr": 5562,
+        "issue": 2377,
+        "result": "UNRECORDABLE",
+        "why": "the fixed build fails the test: The verification values were never filled in. The assertion received literal placeholder text rather than the first paragraph’s link and text state.",
+        "at": "2026-11-25T22:19:03.318Z"
+      }
+    },
+    {
+      "pr": 5569,
+      "issue": 5580,
+      "title": "perf(muya): re-render only the two affected blocks when stepping through search (#5580)",
+      "issueTitle": "Find Next / Find Previous re-renders every matching block on each step",
+      "mergedAt": "2026-09-29T06:47:38Z",
+      "mergeSha": "dd5ebdfcef95cdde8c97ebe8b2e98f7adfde72bc",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.6",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.6"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.7",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.7"
+      },
+      "status": "not-testable",
+      "why": "The report describes a performance problem: each Find Next step re-renders every matching block, but the visible result (which match is active) is the same on both builds, so the only difference is slowness, which the rules exclude."
+    },
+    {
+      "pr": 5579,
+      "issue": 5578,
+      "title": "fix(muya): open documents whose reference labels contain regex characters (#5578)",
+      "issueTitle": "[Bug] A reference definition like `[c++]: url` stops the document from opening",
+      "mergedAt": "2026-09-29T12:22:27Z",
+      "mergeSha": "2930c6660a5f913f95af935e465e3f8590a3bab4",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.7",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.7"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "status": "written",
+      "why": "Typing a reference definition with the label c++ under an existing [c++] reference should turn that reference into a link; per the report, the buggy build throws an 'Invalid regular expression' error building the regex from the c++ label, so the reference is never re-rendered as a link.",
+      "result": {
+        "pr": 5579,
+        "issue": 5578,
+        "result": "UNRECORDABLE",
+        "why": "the fixed build fails the test: The verification setup left the values for the link and plain-text checks as placeholders, so the assertion could not evaluate the document correctly.",
+        "at": "2026-11-25T22:22:08.992Z"
+      }
+    },
+    {
+      "pr": 5589,
+      "issue": 5575,
+      "title": "fix: #5575 restore column handle menu",
+      "issueTitle": "[Bug] The column \"handle\" doesn't provide context menu any longer",
+      "mergedAt": "2026-10-01T04:00:55Z",
+      "mergeSha": "6f8524af8f609d9d03bf3522e60f5b0ff172936a",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.7",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.7"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "status": "not-testable",
+      "why": "The report says only that a context menu with insert/remove column actions should appear. It never gives the exact menu item text, and the handle only shows when the mouse hovers below a column, so no exact visible text can be checked with certainty."
+    },
+    {
+      "pr": 5592,
+      "issue": 5574,
+      "title": "fix(muya): keep the table column toolbar anchored while hovering it (#5574)",
+      "issueTitle": "[Bug] Table context menu repositions itself unexpectedly",
+      "mergedAt": "2026-09-30T08:33:41Z",
+      "mergeSha": "d36cdd1b4a343f947a1053e9b3d67d6110a64fd9",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.7",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.7"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "status": "not-testable",
+      "why": "The bug is the table toolbar menu jumping around while the mouse moves over a column; that depends on hover and mouse movement timing, the report names no exact visible text to check, and it was reported only on Windows 11."
+    },
+    {
+      "pr": 5597,
+      "issue": 1691,
+      "title": "feat(muya): support ordered task lists (#1691)",
+      "issueTitle": "[bug]Ordered task lists are not handled according to spec",
+      "mergedAt": "2026-09-30T16:29:02Z",
+      "mergeSha": "13b973805430d950b947457f8b14c6317e9111dc",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0-rc.7",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0-rc.7"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "status": "written",
+      "why": "The report gives the exact Markdown and the correct result: in an ordered list, a '[x]' marker should show as a checkbox, not as the literal text '[x]' in the item.",
+      "result": {
+        "pr": 5597,
+        "issue": 1691,
+        "result": "KEPT",
+        "why": "The editor is showing the task marker as text in the list item instead of showing only the checked checkbox.",
+        "at": "2026-11-25T22:25:15.781Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.98,
+        "credits": 2.90835
+      }
+    },
+    {
+      "pr": 5636,
+      "issue": 5634,
+      "title": "fix(muya): restore inline HTML tag marker style and hide bare <br/> markers",
+      "issueTitle": "[Bug] UI - shift return in table cell adds <br/> in UI -- v0.20.0",
+      "mergedAt": "2026-10-06T12:57:14Z",
+      "mergeSha": "c054632fea9c5d5a00d7789daebcfddad86a1997",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.0"
+      },
+      "status": "written",
+      "why": "Issue #5634 says Shift+Enter inside a table cell makes a literal \"<br/>\" appear in the editor, and the expected result is that no \"<br/>\" appears and the text after the cursor simply moves to a new line, which can be checked on screen (issue #5635 is only about tag colors and fonts, so this test does not cover it)."
+    },
+    {
+      "pr": 5645,
+      "issue": 3203,
+      "title": "fix: #3203 make the trailing soft-break line navigable with the arrow keys",
+      "issueTitle": "Cursor behaviour when navigating around blank lines",
+      "mergedAt": "2026-10-07T11:07:28Z",
+      "mergeSha": "14eab778a9e9681bb14a872661e6ebc96a8d3105",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.0"
+      },
+      "status": "written",
+      "why": "The report gives the expected result: after Shift+Enter blank lines, pressing Up should move the cursor to the previous blank line instead of jumping to the paragraph above \"test\", so a letter typed after Up shows where the cursor went."
+    },
+    {
+      "pr": 5648,
+      "issue": 3110,
+      "title": "feat: render inline markdown in the TOC (#3110)",
+      "issueTitle": "support Markdown formatting/styling in TOC",
+      "mergedAt": "2026-10-07T15:22:41Z",
+      "mergeSha": "67ea037f679980aad1fd5ed00ce373fdc3c9dfef",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.0"
+      },
+      "status": "written",
+      "why": "The report says a heading written as *italic* shows its raw asterisks in the table of contents, and the fixed app should show the rendered text instead."
+    },
+    {
+      "pr": 5650,
+      "issue": 3261,
+      "title": "fix(muya): highlight regexp newline search matches (#3261)",
+      "issueTitle": "Regex search doesn't highlight newlines",
+      "mergedAt": "2026-10-08T04:32:40Z",
+      "mergeSha": "4d15c812165bc9b89b5ff5c90ef7ff3a83379f4f",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.0"
+      },
+      "status": "not-testable",
+      "why": "The report shows the expected result only as a screenshot of highlighted newlines, so there is no exact visible text (such as a match count or highlighted string) that I can be sure the fixed app shows and the buggy one does not."
+    },
+    {
+      "pr": 5652,
+      "issue": 5651,
+      "title": "fix(muya): keep the search highlight across a full re-render (#5651)",
+      "issueTitle": "[Bug] Toggling a rendering preference clears the active search highlight",
+      "mergedAt": "2026-10-08T06:08:27Z",
+      "mergeSha": "ad1e1cfdf7d924010b4fe186eeb2772eb5c83c5b",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.20.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.20.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.0"
+      },
+      "status": "not-testable",
+      "why": "Reproducing the bug means changing a rendering preference, which is only possible in MarkText's separate Preferences window. The test is limited to keyboard and clicks inside the editor and can't open other windows, so the re-render that clears the highlight can't be triggered."
+    },
+    {
+      "pr": 5691,
+      "issue": 5669,
+      "title": "fix(desktop): give the renderer a platform-native path bridge (#5683, #5669)",
+      "issueTitle": "[Bug] The title bar only displays the file name, but not the file path.",
+      "mergedAt": "2026-10-11T11:00:32Z",
+      "mergeSha": "127c5bb3e61705bcfbe08f914bdbee2c8fa00893",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.1"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.2",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.2"
+      },
+      "status": "not-testable",
+      "why": "The expected title bar text depends on where note.md is stored on disk, which the report doesn't tell us, and the title bar is window chrome rather than editor content; the reporter also saw the bug on Windows only."
+    },
+    {
+      "pr": 5739,
+      "issue": 4997,
+      "title": "fix: #4997 give icon-only controls accessible names",
+      "issueTitle": "a11y: icon-only buttons lack visible text and persistent accessible names",
+      "mergedAt": "2026-10-18T15:12:37Z",
+      "mergeSha": "1d9222d4580eadb6fa8afd14fa9e5d0007f33b20",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.22.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.22.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "status": "not-testable",
+      "why": "The fix adds aria-labels and hover tooltips, which are not visible text, and the report never gives the exact label or tooltip wording, so no verifiable on-screen value can be stated with certainty."
+    },
+    {
+      "pr": 5747,
+      "issue": 3510,
+      "title": "fix: keep typewriter scrolling stable at wrapped line starts",
+      "issueTitle": "The page scrolls when the cursor is positioned at the beginning of the line in typewiter mode",
+      "mergedAt": "2026-10-14T07:19:55Z",
+      "mergeSha": "4be8a06fdd5ebdca9d7f8b1ca36979e11e3f94ab",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.2",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.2"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.22.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.22.0"
+      },
+      "status": "not-testable",
+      "why": "The bug is a small unwanted page scroll in typewriter mode, so checking it depends on the scroll position and on the window's line wrapping, and there is no text, field or output that differs between the fixed and buggy builds."
+    },
+    {
+      "pr": 5760,
+      "issue": 5753,
+      "title": "fix: #5753 preserve list contents when copying backward selections",
+      "issueTitle": "[Bug] Copying list does not copy contents",
+      "mergedAt": "2026-10-16T04:21:21Z",
+      "mergeSha": "45b2cedb5be2902d32b064f9127914d48de00cef",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.21.2",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.21.2"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.22.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.22.0"
+      },
+      "status": "not-testable",
+      "why": "The bug only appears when copying list items and pasting them, which needs the clipboard, and the rules exclude clipboard tests."
+    },
+    {
+      "pr": 5825,
+      "issue": 5824,
+      "title": "fix: #5824 make the viewer wheel zoom proportional to scroll distance",
+      "issueTitle": "[Bug] Viewer wheel zoom uses a fixed step per event, so one trackpad flick hits the zoom limit",
+      "mergedAt": "2026-10-21T16:52:34Z",
+      "mergeSha": "28bf25e01c0eff2ac5d026446c05b02aaadfe594",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows up with wheel or trackpad gestures whose deltaY sizes and event counts depend on the platform, so a plain-English click-and-type test cannot reliably produce a zoom readout that differs between the fixed and buggy builds."
+    },
+    {
+      "pr": 5854,
+      "issue": 5861,
+      "title": "fix(muya): preserve tight list block boundaries on save",
+      "issueTitle": "[Bug] Saving a tight list whose item holds a code block reopens it as a loose list",
+      "mergedAt": "2026-10-23T12:17:12Z",
+      "mergeSha": "b7988bd1becd02eccafad5789eae4c25a9cd2721",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows after saving, closing and reopening the file. Reopening needs a file dialog or an app restart, and the visible result is extra vertical spacing between list items, not text that can be read on screen, so no exact expected text can be checked inside the editor."
+    },
+    {
+      "pr": 5856,
+      "issue": 3211,
+      "title": "fix: #3211 avoid quadratic search highlighting in large paragraphs",
+      "issueTitle": "Reaction become slow when the markdown file is large.",
+      "mergedAt": "2026-10-23T01:10:57Z",
+      "mergeSha": "bc83455d6bb81646dd2225ea062cc2c2719d732c",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The report describes only slowness or freezing on large files over 1000 lines, which is a timing and performance problem with no visible fact that differs between the fixed and buggy builds."
+    },
+    {
+      "pr": 5863,
+      "issue": 5860,
+      "title": "fix: #5860 reduce layout work when switching large files",
+      "issueTitle": "[Bug] Slow reaction to large file",
+      "mergedAt": "2026-10-23T05:45:18Z",
+      "mergeSha": "a6a7843c5773b8bfd01ae5575cf4e99c3ea847f0",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The report is about slowness when switching tabs between large files, which needs large files opened from disk, several tabs and timing, and the test cannot check any of those."
+    },
+    {
+      "pr": 5868,
+      "issue": 5273,
+      "title": "feat: #5273 persist Muya warnings and errors in production",
+      "issueTitle": "[Feature] Make the renderer easier to test and diagnose (editor-engine logging + freeze detection)",
+      "mergedAt": "2026-10-23T08:35:32Z",
+      "mergeSha": "bfe66ce77eca4282eb825a16c470cfcfbf000e3d",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "This is a feature request for internal logging and freeze detection, with no visible editor behavior and no correct on-screen output an end-to-end test could check."
+    },
+    {
+      "pr": 5872,
+      "issue": 5297,
+      "title": "fix(muya): keep list spacing consistent through edit transactions",
+      "issueTitle": "[Bug] Adding a paragraph to a list item keeps the list tight in the editor, but it reopens loose",
+      "mergedAt": "2026-10-24T05:17:15Z",
+      "mergeSha": "3fcb5ce8db70d74a047b19a82fa875ab76c87cd1",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The only on-screen difference between the fixed and buggy builds is how much vertical space the list items get (loose or tight), and no visible text changes, so there is no exact text a Verify step could name."
+    },
+    {
+      "pr": 5882,
+      "issue": 5258,
+      "title": "fix: restore the pre-edit caret on undo (#5258)",
+      "issueTitle": "[Bug] Muya loses the caret position on the first undo after loading",
+      "mergedAt": "2026-10-25T01:46:48Z",
+      "mergeSha": "b59942c270521bdb6ef54f1229389a254c969532",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows on the first undo after content is loaded with muya.setContent(), but the test starts on an empty note.md and cannot load content without a file dialog; text typed into the editor is itself recorded in the undo history, so the undo of \"X\" would not be the faulty first undo after loading."
+    },
+    {
+      "pr": 5891,
+      "issue": 2114,
+      "title": "fix: #1592 support real Tab input and list indentation",
+      "issueTitle": "Intent with tabs at code blocks",
+      "mergedAt": "2026-10-27T05:35:14Z",
+      "mergeSha": "168b4d40cca3bb05c89d25273e9afeb65252602c",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The report is about tab characters turning into spaces in code blocks. In the rendered editor a tab and four spaces look the same, so the test has nothing visible to check. The main case also needs an existing file opened from disk, and the report does not say whether the fix changes what the Tab key does or adds a setting."
+    },
+    {
+      "pr": 5903,
+      "issue": 5900,
+      "title": "fix: #5900 preserve cross-block selections on non-editing keys",
+      "issueTitle": "[Bug] Critical Non-editing keys delete selected text across multiple Markdown blocks",
+      "mergedAt": "2026-10-27T01:06:49Z",
+      "mergeSha": "e40abcd71e43d0335326b881dd2c4613fb0922df",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "written",
+      "why": "The report says that when a selection spans two paragraphs, pressing End deletes the selected text in the buggy build, and that non-editing keys should not delete anything; so after pressing End, the first paragraph's text should still be there."
+    },
+    {
+      "pr": 5904,
+      "issue": 5614,
+      "title": "fix: #5614 prevent silent data loss when saving legacy encodings",
+      "issueTitle": "Saving a file in a legacy encoding silently replaces unrepresentable characters with \"?\"",
+      "mergedAt": "2026-10-27T03:21:44Z",
+      "mergeSha": "e4c447b35b0bb0448d7ca84bb942a71bbb938e9f",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows up in the bytes written to disk after saving in a legacy encoding, which needs the encoding menu, file saving and reading the file outside the editor, and the report only suggests a possible fix, so it never says what warning or prompt the fixed app shows."
+    },
+    {
+      "pr": 5905,
+      "issue": 2114,
+      "title": "feat: #2052 indent and outdent selected lines and list items",
+      "issueTitle": "Intent with tabs at code blocks",
+      "mergedAt": "2026-10-27T06:30:57Z",
+      "mergeSha": "6b192ba96ce12de727b3a639f4dd32ae21f51d8d",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "Both reports are about whitespace (tabs turning into spaces, how far Shift-Tab moves a line, a 2-space versus 4-space indent step), and on screen a tab looks the same as spaces, so no exact visible text tells the fixed build from the buggy one; the first report is also a feature request that never says what correct output looks like."
+    },
+    {
+      "pr": 5907,
+      "issue": 5581,
+      "title": "fix: #5581 preserve tab bar visibility when opening tabs",
+      "issueTitle": "[Bug] \"Toggle Tabbar\" state resets to on after opening more than one file",
+      "mergedAt": "2026-10-27T07:14:08Z",
+      "mergeSha": "61e51b3456793cb915848000bf5f71c328d136a5",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "Reproducing it means opening and closing several files through file dialogs, the sidebar or the File menu, and the only thing to check is that the tab bar is absent; the report gives no visible text to confirm, so I can't derive a reliable pass/fail step from it."
+    },
+    {
+      "pr": 5912,
+      "issue": 5596,
+      "title": "fix: #5596 confirm unsaved changes regardless of startup action",
+      "issueTitle": "[Bug] Unsaved changes are discarded without warning when closing an edited Markdown file",
+      "mergedAt": "2026-10-27T16:08:41Z",
+      "mergeSha": "e796d2b479c1dea2c2242f5c334fde6738fbefec",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "Checking this needs the document or app to be closed and an unsaved-changes confirmation dialog to appear, but that dialog is a native operating-system window the test agent can't see or use, and reopening the file needs file dialogs."
+    },
+    {
+      "pr": 5950,
+      "issue": 5898,
+      "title": "Fix word counter not shown when using native title",
+      "issueTitle": "[Bug] Word Count info disappear when using native title bar style after v0.19.1",
+      "mergedAt": "2026-10-30T03:33:18Z",
+      "mergeSha": "c5dc9414865601a40370f5dabfd13694ccf9d9ef",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "To reproduce it you have to switch Title Bar Style to Native in Preferences and restart the app, and the word count sits in the native window title bar, an operating-system window element the test can't reach or read."
+    },
+    {
+      "pr": 5965,
+      "issue": 5960,
+      "title": "fix: align file find navigation and retained sessions with VS Code",
+      "issueTitle": "[Feature] Search from current position",
+      "mergedAt": "2026-11-02T23:27:24Z",
+      "mergeSha": "8f23d42b2322bf336f7f6c0e9e73b261883d7764",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "This is a feature request, and the report does not say what the fixed app would show on screen (for example, the exact match-counter text or which match gets highlighted), so no single exact visible fact can be checked with certainty."
+    },
+    {
+      "pr": 5972,
+      "issue": 5971,
+      "title": "fix(desktop): treat folders named ..something as inside their parent",
+      "issueTitle": "[Bug] Files in a folder whose name starts with \"..\" are treated as outside their parent folder",
+      "mergedAt": "2026-11-02T08:56:37Z",
+      "mergeSha": "41151384d6626b243b97b1b750cd8949a97a23db",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "Reproducing the bug means creating a folder whose name starts with \"..\" and opening a file in it from the file manager or command line while two MarkText windows are open. The fixed and buggy builds differ only in which window gets the file, and in-editor keyboard and click steps on a single window with note.md can do none of that."
+    },
+    {
+      "pr": 5973,
+      "issue": 5967,
+      "title": "fix: #5967 support backslash hard line breaks in the editor",
+      "issueTitle": "[Bug]  [CommonMark] backslash at the end of a line is taken literally",
+      "mergedAt": "2026-11-02T04:24:50Z",
+      "mergeSha": "178b7d4bc05cc1bdfe28fcb645487a08ce771e74",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "written",
+      "why": "The report gives the exact input and the expected result: a backslash at the end of a line should become a hidden hard line break, but the buggy build shows the backslash as text.",
+      "result": {
+        "pr": 5973,
+        "issue": 5967,
+        "result": "KEPT",
+        "why": "The editor is rendering extra visible characters in the first line before the line break.",
+        "at": "2026-11-25T22:13:18.150Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.98,
+        "credits": 3.1106999999999996
+      }
+    },
+    {
+      "pr": 5983,
+      "issue": 5978,
+      "title": "fix: #5978 conform live inline code spans to CommonMark",
+      "issueTitle": "[Bug] [CommonMark] Live inline code spans mismatch backtick runs and preserve nonconforming whitespace",
+      "mergedAt": "2026-11-02T10:48:14Z",
+      "mergeSha": "dae649140e478d7324331c381e106d34ee503986",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "Every sample relies on exact backtick runs and brackets, but the editor auto-pairs backticks and brackets as you type and turns Enter into a new paragraph, so the exact Markdown source cannot be reliably entered with key presses, and the reported defects come from lexer tokens and whitespace that are not clearly visible on screen."
+    },
+    {
+      "pr": 5987,
+      "issue": 5977,
+      "title": "fix: #5982 align inline escapes, entities and raw HTML with CommonMark",
+      "issueTitle": "[Bug] [CommonMark] Live inline lexer does not fully decode named/numeric entities and link attributes",
+      "mergedAt": "2026-11-03T02:42:21Z",
+      "mergeSha": "ffa8ffcca2dd53f9edbb119f29236e91c02aa53c",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "written",
+      "why": "The report says numeric character references such as &#35; stay as literal text in the live editor, and the expected result is that &#35; shows as \"#\", which a reader can see in a paragraph."
+    },
+    {
+      "pr": 5989,
+      "issue": 5974,
+      "title": "fix: #5974 keep table column tools inside the editor viewport",
+      "issueTitle": "[Bug] 当编辑内容停留在表格位置，鼠标向上移动悬停到文件tab时，表格快捷编辑横条会遮挡tab，容易误操作和无法操作tab",
+      "mergedAt": "2026-11-02T13:37:58Z",
+      "mergeSha": "b4854d2ab0e505e568d64600394b57b5fc9c2c30",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The bug is about the table toolbar overlapping the file tab bar when the mouse hovers there, which is a visual layout and hover-position problem with no clear text to check, and the test starts with only one file open, so there is no other tab to try to click."
+    },
+    {
+      "pr": 5998,
+      "issue": 5994,
+      "title": "fix: #5994 #5995 #5996 align remaining live inline semantics",
+      "issueTitle": "[Bug] [CommonMark] Live emphasis flanking misclassifies Unicode symbols",
+      "mergedAt": "2026-11-03T03:30:23Z",
+      "mergeSha": "245958c5d2154e9afd603f8af75feca982ccabc3",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "written",
+      "why": "Issue #5996 says a bare www domain followed by a sentence-ending period stays plain text on the buggy build, while the fixed build renders the domain as a link and leaves the period outside it; the other two issues need a non-ASCII key (#5994) or invisible whitespace (#5995) and cannot be checked on screen."
+    },
+    {
+      "pr": 5999,
+      "issue": 5968,
+      "title": "fix: #5968 accept tabs in reference definition separators",
+      "issueTitle": "[Bug] [CommonMark] tab handled differently than space(s)",
+      "mergedAt": "2026-11-03T02:25:34Z",
+      "mergeSha": "b788c598b28c4ea953171c699b94594d5d982dc9",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.23.0",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.23.0"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "status": "not-testable",
+      "why": "The bug needs a literal tab character between the URL and the title in a link reference definition, and in MarkText the Tab key is handled by the editor itself (it may indent or insert spaces), so typing it does not reliably produce a tab, and the tests cannot open a prepared file or paste text."
+    },
+    {
+      "pr": 6029,
+      "issue": 6026,
+      "title": "fix: #6026 preserve spaces after newly typed search matches",
+      "issueTitle": "[Bug] Buggy spacebar behavior if typing a new instance of the current find query",
+      "mergedAt": "2026-11-06T08:00:22Z",
+      "mergeSha": "a520befde7ec8ea911e738d53cb26bba64b28694",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.2",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.2"
+      },
+      "status": "written",
+      "why": "The report gives a clear keyboard-only repro in the editor and find box, and the expected result is that a space can be typed after a new instance of the find query at the end of a line."
+    },
+    {
+      "pr": 6060,
+      "issue": 6054,
+      "title": "fix: #6054 preserve heading folds when switching tabs",
+      "issueTitle": "[Bug] 文件A点击H1~H6折叠内容后，切换到文件B，再切换回文件A，文件A之前的折叠内容被还原",
+      "mergedAt": "2026-11-13T01:29:43Z",
+      "mergeSha": "2689fc800adaa1d985353984d98377554c66d49f",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.2",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.2"
+      },
+      "status": "written",
+      "why": "The report gives a clear expected result: after you fold a heading, switch to another tab and switch back, the content under that heading should still be hidden. A tab switch and a fold click can both be done inside the editor."
+    },
+    {
+      "pr": 6061,
+      "issue": 6051,
+      "title": "fix: #6051 reduce heading layout reads during scroll",
+      "issueTitle": "[Bug] Scroll handler reads the position of every heading on each scroll event",
+      "mergedAt": "2026-11-13T01:29:21Z",
+      "mergeSha": "b9ea6522f1eed887885aa823900d450fd7de21f8",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.2",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.2"
+      },
+      "status": "not-testable",
+      "why": "The report is about scroll performance (time spent per scroll event as the number of headings grows); it describes no change anyone can see on screen, so nothing visible differs between the fixed and buggy builds."
+    },
+    {
+      "pr": 6062,
+      "issue": 6050,
+      "title": "fix: #6050 hide the block button while scrolling",
+      "issueTitle": "[Bug] Block button is repositioned on every scroll event, causing layout and hit-test work while scrolling",
+      "mergedAt": "2026-11-12T16:53:47Z",
+      "mergeSha": "3d331df6e036b930189ccd2453f80757b662bafd",
+      "buggy": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.1",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.1"
+      },
+      "fixed": {
+        "release": "marktext/marktext",
+        "tag": "v0.24.0-rc.2",
+        "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+        "electron": {
+          "bin": "marktext",
+          "args": [
+            "{data}/note.md"
+          ]
+        },
+        "setup": "touch {data}/note.md",
+        "label": "marktext/marktext@v0.24.0-rc.2"
+      },
+      "status": "not-testable",
+      "why": "The report is about layout and hit-test work done during scrolling, which is a performance and timing problem that shows up only in a DevTools profile; it does not say which visible result is correct, since either suggested fix (hiding the button or moving it with the content) would be acceptable."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "pr": 5443,
+  "issue": 5442,
+  "title": "fix(muya): ignore a table tool click once its table left the document (#5442)",
+  "issueTitle": "[Bug] Table row/column tools throw after Undo removes the table they point at",
+  "mergedAt": "2026-09-18T04:35:38Z",
+  "mergeSha": "a3e4a64f898bb1289e3f53d868890f5905489a81",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.4",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.4"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "status": "not-testable",
+  "why": "The report gives no visible positive result for the fixed build: the document stays the same either way, the only difference is a native \"Unexpected error\" dialog that the test agent cannot see, and it does not say whether the fixed app closes the menu or ignores the click."
+}

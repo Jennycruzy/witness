@@ -1,0 +1,36 @@
+{
+  "pr": 5468,
+  "issue": 5467,
+  "title": "fix(desktop): put the unsaved dot back on the left of the title bar path (#5467)",
+  "issueTitle": "Unsaved dot moved from the left of the title bar path to the right of the filename",
+  "mergedAt": "2026-09-19T23:56:33Z",
+  "mergeSha": "8ff36bcc326d73c9d9e262779fcc0c449a670d59",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "The only difference is where a small text-less dot sits relative to the title-bar path, and that depends on the custom title bar style being on for Linux, so there is no exact visible text to check and the result is unreliable."
+}

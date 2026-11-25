@@ -1,0 +1,36 @@
+{
+  "pr": 5760,
+  "issue": 5753,
+  "title": "fix: #5753 preserve list contents when copying backward selections",
+  "issueTitle": "[Bug] Copying list does not copy contents",
+  "mergedAt": "2026-10-16T04:21:21Z",
+  "mergeSha": "45b2cedb5be2902d32b064f9127914d48de00cef",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.2",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.2"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.22.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.22.0"
+  },
+  "status": "not-testable",
+  "why": "The bug only appears when copying list items and pasting them, which needs the clipboard, and the rules exclude clipboard tests."
+}

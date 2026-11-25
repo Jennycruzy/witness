@@ -1,0 +1,36 @@
+{
+  "pr": 5492,
+  "issue": 5488,
+  "title": "fix(muya): give each repeated footnote reference its own id and backref",
+  "issueTitle": "[Bug] Referencing the same footnote twice emits a duplicate DOM id and an unreachable backlink",
+  "mergedAt": "2026-09-21T23:30:42Z",
+  "mergeSha": "96e368b41d3f3ee1f93f47a03938b9ae790f3075",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "The bug is a duplicate DOM id and a backlink that cannot be reached, which shows mainly in HTML/PDF export; turning on the footnote option needs the Preferences window, and the report does not say what the in-editor footnote should look like once fixed."
+}

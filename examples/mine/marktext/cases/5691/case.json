@@ -1,0 +1,36 @@
+{
+  "pr": 5691,
+  "issue": 5669,
+  "title": "fix(desktop): give the renderer a platform-native path bridge (#5683, #5669)",
+  "issueTitle": "[Bug] The title bar only displays the file name, but not the file path.",
+  "mergedAt": "2026-10-11T11:00:32Z",
+  "mergeSha": "127c5bb3e61705bcfbe08f914bdbee2c8fa00893",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.1"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.2",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.2"
+  },
+  "status": "not-testable",
+  "why": "The expected title bar text depends on where note.md is stored on disk, which the report doesn't tell us, and the title bar is window chrome rather than editor content; the reporter also saw the bug on Windows only."
+}

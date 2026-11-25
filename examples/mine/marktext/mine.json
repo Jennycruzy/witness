@@ -1,0 +1,69 @@
+{
+  "repo": "marktext/marktext",
+  "since": "2026-06-01",
+  "until": "2026-11-20",
+  "paths": [
+    "packages/desktop/src/",
+    "packages/muya/"
+  ],
+  "skip": [
+    "windows",
+    "macos",
+    "mac ",
+    "linux",
+    "wayland",
+    "print",
+    "export",
+    "pdf",
+    "image",
+    "picture",
+    "upload",
+    "clipboard",
+    "paste",
+    "drag",
+    "spell",
+    "font",
+    "theme",
+    "dark mode",
+    "i18n",
+    "translation",
+    "locale",
+    "language",
+    "ime",
+    "chinese",
+    "japanese",
+    "korean",
+    "update",
+    "install",
+    "file tree",
+    "sidebar",
+    "window",
+    "shortcut",
+    "keybinding",
+    "mermaid",
+    "plantuml",
+    "vega",
+    "math",
+    "katex",
+    "performance",
+    "crash",
+    "memory",
+    "dependency",
+    "bump",
+    "build"
+  ],
+  "builds": {
+    "release": "marktext/marktext",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    }
+  },
+  "setup": "touch {data}/note.md",
+  "where": "The MarkText desktop Markdown editor (an Electron app) on Linux, 1920x1080, opened on an empty file note.md; no network, no login. Steps use the keyboard and clicks inside the editor only: no menus (use keyboard shortcuts), no file dialogs, no operating-system windows.",
+  "notes": "notes.md",
+  "max": 20
+}

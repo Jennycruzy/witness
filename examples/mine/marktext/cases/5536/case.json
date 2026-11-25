@@ -1,0 +1,36 @@
+{
+  "pr": 5536,
+  "issue": 5415,
+  "title": "fix(muya): cut a cross-block selection from beforeinput too (#5415)",
+  "issueTitle": "[Bug] Cmd+Backspace across two blocks detaches the second block, and Enter on a list then throws \"Failed to execute 'insertBefore'\"",
+  "mergedAt": "2026-09-23T15:33:41Z",
+  "mergeSha": "978d71df281c7b52b4383fa17bfe14e5f7b9c5f8",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "Every route the report gives is specific to macOS (Cmd+Backspace, macOS Ctrl+K/D/H/Y, the emoji picker or dictation), and it never says whether any Linux key combination triggers the bug; the only visible failure is a renderer error dialog or a saved-file difference, which this setup cannot reliably check."
+}

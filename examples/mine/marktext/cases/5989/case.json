@@ -1,0 +1,36 @@
+{
+  "pr": 5989,
+  "issue": 5974,
+  "title": "fix: #5974 keep table column tools inside the editor viewport",
+  "issueTitle": "[Bug] 当编辑内容停留在表格位置，鼠标向上移动悬停到文件tab时，表格快捷编辑横条会遮挡tab，容易误操作和无法操作tab",
+  "mergedAt": "2026-11-02T13:37:58Z",
+  "mergeSha": "b4854d2ab0e505e568d64600394b57b5fc9c2c30",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "The bug is about the table toolbar overlapping the file tab bar when the mouse hovers there, which is a visual layout and hover-position problem with no clear text to check, and the test starts with only one file open, so there is no other tab to try to click."
+}

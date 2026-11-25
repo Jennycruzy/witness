@@ -1,0 +1,36 @@
+{
+  "pr": 5907,
+  "issue": 5581,
+  "title": "fix: #5581 preserve tab bar visibility when opening tabs",
+  "issueTitle": "[Bug] \"Toggle Tabbar\" state resets to on after opening more than one file",
+  "mergedAt": "2026-10-27T07:14:08Z",
+  "mergeSha": "61e51b3456793cb915848000bf5f71c328d136a5",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "Reproducing it means opening and closing several files through file dialogs, the sidebar or the File menu, and the only thing to check is that the tab bar is absent; the report gives no visible text to confirm, so I can't derive a reliable pass/fail step from it."
+}

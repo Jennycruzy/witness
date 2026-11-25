@@ -1,0 +1,36 @@
+{
+  "pr": 6061,
+  "issue": 6051,
+  "title": "fix: #6051 reduce heading layout reads during scroll",
+  "issueTitle": "[Bug] Scroll handler reads the position of every heading on each scroll event",
+  "mergedAt": "2026-11-13T01:29:21Z",
+  "mergeSha": "b9ea6522f1eed887885aa823900d450fd7de21f8",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.2",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.2"
+  },
+  "status": "not-testable",
+  "why": "The report is about scroll performance (time spent per scroll event as the number of headings grows); it describes no change anyone can see on screen, so nothing visible differs between the fixed and buggy builds."
+}

@@ -1,0 +1,8 @@
+MarkText, a desktop Markdown editor with live preview (typing Markdown renders it in place: "# Title" becomes a heading, "- item" a list, "**bold**" bold text, a line of three backticks a code block, "| a | b |" a table).
+When the test starts: one window is open on an empty file note.md, with the cursor in the empty editor. No other files are open.
+The editor shows rendered content only (no separate source pane); headings, lists, tables, code blocks and links appear as formatted elements in the page.
+The app's menu bar (File, Edit, Paragraph, ...) is a native window menu that the test agent cannot see or click. Never write "choose Edit > ..." or any menu step:
+use the keyboard shortcut instead (Undo Ctrl+Z, Redo Ctrl+Shift+Z, Select All Ctrl+A, Bold Ctrl+B, Italic Ctrl+I, Heading 1 Ctrl+1, Paragraph Ctrl+0).
+Write ALL typing in the editor as single key presses: 'Press the keys f, o, o, Space, b, a, r, Enter'. Never write 'Type "..."' for the editor, not even 'on the keyboard': the agent turns that into one fill of the whole document box and wipes everything typed before. Spell out Space and Comma as key names. Keep typed text as short as the bug allows (aim under 15 keys per step; use short words and short URLs like https://e.co). Typing into a small input that already has focus, such as the find box after Ctrl+F, may use 'type "abc" in the find box'.
+Click only on text that is already on screen, e.g. 'Click right after the letter "a"'.
+MarkText draws a small curved arrow (↵) at the end of a line that ends in a line break, and a ¶ mark left of the active paragraph. Neither is text: when a check is about characters near a line end, say so in the check (e.g. "the ↵ arrow is expected and is not a backslash").

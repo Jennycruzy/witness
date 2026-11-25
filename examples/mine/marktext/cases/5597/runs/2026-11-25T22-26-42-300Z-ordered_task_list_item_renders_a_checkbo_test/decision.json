@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/marktext/cases/5597/ordered_task_list_item_renders_a_checkbo_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.98,
+        "rootCause": "The editor is showing the task marker as text in the list item instead of showing only the checked checkbox."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/f2c12985-638e-43d6-a5f0-892b3e0250e3/scratch/2/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.90835,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 3,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

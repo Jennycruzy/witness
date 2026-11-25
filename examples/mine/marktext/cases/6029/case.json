@@ -1,0 +1,36 @@
+{
+  "pr": 6029,
+  "issue": 6026,
+  "title": "fix: #6026 preserve spaces after newly typed search matches",
+  "issueTitle": "[Bug] Buggy spacebar behavior if typing a new instance of the current find query",
+  "mergedAt": "2026-11-06T08:00:22Z",
+  "mergeSha": "a520befde7ec8ea911e738d53cb26bba64b28694",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.2",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.2"
+  },
+  "status": "written",
+  "why": "The report gives a clear keyboard-only repro in the editor and find box, and the expected result is that a space can be typed after a new instance of the find query at the end of a line."
+}

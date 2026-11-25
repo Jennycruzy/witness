@@ -1,0 +1,36 @@
+{
+  "pr": 5556,
+  "issue": 2094,
+  "title": "fix(muya): keep a hard line break's glyph on the line it ends (#2094)",
+  "issueTitle": "newline glyph consumes entire line",
+  "mergedAt": "2026-09-25T03:49:49Z",
+  "mergeSha": "7fa72e786b234417b3b9b923024f607beeca9eab",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "status": "not-testable",
+  "why": "The bug only appears after resizing the window so a line barely wraps, and the result is a change in vertical spacing; window resizing is an operating-system action and the spacing has no exact visible text to check."
+}

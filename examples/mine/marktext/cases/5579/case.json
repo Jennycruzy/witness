@@ -1,0 +1,36 @@
+{
+  "pr": 5579,
+  "issue": 5578,
+  "title": "fix(muya): open documents whose reference labels contain regex characters (#5578)",
+  "issueTitle": "[Bug] A reference definition like `[c++]: url` stops the document from opening",
+  "mergedAt": "2026-09-29T12:22:27Z",
+  "mergeSha": "2930c6660a5f913f95af935e465e3f8590a3bab4",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "status": "written",
+  "why": "Typing a reference definition with the label c++ under an existing [c++] reference should turn that reference into a link; per the report, the buggy build throws an 'Invalid regular expression' error building the regex from the c++ label, so the reference is never re-rendered as a link."
+}

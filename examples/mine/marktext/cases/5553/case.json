@@ -1,0 +1,36 @@
+{
+  "pr": 5553,
+  "issue": 5539,
+  "title": "fix: restore code block legibility and text crispness (#5539)",
+  "issueTitle": "问题与建议",
+  "mergedAt": "2026-09-25T02:54:00Z",
+  "mergeSha": "423967a5edb494b75170429656f3a1f7dd345885",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "status": "not-testable",
+  "why": "The report is about how code blocks wrap in PDF export, which needs a file export, and about code block colors being hard to read, which is a matter of taste with no exact visible text to check."
+}

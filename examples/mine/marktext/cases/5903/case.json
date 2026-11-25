@@ -1,0 +1,36 @@
+{
+  "pr": 5903,
+  "issue": 5900,
+  "title": "fix: #5900 preserve cross-block selections on non-editing keys",
+  "issueTitle": "[Bug] Critical Non-editing keys delete selected text across multiple Markdown blocks",
+  "mergedAt": "2026-10-27T01:06:49Z",
+  "mergeSha": "e40abcd71e43d0335326b881dd2c4613fb0922df",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "written",
+  "why": "The report says that when a selection spans two paragraphs, pressing End deletes the selected text in the buggy build, and that non-editing keys should not delete anything; so after pressing End, the first paragraph's text should still be there."
+}

@@ -1,0 +1,36 @@
+{
+  "pr": 5506,
+  "issue": 4749,
+  "title": "fix(desktop): resolve local link paths without decoding the document folder (#4749)",
+  "issueTitle": "[Bug] Malformed percent-encoded local link throws an unhandled URIError in the main process",
+  "mergedAt": "2026-09-22T02:59:15Z",
+  "mergeSha": "b5641603501d68310b122487f54eabe81532d1eb",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "On the buggy build the only symptom is an exception in the main-process terminal log, which the test cannot see, and the report allows several fixed behaviours (a notification, a create-file prompt, or silently ignoring the click), so there is no visible text that only the fixed app shows."
+}

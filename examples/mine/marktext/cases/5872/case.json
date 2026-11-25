@@ -1,0 +1,36 @@
+{
+  "pr": 5872,
+  "issue": 5297,
+  "title": "fix(muya): keep list spacing consistent through edit transactions",
+  "issueTitle": "[Bug] Adding a paragraph to a list item keeps the list tight in the editor, but it reopens loose",
+  "mergedAt": "2026-10-24T05:17:15Z",
+  "mergeSha": "3fcb5ce8db70d74a047b19a82fa875ab76c87cd1",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "The only on-screen difference between the fixed and buggy builds is how much vertical space the list items get (loose or tight), and no visible text changes, so there is no exact text a Verify step could name."
+}

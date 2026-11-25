@@ -1,0 +1,36 @@
+{
+  "pr": 5987,
+  "issue": 5977,
+  "title": "fix: #5982 align inline escapes, entities and raw HTML with CommonMark",
+  "issueTitle": "[Bug] [CommonMark] Live inline lexer does not fully decode named/numeric entities and link attributes",
+  "mergedAt": "2026-11-03T02:42:21Z",
+  "mergeSha": "ffa8ffcca2dd53f9edbb119f29236e91c02aa53c",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "written",
+  "why": "The report says numeric character references such as &#35; stay as literal text in the live editor, and the expected result is that &#35; shows as \"#\", which a reader can see in a paragraph."
+}

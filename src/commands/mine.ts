@@ -18,9 +18,10 @@ export interface MineConfig {
   paths?: string[];                   // the PR must change a file under one of these (the web app's source)
   skip?: string[];                    // skip a candidate whose issue or PR title mentions one of these words
   builds: { npm: string; buildDir?: string; isolation?: boolean; settleHours?: number }   // every published version (nightlies too)
-        | { release: string; asset?: string };                                            // GitHub release assets
+        | { release: string; asset?: string; electron?: { bin: string; args?: string[] } };  // GitHub release assets (electron: a desktop app)
   setup?: string;                     // prepares app state before each run: gets {url} and {profile}
   notes?: string;                     // file: what the app looks like after setup, for the test writer
+  where?: string;                     // replaces the writer's first rule (desktop Chrome on localhost), e.g. for a desktop app
   writer?: string[];                  // the agent that writes tests (prompt on stdin, answer on stdout)
   max?: number;                       // stop after this many written tests
   out?: string;                       // cases folder (default: cases/ next to mine.json)
@@ -60,7 +61,7 @@ export async function pickBuilds(m: MineConfig, pr: FixPR, cache: { versions?: {
   const i = cache.releases.indexOf(fixed);
   const buggy = cache.releases.slice(0, i).reverse().find(r => !tagContains(b.release, r.tag, pr.mergeSha));
   if (!buggy) return null;
-  const ref = (tag: string): BuildRef => ({ release: b.release, tag, asset: b.asset, setup: m.setup, label: `${b.release}@${tag}` });
+  const ref = (tag: string): BuildRef => ({ release: b.release, tag, asset: b.asset, electron: b.electron, setup: m.setup, label: `${b.release}@${tag}` });
   return { buggy: ref(buggy.tag), fixed: ref(fixed.tag) };
 }
 
@@ -82,10 +83,11 @@ Rules:
 Answer with ONLY one JSON object, no prose:
 {"testable": true|false, "why": "<one sentence>", "title": "<test title>", "steps": [{"heading": "<2-5 words>", "text": "<instruction>"}]}`;
 
-function writerPrompt(m: MineConfig, pr: FixPR): string {
+export function writerPrompt(m: MineConfig, pr: FixPR): string {
   const notes = m.notes && existsSync(m.notes) ? readFileSync(m.notes, 'utf8') : '';
   const iss = pr.issues.map(i => `Issue #${i.number}: ${i.title}\n\n${i.body.slice(0, 5000)}`).join('\n\n---\n\n');
-  return `${WRITER_RULES}\n\nTHE APP (state when your first step starts):\n${notes}\n\nTHE BUG REPORT:\n${iss}\n`;
+  const rules = m.where ? WRITER_RULES.replace(/^- Desktop Chrome.*$/m, `- ${m.where}`) : WRITER_RULES;
+  return `${rules}\n\nTHE APP (state when your first step starts):\n${notes}\n\nTHE BUG REPORT:\n${iss}\n`;
 }
 
 async function runWriter(cmd: string[], prompt: string): Promise<any> {

@@ -1,0 +1,36 @@
+{
+  "pr": 5592,
+  "issue": 5574,
+  "title": "fix(muya): keep the table column toolbar anchored while hovering it (#5574)",
+  "issueTitle": "[Bug] Table context menu repositions itself unexpectedly",
+  "mergedAt": "2026-09-30T08:33:41Z",
+  "mergeSha": "d36cdd1b4a343f947a1053e9b3d67d6110a64fd9",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "status": "not-testable",
+  "why": "The bug is the table toolbar menu jumping around while the mouse moves over a column; that depends on hover and mouse movement timing, the report names no exact visible text to check, and it was reported only on Windows 11."
+}

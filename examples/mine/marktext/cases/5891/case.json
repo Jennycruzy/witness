@@ -1,0 +1,36 @@
+{
+  "pr": 5891,
+  "issue": 2114,
+  "title": "fix: #1592 support real Tab input and list indentation",
+  "issueTitle": "Intent with tabs at code blocks",
+  "mergedAt": "2026-10-27T05:35:14Z",
+  "mergeSha": "168b4d40cca3bb05c89d25273e9afeb65252602c",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "The report is about tab characters turning into spaces in code blocks. In the rendered editor a tab and four spaces look the same, so the test has nothing visible to check. The main case also needs an existing file opened from disk, and the report does not say whether the fix changes what the Tab key does or adds a setting."
+}

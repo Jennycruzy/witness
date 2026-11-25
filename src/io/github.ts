@@ -6,7 +6,13 @@ export interface FixPR {
   issues: { number: number; title: string; body: string; labels: string[] }[];
 }
 
-const gh = (args: string[]) => execFileSync('gh', args, { encoding: 'utf8', maxBuffer: 64 << 20 });
+/** gh, tried up to three times: a network timeout should not end a long mining run. */
+function gh(args: string[]): string {
+  for (let i = 1; ; i++) {
+    try { return execFileSync('gh', args, { encoding: 'utf8', maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'pipe'] }); }
+    catch (e: any) { if (i >= 3 || !/timeout|TLS|ECONNRESET|EOF|502|503|504/i.test(String(e.stderr ?? e.message))) throw e; execFileSync('sleep', [String(5 * i)]); }
+  }
+}
 
 const Q = `query($q:String!,$after:String){search(query:$q,type:ISSUE,first:40,after:$after){pageInfo{hasNextPage endCursor}
  nodes{... on PullRequest{number title body mergedAt mergeCommit{oid} files(first:100){nodes{path}}

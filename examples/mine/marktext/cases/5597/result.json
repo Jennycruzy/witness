@@ -1,0 +1,11 @@
+{
+  "pr": 5597,
+  "issue": 1691,
+  "result": "KEPT",
+  "why": "The editor is showing the task marker as text in the list item instead of showing only the checked checkbox.",
+  "at": "2026-11-25T22:25:15.781Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.98,
+  "credits": 2.90835
+}

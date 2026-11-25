@@ -1,0 +1,36 @@
+{
+  "pr": 5868,
+  "issue": 5273,
+  "title": "feat: #5273 persist Muya warnings and errors in production",
+  "issueTitle": "[Feature] Make the renderer easier to test and diagnose (editor-engine logging + freeze detection)",
+  "mergedAt": "2026-10-23T08:35:32Z",
+  "mergeSha": "bfe66ce77eca4282eb825a16c470cfcfbf000e3d",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "This is a feature request for internal logging and freeze detection, with no visible editor behavior and no correct on-screen output an end-to-end test could check."
+}

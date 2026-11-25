@@ -1,0 +1,36 @@
+{
+  "pr": 5478,
+  "issue": 5477,
+  "title": "fix(muya): show the text cursor over the whole editable column (#5477)",
+  "issueTitle": "[Bug] 编辑光标未正确显示",
+  "mergedAt": "2026-09-21T02:28:37Z",
+  "mergeSha": "9449bf738c60c57a060b55f7a402117978c2e3ac",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "The bug is about the mouse pointer's hover shape (I-beam versus arrow) over body text and code blocks, and the editor shows no text or element that differs between builds, so no step could reliably check it."
+}

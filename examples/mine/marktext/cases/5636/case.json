@@ -1,0 +1,36 @@
+{
+  "pr": 5636,
+  "issue": 5634,
+  "title": "fix(muya): restore inline HTML tag marker style and hide bare <br/> markers",
+  "issueTitle": "[Bug] UI - shift return in table cell adds <br/> in UI -- v0.20.0",
+  "mergedAt": "2026-10-06T12:57:14Z",
+  "mergeSha": "c054632fea9c5d5a00d7789daebcfddad86a1997",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.21.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.21.0"
+  },
+  "status": "written",
+  "why": "Issue #5634 says Shift+Enter inside a table cell makes a literal \"<br/>\" appear in the editor, and the expected result is that no \"<br/>\" appears and the text after the cursor simply moves to a new line, which can be checked on screen (issue #5635 is only about tag colors and fonts, so this test does not cover it)."
+}

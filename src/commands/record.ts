@@ -27,7 +27,7 @@ export async function record(cfg: WitnessConfig, testFile: string, log = console
   const name = basename(testFile).replace(/_test\.md$/, '');
   try {
     log(`record   ${basename(testFile)}  on ${label}`);
-    const r = await runKane({ testFile, url: b.url, mobile: b.mobile, profileTemplate: b.profile, rerecord: true, keepWorkDir: true, timeoutSec: 1200 });
+    const r = await runKane({ testFile, url: b.url, mobile: b.mobile, profileTemplate: b.profile, cdp: b.cdp, rerecord: true, keepWorkDir: true, timeoutSec: 1200 });
     try {
       const evDir = cfg.evidenceDir ?? '.witness/runs';
       mkdirSync(evDir, { recursive: true });
@@ -43,7 +43,11 @@ export async function record(cfg: WitnessConfig, testFile: string, log = console
       log(`  saved    ${to}`);
       for (const l of findLooseChecks(testFile)) log(`  LOOSE    test step ${l.step}: "${l.query}" was recorded with expected ${JSON.stringify(l.expected)} but no code to read the page, so a replay cannot check it. Reword that step to name exactly what to read.`);
       // A recording counts only when it replays on the build it was made on (free when it passes).
-      const check = await runKane({ testFile, url: b.url, mobile: b.mobile, profileTemplate: b.profile });
+      // A desktop app keeps what the recording did to its document: replay on a freshly opened copy.
+      const c = b.cdp ? await open(ref, cfg.cacheDir) : b;
+      let check;
+      try { check = await runKane({ testFile, url: c.url, mobile: c.mobile, profileTemplate: c.profile, cdp: c.cdp }); }
+      finally { if (c !== b) await c.close(); }
       if (check.summary.status !== 'passed' || (check.summary.authorDecisions ?? 0) > 0) {
         const f = check.summary.failed;
         log(`  UNSTABLE the new recording does not replay on ${label}${f ? ` (test step ${Number(f.runId.replace('run-', '')) + 1}: ${f.label.rootCause ?? f.reason})` : ''}. Reword that step and record again.`);

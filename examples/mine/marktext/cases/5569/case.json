@@ -1,0 +1,36 @@
+{
+  "pr": 5569,
+  "issue": 5580,
+  "title": "perf(muya): re-render only the two affected blocks when stepping through search (#5580)",
+  "issueTitle": "Find Next / Find Previous re-renders every matching block on each step",
+  "mergedAt": "2026-09-29T06:47:38Z",
+  "mergeSha": "dd5ebdfcef95cdde8c97ebe8b2e98f7adfde72bc",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "status": "not-testable",
+  "why": "The report describes a performance problem: each Find Next step re-renders every matching block, but the visible result (which match is active) is the same on both builds, so the only difference is slowness, which the rules exclude."
+}

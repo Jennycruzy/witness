@@ -1,0 +1,36 @@
+{
+  "pr": 5983,
+  "issue": 5978,
+  "title": "fix: #5978 conform live inline code spans to CommonMark",
+  "issueTitle": "[Bug] [CommonMark] Live inline code spans mismatch backtick runs and preserve nonconforming whitespace",
+  "mergedAt": "2026-11-02T10:48:14Z",
+  "mergeSha": "dae649140e478d7324331c381e106d34ee503986",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "Every sample relies on exact backtick runs and brackets, but the editor auto-pairs backticks and brackets as you type and turns Enter into a new paragraph, so the exact Markdown source cannot be reliably entered with key presses, and the reported defects come from lexer tokens and whitespace that are not clearly visible on screen."
+}

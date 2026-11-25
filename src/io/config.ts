@@ -9,6 +9,7 @@ export interface BuildRef {
   npm?: string; version?: string; buildDir?: string;          // a published build on npm (newest release when no version)
   git?: string; build?: string; repo?: string; workdir?: string; // a git ref, built in a worktree; dir = its output folder
   release?: string; tag?: string; asset?: string;              // a GitHub release asset (zip or tar.gz of a static build): owner/name, tag, asset name pattern
+  electron?: { bin: string; args?: string[] };                // a desktop (Electron) app: bin inside the unpacked release; args may use {data}
   kane?: { target: 'emulator' | 'simulator' | 'android' | 'ios'; app: string; deviceName?: string; osVersion?: string };  // a mobile app build instead of a web page
   label?: string;
 }

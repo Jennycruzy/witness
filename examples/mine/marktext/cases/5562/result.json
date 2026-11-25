@@ -1,0 +1,7 @@
+{
+  "pr": 5562,
+  "issue": 2377,
+  "result": "UNRECORDABLE",
+  "why": "the fixed build fails the test: The verification values were never filled in. The assertion received literal placeholder text rather than the first paragraph’s link and text state.",
+  "at": "2026-11-25T22:19:03.318Z"
+}

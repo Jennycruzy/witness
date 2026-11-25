@@ -1,0 +1,36 @@
+{
+  "pr": 5526,
+  "issue": 4257,
+  "title": "Drop the legacy muya ambient bridge and its aliases (#4257)",
+  "issueTitle": "TS migration: finalize muya bridge once upstream TS muya lands",
+  "mergedAt": "2026-09-23T11:55:42Z",
+  "mergeSha": "350acd4268358332d1cbdee87244e999d7f41a50",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "This issue tracks future TypeScript and ESLint cleanup (removing `any` type shims and extending a lint rule) with no change in user-visible behavior, so there is nothing for a browser test to see that differs between builds."
+}

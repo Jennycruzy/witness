@@ -1,0 +1,18 @@
+{
+  "test_id": "c550f5f6-ceea-409d-8842-41bc9bf43f31",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "backslash_at_end_of_line_becomes_a_hard_",
+  "commit_id": "2cdcd042-50c4-480c-b5bc-46a27425cf5f",
+  "testcase_id": "01M8ACAJ9PS4B9M8JAQRGHDP9B",
+  "executions": [
+    {
+      "execution_id": "a43f729f-c903-4c4a-8560-ee6826a449f5",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-25T22:15:57.346Z"
+    }
+  ]
+}

@@ -20,7 +20,7 @@ export async function resolveBuild(ref: BuildRef, cacheDir: string, log = consol
     return { ...ref, dir: join(pkg, ref.buildDir ?? ''), label: `${ref.npm}@${version}` };
   }
   if (ref.release) {
-    const dir = await fetchRelease(ref.release, ref.tag!, ref.asset ?? '\\.(zip|tar\\.gz|tgz)$', cacheDir);
+    const dir = await fetchRelease(ref.release, ref.tag!, ref.asset ?? '\\.(zip|tar\\.gz|tgz)$', cacheDir, ref.electron ? ref.electron.bin : 'index.html');
     log(`  build      ${ref.release}@${ref.tag} (GitHub release)`);
     return { ...ref, dir: ref.dir ? join(dir, ref.dir) : dir, label: ref.label ?? `${ref.release}@${ref.tag}` };
   }
@@ -41,7 +41,7 @@ export async function resolveBuild(ref: BuildRef, cacheDir: string, log = consol
 }
 
 /** Downloads and unpacks a release asset once; returns the folder that holds index.html (the shallowest one). */
-export async function fetchRelease(repo: string, tag: string, assetPattern: string, cacheDir: string): Promise<string> {
+export async function fetchRelease(repo: string, tag: string, assetPattern: string, cacheDir: string, find = 'index.html'): Promise<string> {
   const root = resolve(cacheDir, `${repo.replace('/', '_')}-${tag}`);
   const done = join(root, '.unpacked');
   if (!existsSync(done)) {
@@ -59,20 +59,20 @@ export async function fetchRelease(repo: string, tag: string, assetPattern: stri
     else { mkdirSync(join(root, 'x'), { recursive: true }); execFileSync('tar', ['xzf', file, '-C', join(root, 'x')]); }
     // Single-page builds ship as one named .html file (CyberChef_v10.23.0.html): serve it as index.html.
     const x = join(root, 'x');
-    if (!findIndex(x, 0)) {
+    if (find === 'index.html' && !findIndex(x, 0)) {
       const html = readdirSync(x).find(f => /\.html$/.test(f));
       if (html) copyFileSync(join(x, html), join(x, 'index.html'));
     }
     writeFileSync(done, a.name);
   }
-  const found = findIndex(join(root, 'x'), 0);
-  if (!found) throw new Error(`no index.html in ${repo}@${tag}`);
+  const found = findIndex(join(root, 'x'), 0, find);
+  if (!found) throw new Error(`no ${find} in ${repo}@${tag}`);
   return found;
 }
 
-function findIndex(dir: string, depth: number): string | null {
-  if (existsSync(join(dir, 'index.html'))) return dir;
+function findIndex(dir: string, depth: number, name = 'index.html'): string | null {
+  if (existsSync(join(dir, name)) && !statSync(join(dir, name)).isDirectory()) return dir;
   if (depth > 3) return null;
-  for (const e of readdirSync(dir)) { const p = join(dir, e); if (statSync(p).isDirectory()) { const f = findIndex(p, depth + 1); if (f) return f; } }
+  for (const e of readdirSync(dir)) { const p = join(dir, e); if (statSync(p).isDirectory()) { const f = findIndex(p, depth + 1, name); if (f) return f; } }
   return null;
 }

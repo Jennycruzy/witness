@@ -1,0 +1,36 @@
+{
+  "pr": 5912,
+  "issue": 5596,
+  "title": "fix: #5596 confirm unsaved changes regardless of startup action",
+  "issueTitle": "[Bug] Unsaved changes are discarded without warning when closing an edited Markdown file",
+  "mergedAt": "2026-10-27T16:08:41Z",
+  "mergeSha": "e796d2b479c1dea2c2242f5c334fde6738fbefec",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "Checking this needs the document or app to be closed and an unsaved-changes confirmation dialog to appear, but that dialog is a native operating-system window the test agent can't see or use, and reopening the file needs file dialogs."
+}

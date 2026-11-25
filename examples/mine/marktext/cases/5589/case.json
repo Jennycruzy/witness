@@ -1,0 +1,36 @@
+{
+  "pr": 5589,
+  "issue": 5575,
+  "title": "fix: #5575 restore column handle menu",
+  "issueTitle": "[Bug] The column \"handle\" doesn't provide context menu any longer",
+  "mergedAt": "2026-10-01T04:00:55Z",
+  "mergeSha": "6f8524af8f609d9d03bf3522e60f5b0ff172936a",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.7",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.7"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0"
+  },
+  "status": "not-testable",
+  "why": "The report says only that a context menu with insert/remove column actions should appear. It never gives the exact menu item text, and the handle only shows when the mouse hovers below a column, so no exact visible text can be checked with certainty."
+}

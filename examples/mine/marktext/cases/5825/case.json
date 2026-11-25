@@ -1,0 +1,36 @@
+{
+  "pr": 5825,
+  "issue": 5824,
+  "title": "fix: #5824 make the viewer wheel zoom proportional to scroll distance",
+  "issueTitle": "[Bug] Viewer wheel zoom uses a fixed step per event, so one trackpad flick hits the zoom limit",
+  "mergedAt": "2026-10-21T16:52:34Z",
+  "mergeSha": "28bf25e01c0eff2ac5d026446c05b02aaadfe594",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows up with wheel or trackpad gestures whose deltaY sizes and event counts depend on the platform, so a plain-English click-and-type test cannot reliably produce a zoom readout that differs between the fixed and buggy builds."
+}

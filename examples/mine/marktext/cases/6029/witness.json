@@ -1,0 +1,33 @@
+{
+  "tests": [
+    "space_can_be_typed_after_a_new_instance__test.md"
+  ],
+  "target": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "reference": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.2",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.2"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "../.builds"
+}

@@ -1,0 +1,36 @@
+{
+  "pr": 5505,
+  "issue": 5504,
+  "title": "test(muya): stop the deepClone spec from overflowing the stack itself",
+  "issueTitle": "deepClone spec flakes on CI: expect() recurses over the 600-level fixture",
+  "mergedAt": "2026-09-22T02:39:53Z",
+  "mergeSha": "c754f2c6330e9f917b0ef50850d83de8fa99526a",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.5",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.5"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.20.0-rc.6",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.20.0-rc.6"
+  },
+  "status": "not-testable",
+  "why": "The report is about a flaky unit test on CI that overflows the stack inside Vitest's expect() at the 600-level fixture, so nothing changes in the editor that a user could see."
+}

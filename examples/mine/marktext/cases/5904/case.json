@@ -1,0 +1,36 @@
+{
+  "pr": 5904,
+  "issue": 5614,
+  "title": "fix: #5614 prevent silent data loss when saving legacy encodings",
+  "issueTitle": "Saving a file in a legacy encoding silently replaces unrepresentable characters with \"?\"",
+  "mergedAt": "2026-10-27T03:21:44Z",
+  "mergeSha": "e4c447b35b0bb0448d7ca84bb942a71bbb938e9f",
+  "buggy": {
+    "release": "marktext/marktext",
+    "tag": "v0.23.0",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.23.0"
+  },
+  "fixed": {
+    "release": "marktext/marktext",
+    "tag": "v0.24.0-rc.1",
+    "asset": "^marktext-linux-[0-9][^/]*\\.tar\\.gz$",
+    "electron": {
+      "bin": "marktext",
+      "args": [
+        "{data}/note.md"
+      ]
+    },
+    "setup": "touch {data}/note.md",
+    "label": "marktext/marktext@v0.24.0-rc.1"
+  },
+  "status": "not-testable",
+  "why": "The bug only shows up in the bytes written to disk after saving in a legacy encoding, which needs the encoding menu, file saving and reading the file outside the editor, and the report only suggests a possible fix, so it never says what warning or prompt the fixed app shows."
+}
