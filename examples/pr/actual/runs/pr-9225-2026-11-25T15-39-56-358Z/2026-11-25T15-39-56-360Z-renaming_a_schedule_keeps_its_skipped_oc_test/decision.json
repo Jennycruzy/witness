@@ -1,0 +1,12 @@
+{
+  "test": "examples/pr/actual/tests/renaming_a_schedule_keeps_its_skipped_oc_test.md",
+  "decision": {
+    "kaneLabel": null,
+    "kaneConfidence": null,
+    "verdict": "PASS",
+    "why": "Kane passed the test on the target build.",
+    "next": "Nothing to do."
+  },
+  "blind": [],
+  "locked": []
+}

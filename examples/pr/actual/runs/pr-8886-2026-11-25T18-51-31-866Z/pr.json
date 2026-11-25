@@ -1,0 +1,35 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 8886,
+  "title": "[AI] Refactor CommandBar with Raycast-inspired design",
+  "author": "elijaholmos",
+  "ai": true,
+  "headSha": "4aceb6efef2cdc3bc7111978f80d6932b440c89b",
+  "preview": "https://deploy-preview-8886.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T18:51:31.866Z",
+  "seconds": 341,
+  "base": {
+    "sha": "97a7ca50f3109b37e5294abfcec8f763df397085",
+    "date": "2026-10-23T12:46:49Z",
+    "behindBy": 185
+  },
+  "results": [
+    {
+      "test": "search_filter_stays_applied_after_toggli_test.md",
+      "verdict": "BEHIND_MAIN",
+      "baseBuild": {
+        "version": "26.11.0-nightly.20261023",
+        "status": "failed"
+      },
+      "why": "This branch is 185 commits behind main, and the build from before it split off (26.11.0-nightly.20261023) fails the same test, so this pull request did not add the bug: main has fixed it since.",
+      "next": "Update the branch from main and check again.",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "reference": "passed",
+      "credits": 2.97,
+      "card": "WITNESS verdict: APP_BUG. The same recording passes on the reference build and fails here at a check.\nWhat to do: Fix the app, not the test.\nKane's own label was \"application_issue\" (0.98). It is not used to decide; the comparison is.\n\nTest: search_filter_stays_applied_after_toggli_test.md\n1. Open Checking account: Click the \"Checking\" account in the sidebar.\n2. Add first transaction: Click \"Add New\", type \"Coffee Shop\" in the Payee field, type 12.00 in the Payment field, and click \"Add\".\n3. Add second transaction: Click \"Add New\", type \"Book Store\" in the Payee field, type 30.00 in the Payment field, and click \"Add\".\n4. Search for Coffee: Type \"Coffee\" in the account Search box.\n5. Toggle reconciled transactions: Open the account menu (⋯) next to the search box and click \"Hide reconciled transactions\" (or \"Show reconciled transactions\" if that is the option shown).\n6. Verify search still applied: Verify the transaction list has no row whose Payee shows \"Book Store\", while the Search box still contains \"Coffee\".   <-- FAILED HERE\n\nWhat Kane saw: The transaction list is not hiding the Book Store entry even though the Search box still contains Coffee.\n\nTarget build: https://deploy-preview-8886.demo.actualbudget.org   Reference build: https://edge.actualbudget.org\nChange only the application source. Do not edit tests, recordings or build config.\n\nWhen done, say which file and lines you changed and why."
+    }
+  ]
+}

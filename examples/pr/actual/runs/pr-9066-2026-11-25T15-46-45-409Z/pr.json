@@ -1,0 +1,26 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9066,
+  "title": "[AI] Import from All Accounts and match files to the right account",
+  "author": "BillKeenan",
+  "ai": true,
+  "headSha": "805a083afda0501c51204e8fb1db5bf57a5b9097",
+  "preview": "https://deploy-preview-9066.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T15:46:45.409Z",
+  "seconds": 103,
+  "results": [
+    {
+      "test": "search_filter_stays_applied_after_toggli_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    }
+  ]
+}

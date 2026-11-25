@@ -28,3 +28,18 @@ describe('witness bench scoring', () => {
     expect(s.credits).toBe(3);
   });
 });
+
+describe('setupHome', () => {
+  it('finds the folder above a case that holds its setup script', async () => {
+    const { mkdtempSync, mkdirSync, writeFileSync } = await import('node:fs');
+    const { tmpdir } = await import('node:os');
+    const { join } = await import('node:path');
+    const { setupHome } = await import('../src/commands/bench.js');
+    const root = mkdtempSync(join(tmpdir(), 'sh-'));
+    mkdirSync(join(root, 'cases', '1'), { recursive: true });
+    writeFileSync(join(root, 'setup.mjs'), '');
+    expect(setupHome(join(root, 'cases', '1'), 'node setup.mjs {url} {profile}')).toBe(root);
+    expect(setupHome(join(root, 'cases', '1'), undefined)).toBe(join(root, 'cases', '1'));
+    expect(setupHome(join(root, 'cases', '1'), 'node nothere.mjs {url}')).toBe(join(root, 'cases', '1'));
+  });
+});

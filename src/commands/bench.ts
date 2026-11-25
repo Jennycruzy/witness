@@ -4,7 +4,7 @@
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, isAbsolute, join, resolve } from 'node:path';
 import { loadConfig } from '../io/config.js';
 import { guard } from './guard.js';
 
@@ -59,7 +59,7 @@ export async function runBench(casesPath: string, label: string, log = console.l
     cfg.evidenceDir = join(outDir, c.id);
     log(`bench      ${c.id}  (answer ${c.truth})`);
     const cwd = process.cwd();
-    process.chdir(dirname(resolve(base, c.config)));            // setup commands are relative to their example's folder
+    process.chdir(setupHome(dirname(resolve(base, c.config)), cfg.target.setup ?? cfg.reference?.setup));   // setup commands are relative to their example's folder
     let r;
     try { r = await guard(cfg, cfg.tests[0], log); } finally { process.chdir(cwd); }
     rows.push({ id: c.id, truth: c.truth, half: half(c.id), verdict: r.decision.verdict, kaneLabel: r.decision.kaneLabel ?? null,
@@ -67,6 +67,14 @@ export async function runBench(casesPath: string, label: string, log = console.l
     writeFileSync(outFile, JSON.stringify({ kane, label, casesSha256: reg.sha256, rows }, null, 2) + '\n');
   }
   return score(rows);
+}
+
+/** The folder a case's setup command runs from: its config's folder, or the nearest folder above it that holds the
+ *  script the command names (mined cases keep one setup.mjs for the whole app, next to mine.json). */
+export function setupHome(dir: string, setup?: string): string {
+  const script = setup?.match(/(?:^|\s)([^\s{}]+\.(?:m?js|sh))(?=\s|$)/)?.[1];
+  if (!script || isAbsolute(script)) return dir;
+  for (let d = dir; ; d = dirname(d)) { if (existsSync(join(d, script))) return d; if (dirname(d) === d) return dir; }
 }
 
 export function score(rows: BenchRow[]) {

@@ -1,0 +1,26 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9225,
+  "title": "[AI] Clamp monthly schedule day-of-month to the last day of short months",
+  "author": "flafleur",
+  "ai": true,
+  "headSha": "9c568e4b64ce10c41377113b6fa80e3eb3f8951c",
+  "preview": "https://deploy-preview-9225.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T15:39:56.358Z",
+  "seconds": 75,
+  "results": [
+    {
+      "test": "renaming_a_schedule_keeps_its_skipped_oc_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    }
+  ]
+}

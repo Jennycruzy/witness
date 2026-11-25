@@ -1,0 +1,26 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9550,
+  "title": "[AI] Link transfers to existing transactions in manual entry, file imports and bank sync",
+  "author": "StephenBrown2",
+  "ai": true,
+  "headSha": "2d5bcbc82d011d0fa8313c1d936cd445e327a60a",
+  "preview": "https://deploy-preview-9550.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T15:33:19.313Z",
+  "seconds": 118,
+  "results": [
+    {
+      "test": "search_filter_stays_applied_after_toggli_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    }
+  ]
+}

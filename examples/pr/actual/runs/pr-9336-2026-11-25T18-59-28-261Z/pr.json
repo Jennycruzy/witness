@@ -1,0 +1,35 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9336,
+  "title": "Reopen the rule or schedule modal when undoing a change made from it",
+  "author": "jmes2build",
+  "ai": false,
+  "headSha": "4a52e5f629f50cf808accc874b7c147401e908f2",
+  "preview": "https://deploy-preview-9336.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T18:59:28.261Z",
+  "seconds": 301,
+  "base": {
+    "sha": "7caedc7c4892b133234f5543a321d8e31ca704cb",
+    "date": "2026-10-28T18:11:09Z",
+    "behindBy": 157
+  },
+  "results": [
+    {
+      "test": "renaming_a_schedule_keeps_its_skipped_oc_test.md",
+      "verdict": "BEHIND_MAIN",
+      "baseBuild": {
+        "version": "26.11.0-nightly.20261028",
+        "status": "failed"
+      },
+      "why": "This branch is 157 commits behind main, and the build from before it split off (26.11.0-nightly.20261028) fails the same test, so this pull request did not add the bug: main has fixed it since.",
+      "next": "Update the branch from main and check again.",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.97,
+      "target": "failed",
+      "reference": "passed",
+      "credits": 2.06,
+      "card": "WITNESS verdict: APP_BUG. The same recording passes on the reference build and fails here at a check.\nWhat to do: Fix the app, not the test.\nKane's own label was \"application_issue\" (0.97). It is not used to decide; the comparison is.\n\nTest: renaming_a_schedule_keeps_its_skipped_oc_test.md\n1. Open new schedule: Click Schedules in the sidebar, then click Add new schedule.\n2. Fill schedule form: Set Schedule Name to Internet. In Payee, type Internet company and click Create payee \"Internet company\". Set Account to Checking and Amount to 50. Keep the default monthly recurrence starting today, leave Automatically add transaction unchecked, and click Add.\n3. Skip next occurrence: In the \"Internet\" schedule row, click the Menu button (⋯) and click Skip next scheduled date.\n4. Rename the schedule: Click the \"Internet\" schedule row, change only Schedule Name to Broadband, and click Save.\n5. Check schedule status: Verify the Status cell of the \"Broadband\" row in the schedules list shows \"Scheduled\".   <-- FAILED HERE\n\nWhat Kane saw: The schedules list is showing a status for Broadband that does not match the required Scheduled status.\n\nTarget build: https://deploy-preview-9336.demo.actualbudget.org   Reference build: https://edge.actualbudget.org\nChange only the application source. Do not edit tests, recordings or build config.\n\nWhen done, say which file and lines you changed and why."
+    }
+  ]
+}

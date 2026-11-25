@@ -180,6 +180,7 @@ ${o.pr ? `<h1>Check a pull request of ${app} before it merges</h1>
 <p>Pick one. <a href="https://www.testmuai.com/kane-cli/">Kane CLI</a> then uses that preview like a person would, in a real Chrome, replaying tests that were written from ${app}'s own bug reports. Each one caught its real regression on ${app}'s own builds: it fails on the build with the bug and passes on the build with the fix. If a test fails on the preview, WITNESS replays the same recording on ${app}'s live main build and decides:</p>
 <ol><li><b>Bug added by this pull request</b> (APP_BUG): passes on main, fails on the preview at a check. The coding agent is told to fix the app, not the test.</li>
 <li><b>Test needs re-recording</b> (TEST_PROBLEM): the page changed where the test clicks or types.</li>
+<li><b>Branch is behind main</b> (BEHIND_MAIN): it passes on main, but the branch split off before main fixed it. WITNESS replays the published build from just before the split; when that fails too, the bug is older than the pull request and the fix is to update the branch.</li>
 <li><b>Not from this pull request</b> (ENV): it fails on main too.</li></ol>
 <p class="muted" id="prcount"></p>
 <div class="box"><div class="box-h"><span>Check a live pull request</span><span class="muted">${o.perHour} runs an hour, real Kane credits</span></div><div style="padding:8px 16px 16px">
@@ -203,7 +204,7 @@ ${o.pr ? `<h2>Checked automatically</h2>
 <script>
 const $=s=>document.querySelector(s);const builds=${JSON.stringify(Object.fromEntries(Object.entries(o.builds).map(([k, b]) => [k, b.label])))};
 const cls=v=>v==='PASS'?'ok':v==='APP_BUG'?'bad':'warn';
-const plain=v=>({PASS:'passes on the preview',APP_BUG:'bug added by this pull request',TEST_PROBLEM:'test needs re-recording',ENV:'fails on main too: not from this pull request'})[v]||'';
+const plain=v=>({PASS:'passes on the preview',APP_BUG:'bug added by this pull request',TEST_PROBLEM:'test needs re-recording',BEHIND_MAIN:'branch is behind main: bug is older than this pull request',ENV:'fails on main too: not from this pull request'})[v]||'';
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const what=h=>h.pr?'Pull request #'+h.pr:(builds[h.build]||h.build);
 let t0=0,tick=null,prList=[];

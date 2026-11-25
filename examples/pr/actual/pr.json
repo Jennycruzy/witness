@@ -5,6 +5,12 @@
     "url": "https://edge.actualbudget.org",
     "label": "Actual main branch, live (edge.actualbudget.org)"
   },
+  "baseBuilds": {
+    "npm": "@actual-app/web",
+    "buildDir": "build",
+    "isolation": true,
+    "match": "nightly"
+  },
   "setup": "node {base}/../../mine/actual/setup.mjs {url} {profile}",
   "tests": [
     "tests/search_filter_stays_applied_after_toggli_test.md",
@@ -38,5 +44,6 @@
       "ManageRules",
       "RuleEditor"
     ]
-  }
+  },
+  "cacheDir": "../../mine/actual/.builds"
 }

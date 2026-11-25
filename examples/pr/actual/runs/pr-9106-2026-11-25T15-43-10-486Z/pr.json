@@ -1,0 +1,38 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9106,
+  "title": "Feature: number column for transactions",
+  "author": "mrdevon",
+  "ai": false,
+  "headSha": "7a7357ac7002f409acc5efe22eb03700199ea13e",
+  "preview": "https://deploy-preview-9106.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T15:43:10.486Z",
+  "seconds": 214,
+  "results": [
+    {
+      "test": "search_filter_stays_applied_after_toggli_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    },
+    {
+      "test": "rule_with_a_category_group_condition_run_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    }
+  ]
+}

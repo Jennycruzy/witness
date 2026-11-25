@@ -45,3 +45,21 @@ describe('witness pr watch', () => {
     expect(names(['packages/desktop-client/src/components/schedules/ScheduleDetails.test.tsx'])).toEqual([]);
   });
 });
+
+describe('branch behind main', () => {
+  it('picks the newest matching build from before the split', async () => {
+    const { buildBefore } = await import('../src/commands/pr.js');
+    const vs = [{ version: '26.9.0', time: '2026-09-01T00:00:00Z' }, { version: '26.10.0-nightly.20261001', time: '2026-10-01T01:00:00Z' }, { version: '26.10.0-nightly.20261002', time: '2026-10-02T01:00:00Z' }];
+    expect(buildBefore(vs, '2026-10-01T12:00:00Z', 'nightly')?.version).toBe('26.10.0-nightly.20261001');
+    expect(buildBefore(vs, '2026-09-15T00:00:00Z', 'nightly')).toBeNull();
+    expect(buildBefore(vs, '2026-09-15T00:00:00Z')?.version).toBe('26.9.0');
+  });
+  it('does not blame a pull request for a bug its starting point already had', async () => {
+    const { splitDecision } = await import('../src/commands/pr.js');
+    const d = { verdict: 'APP_BUG', why: 'The same recording passes on the reference build and fails here at a check.', next: 'x' };
+    const base = { sha: 'abc', date: '2026-10-01T12:00:00Z', behindBy: 28 };
+    expect(splitDecision(d, base, { version: 'n1', status: 'failed' }).verdict).toBe('BEHIND_MAIN');
+    expect(splitDecision(d, base, { version: 'n1', status: 'passed' }).verdict).toBe('APP_BUG');
+    expect(splitDecision(d, base, { version: 'n1', status: 'unknown' })).toEqual(d);
+  });
+});

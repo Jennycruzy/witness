@@ -5,8 +5,10 @@ import { execFile, execFileSync } from 'node:child_process';
 import { promisify } from 'node:util';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, isAbsolute, join, resolve } from 'node:path';
-import type { WitnessConfig } from '../io/config.js';
+import type { NpmSource, WitnessConfig } from '../io/config.js';
+import { listVersions } from '../io/npm.js';
 import { guard, type GuardResult } from './guard.js';
+import { probe } from './search.js';
 
 export interface PrConfig {
   repo: string;                 // owner/name on GitHub
@@ -16,6 +18,9 @@ export interface PrConfig {
   tests: string[];              // saved Kane tests (_test.md with output-<name>/ next to it)
   evidenceDir?: string;
   areas?: Record<string, string[]>;   // test file (or a part of its name) -> regexes over changed file paths; a pull request gets the tests whose area it changes
+  baseBuilds?: NpmSource & { match?: string };   // the app's published builds (e.g. nightlies): when a pull request's branch is behind main, the
+                                                 // newest one published before the branch split off stands in for the branch's starting point
+  cacheDir?: string;
   base: string;                 // folder of the config file
 }
 
@@ -24,7 +29,8 @@ export interface OpenPr { number: number; title: string; author: string; headSha
 export interface PrCheck {
   repo: string; number: number; title: string; author: string; ai: boolean; headSha: string;
   preview: string; live: string; started: string; seconds: number;
-  results: { test: string; verdict: string; why: string; next: string; kaneLabel: string | null; kaneConfidence: number | null; target: string; reference: string | null; credits: number; card: string | null }[];
+  base?: BranchBase;
+  results: { test: string; verdict: string; baseBuild?: { version: string; status: string }; why: string; next: string; kaneLabel: string | null; kaneConfidence: number | null; target: string; reference: string | null; credits: number; card: string | null }[];
 }
 
 export function loadPrConfig(path: string): PrConfig {
@@ -33,6 +39,7 @@ export function loadPrConfig(path: string): PrConfig {
   const abs = (p: string) => (isAbsolute(p) ? p : resolve(base, p));
   c.tests = c.tests.map(abs);
   c.evidenceDir = abs(c.evidenceDir ?? '.witness/pr');
+  c.cacheDir = abs(c.cacheDir ?? '.witness/builds');
   if (c.setup) c.setup = c.setup.replaceAll('{base}', base);   // "node {base}/setup.mjs {url} {profile}"
   c.base = base;
   return c;
@@ -101,13 +108,26 @@ export async function checkPr(c: PrConfig, n: number, log = console.log, only?: 
   log(`witness pr  ${c.repo}#${n}  ${pr.ai ? '[written by a coding agent] ' : ''}${pr.title}`);
   log(`  preview    ${pr.preview}   (head ${pr.headSha.slice(0, 12)})`);
   log(`  live main  ${c.live.url}`);
+  const base = branchBase(c.repo, pr.headSha);
+  if (base?.behindBy) log(`  branch     ${base.behindBy} commits behind main (split off ${base.date.slice(0, 10)}, ${base.sha.slice(0, 12)})`);
   const results: GuardResult[] = [];
-  for (const t of cfg.tests) results.push(await guard(cfg, t, log));
+  const baseRuns: Record<string, { version: string; status: string }> = {};
+  for (const t of cfg.tests) {
+    const r = await guard(cfg, t, log);
+    results.push(r);
+    // A test that fails on the preview and passes on main is only the pull request's bug if the branch has everything
+    // main had when it split off. When the branch is behind, main may have fixed the bug since: replay on the build
+    // from before the split. Failing there too means the bug is older than the pull request.
+    if (r.decision.verdict === 'APP_BUG' && base?.behindBy) {
+      const b = await baseBuildRun(c, base, t, log);
+      if (b) { baseRuns[t] = b; r.decision = splitDecision(r.decision, base, b); log(`  VERDICT    ${r.decision.verdict}: ${r.decision.why}`); }
+    }
+  }
   const check: PrCheck = {
     repo: c.repo, number: n, title: pr.title, author: pr.author, ai: pr.ai, headSha: pr.headSha, preview: pr.preview, live: c.live.url,
-    started: started.toISOString(), seconds: Math.round((Date.now() - started.getTime()) / 1000),
+    started: started.toISOString(), seconds: Math.round((Date.now() - started.getTime()) / 1000), base: base ?? undefined,
     results: results.map(r => ({
-      test: r.test.split('/').pop()!, verdict: r.decision.verdict, why: r.decision.why, next: r.decision.next,
+      test: r.test.split('/').pop()!, verdict: r.decision.verdict, baseBuild: baseRuns[r.test], why: r.decision.why, next: r.decision.next,
       kaneLabel: r.decision.kaneLabel ?? null, kaneConfidence: r.decision.kaneConfidence ?? null,
       target: r.target.status, reference: r.reference?.status ?? null,
       credits: Math.round(((r.target.creditsReported ?? 0) + (r.reference?.creditsReported ?? 0)) * 100) / 100, card: r.card ?? null,
@@ -116,6 +136,41 @@ export async function checkPr(c: PrConfig, n: number, log = console.log, only?: 
   writeFileSync(join(dir, 'pr.json'), JSON.stringify(check, null, 2));
   log(`  RESULT     ${summaryLine(check)}`);
   return check;
+}
+
+export interface BranchBase { sha: string; date: string; behindBy: number; }
+
+/** Where a pull request's branch split off main, and how many commits main has gained since. */
+export function branchBase(repo: string, head: string): BranchBase | null {
+  try {
+    const main = JSON.parse(gh(['api', `repos/${repo}`])).default_branch as string;
+    const cmp = JSON.parse(gh(['api', `repos/${repo}/compare/${main}...${head}`]));
+    return { sha: cmp.merge_base_commit.sha, date: cmp.merge_base_commit.commit.committer.date, behindBy: cmp.behind_by };
+  } catch { return null; }
+}
+
+/** The newest published build from before `date` (so every change in it is also in the branch). */
+export function buildBefore(versions: { version: string; time: string }[], date: string, match?: string) {
+  const re = match ? new RegExp(match) : null;
+  return versions.filter(v => v.time && v.time < date && (!re || re.test(v.version))).pop() ?? null;
+}
+
+async function baseBuildRun(c: PrConfig, base: BranchBase, test: string, log: (s: string) => void) {
+  if (!c.baseBuilds) return null;
+  const v = buildBefore(await listVersions(c.baseBuilds.npm), base.date, c.baseBuilds.match);
+  if (!v) return null;
+  log(`  start      replaying on ${c.baseBuilds.npm}@${v.version}, the newest build from before the branch split off`);
+  const p = await probe({ ...c.baseBuilds, setup: c.baseBuilds.setup ?? c.setup }, v.version, test, c.cacheDir!, log);
+  return { version: v.version, status: p.status };
+}
+
+/** The verdict once the branch's starting point has been replayed. */
+export function splitDecision<D extends { verdict: string; why: string; next: string }>(d: D, base: BranchBase, b: { version: string; status: string }): D {
+  if (b.status === 'failed') return { ...d, verdict: 'BEHIND_MAIN',
+    why: `This branch is ${base.behindBy} commits behind main, and the build from before it split off (${b.version}) fails the same test, so this pull request did not add the bug: main has fixed it since.`,
+    next: 'Update the branch from main and check again.' };
+  if (b.status === 'passed') return { ...d, why: `${d.why} The build from before the branch split off (${b.version}) passes, so the change came in on this branch.` };
+  return d;
 }
 
 export function summaryLine(c: PrCheck): string {

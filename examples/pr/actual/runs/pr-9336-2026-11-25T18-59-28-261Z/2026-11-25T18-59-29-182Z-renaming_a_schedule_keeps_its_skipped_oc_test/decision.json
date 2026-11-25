@@ -1,0 +1,44 @@
+{
+  "test": "examples/pr/actual/tests/renaming_a_schedule_keeps_its_skipped_oc_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.97,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_state_mismatch",
+        "confidence": 0.97,
+        "rootCause": "The schedules list is showing a status for Broadband that does not match the required Scheduled status."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/c5f66275-d542-4801-be2f-3979d1d55b9a/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.0563000000000002,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}
