@@ -1,18 +1,16 @@
 # WITNESS
 
-**Kane CLI checks a real app's pull requests on their live previews, and tells the coding agent who is at fault.**
+**When a Kane CLI test fails, WITNESS tells the coding agent who is at fault: the app or the test. It now does this on a real app's pull requests, on their live previews.**
 
-**Try it now: [witness.38-49-216-59.sslip.io](https://witness.38-49-216-59.sslip.io)**: pick any open pull request of Actual Budget and watch Kane use its live preview in a real Chrome. No login.
+**Try it now: [witness.38-49-216-59.sslip.io](https://witness.38-49-216-59.sslip.io)**: pick any open pull request of Actual Budget and watch Kane check its live preview in a real Chrome. No login.
 
-[Actual Budget](https://github.com/actualbudget/actual) is an open-source budgeting app that people use for their own money. Coding agents now write a large share of its changes: 32 of its last 60 merged pull requests are marked `[AI]` (counted 25 November 2026). Every pull request gets a live preview of the app. `witness pr check` has [Kane CLI](https://www.testmuai.com/kane-cli/) use that preview like a person would, replaying tests that were written from Actual's own bug reports, each of which caught its real regression on Actual's own builds.
-
-- **25 November 2026, 25 open pull requests checked** on their live previews (16 of them marked `[AI]`): the 29 whose changed files touch what the tests cover, minus 4 that had no finished preview. Each got the tests for the areas it changes, run on two machines. Every test passed on every preview, so none of them breaks those flows. Each check is one command, `witness pr check examples/pr/actual/pr.json <number>`, and every run is committed in [`examples/pr/actual/runs/`](examples/pr/actual/runs/). Since then `witness pr watch` checks each new commit of an open pull request every three hours on the [hosted page](https://witness.38-49-216-59.sslip.io), under *Checked automatically*: by the evening of 25 November, 40 checks of 36 pull requests (24 marked `[AI]`), 50 test runs.
-- **Two previews failed a test that passes on main, and neither pull request was to blame.** [#8886](https://github.com/actualbudget/actual/pull/8886) (`[AI]`) failed the search test and [#9336](https://github.com/actualbudget/actual/pull/9336) the schedule test. Both branches split off main before the fix each test was written from ([#9360](https://github.com/actualbudget/actual/pull/9360), [#9173](https://github.com/actualbudget/actual/pull/9173)) was merged. The watch first called them APP_BUG. A pull request is only at fault for what its own branch adds, so `witness pr` now replays the published nightly from the day the branch split off whenever the branch is behind main: 26.11.0-nightly.20261023 and 20261028 fail the same tests, so both verdicts are **BEHIND_MAIN** (update the branch), not APP_BUG ([#8886 run](examples/pr/actual/runs/pr-8886-2026-11-25T18-51-31-866Z/pr.json), [#9336 run](examples/pr/actual/runs/pr-9336-2026-11-25T18-59-28-261Z/pr.json)).
-- **The first check of #9640 used recordings made on August nightlies.** Two of them did not fit today's screens: the amount filter failed at a typing step on the preview (TEST_PROBLEM) and the category-group rule failed at its first click on main as well (ENV). Neither verdict blamed the pull request. The rule test was recorded again on main and passes 3 of 3 replays there; the amount filter test could not be recorded so that it replays on main, so pull request checks use the other four.
+## The problem
 
 When a Kane test fails, a coding agent has to choose: fix the app, or fix the test. Kane gives a label for that, and agents act on it. On 12 real app bugs in four open-source apps (CyberChef, IT-Tools, Actual Budget, TodoMVC) we measured that label pointing at the test in 6. On a 13th, Kane passed the bug outright. An agent that trusts it rewrites the test to accept the bug.
 
-WITNESS replays the **same recording** on a reference build (the app's live main build for a pull request, the last release, yesterday's nightly) and decides by comparison:
+## How WITNESS decides
+
+It replays the **same recording** on a reference build that is believed to work (the app's live main build for a pull request, the last release, yesterday's nightly) and decides by comparison, not by Kane's label:
 
 | Reference | Your build | Verdict | What the agent is told |
 |---|---|---|---|
@@ -24,6 +22,30 @@ WITNESS replays the **same recording** on a reference build (the app's live main
 | passes with the data it saved | passes in a clean browser, fails **only with the data the reference saved** (`--carry-state`) | **STATE_BUG** | Fix the app so it opens data saved by the earlier build: do not edit the test or clear the data |
 
 Then Kane proves the fix: the **unchanged** recording (same sha256) must pass on the rebuilt app.
+
+## Pull request checks on Actual Budget
+
+[Actual Budget](https://github.com/actualbudget/actual) is an open-source budgeting app that people use for their own money. Coding agents write a large share of its changes: 32 of its last 60 merged pull requests are marked `[AI]` (counted 25 November 2026). Every pull request gets a live preview of the app.
+
+How a check works:
+
+1. **Pick.** `witness pr watch` looks at the open pull requests every three hours and picks each new commit whose changed files touch an area a test covers (`areas` in [`pr.json`](examples/pr/actual/pr.json)).
+2. **Replay on the preview.** Kane uses the pull request's live preview like a person would, replaying tests written from Actual's own bug reports. Each of those tests caught its real regression on Actual's own builds.
+3. **Compare.** If a test fails, the same recording is replayed on Actual's live main build (`edge.actualbudget.org`). Fails only on the preview: the pull request added the bug (APP_BUG). Fails on main too: ENV. If the branch is behind main, the published nightly from the day it split off is replayed as well; if that fails too, the bug is older than the pull request (BEHIND_MAIN).
+4. **Show.** The result appears on the [hosted page](https://witness.38-49-216-59.sslip.io) under *Checked automatically*, and every check is committed as one `pr.json` in [`examples/pr/actual/runs/`](examples/pr/actual/runs/).
+
+**Results, 25 November 2026:** 41 checks of 36 open pull requests (24 marked `[AI]`), 50 test runs: 46 PASS, 2 BEHIND_MAIN, 1 TEST_PROBLEM, 1 ENV. No pull request was blamed for a bug it did not add.
+
+- **The two BEHIND_MAIN verdicts.** [#8886](https://github.com/actualbudget/actual/pull/8886) (`[AI]`) failed the search test and [#9336](https://github.com/actualbudget/actual/pull/9336) the schedule test. Both branches split off main before the fix each test was written from ([#9360](https://github.com/actualbudget/actual/pull/9360), [#9173](https://github.com/actualbudget/actual/pull/9173)) was merged, and the nightlies from those days (26.11.0-nightly.20261023 and 20261028) fail the same tests. The first version of the watch called them APP_BUG; that is why BEHIND_MAIN exists ([#8886 run](examples/pr/actual/runs/pr-8886-2026-11-25T18-51-31-866Z/pr.json), [#9336 run](examples/pr/actual/runs/pr-9336-2026-11-25T18-59-28-261Z/pr.json)).
+- **The TEST_PROBLEM and the ENV** both came from the first check of [#9640](https://github.com/actualbudget/actual/pull/9640), which used recordings made on August nightlies. The amount filter failed at a typing step on the preview, and the category-group rule failed at its first click on main as well. Neither verdict blamed the pull request. The rule test was recorded again on main (passes 3 of 3 replays there); the amount filter test is no longer used for pull requests.
+
+Run one yourself:
+
+```bash
+witness pr list  examples/pr/actual/pr.json          # open pull requests with a live preview, [AI] marked
+witness pr check examples/pr/actual/pr.json 9662     # one pull request, its tests, its verdict
+witness pr watch examples/pr/actual/pr.json --plan   # what the next automatic run would check
+```
 
 ## What it found on real software
 
