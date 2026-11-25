@@ -1,0 +1,11 @@
+{
+  "pr": 9173,
+  "issue": 9167,
+  "result": "KEPT",
+  "why": "The schedules list is showing the wrong status for the Broadband schedule.",
+  "at": "2026-11-24T22:05:51.299Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.95,
+  "credits": 2.07
+}

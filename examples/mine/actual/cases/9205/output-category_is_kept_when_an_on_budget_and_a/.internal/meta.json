@@ -1,0 +1,18 @@
+{
+  "test_id": "a1dc8139-c722-49a9-9d2d-ef4ce5d21b29",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "category_is_kept_when_an_on_budget_and_a",
+  "commit_id": "56bf29a3-a638-4f69-a03d-a4473d755459",
+  "testcase_id": "01M87SYEJN9CR4YXQD2R1BCMYA",
+  "executions": [
+    {
+      "execution_id": "9ddcaac8-c352-4020-abe3-750bff763301",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T22:19:55.996Z"
+    }
+  ]
+}

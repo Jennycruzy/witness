@@ -1,0 +1,11 @@
+{
+  "pr": 8587,
+  "issue": 8498,
+  "result": "KEPT",
+  "why": "The application is not showing the saved note text for the Grocer transaction.",
+  "at": "2026-11-24T21:08:06.525Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.96,
+  "credits": 2.12255
+}

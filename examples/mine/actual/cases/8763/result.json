@@ -1,0 +1,11 @@
+{
+  "pr": 8763,
+  "issue": 8760,
+  "result": "KEPT",
+  "why": "The replay checked for an open menu without first getting the page into that state.",
+  "at": "2026-11-24T21:54:39.515Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "automation_bug",
+  "kaneConfidence": 0.95,
+  "credits": 2.74915
+}

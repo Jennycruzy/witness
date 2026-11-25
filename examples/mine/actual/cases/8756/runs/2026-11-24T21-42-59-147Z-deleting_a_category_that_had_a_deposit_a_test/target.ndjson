@@ -1,0 +1,186 @@
+{"type":"stream_start","cli_version":"0.10.9","surface":"testmd","pid":1648885,"v":1,"ts":"2026-11-24T21:46:55.275Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Add category deposit","ref":null,"v":1,"ts":"2026-11-24T21:47:01.420Z"}
+{"type":"run_start","objective":"Open the Checking account, click Add New, enter Payee \"Refund\", choose Category \"Food\", type 100.00 in the Deposit field and click Add.","timestamp":1795556821,"environment":{"resolution":"1920x1080"},"override_start_url":"http://127.0.0.1:34629/","recorded_start_url":"http://127.0.0.1:44835/","override_applied":true,"v":1,"ts":"2026-11-24T21:47:01.553Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 11 actions","recording_length":11,"v":1,"ts":"2026-11-24T21:47:01.554Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-24T21:47:01.554Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-24T21:47:01.646Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:44835/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-24T21:47:02.601Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:44835/","action_type":"navigate","v":1,"ts":"2026-11-24T21:47:02.601Z"}
+{"type":"step_end","index":1,"status":"passed","duration":1,"summary":"navigate: Navigate to http://127.0.0.1:44835/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"75fe68c7-00ad-4332-b3d7-1f29cda0632f","v":1,"ts":"2026-11-24T21:47:02.605Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-24T21:47:02.606Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:34629/","v":1,"ts":"2026-11-24T21:47:04.153Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking the Checking account in the sidebar accounts list","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:47:13.383Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking the Checking account in the sidebar accounts list","action_type":"click","v":1,"ts":"2026-11-24T21:47:13.384Z"}
+{"type":"step_end","index":2,"status":"passed","duration":10.8,"summary":"click: Clicking the Checking account in the sidebar accounts list","ordinal":2,"id":"0-2","kind":"click","screenshot":"screenshot.jpg","action_id":"e7a4554f-0fa3-41a0-84af-91e99a08eeff","v":1,"ts":"2026-11-24T21:47:13.676Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-24T21:47:13.677Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:47:13.761Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Add New in checking account header","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:47:19.484Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Add New in checking account header","action_type":"click","v":1,"ts":"2026-11-24T21:47:19.485Z"}
+{"type":"step_end","index":3,"status":"passed","duration":5.8,"summary":"click: Clicking Add New in checking account header","ordinal":3,"id":"0-3","kind":"click","screenshot":"screenshot.jpg","action_id":"1cc5d2d2-f90d-496e-a655-c1b1b59f2da9","v":1,"ts":"2026-11-24T21:47:19.579Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-24T21:47:19.579Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:47:19.650Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Payee field for the new transaction row","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:47:20.453Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Payee field for the new transaction row","action_type":"click","v":1,"ts":"2026-11-24T21:47:20.453Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.9,"summary":"click: Clicking Payee field for the new transaction row","ordinal":4,"id":"0-4","kind":"click","screenshot":"screenshot.jpg","action_id":"d577e9c0-3136-4f86-843a-b9df8b8fa009","v":1,"ts":"2026-11-24T21:47:20.561Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-24T21:47:20.561Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:47:20.637Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Entering Payee Refund","action_type":"fill","success":true,"v":1,"ts":"2026-11-24T21:47:20.853Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Entering Payee Refund","action_type":"fill","v":1,"ts":"2026-11-24T21:47:20.854Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.3,"summary":"fill: Entering Payee Refund","ordinal":5,"id":"0-5","kind":"fill","screenshot":"screenshot.jpg","action_id":"820ebc8b-0d33-4f36-8996-f4434168469f","v":1,"ts":"2026-11-24T21:47:20.948Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-24T21:47:20.948Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:47:21.030Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Clicking Categorize in the Food category","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:47:31.189Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Clicking Categorize in the Food category","action_type":"click","v":1,"ts":"2026-11-24T21:47:31.189Z"}
+{"type":"step_end","index":6,"status":"passed","duration":10.2,"summary":"click: Clicking Categorize in the Food category","ordinal":6,"id":"0-6","kind":"click","screenshot":"screenshot.jpg","action_id":"aba57127-6294-4fa6-b9fb-7514fddc005b","v":1,"ts":"2026-11-24T21:47:31.190Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-24T21:47:31.190Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:47:31.278Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Typing Foo into Food category textbox","action_type":"fill","success":true,"v":1,"ts":"2026-11-24T21:47:31.451Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Typing Foo into Food category textbox","action_type":"fill","v":1,"ts":"2026-11-24T21:47:31.452Z"}
+{"type":"step_end","index":7,"status":"passed","duration":0.3,"summary":"fill: Typing Foo into Food category textbox","ordinal":7,"id":"0-7","kind":"fill","screenshot":"screenshot.jpg","action_id":"9fad1214-1a5e-470a-88a9-b5a75e9f1940","v":1,"ts":"2026-11-24T21:47:31.581Z"}
+{"type":"step_start","index":8,"objective":"Step 8","v":1,"ts":"2026-11-24T21:47:31.582Z"}
+{"type":"step_event","index":8,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:47:31.676Z"}
+{"type":"step_event","index":8,"event":"action","detail":"Selecting Food category","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:47:33.476Z"}
+{"type":"step_event","index":8,"event":"reasoning","detail":"Selecting Food category","action_type":"click","v":1,"ts":"2026-11-24T21:47:33.476Z"}
+{"type":"step_end","index":8,"status":"passed","duration":1.9,"summary":"click: Selecting Food category","ordinal":8,"id":"0-8","kind":"click","screenshot":"screenshot.jpg","action_id":"cef21e86-7711-41a1-8a52-6bd64c89b261","v":1,"ts":"2026-11-24T21:47:33.612Z"}
+{"type":"step_start","index":9,"objective":"Step 9","v":1,"ts":"2026-11-24T21:47:33.612Z"}
+{"type":"step_event","index":9,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:47:33.704Z"}
+{"type":"step_event","index":9,"event":"action","detail":"Clicking into the Deposit field and entering 100.00","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:48:15.417Z"}
+{"type":"step_event","index":9,"event":"reasoning","detail":"Clicking into the Deposit field and entering 100.00","action_type":"click","v":1,"ts":"2026-11-24T21:48:15.417Z"}
+{"type":"step_end","index":9,"status":"passed","duration":41.8,"summary":"click: Clicking into the Deposit field and entering 100.00","ordinal":9,"id":"0-9","kind":"click","screenshot":"screenshot.jpg","action_id":"575e5c48-9078-4a1d-9cb3-1f0892da806e","v":1,"ts":"2026-11-24T21:48:15.418Z"}
+{"type":"step_start","index":10,"objective":"Step 10","v":1,"ts":"2026-11-24T21:48:15.418Z"}
+{"type":"step_event","index":10,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:48:15.493Z"}
+{"type":"step_event","index":10,"event":"action","detail":"Typing 100.00 into the Deposit field","action_type":"fill","success":true,"v":1,"ts":"2026-11-24T21:48:15.642Z"}
+{"type":"step_event","index":10,"event":"reasoning","detail":"Typing 100.00 into the Deposit field","action_type":"fill","v":1,"ts":"2026-11-24T21:48:15.642Z"}
+{"type":"step_end","index":10,"status":"passed","duration":0.2,"summary":"fill: Typing 100.00 into the Deposit field","ordinal":10,"id":"0-10","kind":"fill","screenshot":"screenshot.jpg","action_id":"eff23e33-36a3-4376-970f-3ca6481ad4a0","v":1,"ts":"2026-11-24T21:48:15.727Z"}
+{"type":"step_start","index":11,"objective":"Step 11","v":1,"ts":"2026-11-24T21:48:15.727Z"}
+{"type":"step_event","index":11,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:48:15.794Z"}
+{"type":"step_event","index":11,"event":"action","detail":"Clicking Add in the checking transaction editor","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:48:20.695Z"}
+{"type":"step_event","index":11,"event":"reasoning","detail":"Clicking Add in the checking transaction editor","action_type":"click","v":1,"ts":"2026-11-24T21:48:20.696Z"}
+{"type":"step_end","index":11,"status":"passed","duration":5,"summary":"click: Clicking Add in the checking transaction editor","ordinal":11,"id":"0-11","kind":"click","screenshot":"screenshot.jpg","action_id":"dc38fdbe-ee74-4789-88ac-3c3d35ce67d6","v":1,"ts":"2026-11-24T21:48:20.697Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":79.27,"final_url":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","actions_executed":11,"screenshot_path":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/0/replay-test/screenshots/step_011.png","run_dir":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-24T21:48:20.717Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":79.27,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-24T21:48:20.721Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Move money out","ref":null,"v":1,"ts":"2026-11-24T21:48:20.722Z"}
+{"type":"run_start","objective":"Go to the Budget page, click the Balance amount of the \"Food\" row in the current month, choose \"Transfer to another category\", enter 10.00, choose \"General\" and confirm.","timestamp":1795556900,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-24T21:48:20.755Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 12 actions","recording_length":12,"v":1,"ts":"2026-11-24T21:48:20.756Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-24T21:48:20.765Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:34629/accounts/7ce8a265-5c3a-44ab-b6a3-5eed6ecb0632","v":1,"ts":"2026-11-24T21:48:20.863Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking Budget in the left sidebar navigation","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:48:21.500Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking Budget in the left sidebar navigation","action_type":"click","v":1,"ts":"2026-11-24T21:48:21.500Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"click: Clicking Budget in the left sidebar navigation","ordinal":12,"id":"1-1","kind":"click","screenshot":"screenshot.jpg","action_id":"9a1f76c4-f401-4bdb-951b-33b3aa46916a","v":1,"ts":"2026-11-24T21:48:21.603Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-24T21:48:21.604Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:48:21.662Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking the Food row balance amount button","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:48:27.274Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking the Food row balance amount button","action_type":"click","v":1,"ts":"2026-11-24T21:48:27.274Z"}
+{"type":"step_end","index":2,"status":"passed","duration":5.7,"summary":"click: Clicking the Food row balance amount button","ordinal":13,"id":"1-2","kind":"click","screenshot":"screenshot.jpg","action_id":"1e56b6e2-3b5f-4a24-8635-712d21b72cc6","v":1,"ts":"2026-11-24T21:48:27.370Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-24T21:48:27.371Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:48:27.427Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Transfer to another category","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:48:28.042Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Transfer to another category","action_type":"click","v":1,"ts":"2026-11-24T21:48:28.043Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.7,"summary":"click: Clicking Transfer to another category","ordinal":14,"id":"1-3","kind":"click","screenshot":"screenshot.jpg","action_id":"b1e3acfe-b52f-4edd-b981-6ac2b45dc83a","v":1,"ts":"2026-11-24T21:48:28.148Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-24T21:48:28.149Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:48:28.227Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Typing transfer amount in the Transfer form","action_type":"type","success":true,"v":1,"ts":"2026-11-24T21:48:34.311Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Typing transfer amount in the Transfer form","action_type":"type","v":1,"ts":"2026-11-24T21:48:34.311Z"}
+{"type":"step_end","index":4,"status":"passed","duration":6.2,"summary":"type: Typing transfer amount in the Transfer form","ordinal":15,"id":"1-4","kind":"type","screenshot":"screenshot.jpg","action_id":"2862d170-74c6-432e-9650-697cf413c97b","v":1,"ts":"2026-11-24T21:48:34.312Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-24T21:48:34.312Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:48:34.375Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Selecting all text in the transfer amount field","action_type":"press_key","success":true,"v":1,"ts":"2026-11-24T21:48:34.894Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Selecting all text in the transfer amount field","action_type":"press_key","v":1,"ts":"2026-11-24T21:48:34.895Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.6,"summary":"press_key: Selecting all text in the transfer amount field","ordinal":16,"id":"1-5","kind":"press_key","screenshot":"screenshot.jpg","action_id":"b9db794d-fcd3-480d-b041-e9bd213046cc","v":1,"ts":"2026-11-24T21:48:34.896Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-24T21:48:34.896Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:48:34.956Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Entering transfer amount 10.00","action_type":"type","success":true,"v":1,"ts":"2026-11-24T21:48:42.387Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Entering transfer amount 10.00","action_type":"type","v":1,"ts":"2026-11-24T21:48:42.387Z"}
+{"type":"step_end","index":6,"status":"passed","duration":7.5,"summary":"type: Entering transfer amount 10.00","ordinal":17,"id":"1-6","kind":"type","screenshot":"screenshot.jpg","action_id":"6bfe045a-684e-4a5f-a010-406a28704544","v":1,"ts":"2026-11-24T21:48:42.388Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-24T21:48:42.388Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:48:42.463Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Selecting all text in the transfer amount input","action_type":"press_key","success":true,"v":1,"ts":"2026-11-24T21:48:42.984Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Selecting all text in the transfer amount input","action_type":"press_key","v":1,"ts":"2026-11-24T21:48:42.985Z"}
+{"type":"step_end","index":7,"status":"passed","duration":0.6,"summary":"press_key: Selecting all text in the transfer amount input","ordinal":18,"id":"1-7","kind":"press_key","screenshot":"screenshot.jpg","action_id":"d3b74309-4cdb-4077-b95c-583c14f0cafe","v":1,"ts":"2026-11-24T21:48:42.985Z"}
+{"type":"step_start","index":8,"objective":"Step 8","v":1,"ts":"2026-11-24T21:48:42.985Z"}
+{"type":"step_event","index":8,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:48:43.062Z"}
+{"type":"step_event","index":8,"event":"action","detail":"Pressing Backspace to clear selected text in the transfer amount input","action_type":"press_key","success":true,"v":1,"ts":"2026-11-24T21:48:43.579Z"}
+{"type":"step_event","index":8,"event":"reasoning","detail":"Pressing Backspace to clear selected text in the transfer amount input","action_type":"press_key","v":1,"ts":"2026-11-24T21:48:43.579Z"}
+{"type":"step_end","index":8,"status":"passed","duration":0.6,"summary":"press_key: Pressing Backspace to clear selected text in the transfer amount input","ordinal":19,"id":"1-8","kind":"press_key","screenshot":"screenshot.jpg","action_id":"c3d843fd-fdcc-49a9-bdf4-020d1c074b17","v":1,"ts":"2026-11-24T21:48:43.580Z"}
+{"type":"step_start","index":9,"objective":"Step 9","v":1,"ts":"2026-11-24T21:48:43.580Z"}
+{"type":"step_event","index":9,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:48:43.659Z"}
+{"type":"step_event","index":9,"event":"action","detail":"Entering transfer amount 10.00","action_type":"type","success":true,"v":1,"ts":"2026-11-24T21:49:26.381Z"}
+{"type":"step_event","index":9,"event":"reasoning","detail":"Entering transfer amount 10.00","action_type":"type","v":1,"ts":"2026-11-24T21:49:26.381Z"}
+{"type":"step_end","index":9,"status":"passed","duration":42.8,"summary":"type: Entering transfer amount 10.00","ordinal":20,"id":"1-9","kind":"type","screenshot":"screenshot.jpg","action_id":"53f42c66-7a1e-47f7-9224-255b2d22814e","v":1,"ts":"2026-11-24T21:49:26.382Z"}
+{"type":"step_start","index":10,"objective":"Step 10","v":1,"ts":"2026-11-24T21:49:26.382Z"}
+{"type":"step_event","index":10,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:26.473Z"}
+{"type":"step_event","index":10,"event":"action","detail":"Selecting General in the Transfer amount form dropdown","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:49:27.081Z"}
+{"type":"step_event","index":10,"event":"reasoning","detail":"Selecting General in the Transfer amount form dropdown","action_type":"click","v":1,"ts":"2026-11-24T21:49:27.081Z"}
+{"type":"step_end","index":10,"status":"passed","duration":0.7,"summary":"click: Selecting General in the Transfer amount form dropdown","ordinal":21,"id":"1-10","kind":"click","screenshot":"screenshot.jpg","action_id":"9e626ac7-f489-4cf4-b977-8bcfae0e82d4","v":1,"ts":"2026-11-24T21:49:27.190Z"}
+{"type":"step_start","index":11,"objective":"Step 11","v":1,"ts":"2026-11-24T21:49:27.191Z"}
+{"type":"step_event","index":11,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:27.255Z"}
+{"type":"step_event","index":11,"event":"action","detail":"Clicking General category option","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:49:27.853Z"}
+{"type":"step_event","index":11,"event":"reasoning","detail":"Clicking General category option","action_type":"click","v":1,"ts":"2026-11-24T21:49:27.854Z"}
+{"type":"step_end","index":11,"status":"passed","duration":0.7,"summary":"click: Clicking General category option","ordinal":22,"id":"1-11","kind":"click","screenshot":"screenshot.jpg","action_id":"beefcfca-a9e3-4b24-a24c-b64277ebae97","v":1,"ts":"2026-11-24T21:49:27.955Z"}
+{"type":"step_start","index":12,"objective":"Step 12","v":1,"ts":"2026-11-24T21:49:27.955Z"}
+{"type":"step_event","index":12,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:28.022Z"}
+{"type":"step_event","index":12,"event":"action","detail":"Clicking Transfer button","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:49:29.553Z"}
+{"type":"step_event","index":12,"event":"reasoning","detail":"Clicking Transfer button","action_type":"click","v":1,"ts":"2026-11-24T21:49:29.553Z"}
+{"type":"step_end","index":12,"status":"passed","duration":1.6,"summary":"click: Clicking Transfer button","ordinal":23,"id":"1-12","kind":"click","screenshot":"screenshot.jpg","action_id":"d108a234-5ca0-4506-92d6-f7db4a022c51","v":1,"ts":"2026-11-24T21:49:29.651Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":68.91,"final_url":"http://127.0.0.1:34629/budget","actions_executed":12,"screenshot_path":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/1/replay-test/screenshots/step_012.png","run_dir":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/1/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-24T21:49:29.653Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":68.91,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-24T21:49:29.654Z"}
+{"type":"test_md_step_start","step_index":3,"heading":"Delete the category","ref":null,"v":1,"ts":"2026-11-24T21:49:29.658Z"}
+{"type":"run_start","objective":"Open the menu of the \"Food\" category, choose Delete, select \"General\" as the category to transfer to, and confirm the delete.","timestamp":1795556969,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-24T21:49:29.738Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 6 actions","recording_length":6,"v":1,"ts":"2026-11-24T21:49:29.739Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-24T21:49:29.748Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:29.803Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Hover over 'Food category row in the category table'","action_type":"hover","success":true,"v":1,"ts":"2026-11-24T21:49:36.492Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Hover over 'Food category row in the category table'","action_type":"hover","v":1,"ts":"2026-11-24T21:49:36.492Z"}
+{"type":"step_end","index":1,"status":"passed","duration":6.7,"summary":"hover: Hover over 'Food category row in the category table'","ordinal":24,"id":"2-1","kind":"hover","screenshot":"screenshot.jpg","action_id":"76ed58ae-368a-4de8-9c9f-d3be6c61985b","v":1,"ts":"2026-11-24T21:49:36.492Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-24T21:49:36.492Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:36.588Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking the Food category menu button","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:49:46.102Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking the Food category menu button","action_type":"click","v":1,"ts":"2026-11-24T21:49:46.102Z"}
+{"type":"step_end","index":2,"status":"passed","duration":9.6,"summary":"click: Clicking the Food category menu button","ordinal":25,"id":"2-2","kind":"click","screenshot":"screenshot.jpg","action_id":"d016fce6-8d1a-4988-92f1-1eb5de5c14f1","v":1,"ts":"2026-11-24T21:49:46.199Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-24T21:49:46.199Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:46.252Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Delete in the Food category menu","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:49:46.956Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Delete in the Food category menu","action_type":"click","v":1,"ts":"2026-11-24T21:49:46.956Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.8,"summary":"click: Clicking Delete in the Food category menu","ordinal":26,"id":"2-3","kind":"click","screenshot":"screenshot.jpg","action_id":"408f2ee2-1863-4ea6-9b65-9d977ea1eefb","v":1,"ts":"2026-11-24T21:49:47.185Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-24T21:49:47.186Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:47.533Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Waiting for the queued plan to start processing","action_type":"wait","success":true,"v":1,"ts":"2026-11-24T21:49:48.560Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Waiting for the queued plan to start processing","action_type":"wait","v":1,"ts":"2026-11-24T21:49:48.561Z"}
+{"type":"step_end","index":4,"status":"passed","duration":1.4,"summary":"wait: Waiting for the queued plan to start processing","ordinal":27,"id":"2-4","kind":"wait","screenshot":"screenshot.jpg","action_id":"18571a86-3602-4825-a0b9-05d9041774bb","v":1,"ts":"2026-11-24T21:49:48.561Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-24T21:49:48.561Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:48.804Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Click \"General\"","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:49:49.475Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Click \"General\"","action_type":"click","v":1,"ts":"2026-11-24T21:49:49.476Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.9,"summary":"click: Click \"General\"","ordinal":28,"id":"2-5","kind":"click","screenshot":"screenshot.jpg","action_id":"f369ab90-7abc-466b-bd84-56911128a604","v":1,"ts":"2026-11-24T21:49:49.512Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-24T21:49:49.512Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:49.807Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Clicking Delete to confirm the delete","action_type":"click","success":true,"v":1,"ts":"2026-11-24T21:49:50.476Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Clicking Delete to confirm the delete","action_type":"click","v":1,"ts":"2026-11-24T21:49:50.478Z"}
+{"type":"step_end","index":6,"status":"passed","duration":1,"summary":"click: Clicking Delete to confirm the delete","ordinal":29,"id":"2-6","kind":"click","screenshot":"screenshot.jpg","action_id":"f4e1c71f-764c-4f16-9d54-b831e6e69942","v":1,"ts":"2026-11-24T21:49:50.578Z"}
+{"type":"run_end","run_id":"run-2","status":"passed","summary":"","reason":"replay completed","duration":20.85,"final_url":"http://127.0.0.1:34629/budget","actions_executed":6,"screenshot_path":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/2/replay-test/screenshots/step_006.png","run_dir":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/2/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-24T21:49:50.579Z"}
+{"type":"test_md_step_end","step_index":3,"status":"passed","duration_s":20.85,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-24T21:49:50.579Z"}
+{"type":"test_md_step_start","step_index":4,"heading":"Open next month","ref":null,"v":1,"ts":"2026-11-24T21:49:50.580Z"}
+{"type":"run_start","objective":"Look at the month column to the right of the current month on the Budget page. If it is not shown, click the next-month arrow.","timestamp":1795556990,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-24T21:49:50.624Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-24T21:49:50.639Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-24T21:49:50.647Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:49:50.705Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Checking whether the next month column is present","action_type":"analyze","success":true,"v":1,"ts":"2026-11-24T21:50:06.388Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Checking whether the next month column is present","action_type":"analyze","v":1,"ts":"2026-11-24T21:50:06.388Z"}
+{"type":"step_end","index":1,"status":"passed","duration":15.7,"summary":"analyze: Checking whether the next month column is present","ordinal":30,"id":"3-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"01ffcfd4-983f-4417-afc0-3650d279864d","v":1,"ts":"2026-11-24T21:50:06.389Z"}
+{"type":"run_end","run_id":"run-3","status":"passed","summary":"","reason":"replay completed","duration":15.79,"final_url":"http://127.0.0.1:34629/budget","actions_executed":1,"screenshot_path":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/3/replay-test/screenshots/step_001.png","run_dir":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/3/replay-test","total_runs":1,"context":{"memory":{},"variables":{"next_month_column_shown":{"syntax":"{{next_month_column_shown}}","value":"true","secret":false}},"pointer":""},"variables_out":{"next_month_column_shown":{"syntax":"{{next_month_column_shown}}","value":"true","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-24T21:50:06.390Z"}
+{"type":"test_md_step_end","step_index":4,"status":"passed","duration_s":15.79,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-24T21:50:06.391Z"}
+{"type":"test_md_step_start","step_index":5,"heading":"Check overspent line","ref":null,"v":1,"ts":"2026-11-24T21:50:06.391Z"}
+{"type":"run_start","objective":"Verify the \"Overspent in\" line of the next month's budget summary (above To Budget) shows \"0.00\".","timestamp":1795557006,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-24T21:50:06.466Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-24T21:50:06.466Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-24T21:50:06.475Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:34629/budget","v":1,"ts":"2026-11-24T21:50:06.524Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Reading the overspent amount from the next month's budget summary","action_type":"analyze","success":false,"v":1,"ts":"2026-11-24T21:50:37.020Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Reading the overspent amount from the next month's budget summary","action_type":"analyze","v":1,"ts":"2026-11-24T21:50:37.020Z"}
+{"type":"step_end","index":1,"status":"failed","duration":30.5,"summary":"analyze: Reading the overspent amount from the next month's budget summary","ordinal":31,"id":"4-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"c332e9ec-e3e8-40c5-995b-18f6386b9c9c","v":1,"ts":"2026-11-24T21:50:37.021Z"}
+{"type":"run_end","run_id":"run-4","status":"failed","summary":"","reason":"analyzer_failed: @ step 1","duration":38.56,"final_url":"http://127.0.0.1:34629/budget","actions_executed":1,"screenshot_path":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/4/replay-test/screenshots/step_001.png","run_dir":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/4/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"verdict":{"confirmed":false,"status":"failed","family":"application_issue","category":"ui_data_defect","category_proposal":"","severity":"minor","root_cause":"The summary is formatting a zero overspent amount as negative zero.","agent_fault_assessment":"The agent only performed a read-only analysis at the recorded budget page and did not click, type, or change budget data. The displayed value itself contradicts the required zero format, so the agent's actions did not cause the outcome.","bug_title":"Next-month overspent summary displays negative zero","signals":[{"step":"4-1","kind":"objective_contradiction","excerpt":"-0.00 Overspent in Oct"}],"confidence":0.93,"suggestion":"Make the budget-summary amount formatter normalize negative zero to 0.00 before rendering.","one_liner":"The next-month budget summary shows the overspent amount as “-0.00” instead of “0.00”.","relevant_steps":[1],"culprit_step":"4-1","credits_consumed":1.7197500000000001,"known_bug_id":"","category_name":"","downgrade_reason":"citation verification failed: objective_contradiction: not mechanically verifiable"},"v":1,"ts":"2026-11-24T21:50:45.020Z"}
+{"type":"test_md_bug_verdict","step_index":5,"confirmed":false,"bug_title":"Next-month overspent summary displays negative zero","family":"application_issue","category":"ui_data_defect","category_name":null,"category_proposal":null,"severity":"minor","confidence":0.93,"one_liner":"The next-month budget summary shows the overspent amount as “-0.00” instead of “0.00”.","v":1,"ts":"2026-11-24T21:50:45.021Z"}
+{"type":"test_md_step_end","step_index":5,"status":"failed","duration_s":38.56,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-24T21:50:45.021Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"8ef39b87-3196-48cc-ace4-67a421415590","v":1,"ts":"2026-11-24T21:50:47.420Z"}
+{"type":"test_md_summary","overall_status":"failed","duration_s":229,"steps":{"total":5,"passed":4,"failed":1,"skipped":0,"replay_decisions":5,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"run_failed"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"http://127.0.0.1:34629/","v":1,"ts":"2026-11-24T21:50:47.423Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/evidence/8ef39b87-3196-48cc-ace4-67a421415590.evidence","v":1,"ts":"2026-11-24T21:50:47.428Z"}
+{"type":"test_md_done","overall_status":"failed","duration_s":229,"session_id":"46385d58-3f88-4e67-a441-dc1e162005bb","coverage":{"status":"skipped"},"override_start_url":"http://127.0.0.1:34629/","v":1,"ts":"2026-11-24T21:50:47.428Z"}

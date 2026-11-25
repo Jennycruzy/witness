@@ -1,0 +1,7 @@
+{
+  "pr": 9238,
+  "issue": 6317,
+  "result": "UNRECORDABLE",
+  "why": "the fixed build fails the test: The required trailing backslash was not present in the value field when the check ran.",
+  "at": "2026-11-24T22:33:23.730Z"
+}

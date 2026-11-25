@@ -1,0 +1,1428 @@
+{
+  "summary": {
+    "candidates": 50,
+    "notTestable": 38,
+    "noBuild": 0,
+    "written": 12,
+    "run": 12,
+    "kept": 5,
+    "missed": 1,
+    "unrecordable": 5,
+    "other": 1,
+    "kaneRightOnKept": 4
+  },
+  "cases": [
+    {
+      "pr": 8587,
+      "issue": 8498,
+      "title": "[AI] Fix category_group rule conditions never matching live transactions",
+      "issueTitle": "[Bug]: \"category group\" rule condition only works via the rule editor's own Apply actions - fails via \"Run rules\" and auto-run-on-save",
+      "mergedAt": "2026-08-11T14:19:23Z",
+      "mergeSha": "26352c32d69223cecdefb6360c099fd28162885f",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260811",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260811"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260812",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260812"
+      },
+      "status": "written",
+      "why": "The report says a rule with a 'category group' condition does not run when a new transaction in a category of that group is saved, so on the buggy build the rule's notes action never shows in the register; on the fixed build it does.",
+      "result": {
+        "pr": 8587,
+        "issue": 8498,
+        "result": "KEPT",
+        "why": "The application is not showing the saved note text for the Grocer transaction.",
+        "at": "2026-11-24T21:08:06.525Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.96,
+        "credits": 2.12255
+      }
+    },
+    {
+      "pr": 8648,
+      "issue": 8647,
+      "title": "[AI] Fix stale session token recovery",
+      "issueTitle": "🤖 [Bug]: Stale OIDC session token leaves cached budget stuck on repeated 401s",
+      "mergedAt": "2026-08-13T00:40:47Z",
+      "mergeSha": "1e68c82716a35dc682be091c48b4c73f1173f10d",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260813",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260813"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260814",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260814"
+      },
+      "status": "not-testable",
+      "why": "The bug only appears with a sync server, OpenID login and a stale or expired server session token, and this environment has no server, no login and no sync."
+    },
+    {
+      "pr": 8689,
+      "issue": 8682,
+      "title": "[AI] fix(api): translate default rule stage at API boundary",
+      "issueTitle": "Docs: rules API says stage must be pre/default/post, but \"default\" is rejected and null is undocumented",
+      "mergedAt": "2026-08-21T21:20:05Z",
+      "mergeSha": "d5aef429ec56edad5ad8caed44087b6918df642b",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260821",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260821"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260823",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260823"
+      },
+      "status": "not-testable",
+      "why": "The report covers the API reference docs and the rules API validator, which a user reaches only by calling @actual-app/api against a server, so no action in the local web app shows a difference between the fixed and buggy builds."
+    },
+    {
+      "pr": 8699,
+      "issue": 7822,
+      "title": "[AI] Fix scheduled split transfer previews",
+      "issueTitle": "[Bug]: Scheduled split transfers do not show as upcoming transactions on destination accounts",
+      "mergedAt": "2026-08-11T13:25:32Z",
+      "mergeSha": "435f2d51ee312ed9a6925bad506fc3b7132d8017",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260811",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260811"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260812",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260812"
+      },
+      "status": "not-testable",
+      "why": "Reproducing this needs a second account, a new schedule turned into a split, and one split line set as a transfer, which takes well over 6 short steps; it also depends on a schedule date showing as upcoming, which ties it to the run date."
+    },
+    {
+      "pr": 8715,
+      "issue": 5902,
+      "title": "[AI] Respect the date format preference in daily and weekly report intervals",
+      "issueTitle": "[Bug]: Custom reports based on weekly or daily interval display do not respect date style preference",
+      "mergedAt": "2026-09-01T16:42:47Z",
+      "mergeSha": "c85a03136e0c17614ee94448591c445c58ede173",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260902",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260902"
+      },
+      "status": "not-testable",
+      "why": "The report never says exactly what the fixed date labels look like (full year or not, which separators), and the labels depend on transaction dates and the report's date range, which change from run to run, so no exact expected text can be stated with certainty."
+    },
+    {
+      "pr": 8718,
+      "issue": 8704,
+      "title": "[AI] Fix stuck update button and useless fatal error details",
+      "issueTitle": "[Bug]: FatalError: renderWithHooks (/js/client.pqETbwxE.chunk.js:8:92835)",
+      "mergedAt": "2026-08-12T21:17:21Z",
+      "mergeSha": "43875b09fab417766dd4f85053c9839122663157",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260812",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260812"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260813",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260813"
+      },
+      "status": "not-testable",
+      "why": "The report is about an app update prompt on a hosted server (Pikapods), followed by a fatal error after a browser refresh. It gives no steps to reproduce and does not say what correct output looks like, and the bug depends on a server and on update timing."
+    },
+    {
+      "pr": 8719,
+      "issue": 6486,
+      "title": "[AI] Fix duplicate payees in rules after merging payees (#6486)",
+      "issueTitle": "[Bug]: Duplicate entry in rule one of list after payee name merge",
+      "mergedAt": "2026-08-21T02:54:07Z",
+      "mergeSha": "668c96fdc53a59b42b3b6ba30789f97024f5fd58",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260821",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260821"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260822",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260822"
+      },
+      "status": "not-testable",
+      "why": "The report gives no exact text for how the fixed rule should look after the merge, and the only visible difference is how many times one payee name appears in the \"one of\" list, which is a count rather than one fixed piece of text; setting it up also takes payee creation, rule creation and a rule-merging payee merge, which does not fit reliably in 2 to 6 steps."
+    },
+    {
+      "pr": 8726,
+      "issue": 8725,
+      "title": "[AI] Default new transaction amount filters to positive values",
+      "issueTitle": "[Bug]: Filter on \"Amount\" field is not working as expected",
+      "mergedAt": "2026-08-21T10:04:56Z",
+      "mergeSha": "543622a5bb8e13d44d230c4e12243df54022979a",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260821",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260821"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260822",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260822"
+      },
+      "status": "written",
+      "why": "The report gives a clear expected result (an Amount 'greater than 150' filter lists only transactions above 150), and two deposits on either side of 150 show it on screen without needing a server, sync or special setup.",
+      "result": {
+        "pr": 8726,
+        "issue": 8725,
+        "result": "KEPT",
+        "why": "The list includes a transaction with payee Alpha in the result shown to the user.",
+        "at": "2026-11-24T21:19:25.452Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.96,
+        "credits": 2.7954499999999998
+      }
+    },
+    {
+      "pr": 8733,
+      "issue": 6056,
+      "title": "Fix amount resetting to zero (#6056)",
+      "issueTitle": "[Bug]: Entering an amount and then pressing Cleared toggle clears the amount",
+      "mergedAt": "2026-08-17T17:12:52Z",
+      "mergeSha": "fa3cced1d163eaa2bd43caf53d663139513e89b0",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260817",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260817"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260818",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260818"
+      },
+      "status": "not-testable",
+      "why": "The bug is only in the mobile Add Transaction page with its Cleared toggle and on-screen keyboard, which needs a mobile layout; the rules exclude that, so this desktop Chrome 1920x1080 run can't reproduce it."
+    },
+    {
+      "pr": 8749,
+      "issue": 8739,
+      "title": "Skip overspent sources when a named cleanup pool collects funds",
+      "issueTitle": "[Bug]: Named pool sources process negative balances instead of being ignored",
+      "mergedAt": "2026-08-18T15:58:35Z",
+      "mergeSha": "adf5d198282218f06ce0a6cbe847bee66f483332",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260818",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260818"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260819",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260819"
+      },
+      "status": "not-testable",
+      "why": "The report does not say how to set up the named pool or which cleanup notes and settings to use (it only says \"configured via the UI\"), and the cleanup feature may need an experimental setting, so the setup steps can't be written with certainty from the report alone."
+    },
+    {
+      "pr": 8756,
+      "issue": 8754,
+      "title": "[AI] Fix phantom overspending after deleting a category",
+      "issueTitle": "[Bug]: Deleting Certain Categories Creates Irreconcilable Phantom Overspend",
+      "mergedAt": "2026-08-20T14:33:54Z",
+      "mergeSha": "8f2b8fcb61e53f45a286a303b103cebd710b9596",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260820",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260820"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260821",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260821"
+      },
+      "status": "written",
+      "why": "The report gives a full from-scratch repro using one account, two categories, a deposit, a budget transfer and a category delete. In the next month the fixed app should show no overspend, while the buggy app shows a phantom 10.00 overspent.",
+      "result": {
+        "pr": 8756,
+        "issue": 8754,
+        "result": "UNKNOWN",
+        "why": "Could not tell whether the failure was at a check or an action.",
+        "at": "2026-11-24T21:33:22.607Z",
+        "verdict": "UNKNOWN",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.93,
+        "credits": 1.7197500000000001
+      }
+    },
+    {
+      "pr": 8763,
+      "issue": 8760,
+      "title": "[AI] Fix category and group menus not opening after a rename",
+      "issueTitle": "[Bug]: Dropdown menu for groups/categories disabled after rename unless you refresh browser tab",
+      "mergedAt": "2026-08-31T05:00:52Z",
+      "mergeSha": "5cf13920d569c1143f16444c73c23a476fbe4f72",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260831",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260831"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260901",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260901"
+      },
+      "status": "written",
+      "why": "The report gives clear local steps: rename a category on the Budget page, then open its dropdown menu again. On the buggy build the menu does not appear, and on the fixed build it opens with its Rename option.",
+      "result": {
+        "pr": 8763,
+        "issue": 8760,
+        "result": "KEPT",
+        "why": "The replay checked for an open menu without first getting the page into that state.",
+        "at": "2026-11-24T21:54:39.515Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "automation_bug",
+        "kaneConfidence": 0.95,
+        "credits": 2.74915
+      }
+    },
+    {
+      "pr": 8765,
+      "issue": 8654,
+      "title": "[AI] Fix bulk edit date picker formatting regression",
+      "issueTitle": "[Bug]: Bulk edit date picker modal visual regression",
+      "mergedAt": "2026-08-21T18:24:37Z",
+      "mergeSha": "1372f7b56484b991f531c2df25ee0eefb0df48ed",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260821",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260821"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260822",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260822"
+      },
+      "status": "not-testable",
+      "why": "The report describes only a visual layout regression of the bulk-edit date picker modal (shown in screenshots), with no text, value, or behavior change that a Verify step could read, and it says the functionality is unchanged."
+    },
+    {
+      "pr": 8778,
+      "issue": 2415,
+      "title": "[AI] Surface the real GoCardless error reason in the UI",
+      "issueTitle": "[Bug]: Gocardless error messages are not shown in actual budget UI",
+      "mergedAt": "2026-10-21T00:28:30Z",
+      "mergeSha": "6e68ee1de1c54cf3b8c69d17aa1c4fde219f64e2",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261021",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261021"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261022",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261022"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows during GoCardless bank sync, which needs a sync server, a GoCardless account and a network connection to a bank provider, and none of these exist in a local app with no server."
+    },
+    {
+      "pr": 8791,
+      "issue": 8775,
+      "title": "[AI] Fix schedule service shutdown race",
+      "issueTitle": "[Bug]: API: schedule service crashes when shutdown wins the race with its queued run",
+      "mergedAt": "2026-10-30T09:06:46Z",
+      "mergeSha": "e82ea4dc3594e7e0c32ba7b1039913c19e6ce9f9",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261030",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261030"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261031",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261031"
+      },
+      "status": "not-testable",
+      "why": "The bug is a rare timing race in the Node API (@actual-app/api) between shutdown() and a queued schedule service, and it needs a sync server, a specific budget metadata.json, and many repeated runs, none of which a single browser test can reproduce."
+    },
+    {
+      "pr": 8801,
+      "issue": 8743,
+      "title": "fix schedules not showing as paid",
+      "issueTitle": "[Bug]: Schedules not staying at top of list as [PAID] on the day they are scheduled for",
+      "mergedAt": "2026-08-28T09:32:59Z",
+      "mergeSha": "0f7957924934310d6fa88dd310c1cca12a3dd6d6",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260828",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260828"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.9.0-nightly.20260829",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.9.0-nightly.20260829"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows for a schedule that falls due on today's date and runs automatically, so the test would depend on the current date and on when the schedule runs, and the report never says exactly what text or position the fixed Schedules page shows."
+    },
+    {
+      "pr": 8829,
+      "issue": 8633,
+      "title": "[AI] Keep net worth stable across transfer dates",
+      "issueTitle": "[Bug]: Net worth widget incorrectly shows change when transferring between accounts",
+      "mergedAt": "2026-09-06T22:54:08Z",
+      "mergeSha": "1e1c203582792895e22c83f08e043948d870b12a",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260906",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260906"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260908",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260908"
+      },
+      "status": "not-testable",
+      "why": "The bug shows up only as a shape in the net worth graph across months relative to today's date, and the report doesn't give an exact visible text value that the fixed app shows and the buggy app doesn't, so there's no single reliable fact to verify."
+    },
+    {
+      "pr": 8862,
+      "issue": 6513,
+      "title": "Schedule forecast smoothing",
+      "issueTitle": "[Bug]: Schedule template budget calculation incorrect for multiple non-monthly scheduled transactions",
+      "mergedAt": "2026-10-28T20:42:44Z",
+      "mergeSha": "53a61855b65813b0af0049204fa272c7b6c46568",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261028",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261028"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261029",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261029"
+      },
+      "status": "not-testable",
+      "why": "Both reports depend on schedule due dates relative to the current month and on budgeting earlier months (and #6644 gives no correct amount), so the expected budget changes with the date the test runs and cannot be pinned to one fixed value."
+    },
+    {
+      "pr": 8866,
+      "issue": 8864,
+      "title": "[AI] Add Tags to bulk edit notes",
+      "issueTitle": "[Feature] Show Tags when Bulk-editing Notes",
+      "mergedAt": "2026-09-06T18:21:54Z",
+      "mergeSha": "a7b797007ee755306a13d6dbd7abcaeeb5d0303f",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260906",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260906"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260907",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260907"
+      },
+      "status": "not-testable",
+      "why": "This is a feature request with no described solution, so the report never says what the bulk-edit Notes field should show (for example, which suggestion list or text) and no exact visible fact can be derived with certainty."
+    },
+    {
+      "pr": 8894,
+      "issue": 8522,
+      "title": "[AI] Keep focus on parent payment when enabling split",
+      "issueTitle": "[Bug]: Creating a split transaction directly jumps to the first split line.",
+      "mergedAt": "2026-10-05T16:00:43Z",
+      "mergeSha": "c72ce699b3f17850b647b9ab99c7d8d8bb00b1c7",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261005",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261005"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261006",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261006"
+      },
+      "status": "not-testable",
+      "why": "The bug is only about where keyboard focus lands after choosing Split with the keyboard, and the report names no visible text that differs; Kane replays typing into the field it recorded, so the test would pass on the buggy build too."
+    },
+    {
+      "pr": 8917,
+      "issue": 7297,
+      "title": "[AI] Only show stacked bar tooltip truncation indicator when categories are hidden",
+      "issueTitle": "[Bug]: Custom report widget of barchart mouseover legend is truncated incorrectly",
+      "mergedAt": "2026-09-29T01:00:09Z",
+      "mergeSha": "2420942e889f0dfdb4ff119bec90ca2bb2de40e1",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260929",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260929"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260930",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260930"
+      },
+      "status": "not-testable",
+      "why": "Reproducing it needs spending in more than four categories across several months, plus a saved custom report added as a dashboard widget. You then have to hover over chart bars to see a tooltip, and the report never says what the tooltip should show, so there is no exact text to check."
+    },
+    {
+      "pr": 8946,
+      "issue": 6959,
+      "title": ":hedgehog:  Speeding up large budgets by only running rules when needed",
+      "issueTitle": "[Bug]: Balance calculation for rule application making schedule preview transactions slow",
+      "mergedAt": "2026-09-18T16:23:53Z",
+      "mergeSha": "df0cfe3489b046532b655bb9d227944ab77cdeff",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260918",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260918"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260919",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260919"
+      },
+      "status": "not-testable",
+      "why": "The report is about performance: preview transactions load slowly in very large accounts because rules recalculate the balance. The fixed and buggy builds show the same values on screen, so the only difference is timing, and that needs a large data set."
+    },
+    {
+      "pr": 8948,
+      "issue": 5633,
+      "title": "[AI] Expose tag splitting and scope selection in custom reports",
+      "issueTitle": "[Feature] Ability to create report widgets splitting category with tags in notes",
+      "mergedAt": "2026-10-12T15:20:55Z",
+      "mergeSha": "fab0ab1b9a24baef6d7e71f4991a7ba704d798e2",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261012",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261012"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261013",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261013"
+      },
+      "status": "not-testable",
+      "why": "This is a feature request with no described correct output, so I can't derive a concrete UI or expected value with certainty from the report: it doesn't say what the widget is called, how tags are picked up, or how the pie labels and amounts appear."
+    },
+    {
+      "pr": 8951,
+      "issue": 8865,
+      "title": "[AI] fix(schedules): allow auto-posting to run again the same day",
+      "issueTitle": "[Bug]: Automatic scheduled transaction posting a day late— Desktop 26.9.0",
+      "mergedAt": "2026-10-02T18:15:43Z",
+      "mergeSha": "df4dc0d6cccbaf7d3e3ced6b703b15b69e895965",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261003",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261003"
+      },
+      "status": "not-testable",
+      "why": "The bug depends on today's date, the time zone and the schedule's due-date timing (it posts a day late, on the Windows desktop app), so no fixed visible fact can be checked the same way on every run without dates or a time zone."
+    },
+    {
+      "pr": 8976,
+      "issue": 2939,
+      "title": "[AI] Show commit hash on edge/nightly builds",
+      "issueTitle": "[Tech Debt] Incorrect `edge` version shown in app",
+      "mergedAt": "2026-10-12T11:04:36Z",
+      "mergeSha": "c679c5825377c88b88d856de8638930a1218a0d3",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261012",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261012"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261013",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261013"
+      },
+      "status": "not-testable",
+      "why": "The correct output is a build-specific commit hash or other unique identifier that the report does not give, and it depends on how the edge build was deployed, so no exact expected text can be named."
+    },
+    {
+      "pr": 9017,
+      "issue": 5724,
+      "title": "fix: match \"is nothing\" rule conditions on transactions without a payee or category",
+      "issueTitle": "[Bug]: Rule with payee is \"nothing\" never matching",
+      "mergedAt": "2026-10-03T14:15:23Z",
+      "mergeSha": "b490e3e76e43dd0920445bc1a2382afe7c99fbf8",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261003",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261003"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261004",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261004"
+      },
+      "status": "not-testable",
+      "why": "The report is about rules not running on transactions imported by bank sync (Pluggy), and the rule's conditions and actions are only in a screenshot I can't see, so the correct result can't be worked out with certainty or reproduced without a sync server."
+    },
+    {
+      "pr": 9038,
+      "issue": 8853,
+      "title": "fix: point the tour's \"To Budget\" step at a displayed month",
+      "issueTitle": "[Bug]: tour points to non-existent \"To Budget\" when non-current month is selected",
+      "mergedAt": "2026-09-29T12:34:17Z",
+      "mergeSha": "6da9f6ac7842495d55d51270f767b9cd4aef6a0e",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260929",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260929"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0-nightly.20260930",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0-nightly.20260930"
+      },
+      "status": "not-testable",
+      "why": "The report says the tour's \"To Budget\" step points at the wrong place when another month is shown, but it never says what the fixed tour should show (jump back to the current month, skip the step, or point at a different element), so there is no exact visible text to check for."
+    },
+    {
+      "pr": 9056,
+      "issue": 9047,
+      "title": "fix: keep loading off-screen dashboard widgets after toggling edit mode",
+      "issueTitle": "[Bug]: Off screen reports don't load if editing page quickly",
+      "mergedAt": "2026-10-02T18:08:52Z",
+      "mergeSha": "a74830ff8b2e14f774cb8cd29bf73f8893b991d1",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.10.0",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.10.0"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261003",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261003"
+      },
+      "status": "not-testable",
+      "why": "The bug depends on timing (clicking Edit Dashboard while widgets are still loading), needs a dashboard with many widgets that are off screen, and the report gives no exact visible text to check, so the outcome cannot be checked reliably."
+    },
+    {
+      "pr": 9098,
+      "issue": 8053,
+      "title": "[AI] Fix live spending reports not updating on month rollover",
+      "issueTitle": "[Bug]: \"Live\" spending reports don't update automatically after #7672",
+      "mergedAt": "2026-10-07T16:12:00Z",
+      "mergeSha": "046239693156fa4a61fb7af92afafe6b02c03667",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261007",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261007"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261008",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261008"
+      },
+      "status": "not-testable",
+      "why": "The bug only appears when the calendar month rolls over after a live spending report is created, which depends on time passing and cannot be reproduced within one fixed test run."
+    },
+    {
+      "pr": 9125,
+      "issue": 7833,
+      "title": "[AI] Fix running balance text selection in draggable transaction rows",
+      "issueTitle": "[Bug]: Running balance text selection partially broken",
+      "mergedAt": "2026-10-07T21:05:17Z",
+      "mergeSha": "ec78d7c4d7e4af8135d65098db3e278bdea1a070",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261007",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261007"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261008",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261008"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows in Firefox (the reporter says Chromium works fine) and it needs a mouse drag to select text, so a Chrome replay can't tell the fixed and buggy builds apart."
+    },
+    {
+      "pr": 9154,
+      "issue": 3759,
+      "title": "[AI] Don't learn a category rule that a \"one of\" rule already covers",
+      "issueTitle": "[Bug]: Automatic rules don't check if a rule exists with that payee in the \"one of\" list",
+      "mergedAt": "2026-10-12T11:03:15Z",
+      "mergeSha": "db42f652e0eee38068939adf2d09a9403cfbf54f",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261012",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261012"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261013",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261013"
+      },
+      "status": "not-testable",
+      "why": "The report only says an extra rule should not appear, and it does not say when Actual creates automatic rules (for example, after how many transactions), so the one difference between the builds is something missing rather than a fixed visible fact a single Verify step could read."
+    },
+    {
+      "pr": 9173,
+      "issue": 9167,
+      "title": "[AI] Preserve skipped schedule dates when editing schedules",
+      "issueTitle": "[Bug]: Editing a schedule brings back an occurrence that was skipped",
+      "mergedAt": "2026-10-30T03:59:04Z",
+      "mergeSha": "8e6eb272a792fbdfdb70d03e0bc9ec551d9eccb2",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261030",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261030"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261031",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261031"
+      },
+      "status": "written",
+      "why": "The report says that after you skip the next occurrence of a monthly schedule with an account and then rename it, the buggy build puts the status back to Due, while the fixed build keeps it Scheduled.",
+      "result": {
+        "pr": 9173,
+        "issue": 9167,
+        "result": "KEPT",
+        "why": "The schedules list is showing the wrong status for the Broadband schedule.",
+        "at": "2026-11-24T22:05:51.299Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.95,
+        "credits": 2.07
+      }
+    },
+    {
+      "pr": 9205,
+      "issue": 9200,
+      "title": "[AI] preserve category when making transfer between on/off-budget accounts",
+      "issueTitle": "[Bug]: Category is cleared when transactions are changed to a transfer",
+      "mergedAt": "2026-10-14T13:35:09Z",
+      "mergeSha": "1c852e48828921f8e14687a2f3ca7c2d5be932cb",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261014",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261014"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261015",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261015"
+      },
+      "status": "written",
+      "why": "The report gives clear local steps: on fixed builds the on-budget transaction keeps its category when it becomes a transfer to an off-budget account, and on buggy builds the Category cell is empty.",
+      "result": {
+        "pr": 9205,
+        "issue": 9200,
+        "result": "UNRECORDABLE",
+        "why": "the recording does not replay on the fixed build",
+        "at": "2026-11-24T22:13:19.740Z"
+      }
+    },
+    {
+      "pr": 9212,
+      "issue": 3808,
+      "title": "[AI] Show the running balance when sorted by date oldest first",
+      "issueTitle": "[Bug]: Running balance not visible when sortin by oldest transaction first",
+      "mergedAt": "2026-11-09T16:00:26Z",
+      "mergeSha": "5c9a81833d2f4314ad11eda9e3ccd60a5c3cbd3e",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261109",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261109"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261110",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261110"
+      },
+      "status": "written",
+      "why": "The report gives clear steps and an exact expected result: the running balance column should still show after sorting by Date oldest-first. With a single deposit, the balance value is certain.",
+      "result": {
+        "pr": 9212,
+        "issue": 3808,
+        "result": "MISSED",
+        "why": "the buggy build passes too: the test does not reach the bug",
+        "at": "2026-11-24T22:22:03.781Z",
+        "verdict": "PASS",
+        "kaneLabel": null,
+        "kaneConfidence": null,
+        "credits": 0
+      }
+    },
+    {
+      "pr": 9232,
+      "issue": 3175,
+      "title": "[AI] fix transaction search treating digits inside a word as an amount",
+      "issueTitle": "[Bug]: Search not working as expected.",
+      "mergedAt": "2026-10-30T08:15:38Z",
+      "mergeSha": "a6a989823b65b8cd096cbd2b68525721d74266ff",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261030",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261030"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261031",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261031"
+      },
+      "status": "written",
+      "why": "The report says a search for XF 35mm does not find transactions that contain that text, so a transaction with \"XF 35mm\" in its notes should show up when the account is searched for XF 35mm.",
+      "result": {
+        "pr": 9232,
+        "issue": 3175,
+        "result": "UNRECORDABLE",
+        "why": "the recording does not replay on the fixed build",
+        "at": "2026-11-24T22:27:23.288Z"
+      }
+    },
+    {
+      "pr": 9238,
+      "issue": 6317,
+      "title": "[AI] Match nothing for an invalid regex instead of failing the rule preview",
+      "issueTitle": "[Bug]: Rules notes with matches has a bug",
+      "mergedAt": "2026-10-16T23:37:23Z",
+      "mergeSha": "253823d390dce8c460fdc3da1c3a20552931da06",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261016",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261016"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261018",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261018"
+      },
+      "status": "written",
+      "why": "The report says typing a backslash into a Notes 'matches' rule condition makes the app show an error ('A bug happened!'), so a fixed build should still show the rule editor with the typed text in the value field.",
+      "result": {
+        "pr": 9238,
+        "issue": 6317,
+        "result": "UNRECORDABLE",
+        "why": "the fixed build fails the test: The required trailing backslash was not present in the value field when the check ran.",
+        "at": "2026-11-24T22:33:23.730Z"
+      }
+    },
+    {
+      "pr": 9258,
+      "issue": 8857,
+      "title": "fix: api allow partial category updates without name (#8857)",
+      "issueTitle": "[Bug]: api.updateCategory throws TypeError on any partial update that omits name",
+      "mergedAt": "2026-10-21T09:51:15Z",
+      "mergeSha": "9e80790d6813de89304dad3a7452d7ee31dea816",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261021",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261021"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261022",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261022"
+      },
+      "status": "not-testable",
+      "why": "The bug is only in the @actual-app/api updateCategory call made from code (the report says no browser is involved), so moving or hiding a category in the web UI may not go through the broken code and a UI test cannot show the TypeError."
+    },
+    {
+      "pr": 9288,
+      "issue": 6682,
+      "title": "[AI] fix: Preserve disappearing split payees (in account) after posting transactions",
+      "issueTitle": "[Bug]: Converted schedule is incorrect for split transactions with multiple payees",
+      "mergedAt": "2026-10-21T00:29:18Z",
+      "mergeSha": "e35036803af3d194197f595fc4ef49b2c9e30dc7",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261021",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261021"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261022",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261022"
+      },
+      "status": "not-testable",
+      "why": "Reproducing this needs a transaction with a future date, which the rules forbid, and the flow (build a split with two payees, convert it to a schedule, post it from the Schedules list, then check the child payees) cannot fit in 2 to 6 steps."
+    },
+    {
+      "pr": 9299,
+      "issue": 3763,
+      "title": "[AI] Explain SimpleFIN outages instead of a generic internal error",
+      "issueTitle": "[Bug]: unclean handling of SimpleFIN downtime",
+      "mergedAt": "2026-10-25T17:08:46Z",
+      "mergeSha": "644077279e8fa0268bbe0d1cc8402a3f8621a2fc",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261025",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261025"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261026",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261026"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows when the app syncs a linked SimpleFIN bank account and SimpleFIN's server returns a maintenance page, which needs a sync server, a bank connection and outside network access, none of which this setup has."
+    },
+    {
+      "pr": 9307,
+      "issue": 5012,
+      "title": "[AI] Keep split child fields when updating a transaction through the API",
+      "issueTitle": "[Bug]: Calling API updateTransaction for a sub-transaction clears the category & amount",
+      "mergedAt": "2026-10-25T15:35:48Z",
+      "mergeSha": "160b2c99aa285362523eef4b63cb355778fcd954",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261025",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261025"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261026",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261026"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows up when the @actual-app/api Node package calls updateTransaction on a sub-transaction, and the report never says that editing a split's notes in the browser UI causes it, so a UI-only test can't reliably reproduce it."
+    },
+    {
+      "pr": 9316,
+      "issue": 9315,
+      "title": "Fix template over-budget when a rule's schedule has a split with no category",
+      "issueTitle": "[Bug]: Schedule template over-budgets a category when the schedule's rule has a split with no category",
+      "mergedAt": "2026-10-29T15:02:31Z",
+      "mergeSha": "72924f9b270c6d5bbf7e846df558bed291f10784",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261029",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261029"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261030",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261030"
+      },
+      "status": "written",
+      "why": "The report gives exact reproduction steps and the exact correct result (30.00 budgeted, not 100.00), and everything happens locally with no server.",
+      "result": {
+        "pr": 9316,
+        "issue": 9315,
+        "result": "UNRECORDABLE",
+        "why": "the fixed build fails the test: The test opened the correct Bills budget menu, but the budget data was not prepared with a template that could be applied. The menu therefore only offered the normal copy and averaging choices.",
+        "at": "2026-11-24T22:37:25.505Z"
+      }
+    },
+    {
+      "pr": 9318,
+      "issue": 7419,
+      "title": "fix: exclude income from spending analysis budget",
+      "issueTitle": "[Bug]: Spending Analysis in Tracking Budget uses wrong amount.",
+      "mergedAt": "2026-10-25T16:26:01Z",
+      "mergeSha": "e1254b5ac9f8a21f1c3dba31041d5adec6d693bd",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261025",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261025"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261026",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261026"
+      },
+      "status": "not-testable",
+      "why": "The reporter says their steps may not be correct, the wrong and right values exist only in screenshots, and the check means reading the last point of a day-based chart, so I can't name one certain visible value the fixed app shows and the buggy app doesn't."
+    },
+    {
+      "pr": 9360,
+      "issue": 9359,
+      "title": "[AI] Keep the search applied after toggling reconciled transactions",
+      "issueTitle": "[Bug]: Search is no longer applied after toggling reconciled transactions",
+      "mergedAt": "2026-10-28T18:16:23Z",
+      "mergeSha": "38ba95dcdc2c602b95d3a727420f9f44b5172d6c",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261028",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261028"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261029",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261029"
+      },
+      "status": "written",
+      "why": "The report gives clear steps and the expected result: after toggling reconciled transactions, the list should still show only the transactions that match the search text, so a transaction that does not match must stay hidden.",
+      "result": {
+        "pr": 9360,
+        "issue": 9359,
+        "result": "KEPT",
+        "why": "The transaction search is not hiding a row whose payee does not match the text in the Search box.",
+        "at": "2026-11-24T22:46:27.654Z",
+        "verdict": "APP_BUG",
+        "kaneLabel": "application_issue",
+        "kaneConfidence": 0.98,
+        "credits": 2.7954999999999997
+      }
+    },
+    {
+      "pr": 9363,
+      "issue": 8574,
+      "title": "[AI] Keep transactions after sorting by date with hidden reconciled ones",
+      "issueTitle": "[Bug]: Sorting descending by date causes entries to disappear",
+      "mergedAt": "2026-10-29T15:59:41Z",
+      "mergeSha": "c7904f00db5eb5f8e410595f3ee58655521fe405",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261029",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261029"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261030",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261030"
+      },
+      "status": "written",
+      "why": "The report gives clear steps (sort an on-budget account by date descending) and says what should happen: the entries should stay visible, so a transaction added beforehand must still be listed after sorting.",
+      "result": {
+        "pr": 9363,
+        "issue": 8574,
+        "result": "UNRECORDABLE",
+        "why": "the recording does not replay on the fixed build",
+        "at": "2026-11-24T22:57:05.714Z"
+      }
+    },
+    {
+      "pr": 9369,
+      "issue": 5957,
+      "title": "fix: keep line breaks in transaction notes when the notes field is only focused",
+      "issueTitle": "[Bug]: When focusing Notes field to select text - it removes a space in the text on unfocus",
+      "mergedAt": "2026-11-08T02:10:01Z",
+      "mergeSha": "68b660ece721d52297ae1a0afd40e5553a93ffc4",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261108",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261108"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261109",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261109"
+      },
+      "status": "not-testable",
+      "why": "The bug only shows on notes imported from a bank (GoCardless/Danske Bank) that probably contain a hidden character such as a line break, which a user cannot type into the single-line Notes field, and the report says it does not know whether manually entered notes are affected."
+    },
+    {
+      "pr": 9374,
+      "issue": 8856,
+      "title": "fix: reject invalid category group updates (#8856)",
+      "issueTitle": "[Bug]: A category with group=null is silently dropped by getCategories() and crashes updateCategory()",
+      "mergedAt": "2026-10-31T16:36:37Z",
+      "mergeSha": "5897cfa65afec3d0252d7467e5b7a033fb66900b",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261031",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261031"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.11.0-nightly.20261101",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.11.0-nightly.20261101"
+      },
+      "status": "not-testable",
+      "why": "The bug can only be triggered through the @actual-app/api scripting interface (setting a category's group to null), which a user cannot do on screen, and the report says nothing about any visible symptom in the UI."
+    },
+    {
+      "pr": 9386,
+      "issue": 9373,
+      "title": "[AI] Retry incomplete schedule advancement without blocking healthy schedules",
+      "issueTitle": "Distinguish unexpected schedule advancement failures while preserving schedule isolation",
+      "mergedAt": "2026-11-03T22:18:35Z",
+      "mergeSha": "479db6081b4ad4d92524999d92a300b8e2425e91",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261103",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261103"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261105",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261105"
+      },
+      "status": "not-testable",
+      "why": "The issue covers internal schedule-service error handling and retry bookkeeping (setNextDate failures, lastScheduleRun marking during sync) that only shows up through sync, corrupt schedule rules and date-dependent same-day retries, so no single visible fact a user could check on screen separates the fixed build from the buggy one."
+    },
+    {
+      "pr": 9402,
+      "issue": 3664,
+      "title": "fix: custom reports showing excluded empty category rows",
+      "issueTitle": "[Bug]: Custom Reports - show empty rows option ignores unchecked catgeories",
+      "mergedAt": "2026-11-03T22:12:32Z",
+      "mergeSha": "821bcc2a13b4555d0f77e30c8d1579be775524e2",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261103",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261103"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261105",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261105"
+      },
+      "status": "not-testable",
+      "why": "The only difference the report describes is that categories the user unchecked show up as extra $0.00 rows in the buggy build, so the fixed build has no single visible text of its own to check: the test would have to check that rows are absent or count them, and it would rely on the custom-report category-checkbox screen, which the report does not describe clearly enough to script."
+    },
+    {
+      "pr": 9466,
+      "issue": 9463,
+      "title": "[AI] Advance recurring schedules without an assigned account when paid",
+      "issueTitle": "[Bug]: Recurring schedule with no account never advances its next date after being paid",
+      "mergedAt": "2026-11-08T02:14:03Z",
+      "mergeSha": "a03e899debebd98b4dc53741152a93bdf096ee29",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261108",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261108"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261109",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261109"
+      },
+      "status": "not-testable",
+      "why": "Reproducing this needs a schedule dated last month, then opening the budget on a later day, and the expected result is a next date that depends on when the test runs, so no fixed visible text can be checked."
+    },
+    {
+      "pr": 9529,
+      "issue": 6345,
+      "title": "[AI] Fix linked account balances shown wrong or crashing for decimal amounts",
+      "issueTitle": "[Bug]: Error when linking account with pluggy.ai",
+      "mergedAt": "2026-11-13T00:54:11Z",
+      "mergeSha": "f5f06896c228522d6f09ed8b43828d8dec5931f4",
+      "buggy": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261113",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261113"
+      },
+      "fixed": {
+        "npm": "@actual-app/web",
+        "version": "26.12.0-nightly.20261114",
+        "buildDir": "build",
+        "isolation": true,
+        "setup": "node setup.mjs {url} {profile}",
+        "label": "@actual-app/web@26.12.0-nightly.20261114"
+      },
+      "status": "not-testable",
+      "why": "The bug only happens when linking a bank account through the pluggy.ai bank-sync service, which needs an external server, an account and bank sync that this local setup does not have."
+    }
+  ]
+}

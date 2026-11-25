@@ -1,0 +1,11 @@
+{
+  "pr": 8726,
+  "issue": 8725,
+  "result": "KEPT",
+  "why": "The list includes a transaction with payee Alpha in the result shown to the user.",
+  "at": "2026-11-24T21:19:25.452Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.96,
+  "credits": 2.7954499999999998
+}

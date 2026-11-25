@@ -1,0 +1,11 @@
+{
+  "pr": 9360,
+  "issue": 9359,
+  "result": "KEPT",
+  "why": "The transaction search is not hiding a row whose payee does not match the text in the Search box.",
+  "at": "2026-11-24T22:46:27.654Z",
+  "verdict": "APP_BUG",
+  "kaneLabel": "application_issue",
+  "kaneConfidence": 0.98,
+  "credits": 2.7954999999999997
+}

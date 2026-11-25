@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/actual/cases/8756/deleting_a_category_that_had_a_deposit_a_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.93,
+    "verdict": "UNKNOWN",
+    "why": "Could not tell whether the failure was at a check or an action.",
+    "next": "Read the evidence."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 1,
+      "kind": "unknown",
+      "reason": "analyzer_failed: @ step 1",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.93,
+        "rootCause": "The summary is formatting a zero overspent amount as negative zero."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/46385d58-3f88-4e67-a441-dc1e162005bb/scratch/4/replay-test/screenshots/step_001.png"
+    },
+    "creditsReported": 1.7197500000000001,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

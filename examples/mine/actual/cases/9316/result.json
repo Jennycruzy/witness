@@ -1,0 +1,7 @@
+{
+  "pr": 9316,
+  "issue": 9315,
+  "result": "UNRECORDABLE",
+  "why": "the fixed build fails the test: The test opened the correct Bills budget menu, but the budget data was not prepared with a template that could be applied. The menu therefore only offered the normal copy and averaging choices.",
+  "at": "2026-11-24T22:37:25.505Z"
+}
