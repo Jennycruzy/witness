@@ -32,16 +32,19 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
 
   log('\nreal failures: truth vs Kane\'s label vs WITNESS');
   let appBugs = 0, kaneRight = 0, witnessRight = 0, testProblems = 0, witnessRightTP = 0, envs = 0, witnessRightEnv = 0;
+  let mined = 0, minedKane = 0, minedWitness = 0;
   for (const p of cases.pairs) {
     const d = classify(parseRun(readFileSync(join(root, p.target), 'utf8')), parseRun(readFileSync(join(root, p.reference), 'utf8')));
     const kaneOk = !labelDisagrees({ ...d, verdict: p.truth });
     const wOk = d.verdict === p.truth;
-    if (p.truth === 'APP_BUG') { appBugs++; if (kaneOk) kaneRight++; if (wOk) witnessRight++; } else if (p.truth === 'ENV') { envs++; if (wOk) witnessRightEnv++; } else { testProblems++; if (wOk) witnessRightTP++; }
+    if (p.source === 'witness mine') { mined++; if (kaneOk) minedKane++; if (wOk) minedWitness++; }
+    else if (p.truth === 'APP_BUG') { appBugs++; if (kaneOk) kaneRight++; if (wOk) witnessRight++; } else if (p.truth === 'ENV') { envs++; if (wOk) witnessRightEnv++; } else { testProblems++; if (wOk) witnessRightTP++; }
     log(`  ${p.truth.padEnd(12)} Kane ${String(d.kaneLabel).padEnd(17)} ${p.truth === 'ENV' ? 'n/a  ' : kaneOk ? 'right' : 'WRONG'}   WITNESS ${d.verdict.padEnd(12)} ${wOk ? 'right' : 'WRONG'}   ${p.name}`);
     if (!wOk) ok = false;
   }
   log(`\n  real app bugs:      Kane's label right on ${kaneRight} of ${appBugs}; WITNESS right on ${witnessRight} of ${appBugs}`);
   log(`  real test problems: WITNESS right on ${witnessRightTP} of ${testProblems}`);
+  if (mined) log(`  mined regressions:  Kane's label right on ${minedKane} of ${mined}; WITNESS right on ${minedWitness} of ${mined} (found by witness mine from issue reports)`);
   if (envs) log(`  reference fails too: WITNESS said ENV on ${witnessRightEnv} of ${envs} (nobody told to change the app)`);
 
   let fixOk = true;

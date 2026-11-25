@@ -26,6 +26,7 @@ All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5, 17
 |---|---|---|
 | Real app bugs (12) | right on **6 of 12** | right on **12 of 12** |
 | Real test problems (3) | right on 3 of 3 | right on **3 of 3** |
+| Regressions found by `witness mine` (16; kane-cli 0.10.9, 24 November) | right on 15 of 16 | right on **16 of 16** |
 | Real bug Kane passed (1) | PASS | flagged the check as **LOCKED** from the recording, before any run |
 
 - **Three shipped regressions in well-known apps**, each a plain-English Kane test recorded once on the last good release and replayed on the release that broke it ([`examples/`](examples/)):
@@ -95,7 +96,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 |---|---|---|
 | Ships | `npx -y github:Jennycruzy/witness demo` | The full flow on a real bug, from the real Kane runs, in under a second after install |
 | Ships | [`examples/actual`](examples/actual) and [`evidence/actual-8475-search.json`](evidence/actual-8475-search.json) | The nightly watch set up on Actual Budget, and the build search that found the first bad nightly for #8475 (20 June 2026) unattended, with the commits in between |
-| Verified | `node dist/cli.js verify` | Kane's label right on 6 of 12 real app bugs in four apps, WITNESS 12 of 12; 3 of 3 real test problems; ENV where the good build fails too; every evidence file checked by sha256 |
+| Verified | `node dist/cli.js verify` | Kane's label right on 6 of 12 real app bugs in four apps, WITNESS 12 of 12; 3 of 3 real test problems; the 16 mined regressions (Kane 15 of 16, WITNESS 16 of 16); ENV where the good build fails too; every evidence file checked by sha256 |
 | Verified | [Reported upstream](#reported-upstream) | Both Kane issues reproduced and fixed by the Kane team; the TodoMVC fix PR |
 | Verified | [`evidence/actual-6574-saved-state/`](evidence/actual-6574-saved-state/) and its row in `verify` | A live Actual Budget bug that a clean Kane run passes on the newest release; with the browser data the previous release saved, the same recording fails: STATE_BUG |
 | Closed loop | [`evidence/todomvc-svelte-trim-hook-untold.patch`](evidence/todomvc-svelte-trim-hook-untold.patch) and its row in `verify` | A Claude Code session told about one bug tried to stop; the Stop hook blocked it on a second bug it was never told about; it fixed that too, and the unchanged recordings passed |
