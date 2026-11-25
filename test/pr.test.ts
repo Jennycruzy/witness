@@ -20,7 +20,7 @@ describe('witness pr', () => {
     const w = prWitnessConfig(c, 'https://deploy-preview-1.demo.actualbudget.org', '/tmp/x');
     expect(w.target.url).toBe('https://deploy-preview-1.demo.actualbudget.org');
     expect(w.reference.url).toBe('https://edge.actualbudget.org');
-    expect(w.tests).toHaveLength(5);
+    expect(w.tests).toHaveLength(4);
     expect(w.tests.every(t => t.startsWith('/') && t.endsWith('_test.md'))).toBe(true);
     expect(c.setup).toContain(resolve(__dirname, '../examples/pr/actual'));
     expect(c.setup).not.toContain('{base}');

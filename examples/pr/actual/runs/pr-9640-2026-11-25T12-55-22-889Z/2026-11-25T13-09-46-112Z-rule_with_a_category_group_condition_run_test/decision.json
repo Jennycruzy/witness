@@ -1,0 +1,56 @@
+{
+  "test": "examples/mine/actual/cases/8587/rule_with_a_category_group_condition_run_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.98,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 0,
+    "healed": false,
+    "failed": {
+      "runId": "run-0",
+      "stepIndex": 2,
+      "kind": "action",
+      "reason": "action_failed: click @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "timing_sync",
+        "confidence": 0.98,
+        "rootCause": "The test did not wait for the app to finish starting before trying to click More."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/2f54942c-22d3-4905-8da6-ec93203ed5fa/scratch/0/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.29785,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 0,
+    "healed": false,
+    "failed": {
+      "runId": "run-0",
+      "stepIndex": 2,
+      "kind": "action",
+      "reason": "action_failed: click @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "timing_sync",
+        "confidence": 0.97,
+        "rootCause": "The application was still connecting to its local data and had not drawn the sidebar when the recorded sequence moved on."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/874900e1-19ce-4eab-b3af-1be71bce3f33/scratch/0/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.4513,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

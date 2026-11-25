@@ -1,0 +1,129 @@
+{"type":"stream_start","cli_version":"0.10.9","surface":"testmd","pid":3037635,"v":1,"ts":"2026-11-25T14:14:10.763Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Open new schedule","ref":null,"v":1,"ts":"2026-11-25T14:14:16.203Z"}
+{"type":"run_start","objective":"Click Schedules in the sidebar, then click Add new schedule.","timestamp":1795616056,"environment":{"resolution":"1920x1080"},"override_start_url":"https://deploy-preview-9650.demo.actualbudget.org","recorded_start_url":"http://127.0.0.1:43415/","override_applied":true,"v":1,"ts":"2026-11-25T14:14:16.346Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 4 actions","recording_length":4,"v":1,"ts":"2026-11-25T14:14:16.347Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:14:16.347Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-25T14:14:16.450Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:43415/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-25T14:14:17.697Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:43415/","action_type":"navigate","v":1,"ts":"2026-11-25T14:14:17.738Z"}
+{"type":"step_end","index":1,"status":"passed","duration":1.4,"summary":"navigate: Navigate to http://127.0.0.1:43415/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"bf62f912-ed4f-488d-8c1b-536b65401e17","v":1,"ts":"2026-11-25T14:14:17.738Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:14:17.756Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/","v":1,"ts":"2026-11-25T14:14:18.606Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Waiting for the application sidebar to load","action_type":"wait","success":true,"v":1,"ts":"2026-11-25T14:14:34.085Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Waiting for the application sidebar to load","action_type":"wait","v":1,"ts":"2026-11-25T14:14:34.085Z"}
+{"type":"step_end","index":2,"status":"passed","duration":16.4,"summary":"wait: Waiting for the application sidebar to load","ordinal":2,"id":"0-2","kind":"wait","screenshot":"screenshot.jpg","action_id":"d9e3f905-1ba8-4d55-97ed-18fa3e961c47","v":1,"ts":"2026-11-25T14:14:34.086Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T14:14:34.086Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/budget","v":1,"ts":"2026-11-25T14:14:34.175Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Schedules in the sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:14:34.876Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Schedules in the sidebar","action_type":"click","v":1,"ts":"2026-11-25T14:14:34.876Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.8,"summary":"click: Clicking Schedules in the sidebar","ordinal":3,"id":"0-3","kind":"click","screenshot":"screenshot.jpg","action_id":"fb82e3cf-1137-439b-8466-118a69b2e7a0","v":1,"ts":"2026-11-25T14:14:35.029Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T14:14:35.029Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:35.142Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Add new schedule button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:14:41.049Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Add new schedule button","action_type":"click","v":1,"ts":"2026-11-25T14:14:41.049Z"}
+{"type":"step_end","index":4,"status":"passed","duration":6,"summary":"click: Clicking Add new schedule button","ordinal":4,"id":"0-4","kind":"click","screenshot":"screenshot.jpg","action_id":"80fdb13f-47f0-4f98-8037-3f8bdfaf761c","v":1,"ts":"2026-11-25T14:14:41.173Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":24.97,"final_url":"https://deploy-preview-9650.demo.actualbudget.org/schedules","actions_executed":4,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/0/replay-test/screenshots/step_004.png","run_dir":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:14:41.200Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":24.97,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:14:41.202Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Fill schedule form","ref":null,"v":1,"ts":"2026-11-25T14:14:41.205Z"}
+{"type":"run_start","objective":"Set Schedule Name to Internet. In Payee, type Internet company and click Create payee \"Internet company\". Set Account to Checking and Amount to 50. Keep the default monthly recurrence starting today, leave Automatically add transaction unchecked, and click Add.","timestamp":1795616081,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T14:14:41.244Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 9 actions","recording_length":9,"v":1,"ts":"2026-11-25T14:14:41.244Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:14:41.259Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:41.996Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Typing Schedule Name as Internet","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:14:42.455Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Typing Schedule Name as Internet","action_type":"fill","v":1,"ts":"2026-11-25T14:14:42.455Z"}
+{"type":"step_end","index":1,"status":"passed","duration":1.2,"summary":"fill: Typing Schedule Name as Internet","ordinal":5,"id":"1-1","kind":"fill","screenshot":"screenshot.jpg","action_id":"0ff5e333-d827-4c70-807f-a2cbece8fb7c","v":1,"ts":"2026-11-25T14:14:42.601Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:14:42.601Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:43.157Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Typing Payee name into the Payee field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:14:43.429Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Typing Payee name into the Payee field","action_type":"fill","v":1,"ts":"2026-11-25T14:14:43.429Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.8,"summary":"fill: Typing Payee name into the Payee field","ordinal":6,"id":"1-2","kind":"fill","screenshot":"screenshot.jpg","action_id":"47257606-b91e-4ae2-9f9b-74a4a375b9d5","v":1,"ts":"2026-11-25T14:14:43.584Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T14:14:43.584Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:43.912Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Typing Payee as Internet company","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:14:44.286Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Typing Payee as Internet company","action_type":"fill","v":1,"ts":"2026-11-25T14:14:44.286Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.7,"summary":"fill: Typing Payee as Internet company","ordinal":7,"id":"1-3","kind":"fill","screenshot":"screenshot.jpg","action_id":"211df16a-416a-41c0-850f-48dde9f2e979","v":1,"ts":"2026-11-25T14:14:44.429Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T14:14:44.429Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:44.853Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Create payee Internet company in autocomplete dropdown","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:14:46.413Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Create payee Internet company in autocomplete dropdown","action_type":"click","v":1,"ts":"2026-11-25T14:14:46.413Z"}
+{"type":"step_end","index":4,"status":"passed","duration":2,"summary":"click: Clicking Create payee Internet company in autocomplete dropdown","ordinal":8,"id":"1-4","kind":"click","screenshot":"screenshot.jpg","action_id":"d2c848a2-a4fe-4ce0-a1d8-35715cdb8817","v":1,"ts":"2026-11-25T14:14:46.563Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-25T14:14:46.563Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:47.197Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Clicking Account dropdown in the Schedule dialog","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:14:54.205Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Clicking Account dropdown in the Schedule dialog","action_type":"click","v":1,"ts":"2026-11-25T14:14:54.205Z"}
+{"type":"step_end","index":5,"status":"passed","duration":7.6,"summary":"click: Clicking Account dropdown in the Schedule dialog","ordinal":9,"id":"1-5","kind":"click","screenshot":"screenshot.jpg","action_id":"7947a7e1-e59e-46ad-aab5-cbfb0b8d38fb","v":1,"ts":"2026-11-25T14:14:54.207Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-25T14:14:54.208Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:54.664Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Waiting for the queued steps to start","action_type":"wait","success":true,"v":1,"ts":"2026-11-25T14:14:55.677Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Waiting for the queued steps to start","action_type":"wait","v":1,"ts":"2026-11-25T14:14:55.678Z"}
+{"type":"step_end","index":6,"status":"passed","duration":1.5,"summary":"wait: Waiting for the queued steps to start","ordinal":10,"id":"1-6","kind":"wait","screenshot":"screenshot.jpg","action_id":"e981783c-5558-4f1e-85c4-867a77fb8e5c","v":1,"ts":"2026-11-25T14:14:55.679Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-25T14:14:55.679Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:56.259Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Click \"Checking\"","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:14:57.005Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Click \"Checking\"","action_type":"click","v":1,"ts":"2026-11-25T14:14:57.005Z"}
+{"type":"step_end","index":7,"status":"passed","duration":1.3,"summary":"click: Click \"Checking\"","ordinal":11,"id":"1-7","kind":"click","screenshot":"screenshot.jpg","action_id":"261942e9-8697-49bb-bb9f-1a14cef84204","v":1,"ts":"2026-11-25T14:14:57.191Z"}
+{"type":"step_start","index":8,"objective":"Step 8","v":1,"ts":"2026-11-25T14:14:57.191Z"}
+{"type":"step_event","index":8,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:57.940Z"}
+{"type":"step_event","index":8,"event":"action","detail":"Type \"50\" into \"Amount\"","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:14:58.490Z"}
+{"type":"step_event","index":8,"event":"reasoning","detail":"Type \"50\" into \"Amount\"","action_type":"fill","v":1,"ts":"2026-11-25T14:14:58.490Z"}
+{"type":"step_end","index":8,"status":"passed","duration":1.3,"summary":"fill: Type \"50\" into \"Amount\"","ordinal":12,"id":"1-8","kind":"fill","screenshot":"screenshot.jpg","action_id":"ad588a7d-63f6-4361-be52-28407355305d","v":1,"ts":"2026-11-25T14:14:58.626Z"}
+{"type":"step_start","index":9,"objective":"Step 9","v":1,"ts":"2026-11-25T14:14:58.628Z"}
+{"type":"step_event","index":9,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:14:59.065Z"}
+{"type":"step_event","index":9,"event":"action","detail":"Click \"Add\"","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:14:59.994Z"}
+{"type":"step_event","index":9,"event":"reasoning","detail":"Click \"Add\"","action_type":"click","v":1,"ts":"2026-11-25T14:14:59.995Z"}
+{"type":"step_end","index":9,"status":"passed","duration":1.4,"summary":"click: Click \"Add\"","ordinal":13,"id":"1-9","kind":"click","screenshot":"screenshot.jpg","action_id":"7f79da52-0244-4490-a0fb-1bf9df40bd7c","v":1,"ts":"2026-11-25T14:15:00.138Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":18.91,"final_url":"https://deploy-preview-9650.demo.actualbudget.org/schedules","actions_executed":9,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/1/replay-test/screenshots/step_009.png","run_dir":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/1/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:15:00.140Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":18.91,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:15:00.140Z"}
+{"type":"test_md_step_start","step_index":3,"heading":"Skip next occurrence","ref":null,"v":1,"ts":"2026-11-25T14:15:00.140Z"}
+{"type":"run_start","objective":"In the \"Internet\" schedule row, click the Menu button (⋯) and click Skip next scheduled date.","timestamp":1795616100,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T14:15:00.220Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-25T14:15:00.221Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:15:00.232Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:15:00.334Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking the Internet row Menu button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:15:05.384Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking the Internet row Menu button","action_type":"click","v":1,"ts":"2026-11-25T14:15:05.384Z"}
+{"type":"step_end","index":1,"status":"passed","duration":5.2,"summary":"click: Clicking the Internet row Menu button","ordinal":14,"id":"2-1","kind":"click","screenshot":"screenshot.jpg","action_id":"2a1dad6a-87e5-499a-ba6e-703e86a0bf55","v":1,"ts":"2026-11-25T14:15:05.521Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:15:05.521Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:15:05.618Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking Skip next scheduled date","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:15:06.251Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking Skip next scheduled date","action_type":"click","v":1,"ts":"2026-11-25T14:15:06.252Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.7,"summary":"click: Clicking Skip next scheduled date","ordinal":15,"id":"2-2","kind":"click","screenshot":"screenshot.jpg","action_id":"dfcf3f71-84a9-4741-8789-87167b387e22","v":1,"ts":"2026-11-25T14:15:06.407Z"}
+{"type":"run_end","run_id":"run-2","status":"passed","summary":"","reason":"replay completed","duration":6.2,"final_url":"https://deploy-preview-9650.demo.actualbudget.org/schedules","actions_executed":2,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/2/replay-test/screenshots/step_002.png","run_dir":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/2/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:15:06.408Z"}
+{"type":"test_md_step_end","step_index":3,"status":"passed","duration_s":6.2,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:15:06.408Z"}
+{"type":"test_md_step_start","step_index":4,"heading":"Rename the schedule","ref":null,"v":1,"ts":"2026-11-25T14:15:06.408Z"}
+{"type":"run_start","objective":"Click the \"Internet\" schedule row, change only Schedule Name to Broadband, and click Save.","timestamp":1795616106,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T14:15:06.501Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 3 actions","recording_length":3,"v":1,"ts":"2026-11-25T14:15:06.502Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:15:06.514Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:15:06.625Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking the Internet schedule row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:15:07.221Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking the Internet schedule row","action_type":"click","v":1,"ts":"2026-11-25T14:15:07.221Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"click: Clicking the Internet schedule row","ordinal":16,"id":"3-1","kind":"click","screenshot":"screenshot.jpg","action_id":"57275c0b-cd14-45aa-af64-f18f47391387","v":1,"ts":"2026-11-25T14:15:07.362Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:15:07.363Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:15:07.862Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Entering Broadband in Schedule Name field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:15:08.181Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Entering Broadband in Schedule Name field","action_type":"fill","v":1,"ts":"2026-11-25T14:15:08.197Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.8,"summary":"fill: Entering Broadband in Schedule Name field","ordinal":17,"id":"3-2","kind":"fill","screenshot":"screenshot.jpg","action_id":"2075978f-4f64-4ac6-ac8d-2bebc425e7df","v":1,"ts":"2026-11-25T14:15:08.413Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T14:15:08.413Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:15:08.891Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Save button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:15:09.541Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Save button","action_type":"click","v":1,"ts":"2026-11-25T14:15:09.542Z"}
+{"type":"step_end","index":3,"status":"passed","duration":1.1,"summary":"click: Clicking Save button","ordinal":18,"id":"3-3","kind":"click","screenshot":"screenshot.jpg","action_id":"48ffb85b-888d-42e1-9500-ee5fa9d7b229","v":1,"ts":"2026-11-25T14:15:09.715Z"}
+{"type":"run_end","run_id":"run-3","status":"passed","summary":"","reason":"replay completed","duration":3.22,"final_url":"https://deploy-preview-9650.demo.actualbudget.org/schedules","actions_executed":3,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/3/replay-test/screenshots/step_003.png","run_dir":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/3/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:15:09.715Z"}
+{"type":"test_md_step_end","step_index":4,"status":"passed","duration_s":3.22,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:15:09.715Z"}
+{"type":"test_md_step_start","step_index":5,"heading":"Check schedule status","ref":null,"v":1,"ts":"2026-11-25T14:15:09.715Z"}
+{"type":"run_start","objective":"Verify the Status cell of the \"Broadband\" row in the schedules list shows \"Scheduled\".","timestamp":1795616109,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T14:15:09.797Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-25T14:15:09.798Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:15:09.809Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:15:09.907Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Checking the Broadband schedule status","action_type":"analyze","success":true,"v":1,"ts":"2026-11-25T14:15:10.008Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Checking the Broadband schedule status","action_type":"analyze","v":1,"ts":"2026-11-25T14:15:10.008Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.2,"summary":"analyze: Checking the Broadband schedule status","ordinal":19,"id":"4-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"e2c46fd9-4723-4501-93c1-2e4a6ed350e6","v":1,"ts":"2026-11-25T14:15:10.008Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:15:10.008Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9650.demo.actualbudget.org/schedules","v":1,"ts":"2026-11-25T14:15:10.181Z"}
+{"type":"step_event","index":2,"event":"assertion","detail":"The Status cell of the \"Broadband\" row in the schedules list shows \"Scheduled\".","passed":true,"v":1,"ts":"2026-11-25T14:15:10.251Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.3,"summary":"assert: The Status cell of the \"Broadband\" row in the schedules list shows \"Scheduled\".","ordinal":20,"id":"4-2","kind":"assert","screenshot":"screenshot.jpg","action_id":"8b3a29e1-b3e1-489a-aed2-44b6a8bfeeef","v":1,"ts":"2026-11-25T14:15:10.279Z"}
+{"type":"run_end","run_id":"run-4","status":"passed","summary":"","reason":"replay completed","duration":0.51,"final_url":"https://deploy-preview-9650.demo.actualbudget.org/schedules","actions_executed":2,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/4/replay-test/screenshots/step_002.png","run_dir":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/scratch/4/replay-test","total_runs":1,"context":{"memory":{},"variables":{"broadband_status_scheduled":{"syntax":"{{broadband_status_scheduled}}","value":"true","secret":false}},"pointer":""},"variables_out":{"broadband_status_scheduled":{"syntax":"{{broadband_status_scheduled}}","value":"true","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:15:10.302Z"}
+{"type":"test_md_step_end","step_index":5,"status":"passed","duration_s":0.51,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:15:10.302Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"27d9ecdf-f3d9-4375-a967-4bb1ac8c9760","v":1,"ts":"2026-11-25T14:15:12.539Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":59,"steps":{"total":5,"passed":5,"failed":0,"skipped":0,"replay_decisions":5,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"https://deploy-preview-9650.demo.actualbudget.org","v":1,"ts":"2026-11-25T14:15:12.541Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>/.testmuai/kaneai/sessions/e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7/evidence/27d9ecdf-f3d9-4375-a967-4bb1ac8c9760.evidence","v":1,"ts":"2026-11-25T14:15:12.547Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":59,"session_id":"e88b41c8-ec7f-4175-be3b-d2b4f79ad8f7","coverage":{"status":"skipped"},"override_start_url":"https://deploy-preview-9650.demo.actualbudget.org","v":1,"ts":"2026-11-25T14:15:12.547Z"}

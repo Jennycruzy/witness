@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/actual/cases/8726/amount_is_greater_than_filter_hides_tran_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.78,
+    "verdict": "TEST_PROBLEM",
+    "why": "The page changed where the test acts: it failed at an action, not at a check.",
+    "next": "Re-record the test on the target build, then run it again."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 5,
+      "kind": "action",
+      "reason": "action_failed: fill @ step 5",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.78,
+        "rootCause": "The saved target for the Deposit field appears to have drifted from the current form, so the replay could not fill the intended amount box."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/b483a61a-75f9-46c7-add4-58616879ad4d/scratch/1/replay-test/screenshots/step_005.png"
+    },
+    "creditsReported": 3.27885,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

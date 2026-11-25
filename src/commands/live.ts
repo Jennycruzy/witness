@@ -179,7 +179,7 @@ ${o.pr ? `<h1>Check a pull request of ${app} before it merges</h1>
 <p class="muted" id="prcount"></p>
 <div class="box"><div class="box-h"><span>Check a live pull request</span><span class="muted">${o.perHour} runs an hour, real Kane credits</span></div><div style="padding:8px 16px 16px">
 <label for="pr">Open pull request</label><select id="pr"><option>Loading open pull requests...</option></select>
-<label for="test">Tests</label><select id="test"><option value="">All five saved tests (about 10 minutes)</option></select>
+<label for="test">Tests</label><select id="test"><option value="">All five saved tests (about 15 to 20 minutes)</option></select>
 <div class="btns"><button class="btn btn-primary" id="prgo">Check this pull request</button><a id="prlink" class="muted" href="#" target="_blank" rel="noopener"></a></div>
 <div id="prmsg" class="msg muted"></div></div></div>` : ''}
 <div class="box"><div class="box-h"><span>Log</span><span id="timer" class="muted"></span></div><pre id="log">Pick a pull request${o.pr ? '' : ' or a build'} to start.</pre></div>
@@ -232,7 +232,7 @@ async function loadPrs(){
   const ai=prList.filter(p=>p.ai).length;
   $('#prcount').textContent=prList.length?'Right now '+prList.length+' open pull requests of '+j.repo+' have a live preview; '+ai+' of them are marked [AI]. Live main: '+(j.live?j.live.url:'')+'.':'';
   $('#pr').innerHTML=prList.map(p=>'<option value="'+p.number+'">#'+p.number+' '+esc(p.title)+'</option>').join('')||(j.loading?'<option value="">Loading open pull requests from GitHub...</option>':'<option value="">No open pull request has a preview right now</option>');if(j.loading)setTimeout(loadPrs,5000);
-  $('#test').innerHTML='<option value="">All '+(j.tests||[]).length+' saved tests (about 10 minutes)</option>'+(j.tests||[]).map(t=>'<option value="'+esc(t.file)+'">'+esc(t.title)+' (about 2 minutes)</option>').join('');
+  $('#test').innerHTML='<option value="">All '+(j.tests||[]).length+' saved tests (about 15 to 20 minutes)</option>'+(j.tests||[]).map(t=>'<option value="'+esc(t.file)+'">'+esc(t.title)+' (about 2 minutes)</option>').join('');
   const link=()=>{const p=prList.find(x=>String(x.number)===$('#pr').value);$('#prlink').textContent=p?'Open the preview':'';$('#prlink').href=p?p.preview:'#'};
   $('#pr').onchange=link;link();
 }

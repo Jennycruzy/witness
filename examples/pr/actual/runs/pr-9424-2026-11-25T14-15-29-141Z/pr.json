@@ -1,0 +1,38 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9424,
+  "title": "[AI] Add automatic exchange rates from Frankfurter (do not merge: stacked on #9356)",
+  "author": "rapastranac",
+  "ai": true,
+  "headSha": "5a0e1afd0b79794f371418fa290e85bd22a1e438",
+  "preview": "https://deploy-preview-9424.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T14:15:29.141Z",
+  "seconds": 200,
+  "results": [
+    {
+      "test": "search_filter_stays_applied_after_toggli_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    },
+    {
+      "test": "category_dropdown_menu_opens_again_after_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    }
+  ]
+}

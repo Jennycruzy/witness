@@ -50,7 +50,7 @@ async function main(): Promise<number> {
   }
   if (cmd === 'pr' && (a === 'list' || a === 'check') && b) {
     // witness pr list <pr.json>                 open pull requests and their live previews
-    // witness pr check <pr.json> <n> [--only t] Kane replays the saved tests on the preview of pull request n
+    // witness pr check <pr.json> <n> [--only a,b] Kane replays the saved tests (or only those named) on the preview of pull request n
     const c = loadPrConfig(b);
     if (a === 'list') {
       for (const p of listOpenPrs(c)) console.log(`#${p.number}  ${p.preview ? 'preview' : 'no preview'}  ${p.ai ? '[AI] ' : ''}${p.title.replace(/^\s*\[AI\]\s*/i, '')}`);

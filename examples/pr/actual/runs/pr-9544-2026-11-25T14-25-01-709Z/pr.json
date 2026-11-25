@@ -1,0 +1,26 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9544,
+  "title": "[AI] Tag new bank sync transactions for review (experimental)",
+  "author": "e13h",
+  "ai": true,
+  "headSha": "3f0c1a1b049811525cf2850cbd19ca2371097ff4",
+  "preview": "https://deploy-preview-9544.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T14:25:01.709Z",
+  "seconds": 121,
+  "results": [
+    {
+      "test": "search_filter_stays_applied_after_toggli_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "test_id": "2341c464-77ab-47cf-a82c-3ad1634ca869",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "category_dropdown_menu_opens_again_after",
+  "commit_id": "5eb9ee61-0ce3-4183-848c-099582d5304a",
+  "testcase_id": "01M87RX7R61MDAA1DH8N0MCPBG",
+  "executions": [
+    {
+      "execution_id": "328b1f48-812b-46d4-a38e-09f6deb5fca8",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T21:58:02.610Z"
+    }
+  ]
+}

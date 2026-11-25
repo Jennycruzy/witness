@@ -1,0 +1,18 @@
+{
+  "test_id": "c0895018-32f0-47f9-aff5-1bc914af303c",
+  "project_id": "01M7MQ262A7G5HSX8QF6Z28C6F",
+  "folder_id": "01M7MQ26D065C04TPDEV2DX2KZ",
+  "org_id": "3437302",
+  "session_name": "renaming_a_schedule_keeps_its_skipped_oc",
+  "commit_id": "12a621ef-76ab-406a-95ab-a2135b551008",
+  "testcase_id": "01M87SGSKMXSRZCJVRHXBCA1F0",
+  "executions": [
+    {
+      "execution_id": "07e07fb0-0bd1-48a4-b0ab-3c20af0e9eda",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-24T22:09:01.216Z"
+    }
+  ]
+}

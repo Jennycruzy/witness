@@ -1,0 +1,26 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9662,
+  "title": "[AI] Close transaction date picker after selection",
+  "author": "lfrb",
+  "ai": true,
+  "headSha": "2c11c8660401f4b3c172b81b1a63812571a33896",
+  "preview": "https://deploy-preview-9662.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T14:15:26.171Z",
+  "seconds": 114,
+  "results": [
+    {
+      "test": "search_filter_stays_applied_after_toggli_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    }
+  ]
+}

@@ -96,7 +96,7 @@ export async function checkPr(c: PrConfig, n: number, log = console.log, only?: 
   const dir = join(c.evidenceDir!, `pr-${n}-${started.toISOString().replace(/[:.]/g, '-')}`);
   mkdirSync(dir, { recursive: true });
   const cfg = prWitnessConfig(c, pr.preview, dir);
-  if (only) cfg.tests = cfg.tests.filter(t => t.includes(only));
+  if (only) { const want = only.split(',').map(x => x.trim()).filter(Boolean); cfg.tests = cfg.tests.filter(t => want.some(w => t.includes(w))); }
   log(`witness pr  ${c.repo}#${n}  ${pr.ai ? '[written by a coding agent] ' : ''}${pr.title}`);
   log(`  preview    ${pr.preview}   (head ${pr.headSha.slice(0, 12)})`);
   log(`  live main  ${c.live.url}`);

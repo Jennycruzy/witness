@@ -1,0 +1,21 @@
+{
+  "test": "examples/pr/actual/tests/search_filter_stays_applied_after_toggli_test.md",
+  "decision": {
+    "kaneLabel": null,
+    "kaneConfidence": null,
+    "verdict": "PASS",
+    "why": "Kane passed the test on the target build.",
+    "next": "Nothing to do."
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 5,
+      "query": "whether the Hide reconciled transactions option is present in the Account menu",
+      "expected": "Hide reconciled transactions",
+      "locator": "internal:role=button[name=\"Hide reconciled transactions\"i]",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

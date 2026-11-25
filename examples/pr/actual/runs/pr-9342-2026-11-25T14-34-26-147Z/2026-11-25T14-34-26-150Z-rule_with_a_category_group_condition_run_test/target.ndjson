@@ -1,0 +1,174 @@
+{"type":"stream_start","cli_version":"0.10.9","surface":"testmd","pid":3053767,"v":1,"ts":"2026-11-25T14:34:48.150Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Open new rule","ref":null,"v":1,"ts":"2026-11-25T14:34:54.576Z"}
+{"type":"run_start","objective":"In the sidebar click More, then Rules, then click \"Create new rule\".","timestamp":1795617294,"environment":{"resolution":"1920x1080"},"override_start_url":"https://deploy-preview-9342.demo.actualbudget.org","recorded_start_url":"https://edge.actualbudget.org","override_applied":true,"v":1,"ts":"2026-11-25T14:34:54.708Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 6 actions","recording_length":6,"v":1,"ts":"2026-11-25T14:34:54.709Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:34:54.709Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-25T14:34:54.796Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to https://edge.actualbudget.org","action_type":"navigate","success":true,"v":1,"ts":"2026-11-25T14:34:55.427Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to https://edge.actualbudget.org","action_type":"navigate","v":1,"ts":"2026-11-25T14:34:55.427Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"navigate: Navigate to https://edge.actualbudget.org","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"35ea9aa9-bcaf-4189-a37f-e67ca89b2e77","v":1,"ts":"2026-11-25T14:34:55.429Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:34:55.429Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/","v":1,"ts":"2026-11-25T14:34:56.524Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking My Finances in the sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:03.354Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking My Finances in the sidebar","action_type":"click","v":1,"ts":"2026-11-25T14:35:03.354Z"}
+{"type":"step_end","index":2,"status":"passed","duration":7.9,"summary":"click: Clicking My Finances in the sidebar","ordinal":2,"id":"0-2","kind":"click","screenshot":"screenshot.jpg","action_id":"83d79a14-c7e8-497b-be25-8beec5b79b21","v":1,"ts":"2026-11-25T14:35:03.700Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T14:35:03.701Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/budget","v":1,"ts":"2026-11-25T14:35:03.784Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Pressing Escape to close the open budget menu","action_type":"press_key","success":true,"v":1,"ts":"2026-11-25T14:35:04.311Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Pressing Escape to close the open budget menu","action_type":"press_key","v":1,"ts":"2026-11-25T14:35:04.311Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.6,"summary":"press_key: Pressing Escape to close the open budget menu","ordinal":3,"id":"0-3","kind":"press_key","screenshot":"screenshot.jpg","action_id":"cccb2b6f-a6f3-44b8-b5ea-108e08458b62","v":1,"ts":"2026-11-25T14:35:04.312Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T14:35:04.312Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/budget","v":1,"ts":"2026-11-25T14:35:04.411Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Settings in the left sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:05.075Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Settings in the left sidebar","action_type":"click","v":1,"ts":"2026-11-25T14:35:05.075Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.8,"summary":"click: Clicking Settings in the left sidebar","ordinal":4,"id":"0-4","kind":"click","screenshot":"screenshot.jpg","action_id":"f6b46c68-d095-4e93-be43-15dd52943fcf","v":1,"ts":"2026-11-25T14:35:05.218Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-25T14:35:05.218Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/general","v":1,"ts":"2026-11-25T14:35:05.328Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Clicking Rules in the left sidebar settings","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:10.979Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Clicking Rules in the left sidebar settings","action_type":"click","v":1,"ts":"2026-11-25T14:35:10.979Z"}
+{"type":"step_end","index":5,"status":"passed","duration":5.8,"summary":"click: Clicking Rules in the left sidebar settings","ordinal":5,"id":"0-5","kind":"click","screenshot":"screenshot.jpg","action_id":"662a6fed-de22-4ef4-b622-a2bc84f8b5ba","v":1,"ts":"2026-11-25T14:35:11.138Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-25T14:35:11.138Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:11.231Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Clicking Add new rule","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:16.958Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Clicking Add new rule","action_type":"click","v":1,"ts":"2026-11-25T14:35:16.959Z"}
+{"type":"step_end","index":6,"status":"passed","duration":5.8,"summary":"click: Clicking Add new rule","ordinal":6,"id":"0-6","kind":"click","screenshot":"screenshot.jpg","action_id":"88095b12-b077-49e2-bea0-8ec7c2fdbe5c","v":1,"ts":"2026-11-25T14:35:17.132Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":22.56,"final_url":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","actions_executed":6,"screenshot_path":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/0/replay-test/screenshots/step_006.png","run_dir":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:35:17.166Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":22.56,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:35:17.167Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Set group condition","ref":null,"v":1,"ts":"2026-11-25T14:35:17.168Z"}
+{"type":"run_start","objective":"In the rule's condition choose the field \"category group\", the operator \"is\" and the value \"Usual Expenses\".","timestamp":1795617317,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T14:35:17.207Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 4 actions","recording_length":4,"v":1,"ts":"2026-11-25T14:35:17.207Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:35:17.220Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:17.612Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking Category group payee button in the modal dialog","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:18.294Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking Category group payee button in the modal dialog","action_type":"click","v":1,"ts":"2026-11-25T14:35:18.295Z"}
+{"type":"step_end","index":1,"status":"passed","duration":1.1,"summary":"click: Clicking Category group payee button in the modal dialog","ordinal":7,"id":"1-1","kind":"click","screenshot":"screenshot.jpg","action_id":"e7f4514e-4b6b-481c-92e6-e8ed31469c05","v":1,"ts":"2026-11-25T14:35:18.432Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:35:18.432Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:18.858Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking category group dropdown button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:19.580Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking category group dropdown button","action_type":"click","v":1,"ts":"2026-11-25T14:35:19.580Z"}
+{"type":"step_end","index":2,"status":"passed","duration":1.1,"summary":"click: Clicking category group dropdown button","ordinal":8,"id":"1-2","kind":"click","screenshot":"screenshot.jpg","action_id":"f5a559a5-67e6-4818-868d-73bd564da054","v":1,"ts":"2026-11-25T14:35:19.714Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T14:35:19.715Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:20.166Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Usual Expenses dropdown","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:20.856Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Usual Expenses dropdown","action_type":"click","v":1,"ts":"2026-11-25T14:35:20.857Z"}
+{"type":"step_end","index":3,"status":"passed","duration":1.1,"summary":"click: Clicking Usual Expenses dropdown","ordinal":9,"id":"1-3","kind":"click","screenshot":"screenshot.jpg","action_id":"45e0b205-fafe-4fcf-9e41-af12f8c020b6","v":1,"ts":"2026-11-25T14:35:20.999Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T14:35:20.999Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:21.372Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Usual Expenses menu button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:22.146Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Usual Expenses menu button","action_type":"click","v":1,"ts":"2026-11-25T14:35:22.148Z"}
+{"type":"step_end","index":4,"status":"passed","duration":1.2,"summary":"click: Clicking Usual Expenses menu button","ordinal":10,"id":"1-4","kind":"click","screenshot":"screenshot.jpg","action_id":"d88001da-16c0-441a-b683-e3e5a1c6a861","v":1,"ts":"2026-11-25T14:35:22.276Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":5.08,"final_url":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","actions_executed":4,"screenshot_path":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/1/replay-test/screenshots/step_004.png","run_dir":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/1/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:35:22.279Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":5.08,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:35:22.279Z"}
+{"type":"test_md_step_start","step_index":3,"heading":"Set notes action","ref":null,"v":1,"ts":"2026-11-25T14:35:22.279Z"}
+{"type":"run_start","objective":"In the rule's action choose \"set\" \"notes\" to \"grouptest\", then click Save.","timestamp":1795617322,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T14:35:22.363Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 4 actions","recording_length":4,"v":1,"ts":"2026-11-25T14:35:22.363Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:35:22.372Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:22.772Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking category dropdown in the rule action modal","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:23.432Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking category dropdown in the rule action modal","action_type":"click","v":1,"ts":"2026-11-25T14:35:23.432Z"}
+{"type":"step_end","index":1,"status":"passed","duration":1.1,"summary":"click: Clicking category dropdown in the rule action modal","ordinal":11,"id":"2-1","kind":"click","screenshot":"screenshot.jpg","action_id":"6d327904-9916-47c9-9647-f2810197e97f","v":1,"ts":"2026-11-25T14:35:23.567Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:35:23.567Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:24.052Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking notes field in rule action menu","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:24.710Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking notes field in rule action menu","action_type":"click","v":1,"ts":"2026-11-25T14:35:24.710Z"}
+{"type":"step_end","index":2,"status":"passed","duration":1.1,"summary":"click: Clicking notes field in rule action menu","ordinal":12,"id":"2-2","kind":"click","screenshot":"screenshot.jpg","action_id":"57f4469d-4367-423e-adfe-d764eef2728d","v":1,"ts":"2026-11-25T14:35:24.855Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T14:35:24.855Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:25.281Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Typing grouptest into notes field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:35:25.590Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Typing grouptest into notes field","action_type":"fill","v":1,"ts":"2026-11-25T14:35:25.591Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.7,"summary":"fill: Typing grouptest into notes field","ordinal":13,"id":"2-3","kind":"fill","screenshot":"screenshot.jpg","action_id":"e884f050-3289-4176-abe8-15ba9f16f4a0","v":1,"ts":"2026-11-25T14:35:25.728Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T14:35:25.728Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:26.030Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Save in the rule modal dialog","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:26.852Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Save in the rule modal dialog","action_type":"click","v":1,"ts":"2026-11-25T14:35:26.852Z"}
+{"type":"step_end","index":4,"status":"passed","duration":1.1,"summary":"click: Clicking Save in the rule modal dialog","ordinal":14,"id":"2-4","kind":"click","screenshot":"screenshot.jpg","action_id":"41a94015-e900-4331-83f6-526294487879","v":1,"ts":"2026-11-25T14:35:26.991Z"}
+{"type":"run_end","run_id":"run-2","status":"passed","summary":"","reason":"replay completed","duration":4.64,"final_url":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","actions_executed":4,"screenshot_path":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/2/replay-test/screenshots/step_004.png","run_dir":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/2/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:35:26.992Z"}
+{"type":"test_md_step_end","step_index":3,"status":"passed","duration_s":4.64,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:35:26.992Z"}
+{"type":"test_md_step_start","step_index":4,"heading":"Add Food transaction","ref":null,"v":1,"ts":"2026-11-25T14:35:26.992Z"}
+{"type":"run_start","objective":"In the sidebar click the \"Checking\" account, click \"Add New\", type \"Grocer\" as the Payee, choose \"Food\" as the Category, type 10.00 as the Payment, and click \"Add\".","timestamp":1795617327,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T14:35:27.076Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 13 actions","recording_length":13,"v":1,"ts":"2026-11-25T14:35:27.076Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:35:27.086Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/settings/rules","v":1,"ts":"2026-11-25T14:35:27.179Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking the Checking account in the sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:27.769Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking the Checking account in the sidebar","action_type":"click","v":1,"ts":"2026-11-25T14:35:27.769Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"click: Clicking the Checking account in the sidebar","ordinal":15,"id":"3-1","kind":"click","screenshot":"screenshot.jpg","action_id":"e1ccc686-e9d4-4e07-a2b8-027b25cb6c94","v":1,"ts":"2026-11-25T14:35:27.895Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:35:27.895Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:27.973Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking Add New to add a transaction","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:33.692Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking Add New to add a transaction","action_type":"click","v":1,"ts":"2026-11-25T14:35:33.692Z"}
+{"type":"step_end","index":2,"status":"passed","duration":5.8,"summary":"click: Clicking Add New to add a transaction","ordinal":16,"id":"3-2","kind":"click","screenshot":"screenshot.jpg","action_id":"36190ae3-f17b-4618-84fe-a11d811e82b9","v":1,"ts":"2026-11-25T14:35:33.812Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T14:35:33.812Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:33.903Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Payee field in new transaction row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:34.515Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Payee field in new transaction row","action_type":"click","v":1,"ts":"2026-11-25T14:35:34.515Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.7,"summary":"click: Clicking Payee field in new transaction row","ordinal":17,"id":"3-3","kind":"click","screenshot":"screenshot.jpg","action_id":"f7d00f4c-1ac0-48df-b9a2-8245ddac4bc4","v":1,"ts":"2026-11-25T14:35:34.649Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T14:35:34.649Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:34.761Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Typing Grocer in the Payee field of the new transaction","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:35:34.962Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Typing Grocer in the Payee field of the new transaction","action_type":"fill","v":1,"ts":"2026-11-25T14:35:34.962Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.3,"summary":"fill: Typing Grocer in the Payee field of the new transaction","ordinal":18,"id":"3-4","kind":"fill","screenshot":"screenshot.jpg","action_id":"fd4b3b1e-3d9e-4ff8-a96f-76a80d7e4f24","v":1,"ts":"2026-11-25T14:35:35.072Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-25T14:35:35.073Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:35.170Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Typing Grocer into the Payee field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:35:36.579Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Typing Grocer into the Payee field","action_type":"fill","v":1,"ts":"2026-11-25T14:35:36.579Z"}
+{"type":"step_end","index":5,"status":"passed","duration":1.5,"summary":"fill: Typing Grocer into the Payee field","ordinal":19,"id":"3-5","kind":"fill","screenshot":"screenshot.jpg","action_id":"c7f3b2ce-6aed-4ff0-bb12-fe8b6e845ecd","v":1,"ts":"2026-11-25T14:35:36.691Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-25T14:35:36.692Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:36.778Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Clicking Grocer in the payee autocomplete menu","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:38.681Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Clicking Grocer in the payee autocomplete menu","action_type":"click","v":1,"ts":"2026-11-25T14:35:38.682Z"}
+{"type":"step_end","index":6,"status":"passed","duration":2,"summary":"click: Clicking Grocer in the payee autocomplete menu","ordinal":20,"id":"3-6","kind":"click","screenshot":"screenshot.jpg","action_id":"600f5b5c-a416-4893-89d6-5f6699317c9c","v":1,"ts":"2026-11-25T14:35:38.832Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-25T14:35:38.832Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:38.946Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Clicking Categorize in the transaction row category column","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:48.963Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Clicking Categorize in the transaction row category column","action_type":"click","v":1,"ts":"2026-11-25T14:35:48.963Z"}
+{"type":"step_end","index":7,"status":"passed","duration":10.1,"summary":"click: Clicking Categorize in the transaction row category column","ordinal":21,"id":"3-7","kind":"click","screenshot":"screenshot.jpg","action_id":"7ca066cf-1362-4833-8b36-ed8c5b5871a7","v":1,"ts":"2026-11-25T14:35:48.964Z"}
+{"type":"step_start","index":8,"objective":"Step 8","v":1,"ts":"2026-11-25T14:35:48.964Z"}
+{"type":"step_event","index":8,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:49.042Z"}
+{"type":"step_event","index":8,"event":"action","detail":"Entering Food in the Category field for the new transaction","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:35:49.180Z"}
+{"type":"step_event","index":8,"event":"reasoning","detail":"Entering Food in the Category field for the new transaction","action_type":"fill","v":1,"ts":"2026-11-25T14:35:49.180Z"}
+{"type":"step_end","index":8,"status":"passed","duration":0.2,"summary":"fill: Entering Food in the Category field for the new transaction","ordinal":22,"id":"3-8","kind":"fill","screenshot":"screenshot.jpg","action_id":"523cbb5c-b6d6-41e2-9845-fd256a5311f6","v":1,"ts":"2026-11-25T14:35:49.294Z"}
+{"type":"step_start","index":9,"objective":"Step 9","v":1,"ts":"2026-11-25T14:35:49.295Z"}
+{"type":"step_event","index":9,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:49.382Z"}
+{"type":"step_event","index":9,"event":"action","detail":"Clicking the Food category in the selector below new Checking transaction row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:51.232Z"}
+{"type":"step_event","index":9,"event":"reasoning","detail":"Clicking the Food category in the selector below new Checking transaction row","action_type":"click","v":1,"ts":"2026-11-25T14:35:51.232Z"}
+{"type":"step_end","index":9,"status":"passed","duration":1.9,"summary":"click: Clicking the Food category in the selector below new Checking transaction row","ordinal":23,"id":"3-9","kind":"click","screenshot":"screenshot.jpg","action_id":"4d3fc3df-2302-4f53-850e-cb8e4034e2e0","v":1,"ts":"2026-11-25T14:35:51.347Z"}
+{"type":"step_start","index":10,"objective":"Step 10","v":1,"ts":"2026-11-25T14:35:51.347Z"}
+{"type":"step_event","index":10,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:51.440Z"}
+{"type":"step_event","index":10,"event":"action","detail":"Clicking Payment amount field for new transaction row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:52.034Z"}
+{"type":"step_event","index":10,"event":"reasoning","detail":"Clicking Payment amount field for new transaction row","action_type":"click","v":1,"ts":"2026-11-25T14:35:52.034Z"}
+{"type":"step_end","index":10,"status":"passed","duration":0.7,"summary":"click: Clicking Payment amount field for new transaction row","ordinal":24,"id":"3-10","kind":"click","screenshot":"screenshot.jpg","action_id":"0923108f-08c3-471e-9346-0f3407320556","v":1,"ts":"2026-11-25T14:35:52.155Z"}
+{"type":"step_start","index":11,"objective":"Step 11","v":1,"ts":"2026-11-25T14:35:52.156Z"}
+{"type":"step_event","index":11,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:52.249Z"}
+{"type":"step_event","index":11,"event":"action","detail":"Entering 10.00 for Payment in the new transaction row","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T14:35:52.400Z"}
+{"type":"step_event","index":11,"event":"reasoning","detail":"Entering 10.00 for Payment in the new transaction row","action_type":"fill","v":1,"ts":"2026-11-25T14:35:52.400Z"}
+{"type":"step_end","index":11,"status":"passed","duration":0.2,"summary":"fill: Entering 10.00 for Payment in the new transaction row","ordinal":25,"id":"3-11","kind":"fill","screenshot":"screenshot.jpg","action_id":"f8a27cec-089c-4871-9d09-afaa1bce1f37","v":1,"ts":"2026-11-25T14:35:52.540Z"}
+{"type":"step_start","index":12,"objective":"Step 12","v":1,"ts":"2026-11-25T14:35:52.540Z"}
+{"type":"step_event","index":12,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:52.630Z"}
+{"type":"step_event","index":12,"event":"action","detail":"Pressing Tab to move focus away from the Payment field","action_type":"press_key","success":true,"v":1,"ts":"2026-11-25T14:35:53.180Z"}
+{"type":"step_event","index":12,"event":"reasoning","detail":"Pressing Tab to move focus away from the Payment field","action_type":"press_key","v":1,"ts":"2026-11-25T14:35:53.180Z"}
+{"type":"step_end","index":12,"status":"passed","duration":0.6,"summary":"press_key: Pressing Tab to move focus away from the Payment field","ordinal":26,"id":"3-12","kind":"press_key","screenshot":"screenshot.jpg","action_id":"9a5c89ab-8967-4caf-a26b-b0bd4980b62f","v":1,"ts":"2026-11-25T14:35:53.188Z"}
+{"type":"step_start","index":13,"objective":"Step 13","v":1,"ts":"2026-11-25T14:35:53.188Z"}
+{"type":"step_event","index":13,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:53.296Z"}
+{"type":"step_event","index":13,"event":"action","detail":"Clicking Add to add the transaction below the new Checking row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T14:35:57.859Z"}
+{"type":"step_event","index":13,"event":"reasoning","detail":"Clicking Add to add the transaction below the new Checking row","action_type":"click","v":1,"ts":"2026-11-25T14:35:57.860Z"}
+{"type":"step_end","index":13,"status":"passed","duration":4.7,"summary":"click: Clicking Add to add the transaction below the new Checking row","ordinal":27,"id":"3-13","kind":"click","screenshot":"screenshot.jpg","action_id":"eb5836a9-08f4-4d15-a473-b6681ab7e24d","v":1,"ts":"2026-11-25T14:35:57.861Z"}
+{"type":"run_end","run_id":"run-3","status":"passed","summary":"","reason":"replay completed","duration":30.8,"final_url":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","actions_executed":13,"screenshot_path":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/3/replay-test/screenshots/step_013.png","run_dir":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/3/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:35:57.864Z"}
+{"type":"test_md_step_end","step_index":4,"status":"passed","duration_s":30.8,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:35:57.864Z"}
+{"type":"test_md_step_start","step_index":5,"heading":"Check transaction notes","ref":null,"v":1,"ts":"2026-11-25T14:35:57.864Z"}
+{"type":"run_start","objective":"Verify the Notes cell of the \"Grocer\" transaction row shows \"grouptest\".","timestamp":1795617357,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T14:35:57.901Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-25T14:35:57.902Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T14:35:57.912Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:58.003Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Reading the Grocer transaction Notes cell","action_type":"analyze","success":true,"v":1,"ts":"2026-11-25T14:35:58.080Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Reading the Grocer transaction Notes cell","action_type":"analyze","v":1,"ts":"2026-11-25T14:35:58.080Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.2,"summary":"analyze: Reading the Grocer transaction Notes cell","ordinal":28,"id":"4-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"a5d51af5-201a-4ad8-a04a-be4153716db2","v":1,"ts":"2026-11-25T14:35:58.081Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T14:35:58.081Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","v":1,"ts":"2026-11-25T14:35:58.183Z"}
+{"type":"step_event","index":2,"event":"assertion","detail":"the Notes cell of the \"Grocer\" transaction row shows \"grouptest\"","passed":true,"v":1,"ts":"2026-11-25T14:35:58.188Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.1,"summary":"assert: the Notes cell of the \"Grocer\" transaction row shows \"grouptest\"","ordinal":29,"id":"4-2","kind":"assert","screenshot":"screenshot.jpg","action_id":"e771057f-b8df-4660-9e5f-0d2ee747f956","v":1,"ts":"2026-11-25T14:35:58.192Z"}
+{"type":"run_end","run_id":"run-4","status":"passed","summary":"","reason":"replay completed","duration":0.3,"final_url":"https://deploy-preview-9342.demo.actualbudget.org/accounts/6312c443-b5f9-4d4d-be6f-1989b30de533","actions_executed":2,"screenshot_path":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/4/replay-test/screenshots/step_002.png","run_dir":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/scratch/4/replay-test","total_runs":1,"context":{"memory":{},"variables":{"grocer_notes_cell_check":{"syntax":"{{grocer_notes_cell_check}}","value":"grouptest","secret":false}},"pointer":""},"variables_out":{"grocer_notes_cell_check":{"syntax":"{{grocer_notes_cell_check}}","value":"grouptest","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T14:35:58.193Z"}
+{"type":"test_md_step_end","step_index":5,"status":"passed","duration_s":0.3,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T14:35:58.193Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"f3c60c5a-b06b-4b23-b92d-2ba7c872425c","v":1,"ts":"2026-11-25T14:36:00.660Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":70,"steps":{"total":5,"passed":5,"failed":0,"skipped":0,"replay_decisions":5,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"https://deploy-preview-9342.demo.actualbudget.org","v":1,"ts":"2026-11-25T14:36:00.663Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>/.testmuai/kaneai/sessions/4c086e9b-85b7-4729-9830-2ca3edf5a117/evidence/f3c60c5a-b06b-4b23-b92d-2ba7c872425c.evidence","v":1,"ts":"2026-11-25T14:36:00.670Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":70,"session_id":"4c086e9b-85b7-4729-9830-2ca3edf5a117","coverage":{"status":"skipped"},"override_start_url":"https://deploy-preview-9342.demo.actualbudget.org","v":1,"ts":"2026-11-25T14:36:00.670Z"}

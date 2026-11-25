@@ -1,0 +1,74 @@
+{
+  "repo": "actualbudget/actual",
+  "number": 9640,
+  "title": "fix lock transactions doing nothing after reconciling a split that doesn't add up",
+  "author": "matt-fidd",
+  "ai": false,
+  "headSha": "50c1a6a8c63746ac534fcc93bfb1a7bace8f47f4",
+  "preview": "https://deploy-preview-9640.demo.actualbudget.org",
+  "live": "https://edge.actualbudget.org",
+  "started": "2026-11-25T12:55:22.889Z",
+  "seconds": 1068,
+  "results": [
+    {
+      "test": "search_filter_stays_applied_after_toggli_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    },
+    {
+      "test": "amount_is_greater_than_filter_hides_tran_test.md",
+      "verdict": "TEST_PROBLEM",
+      "why": "The page changed where the test acts: it failed at an action, not at a check.",
+      "next": "Re-record the test on the target build, then run it again.",
+      "kaneLabel": "automation_bug",
+      "kaneConfidence": 0.78,
+      "target": "failed",
+      "reference": "passed",
+      "credits": 3.28,
+      "card": "WITNESS verdict: TEST_PROBLEM. The page changed where the test acts: it failed at an action, not at a check.\nWhat to do: Re-record the test on the target build, then run it again.\nKane's own label was \"automation_bug\" (0.78). It is not used to decide; the comparison is.\n\nTest: amount_is_greater_than_filter_hides_tran_test.md\n1. Open Checking account: Click the \"Checking\" account in the sidebar.\n2. Add small deposit: Click \"Add New\", type \"Alpha\" in the Payee field, type \"100.00\" in the Deposit field, and click \"Add\".   <-- FAILED HERE\n3. Add large deposit: Click \"Add New\", type \"Beta\" in the Payee field, type \"200.00\" in the Deposit field, and click \"Add\".\n4. Filter by amount: Click \"Filter\", choose \"Amount\", select \"is greater than\", type \"150\" in the value field, and click \"Apply\".\n5. Check filtered list: Verify the transaction list shows the row with Payee \"Beta\" and Deposit \"200.00\" and does not show any row with Payee \"Alpha\".\n\nWhat Kane saw: The saved target for the Deposit field appears to have drifted from the current form, so the replay could not fill the intended amount box.\n\nTarget build: https://deploy-preview-9640.demo.actualbudget.org   Reference build: https://edge.actualbudget.org\n\nWhen done, say which file and lines you changed and why."
+    },
+    {
+      "test": "category_dropdown_menu_opens_again_after_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    },
+    {
+      "test": "renaming_a_schedule_keeps_its_skipped_oc_test.md",
+      "verdict": "PASS",
+      "why": "Kane passed the test on the target build.",
+      "next": "Nothing to do.",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "reference": null,
+      "credits": 0,
+      "card": null
+    },
+    {
+      "test": "rule_with_a_category_group_condition_run_test.md",
+      "verdict": "ENV",
+      "why": "The same recording does not pass on the reference build either.",
+      "next": "Check the environment or the reference build before changing anything.",
+      "kaneLabel": "automation_bug",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "reference": "failed",
+      "credits": 4.75,
+      "card": "WITNESS verdict: ENV. The same recording does not pass on the reference build either.\nWhat to do: Check the environment or the reference build before changing anything.\nKane's own label was \"automation_bug\" (0.98). It is not used to decide; the comparison is.\n\nTest: rule_with_a_category_group_condition_run_test.md\n1. Open new rule: In the sidebar click More, then Rules, then click \"Create new rule\".   <-- FAILED HERE\n2. Set group condition: In the rule's condition choose the field \"category group\", the operator \"is\" and the value \"Usual Expenses\".\n3. Set notes action: In the rule's action choose \"set\" \"notes\" to \"grouptest\", then click Save.\n4. Add Food transaction: In the sidebar click the \"Checking\" account, click \"Add New\", type \"Grocer\" as the Payee, choose \"Food\" as the Category, type 10.00 as the Payment, and click \"Add\".\n5. Check transaction notes: Verify the Notes cell of the \"Grocer\" transaction row shows \"grouptest\".\n\nWhat Kane saw: The test did not wait for the app to finish starting before trying to click More.\n\nTarget build: https://deploy-preview-9640.demo.actualbudget.org   Reference build: https://edge.actualbudget.org\n\nWhen done, say which file and lines you changed and why."
+    }
+  ]
+}
