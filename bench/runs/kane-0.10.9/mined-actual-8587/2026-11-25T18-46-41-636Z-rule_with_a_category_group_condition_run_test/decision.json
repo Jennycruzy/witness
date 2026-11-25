@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/actual/cases/8587/rule_with_a_category_group_condition_run_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.96,
+        "rootCause": "The recorded flow did not reach the saved-transaction state before it tried to read the Grocer row."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/57a3c0e1-38c6-48df-8a7d-f0e4696a33ec/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.3952,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

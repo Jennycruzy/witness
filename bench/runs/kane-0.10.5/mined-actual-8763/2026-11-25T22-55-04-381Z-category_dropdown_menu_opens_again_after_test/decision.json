@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/actual/cases/8763/category_dropdown_menu_opens_again_after_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.98,
+        "rootCause": "The recorded flow reached the Groceries row but did not perform the action needed to open its dropdown before making the assertion."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/0917bb91-02a6-42f3-b77c-87b90e67a52c/scratch/4/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.7754999999999996,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

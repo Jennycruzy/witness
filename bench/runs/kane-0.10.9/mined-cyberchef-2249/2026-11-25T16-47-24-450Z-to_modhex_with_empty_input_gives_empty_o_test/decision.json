@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2249/to_modhex_with_empty_input_gives_empty_o_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.98,
+        "rootCause": "The To Modhex operation tries to process an empty value and puts a failure message in the Output box instead of handling the empty input cleanly."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/c5ff7b49-e8dd-481d-a4ff-115a2c18b8bc/scratch/3/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.84635,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

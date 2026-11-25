@@ -1,0 +1,56 @@
+{
+  "test": "examples/actual/tests/running_balance_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.98,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 6,
+      "kind": "action",
+      "reason": "action_failed: fill @ step 6",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.98,
+        "rootCause": "The recording identifies the wrong 20.00 value in the transaction row. It selects Balance, not Deposit."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/6277c1f2-8a83-48a4-884c-f881476959e6/scratch/1/replay-test/screenshots/step_006.png"
+    },
+    "creditsReported": 2.7537,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 4,
+      "kind": "action",
+      "reason": "action_failed: click @ step 4",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.97,
+        "rootCause": "The test saved the wrong place for the Deposit amount. On the live transaction row, it points to Balance instead of Deposit."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/7ab400b4-12db-4fff-876c-c57170287671/scratch/1/replay-test/screenshots/step_004.png"
+    },
+    "creditsReported": 2.8264499999999995,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

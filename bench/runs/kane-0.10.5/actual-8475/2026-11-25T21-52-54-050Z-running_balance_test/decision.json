@@ -1,0 +1,56 @@
+{
+  "test": "examples/actual/tests/running_balance_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.97,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 4,
+      "kind": "action",
+      "reason": "action_failed: click @ step 4",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.97,
+        "rootCause": "The recorded field location no longer identifies the Deposit amount on the live transaction row."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/1365529c-3d43-4f5e-8498-757375cada9f/scratch/1/replay-test/screenshots/step_004.png"
+    },
+    "creditsReported": 0.72276,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 4,
+      "kind": "action",
+      "reason": "action_failed: click @ step 4",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.96,
+        "rootCause": "The saved click location or selector no longer identifies the Deposit cell. In the live page, the marked target is in the Balance column."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/5e4ba46d-5e16-44cf-ae2e-7395dbe6423d/scratch/1/replay-test/screenshots/step_004.png"
+    },
+    "creditsReported": 2.8846499999999997,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

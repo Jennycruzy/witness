@@ -1,0 +1,65 @@
+{
+  "test": "bench/tests/actual-sep/separator_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.95,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.95,
+        "rootCause": "The page was still showing an open transaction editor with an Add button, so there was no completed new transaction for the assertion to read."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/e4943937-48b0-40ce-abc2-bda8b932de4e/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.1561,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 3,
+      "kind": "action",
+      "reason": "action_failed: fill @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.96,
+        "rootCause": "The saved Deposit-field target no longer points to the Deposit input. It lands on the Date input and opens its calendar."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/d401eeeb-411f-41a8-9cf3-2ed74705076f/scratch/1/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.8403,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 3,
+      "query": "the new transaction Deposit amount in the transaction entry row",
+      "expected": "1'234.56",
+      "locator": "(el(92).textContent.match(/1'234\\.56/) || [null])[0]",
+      "positional": false,
+      "kind": "read"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{"type":"stream_start","cli_version":"0.10.5","surface":"testmd","pid":2829739,"v":1,"ts":"2026-11-25T22:49:53.745Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Open Checking account","ref":null,"v":1,"ts":"2026-11-25T22:49:59.461Z"}
+{"type":"run_start","objective":"Click the \"Checking\" account in the sidebar.","timestamp":1795646999,"environment":{"resolution":"1920x1080"},"override_start_url":"http://127.0.0.1:37185/","recorded_start_url":"http://127.0.0.1:38013/","override_applied":true,"v":1,"ts":"2026-11-25T22:49:59.591Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-25T22:49:59.592Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T22:49:59.592Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-25T22:49:59.690Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:38013/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-25T22:50:00.265Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:38013/","action_type":"navigate","v":1,"ts":"2026-11-25T22:50:00.265Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"navigate: Navigate to http://127.0.0.1:38013/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"89f89d1c-dc8e-4e00-a2c8-29afe0b3be97","v":1,"ts":"2026-11-25T22:50:00.289Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T22:50:00.290Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37185/","v":1,"ts":"2026-11-25T22:50:01.551Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking the Checking account in the sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:05.136Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking the Checking account in the sidebar","action_type":"click","v":1,"ts":"2026-11-25T22:50:05.136Z"}
+{"type":"step_end","index":2,"status":"passed","duration":4.9,"summary":"click: Clicking the Checking account in the sidebar","ordinal":2,"id":"0-2","kind":"click","screenshot":"screenshot.jpg","action_id":"ca4ca6c6-263b-4ae5-8c07-847739e7d0f3","v":1,"ts":"2026-11-25T22:50:05.139Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":5.69,"final_url":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","actions_executed":2,"screenshot_path":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/0/replay-test/screenshots/step_002.png","run_dir":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T22:50:05.171Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":5.69,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T22:50:05.172Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Add small deposit","ref":null,"v":1,"ts":"2026-11-25T22:50:05.174Z"}
+{"type":"run_start","objective":"Click \"Add New\", type \"Alpha\" in the Payee field, type \"100.00\" in the Deposit field, and click \"Add\".","timestamp":1795647005,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T22:50:05.263Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 9 actions","recording_length":9,"v":1,"ts":"2026-11-25T22:50:05.266Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T22:50:05.270Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:05.339Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking Add New button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:06.079Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking Add New button","action_type":"click","v":1,"ts":"2026-11-25T22:50:06.079Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.8,"summary":"click: Clicking Add New button","ordinal":3,"id":"1-1","kind":"click","screenshot":"screenshot.jpg","action_id":"f621aa80-1932-40ae-8402-7f334c99f294","v":1,"ts":"2026-11-25T22:50:06.185Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T22:50:06.185Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:06.299Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking the Payee field","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:06.903Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking the Payee field","action_type":"click","v":1,"ts":"2026-11-25T22:50:06.903Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.7,"summary":"click: Clicking the Payee field","ordinal":4,"id":"1-2","kind":"click","screenshot":"screenshot.jpg","action_id":"eff21794-2b5d-4617-90be-264babb4edb2","v":1,"ts":"2026-11-25T22:50:06.990Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T22:50:06.990Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:07.078Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Typing Alpha into Payee field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T22:50:07.243Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Typing Alpha into Payee field","action_type":"fill","v":1,"ts":"2026-11-25T22:50:07.243Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.3,"summary":"fill: Typing Alpha into Payee field","ordinal":5,"id":"1-3","kind":"fill","screenshot":"screenshot.jpg","action_id":"dc94d97c-fd5f-4816-9dad-4b7d90d14493","v":1,"ts":"2026-11-25T22:50:07.338Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T22:50:07.338Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:07.421Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking the deposit field","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:13.580Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking the deposit field","action_type":"click","v":1,"ts":"2026-11-25T22:50:13.580Z"}
+{"type":"step_end","index":4,"status":"passed","duration":6.2,"summary":"click: Clicking the deposit field","ordinal":6,"id":"1-4","kind":"click","screenshot":"screenshot.jpg","action_id":"1bfb44a6-f077-4d99-bde3-78a9d6c44ca5","v":1,"ts":"2026-11-25T22:50:13.581Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-25T22:50:13.581Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:13.657Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Typing 100.00 into Deposit field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T22:50:13.771Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Typing 100.00 into Deposit field","action_type":"fill","v":1,"ts":"2026-11-25T22:50:13.771Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.3,"summary":"fill: Typing 100.00 into Deposit field","ordinal":7,"id":"1-5","kind":"fill","screenshot":"screenshot.jpg","action_id":"4be97405-b7d2-4c9e-8a96-9c4fa17f1bc8","v":1,"ts":"2026-11-25T22:50:13.948Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-25T22:50:13.948Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:14.018Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Clicking the Payee field to add a new payee entry","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:14.585Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Clicking the Payee field to add a new payee entry","action_type":"click","v":1,"ts":"2026-11-25T22:50:14.585Z"}
+{"type":"step_end","index":6,"status":"passed","duration":0.6,"summary":"click: Clicking the Payee field to add a new payee entry","ordinal":8,"id":"1-6","kind":"click","screenshot":"screenshot.jpg","action_id":"09e7ba03-a740-4dce-9a77-5f348c0439e8","v":1,"ts":"2026-11-25T22:50:14.668Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-25T22:50:14.668Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:14.735Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Typing Alpha into Payee field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T22:50:14.861Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Typing Alpha into Payee field","action_type":"fill","v":1,"ts":"2026-11-25T22:50:14.861Z"}
+{"type":"step_end","index":7,"status":"passed","duration":0.2,"summary":"fill: Typing Alpha into Payee field","ordinal":9,"id":"1-7","kind":"fill","screenshot":"screenshot.jpg","action_id":"f207638b-b630-40ff-8d42-f783dda7f7f5","v":1,"ts":"2026-11-25T22:50:14.944Z"}
+{"type":"step_start","index":8,"objective":"Step 8","v":1,"ts":"2026-11-25T22:50:14.944Z"}
+{"type":"step_event","index":8,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:15.018Z"}
+{"type":"step_event","index":8,"event":"action","detail":"Clicking the Payee field to create Alpha","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:15.586Z"}
+{"type":"step_event","index":8,"event":"reasoning","detail":"Clicking the Payee field to create Alpha","action_type":"click","v":1,"ts":"2026-11-25T22:50:15.586Z"}
+{"type":"step_end","index":8,"status":"passed","duration":0.6,"summary":"click: Clicking the Payee field to create Alpha","ordinal":10,"id":"1-8","kind":"click","screenshot":"screenshot.jpg","action_id":"22f16a6b-913e-4cf2-bcb4-6b920def5f15","v":1,"ts":"2026-11-25T22:50:15.672Z"}
+{"type":"step_start","index":9,"objective":"Step 9","v":1,"ts":"2026-11-25T22:50:15.672Z"}
+{"type":"step_event","index":9,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:15.735Z"}
+{"type":"step_event","index":9,"event":"action","detail":"Clicking Add","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:20.396Z"}
+{"type":"step_event","index":9,"event":"reasoning","detail":"Clicking Add","action_type":"click","v":1,"ts":"2026-11-25T22:50:20.396Z"}
+{"type":"step_end","index":9,"status":"passed","duration":4.7,"summary":"click: Clicking Add","ordinal":11,"id":"1-9","kind":"click","screenshot":"screenshot.jpg","action_id":"b2880d07-0b3d-4865-ac18-ab536f588602","v":1,"ts":"2026-11-25T22:50:20.396Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":15.15,"final_url":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","actions_executed":9,"screenshot_path":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/1/replay-test/screenshots/step_009.png","run_dir":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/1/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T22:50:20.402Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":15.15,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T22:50:20.402Z"}
+{"type":"test_md_step_start","step_index":3,"heading":"Add large deposit","ref":null,"v":1,"ts":"2026-11-25T22:50:20.402Z"}
+{"type":"run_start","objective":"Click \"Add New\", type \"Beta\" in the Payee field, type \"200.00\" in the Deposit field, and click \"Add\".","timestamp":1795647020,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T22:50:20.441Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 9 actions","recording_length":9,"v":1,"ts":"2026-11-25T22:50:20.441Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T22:50:20.447Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:20.525Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking Add New on checking account toolbar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:21.122Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking Add New on checking account toolbar","action_type":"click","v":1,"ts":"2026-11-25T22:50:21.122Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"click: Clicking Add New on checking account toolbar","ordinal":12,"id":"2-1","kind":"click","screenshot":"screenshot.jpg","action_id":"e305c110-d306-4211-8482-00f2171ecb7e","v":1,"ts":"2026-11-25T22:50:21.213Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T22:50:21.214Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:21.286Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking the Payee input field to enter a payee name","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:50:21.863Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking the Payee input field to enter a payee name","action_type":"click","v":1,"ts":"2026-11-25T22:50:21.863Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.6,"summary":"click: Clicking the Payee input field to enter a payee name","ordinal":13,"id":"2-2","kind":"click","screenshot":"screenshot.jpg","action_id":"594ed267-5c87-43ef-9ebc-16f88d5009fa","v":1,"ts":"2026-11-25T22:50:21.947Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T22:50:21.947Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:22.022Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Typing Payee as Beta in the form","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T22:50:22.190Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Typing Payee as Beta in the form","action_type":"fill","v":1,"ts":"2026-11-25T22:50:22.191Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.2,"summary":"fill: Typing Payee as Beta in the form","ordinal":14,"id":"2-3","kind":"fill","screenshot":"screenshot.jpg","action_id":"48e631cd-317e-47be-b5e2-688ffa973aa0","v":1,"ts":"2026-11-25T22:50:22.292Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T22:50:22.292Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:50:22.373Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Deposit input for Payee Beta","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:51:10.578Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Deposit input for Payee Beta","action_type":"click","v":1,"ts":"2026-11-25T22:51:10.578Z"}
+{"type":"step_end","index":4,"status":"passed","duration":48.3,"summary":"click: Clicking Deposit input for Payee Beta","ordinal":15,"id":"2-4","kind":"click","screenshot":"screenshot.jpg","action_id":"44d714d5-87ba-465c-8f87-585d042f6bbc","v":1,"ts":"2026-11-25T22:51:10.579Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-25T22:51:10.579Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:10.649Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Filling the Deposit field with 200.00","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T22:51:10.755Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Filling the Deposit field with 200.00","action_type":"fill","v":1,"ts":"2026-11-25T22:51:10.756Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.2,"summary":"fill: Filling the Deposit field with 200.00","ordinal":16,"id":"2-5","kind":"fill","screenshot":"screenshot.jpg","action_id":"0e6c8770-538a-4cb4-9ec1-be8016a5f867","v":1,"ts":"2026-11-25T22:51:10.839Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-25T22:51:10.840Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:10.899Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Clicking Payee input field in transaction row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:51:11.496Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Clicking Payee input field in transaction row","action_type":"click","v":1,"ts":"2026-11-25T22:51:11.497Z"}
+{"type":"step_end","index":6,"status":"passed","duration":0.7,"summary":"click: Clicking Payee input field in transaction row","ordinal":17,"id":"2-6","kind":"click","screenshot":"screenshot.jpg","action_id":"7a054d8f-e3b5-4e34-aec6-f25c3bcd0e47","v":1,"ts":"2026-11-25T22:51:11.580Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-25T22:51:11.581Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:11.652Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Typing Beta into the Payee field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T22:51:11.759Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Typing Beta into the Payee field","action_type":"fill","v":1,"ts":"2026-11-25T22:51:11.760Z"}
+{"type":"step_end","index":7,"status":"passed","duration":0.2,"summary":"fill: Typing Beta into the Payee field","ordinal":18,"id":"2-7","kind":"fill","screenshot":"screenshot.jpg","action_id":"0290a940-0469-4234-87e9-ed2d33e996d8","v":1,"ts":"2026-11-25T22:51:11.849Z"}
+{"type":"step_start","index":8,"objective":"Step 8","v":1,"ts":"2026-11-25T22:51:11.849Z"}
+{"type":"step_event","index":8,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:11.920Z"}
+{"type":"step_event","index":8,"event":"action","detail":"Clicking Beta payee suggestion in the dropdown","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:51:12.468Z"}
+{"type":"step_event","index":8,"event":"reasoning","detail":"Clicking Beta payee suggestion in the dropdown","action_type":"click","v":1,"ts":"2026-11-25T22:51:12.468Z"}
+{"type":"step_end","index":8,"status":"passed","duration":0.6,"summary":"click: Clicking Beta payee suggestion in the dropdown","ordinal":19,"id":"2-8","kind":"click","screenshot":"screenshot.jpg","action_id":"5c24a6d7-0b39-4d7e-855e-a86d37106c1b","v":1,"ts":"2026-11-25T22:51:12.560Z"}
+{"type":"step_start","index":9,"objective":"Step 9","v":1,"ts":"2026-11-25T22:51:12.560Z"}
+{"type":"step_event","index":9,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:12.641Z"}
+{"type":"step_event","index":9,"event":"action","detail":"Clicking Add to create the new transaction row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:51:17.845Z"}
+{"type":"step_event","index":9,"event":"reasoning","detail":"Clicking Add to create the new transaction row","action_type":"click","v":1,"ts":"2026-11-25T22:51:17.845Z"}
+{"type":"step_end","index":9,"status":"passed","duration":5.3,"summary":"click: Clicking Add to create the new transaction row","ordinal":20,"id":"2-9","kind":"click","screenshot":"screenshot.jpg","action_id":"cabbf0e3-2e4e-451c-be67-88e2b4f6a927","v":1,"ts":"2026-11-25T22:51:17.846Z"}
+{"type":"run_end","run_id":"run-2","status":"passed","summary":"","reason":"replay completed","duration":57.42,"final_url":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","actions_executed":9,"screenshot_path":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/2/replay-test/screenshots/step_009.png","run_dir":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/2/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T22:51:17.851Z"}
+{"type":"test_md_step_end","step_index":3,"status":"passed","duration_s":57.42,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T22:51:17.851Z"}
+{"type":"test_md_step_start","step_index":4,"heading":"Filter by amount","ref":null,"v":1,"ts":"2026-11-25T22:51:17.851Z"}
+{"type":"run_start","objective":"Click \"Filter\", choose \"Amount\", select \"is greater than\", type \"150\" in the value field, and click \"Apply\".","timestamp":1795647077,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T22:51:17.889Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 6 actions","recording_length":6,"v":1,"ts":"2026-11-25T22:51:17.889Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T22:51:17.894Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:17.975Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking Apply a filter","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:51:18.600Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking Apply a filter","action_type":"click","v":1,"ts":"2026-11-25T22:51:18.600Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.7,"summary":"click: Clicking Apply a filter","ordinal":21,"id":"3-1","kind":"click","screenshot":"screenshot.jpg","action_id":"46ab514a-7199-4163-ad16-5779da8a6d0d","v":1,"ts":"2026-11-25T22:51:18.703Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T22:51:18.704Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:18.772Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking Amount filter dropdown menu","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:51:19.362Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking Amount filter dropdown menu","action_type":"click","v":1,"ts":"2026-11-25T22:51:19.362Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.7,"summary":"click: Clicking Amount filter dropdown menu","ordinal":22,"id":"3-2","kind":"click","screenshot":"screenshot.jpg","action_id":"da78809a-5207-455a-a783-1ffd5d47b67a","v":1,"ts":"2026-11-25T22:51:19.461Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T22:51:19.462Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:19.545Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Waiting while the plan steps are running","action_type":"wait","success":true,"v":1,"ts":"2026-11-25T22:51:20.555Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Waiting while the plan steps are running","action_type":"wait","v":1,"ts":"2026-11-25T22:51:20.555Z"}
+{"type":"step_end","index":3,"status":"passed","duration":1.1,"summary":"wait: Waiting while the plan steps are running","ordinal":23,"id":"3-3","kind":"wait","screenshot":"screenshot.jpg","action_id":"fd47866d-43e3-4034-abb6-979e2d1159f2","v":1,"ts":"2026-11-25T22:51:20.557Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T22:51:20.557Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:20.643Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Click \"is greater than\"","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:51:21.245Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Click \"is greater than\"","action_type":"click","v":1,"ts":"2026-11-25T22:51:21.245Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.7,"summary":"click: Click \"is greater than\"","ordinal":24,"id":"3-4","kind":"click","screenshot":"screenshot.jpg","action_id":"62c15a8f-441f-4704-a9ca-36ee3d5e5511","v":1,"ts":"2026-11-25T22:51:21.335Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-25T22:51:21.335Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:21.402Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Type \"150\" into \"textbox\"","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T22:51:21.532Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Type \"150\" into \"textbox\"","action_type":"fill","v":1,"ts":"2026-11-25T22:51:21.532Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.2,"summary":"fill: Type \"150\" into \"textbox\"","ordinal":25,"id":"3-5","kind":"fill","screenshot":"screenshot.jpg","action_id":"0d7dae7b-ed73-4534-9634-dd2b7f20f2dd","v":1,"ts":"2026-11-25T22:51:21.623Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-25T22:51:21.624Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:21.703Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Click \"Apply\"","action_type":"click","success":true,"v":1,"ts":"2026-11-25T22:51:22.314Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Click \"Apply\"","action_type":"click","v":1,"ts":"2026-11-25T22:51:22.314Z"}
+{"type":"step_end","index":6,"status":"passed","duration":0.7,"summary":"click: Click \"Apply\"","ordinal":26,"id":"3-6","kind":"click","screenshot":"screenshot.jpg","action_id":"4e143de9-0b35-4f64-8b4c-39e4ad74ab3f","v":1,"ts":"2026-11-25T22:51:22.410Z"}
+{"type":"run_end","run_id":"run-3","status":"passed","summary":"","reason":"replay completed","duration":4.54,"final_url":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","actions_executed":6,"screenshot_path":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/3/replay-test/screenshots/step_006.png","run_dir":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/3/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T22:51:22.415Z"}
+{"type":"test_md_step_end","step_index":4,"status":"passed","duration_s":4.54,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T22:51:22.415Z"}
+{"type":"test_md_step_start","step_index":5,"heading":"Check filtered list","ref":null,"v":1,"ts":"2026-11-25T22:51:22.415Z"}
+{"type":"run_start","objective":"Verify the transaction list shows the row with Payee \"Beta\" and Deposit \"200.00\" and does not show any row with Payee \"Alpha\".","timestamp":1795647082,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T22:51:22.497Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 3 actions","recording_length":3,"v":1,"ts":"2026-11-25T22:51:22.499Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T22:51:22.503Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:22.569Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Checking whether the Beta deposit transaction row is present","action_type":"analyze","success":true,"v":1,"ts":"2026-11-25T22:51:22.601Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Checking whether the Beta deposit transaction row is present","action_type":"analyze","v":1,"ts":"2026-11-25T22:51:22.601Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.1,"summary":"analyze: Checking whether the Beta deposit transaction row is present","ordinal":27,"id":"4-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"3ba50dd3-0fdc-446d-ad29-b93dfb0d8f09","v":1,"ts":"2026-11-25T22:51:22.602Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T22:51:22.602Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:22.670Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Checking whether the Alpha payee transaction row is present","action_type":"analyze","success":true,"v":1,"ts":"2026-11-25T22:51:32.695Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Checking whether the Alpha payee transaction row is present","action_type":"analyze","v":1,"ts":"2026-11-25T22:51:32.695Z"}
+{"type":"step_end","index":2,"status":"passed","duration":10.1,"summary":"analyze: Checking whether the Alpha payee transaction row is present","ordinal":28,"id":"4-2","kind":"analyze","screenshot":"screenshot.jpg","action_id":"d0506f12-2c8e-47a1-b679-00b7b08871ec","v":1,"ts":"2026-11-25T22:51:32.695Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T22:51:32.695Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","v":1,"ts":"2026-11-25T22:51:32.782Z"}
+{"type":"step_event","index":3,"event":"assertion","detail":"the transaction list shows the row with Payee \"Beta\" and Deposit \"200.00\" and does not show any row with Payee \"Alpha\"","passed":true,"v":1,"ts":"2026-11-25T22:51:32.787Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.1,"summary":"assert: the transaction list shows the row with Payee \"Beta\" and Deposit \"200.00\" and do","ordinal":29,"id":"4-3","kind":"assert","screenshot":"screenshot.jpg","action_id":"c0335e53-ebc0-4f2a-8478-267eee3176e5","v":1,"ts":"2026-11-25T22:51:32.790Z"}
+{"type":"run_end","run_id":"run-4","status":"passed","summary":"","reason":"replay completed","duration":10.31,"final_url":"http://127.0.0.1:37185/accounts/e4ab1f4e-d2ba-4dd7-8697-4049eb2535db","actions_executed":3,"screenshot_path":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/4/replay-test/screenshots/step_003.png","run_dir":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/scratch/4/replay-test","total_runs":1,"context":{"memory":{},"variables":{"beta_deposit_row_visible":{"syntax":"{{beta_deposit_row_visible}}","value":"true","secret":false},"alpha_payee_row_visible":{"syntax":"{{alpha_payee_row_visible}}","value":"false","secret":false}},"pointer":""},"variables_out":{"beta_deposit_row_visible":{"syntax":"{{beta_deposit_row_visible}}","value":"true","secret":false},"alpha_payee_row_visible":{"syntax":"{{alpha_payee_row_visible}}","value":"false","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T22:51:32.795Z"}
+{"type":"test_md_step_end","step_index":5,"status":"passed","duration_s":10.31,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T22:51:32.796Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"48d6197e-cdf8-45ce-8e61-0413df3e040d","v":1,"ts":"2026-11-25T22:51:34.880Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":99,"steps":{"total":5,"passed":5,"failed":0,"skipped":0,"replay_decisions":5,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"http://127.0.0.1:37185/","v":1,"ts":"2026-11-25T22:51:34.882Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>/.testmuai/kaneai/sessions/324f8328-a653-422f-9cb7-4087bf241863/evidence/48d6197e-cdf8-45ce-8e61-0413df3e040d.evidence","v":1,"ts":"2026-11-25T22:51:34.886Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":99,"session_id":"324f8328-a653-422f-9cb7-4087bf241863","coverage":{"status":"skipped"},"override_start_url":"http://127.0.0.1:37185/","v":1,"ts":"2026-11-25T22:51:34.887Z"}

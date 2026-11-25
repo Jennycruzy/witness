@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/actual/cases/8726/amount_is_greater_than_filter_hides_tran_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.92,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.92,
+        "rootCause": "The page is displaying an Alpha row alongside the expected Beta deposit row instead of excluding Alpha from the transaction list."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/cd6043e4-f530-4a7d-983d-2d0328c6eca2/scratch/4/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 3.0202999999999998,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

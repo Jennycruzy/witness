@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2025/extract_email_addresses_matches_an_email_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.96,
+        "rootCause": "The email extraction operation did not recognize or return the bracketed IP-address email that was provided as input."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/1f9cab3f-3584-4812-83f5-60a79d2647e2/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.246,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/actual/cases/8726/amount_is_greater_than_filter_hides_tran_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.95,
+    "verdict": "TEST_PROBLEM",
+    "why": "The page changed where the test acts: it failed at an action, not at a check.",
+    "next": "Re-record the test on the target build, then run it again."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 4,
+      "kind": "action",
+      "reason": "action_failed: click @ step 4",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.95,
+        "rootCause": "The saved click location or selector for the Deposit field no longer identifies that field on the live transaction row."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/51e246f5-a0bd-4bcf-8055-d8261d86ff44/scratch/2/replay-test/screenshots/step_004.png"
+    },
+    "creditsReported": 3.2304,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

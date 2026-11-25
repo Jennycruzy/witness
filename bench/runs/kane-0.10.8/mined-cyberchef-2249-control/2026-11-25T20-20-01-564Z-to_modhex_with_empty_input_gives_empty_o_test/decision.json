@@ -1,0 +1,12 @@
+{
+  "test": "examples/mine/cyberchef/cases/2249/to_modhex_with_empty_input_gives_empty_o_test.md",
+  "decision": {
+    "kaneLabel": null,
+    "kaneConfidence": null,
+    "verdict": "PASS",
+    "why": "Kane passed the test on the target build.",
+    "next": "Nothing to do."
+  },
+  "blind": [],
+  "locked": []
+}

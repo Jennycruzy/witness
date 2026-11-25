@@ -1,0 +1,129 @@
+{"type":"stream_start","cli_version":"0.10.5","surface":"testmd","pid":2844522,"v":1,"ts":"2026-11-25T23:04:11.491Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Open new schedule","ref":null,"v":1,"ts":"2026-11-25T23:04:17.095Z"}
+{"type":"run_start","objective":"Click Schedules in the sidebar, then click Add new schedule.","timestamp":1795647857,"environment":{"resolution":"1920x1080"},"override_start_url":"http://127.0.0.1:42325/","recorded_start_url":"http://127.0.0.1:43415/","override_applied":true,"v":1,"ts":"2026-11-25T23:04:17.228Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 4 actions","recording_length":4,"v":1,"ts":"2026-11-25T23:04:17.229Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T23:04:17.229Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-25T23:04:17.310Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:43415/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-25T23:04:18.915Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:43415/","action_type":"navigate","v":1,"ts":"2026-11-25T23:04:18.924Z"}
+{"type":"step_end","index":1,"status":"passed","duration":1.7,"summary":"navigate: Navigate to http://127.0.0.1:43415/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"bf62f912-ed4f-488d-8c1b-536b65401e17","v":1,"ts":"2026-11-25T23:04:18.928Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T23:04:18.928Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:42325/","v":1,"ts":"2026-11-25T23:04:19.470Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Waiting for the application sidebar to load","action_type":"wait","success":true,"v":1,"ts":"2026-11-25T23:04:23.543Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Waiting for the application sidebar to load","action_type":"wait","v":1,"ts":"2026-11-25T23:04:23.543Z"}
+{"type":"step_end","index":2,"status":"passed","duration":4.6,"summary":"wait: Waiting for the application sidebar to load","ordinal":2,"id":"0-2","kind":"wait","screenshot":"screenshot.jpg","action_id":"d9e3f905-1ba8-4d55-97ed-18fa3e961c47","v":1,"ts":"2026-11-25T23:04:23.544Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T23:04:23.544Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:42325/budget","v":1,"ts":"2026-11-25T23:04:23.598Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Schedules in the sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:24.234Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Schedules in the sidebar","action_type":"click","v":1,"ts":"2026-11-25T23:04:24.234Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.7,"summary":"click: Clicking Schedules in the sidebar","ordinal":3,"id":"0-3","kind":"click","screenshot":"screenshot.jpg","action_id":"fb82e3cf-1137-439b-8466-118a69b2e7a0","v":1,"ts":"2026-11-25T23:04:24.334Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T23:04:24.334Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:24.400Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Add new schedule button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:24.974Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Add new schedule button","action_type":"click","v":1,"ts":"2026-11-25T23:04:24.974Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.6,"summary":"click: Clicking Add new schedule button","ordinal":4,"id":"0-4","kind":"click","screenshot":"screenshot.jpg","action_id":"80fdb13f-47f0-4f98-8037-3f8bdfaf761c","v":1,"ts":"2026-11-25T23:04:25.054Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":7.97,"final_url":"http://127.0.0.1:42325/schedules","actions_executed":4,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/0/replay-test/screenshots/step_004.png","run_dir":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T23:04:25.090Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":7.97,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T23:04:25.091Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Fill schedule form","ref":null,"v":1,"ts":"2026-11-25T23:04:25.094Z"}
+{"type":"run_start","objective":"Set Schedule Name to Internet. In Payee, type Internet company and click Create payee \"Internet company\". Set Account to Checking and Amount to 50. Keep the default monthly recurrence starting today, leave Automatically add transaction unchecked, and click Add.","timestamp":1795647865,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T23:04:25.301Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 9 actions","recording_length":9,"v":1,"ts":"2026-11-25T23:04:25.301Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T23:04:25.308Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:25.589Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Typing Schedule Name as Internet","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T23:04:25.878Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Typing Schedule Name as Internet","action_type":"fill","v":1,"ts":"2026-11-25T23:04:25.878Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.6,"summary":"fill: Typing Schedule Name as Internet","ordinal":5,"id":"1-1","kind":"fill","screenshot":"screenshot.jpg","action_id":"0ff5e333-d827-4c70-807f-a2cbece8fb7c","v":1,"ts":"2026-11-25T23:04:25.976Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T23:04:25.976Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:26.244Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Typing Payee name into the Payee field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T23:04:26.544Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Typing Payee name into the Payee field","action_type":"fill","v":1,"ts":"2026-11-25T23:04:26.544Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.6,"summary":"fill: Typing Payee name into the Payee field","ordinal":6,"id":"1-2","kind":"fill","screenshot":"screenshot.jpg","action_id":"47257606-b91e-4ae2-9f9b-74a4a375b9d5","v":1,"ts":"2026-11-25T23:04:26.660Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T23:04:26.661Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:26.941Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Typing Payee as Internet company","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T23:04:27.229Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Typing Payee as Internet company","action_type":"fill","v":1,"ts":"2026-11-25T23:04:27.229Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.5,"summary":"fill: Typing Payee as Internet company","ordinal":7,"id":"1-3","kind":"fill","screenshot":"screenshot.jpg","action_id":"211df16a-416a-41c0-850f-48dde9f2e979","v":1,"ts":"2026-11-25T23:04:27.304Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T23:04:27.304Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:27.798Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Create payee Internet company in autocomplete dropdown","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:28.563Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Create payee Internet company in autocomplete dropdown","action_type":"click","v":1,"ts":"2026-11-25T23:04:28.564Z"}
+{"type":"step_end","index":4,"status":"passed","duration":1.3,"summary":"click: Clicking Create payee Internet company in autocomplete dropdown","ordinal":8,"id":"1-4","kind":"click","screenshot":"screenshot.jpg","action_id":"d2c848a2-a4fe-4ce0-a1d8-35715cdb8817","v":1,"ts":"2026-11-25T23:04:28.666Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-25T23:04:28.666Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:28.947Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Clicking Account dropdown in the Schedule dialog","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:35.124Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Clicking Account dropdown in the Schedule dialog","action_type":"click","v":1,"ts":"2026-11-25T23:04:35.124Z"}
+{"type":"step_end","index":5,"status":"passed","duration":6.5,"summary":"click: Clicking Account dropdown in the Schedule dialog","ordinal":9,"id":"1-5","kind":"click","screenshot":"screenshot.jpg","action_id":"7947a7e1-e59e-46ad-aab5-cbfb0b8d38fb","v":1,"ts":"2026-11-25T23:04:35.124Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-25T23:04:35.124Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:35.392Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Waiting for the queued steps to start","action_type":"wait","success":true,"v":1,"ts":"2026-11-25T23:04:36.399Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Waiting for the queued steps to start","action_type":"wait","v":1,"ts":"2026-11-25T23:04:36.399Z"}
+{"type":"step_end","index":6,"status":"passed","duration":1.3,"summary":"wait: Waiting for the queued steps to start","ordinal":10,"id":"1-6","kind":"wait","screenshot":"screenshot.jpg","action_id":"e981783c-5558-4f1e-85c4-867a77fb8e5c","v":1,"ts":"2026-11-25T23:04:36.400Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-25T23:04:36.400Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:36.688Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Click \"Checking\"","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:37.341Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Click \"Checking\"","action_type":"click","v":1,"ts":"2026-11-25T23:04:37.341Z"}
+{"type":"step_end","index":7,"status":"passed","duration":0.9,"summary":"click: Click \"Checking\"","ordinal":11,"id":"1-7","kind":"click","screenshot":"screenshot.jpg","action_id":"261942e9-8697-49bb-bb9f-1a14cef84204","v":1,"ts":"2026-11-25T23:04:37.448Z"}
+{"type":"step_start","index":8,"objective":"Step 8","v":1,"ts":"2026-11-25T23:04:37.448Z"}
+{"type":"step_event","index":8,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:37.760Z"}
+{"type":"step_event","index":8,"event":"action","detail":"Type \"50\" into \"Amount\"","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T23:04:37.927Z"}
+{"type":"step_event","index":8,"event":"reasoning","detail":"Type \"50\" into \"Amount\"","action_type":"fill","v":1,"ts":"2026-11-25T23:04:37.928Z"}
+{"type":"step_end","index":8,"status":"passed","duration":0.5,"summary":"fill: Type \"50\" into \"Amount\"","ordinal":12,"id":"1-8","kind":"fill","screenshot":"screenshot.jpg","action_id":"ad588a7d-63f6-4361-be52-28407355305d","v":1,"ts":"2026-11-25T23:04:38.037Z"}
+{"type":"step_start","index":9,"objective":"Step 9","v":1,"ts":"2026-11-25T23:04:38.038Z"}
+{"type":"step_event","index":9,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:38.281Z"}
+{"type":"step_event","index":9,"event":"action","detail":"Click \"Add\"","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:38.951Z"}
+{"type":"step_event","index":9,"event":"reasoning","detail":"Click \"Add\"","action_type":"click","v":1,"ts":"2026-11-25T23:04:38.952Z"}
+{"type":"step_end","index":9,"status":"passed","duration":0.9,"summary":"click: Click \"Add\"","ordinal":13,"id":"1-9","kind":"click","screenshot":"screenshot.jpg","action_id":"7f79da52-0244-4490-a0fb-1bf9df40bd7c","v":1,"ts":"2026-11-25T23:04:39.048Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":13.84,"final_url":"http://127.0.0.1:42325/schedules","actions_executed":9,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/1/replay-test/screenshots/step_009.png","run_dir":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/1/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T23:04:39.052Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":13.84,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T23:04:39.053Z"}
+{"type":"test_md_step_start","step_index":3,"heading":"Skip next occurrence","ref":null,"v":1,"ts":"2026-11-25T23:04:39.053Z"}
+{"type":"run_start","objective":"In the \"Internet\" schedule row, click the Menu button (⋯) and click Skip next scheduled date.","timestamp":1795647879,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T23:04:39.118Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-25T23:04:39.119Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T23:04:39.123Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:39.183Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking the Internet row Menu button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:39.741Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking the Internet row Menu button","action_type":"click","v":1,"ts":"2026-11-25T23:04:39.741Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.6,"summary":"click: Clicking the Internet row Menu button","ordinal":14,"id":"2-1","kind":"click","screenshot":"screenshot.jpg","action_id":"2a1dad6a-87e5-499a-ba6e-703e86a0bf55","v":1,"ts":"2026-11-25T23:04:39.818Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T23:04:39.818Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:39.887Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking Skip next scheduled date","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:40.466Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking Skip next scheduled date","action_type":"click","v":1,"ts":"2026-11-25T23:04:40.466Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.6,"summary":"click: Clicking Skip next scheduled date","ordinal":15,"id":"2-2","kind":"click","screenshot":"screenshot.jpg","action_id":"dfcf3f71-84a9-4741-8789-87167b387e22","v":1,"ts":"2026-11-25T23:04:40.546Z"}
+{"type":"run_end","run_id":"run-2","status":"passed","summary":"","reason":"replay completed","duration":1.44,"final_url":"http://127.0.0.1:42325/schedules","actions_executed":2,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/2/replay-test/screenshots/step_002.png","run_dir":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/2/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T23:04:40.552Z"}
+{"type":"test_md_step_end","step_index":3,"status":"passed","duration_s":1.44,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T23:04:40.552Z"}
+{"type":"test_md_step_start","step_index":4,"heading":"Rename the schedule","ref":null,"v":1,"ts":"2026-11-25T23:04:40.552Z"}
+{"type":"run_start","objective":"Click the \"Internet\" schedule row, change only Schedule Name to Broadband, and click Save.","timestamp":1795647880,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T23:04:40.630Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 3 actions","recording_length":3,"v":1,"ts":"2026-11-25T23:04:40.630Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T23:04:40.634Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:40.710Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking the Internet schedule row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:41.266Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking the Internet schedule row","action_type":"click","v":1,"ts":"2026-11-25T23:04:41.266Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.6,"summary":"click: Clicking the Internet schedule row","ordinal":16,"id":"3-1","kind":"click","screenshot":"screenshot.jpg","action_id":"57275c0b-cd14-45aa-af64-f18f47391387","v":1,"ts":"2026-11-25T23:04:41.344Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T23:04:41.345Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:41.638Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Entering Broadband in Schedule Name field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T23:04:41.819Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Entering Broadband in Schedule Name field","action_type":"fill","v":1,"ts":"2026-11-25T23:04:41.819Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.5,"summary":"fill: Entering Broadband in Schedule Name field","ordinal":17,"id":"3-2","kind":"fill","screenshot":"screenshot.jpg","action_id":"2075978f-4f64-4ac6-ac8d-2bebc425e7df","v":1,"ts":"2026-11-25T23:04:41.932Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T23:04:41.932Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:42.213Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Save button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T23:04:42.888Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Save button","action_type":"click","v":1,"ts":"2026-11-25T23:04:42.888Z"}
+{"type":"step_end","index":3,"status":"passed","duration":1,"summary":"click: Clicking Save button","ordinal":18,"id":"3-3","kind":"click","screenshot":"screenshot.jpg","action_id":"48ffb85b-888d-42e1-9500-ee5fa9d7b229","v":1,"ts":"2026-11-25T23:04:42.993Z"}
+{"type":"run_end","run_id":"run-3","status":"passed","summary":"","reason":"replay completed","duration":2.38,"final_url":"http://127.0.0.1:42325/schedules","actions_executed":3,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/3/replay-test/screenshots/step_003.png","run_dir":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/3/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T23:04:42.998Z"}
+{"type":"test_md_step_end","step_index":4,"status":"passed","duration_s":2.38,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T23:04:42.998Z"}
+{"type":"test_md_step_start","step_index":5,"heading":"Check schedule status","ref":null,"v":1,"ts":"2026-11-25T23:04:42.998Z"}
+{"type":"run_start","objective":"Verify the Status cell of the \"Broadband\" row in the schedules list shows \"Scheduled\".","timestamp":1795647883,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T23:04:43.067Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-25T23:04:43.068Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T23:04:43.073Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:43.134Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Checking the Broadband schedule status","action_type":"analyze","success":true,"v":1,"ts":"2026-11-25T23:04:43.160Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Checking the Broadband schedule status","action_type":"analyze","v":1,"ts":"2026-11-25T23:04:43.160Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.1,"summary":"analyze: Checking the Broadband schedule status","ordinal":19,"id":"4-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"e2c46fd9-4723-4501-93c1-2e4a6ed350e6","v":1,"ts":"2026-11-25T23:04:43.161Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T23:04:43.161Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:42325/schedules","v":1,"ts":"2026-11-25T23:04:43.234Z"}
+{"type":"step_event","index":2,"event":"assertion","detail":"The Status cell of the \"Broadband\" row in the schedules list shows \"Scheduled\".","passed":true,"v":1,"ts":"2026-11-25T23:04:43.235Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.1,"summary":"assert: The Status cell of the \"Broadband\" row in the schedules list shows \"Scheduled\".","ordinal":20,"id":"4-2","kind":"assert","screenshot":"screenshot.jpg","action_id":"8b3a29e1-b3e1-489a-aed2-44b6a8bfeeef","v":1,"ts":"2026-11-25T23:04:43.236Z"}
+{"type":"run_end","run_id":"run-4","status":"passed","summary":"","reason":"replay completed","duration":0.18,"final_url":"http://127.0.0.1:42325/schedules","actions_executed":2,"screenshot_path":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/4/replay-test/screenshots/step_002.png","run_dir":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/scratch/4/replay-test","total_runs":1,"context":{"memory":{},"variables":{"broadband_status_scheduled":{"syntax":"{{broadband_status_scheduled}}","value":"true","secret":false}},"pointer":""},"variables_out":{"broadband_status_scheduled":{"syntax":"{{broadband_status_scheduled}}","value":"true","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T23:04:43.241Z"}
+{"type":"test_md_step_end","step_index":5,"status":"passed","duration_s":0.18,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T23:04:43.241Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"da449aeb-c4cf-4b0e-a69d-9b1e1dd6c171","v":1,"ts":"2026-11-25T23:04:44.937Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":31,"steps":{"total":5,"passed":5,"failed":0,"skipped":0,"replay_decisions":5,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"http://127.0.0.1:42325/","v":1,"ts":"2026-11-25T23:04:44.939Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>/.testmuai/kaneai/sessions/e1e9046f-0f16-46b2-bb68-4e9f85599d08/evidence/da449aeb-c4cf-4b0e-a69d-9b1e1dd6c171.evidence","v":1,"ts":"2026-11-25T23:04:44.943Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":31,"session_id":"e1e9046f-0f16-46b2-bb68-4e9f85599d08","coverage":{"status":"skipped"},"override_start_url":"http://127.0.0.1:42325/","v":1,"ts":"2026-11-25T23:04:44.943Z"}

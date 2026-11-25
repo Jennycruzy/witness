@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2025/extract_email_addresses_matches_an_email_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.9,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.9,
+        "rootCause": "The Extract email addresses operation does not produce a result for the valid address entered in Input."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/cd06034c-17e6-44ff-9d34-6162cd82211d/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.2716000000000003,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

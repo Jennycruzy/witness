@@ -1,0 +1,53 @@
+{
+  "test": "examples/mine/cyberchef/cases/2291/mime_decoding_correctly_decodes_a_utf_8__test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.99,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.99,
+        "rootCause": "The MIME decoder is interpreting the encoded accented character with the wrong character encoding, so it displays a corrupted symbol instead of “é”."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/1111c9d1-3b53-4fb5-af1f-7ad8899fb7b3/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.0632,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 4,
+      "query": "the text content of the Output box",
+      "expected": "Subject: café",
+      "locator": "internal:role=textbox >> internal:has-text=\"Subject: café\"i",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

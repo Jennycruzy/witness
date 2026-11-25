@@ -1,0 +1,65 @@
+{
+  "test": "bench/tests/actual-sep/separator_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.86,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.86,
+        "rootCause": "The test tried to read the new transaction while it was still being edited. The screen shows a deposit of 1.00 and an available Add button, so there was no completed transaction with the expected amount to check."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/7a22d38e-de03-42f2-aef4-4730427ce782/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.2963,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.96,
+        "rootCause": "The deposit amount is being formatted with a comma thousands separator rather than the required apostrophe separator."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/37e7e7c8-e0df-4cef-b228-69f1c2bfb3dd/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.3017,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 3,
+      "query": "the new transaction Deposit amount in the transaction entry row",
+      "expected": "1'234.56",
+      "locator": "(el(92).textContent.match(/1'234\\.56/) || [null])[0]",
+      "positional": false,
+      "kind": "read"
+    }
+  ]
+}

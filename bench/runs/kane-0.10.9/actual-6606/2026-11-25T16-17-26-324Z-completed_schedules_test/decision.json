@@ -1,0 +1,44 @@
+{
+  "test": "examples/actual-schedules/tests/completed_schedules_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.99,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_state_mismatch",
+        "confidence": 0.99,
+        "rootCause": "The page is displaying a completed schedule in the main list instead of hiding it and offering the completed-schedules link."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/19e792f1-83f4-4d2a-8b46-61299bce7c4d/scratch/4/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.731,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

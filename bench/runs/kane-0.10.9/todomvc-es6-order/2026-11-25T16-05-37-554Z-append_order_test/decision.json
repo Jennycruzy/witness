@@ -1,0 +1,29 @@
+{
+  "test": "bench/tests/todomvc/append_order_test.md",
+  "decision": {
+    "kaneLabel": null,
+    "kaneConfidence": null,
+    "verdict": "PASS",
+    "why": "Kane passed the test on the target build.",
+    "next": "Nothing to do."
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 2,
+      "query": "the text of the first todo label in the todo list",
+      "expected": "a",
+      "locator": "internal:text=\"a\"s",
+      "positional": true,
+      "kind": "locator"
+    },
+    {
+      "step": 2,
+      "query": "the text of the second todo label in the todo list",
+      "expected": "b",
+      "locator": "internal:text=\"b\"s",
+      "positional": true,
+      "kind": "locator"
+    }
+  ]
+}

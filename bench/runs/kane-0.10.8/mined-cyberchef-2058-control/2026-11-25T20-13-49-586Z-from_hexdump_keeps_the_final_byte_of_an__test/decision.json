@@ -1,0 +1,12 @@
+{
+  "test": "examples/mine/cyberchef/cases/2058/from_hexdump_keeps_the_final_byte_of_an__test.md",
+  "decision": {
+    "kaneLabel": null,
+    "kaneConfidence": null,
+    "verdict": "PASS",
+    "why": "Kane passed the test on the target build.",
+    "next": "Nothing to do."
+  },
+  "blind": [],
+  "locked": []
+}

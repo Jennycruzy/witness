@@ -1,0 +1,44 @@
+{
+  "test": "examples/it-tools-favorites/tests/favorite_tool_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.94,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.94,
+        "rootCause": "The recording checks for a personalized favorites section without first creating or restoring a favorite tool. The live page is in the normal no-favorites state."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/75be7e46-6ce9-4603-9426-d6a8ec286b0a/scratch/3/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.7712499999999998,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

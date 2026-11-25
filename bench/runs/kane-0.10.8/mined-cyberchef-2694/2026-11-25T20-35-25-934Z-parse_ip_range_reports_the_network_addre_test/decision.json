@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2694/parse_ip_range_reports_the_network_addre_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.99,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.99,
+        "rootCause": "The IP range parser is calculating or displaying the network address incorrectly for the supplied /24 address."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/2bd5c4e9-23d9-4182-b272-52d9e55a99f3/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.1165,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

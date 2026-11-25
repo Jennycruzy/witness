@@ -1,0 +1,154 @@
+{"type":"stream_start","cli_version":"0.10.8","surface":"testmd","pid":2688308,"v":1,"ts":"2026-11-25T20:40:43.436Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Open new rule","ref":null,"v":1,"ts":"2026-11-25T20:40:49.498Z"}
+{"type":"run_start","objective":"In the sidebar click More, then Rules, then click \"Create new rule\".","timestamp":1795639249,"environment":{"resolution":"1920x1080"},"override_start_url":"http://127.0.0.1:45057/","recorded_start_url":"http://127.0.0.1:34935/","override_applied":true,"v":1,"ts":"2026-11-25T20:40:49.653Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 4 actions","recording_length":4,"v":1,"ts":"2026-11-25T20:40:49.657Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T20:40:49.657Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"about:blank","v":1,"ts":"2026-11-25T20:40:49.777Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://127.0.0.1:34935/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-25T20:40:50.520Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://127.0.0.1:34935/","action_type":"navigate","v":1,"ts":"2026-11-25T20:40:50.522Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.9,"summary":"navigate: Navigate to http://127.0.0.1:34935/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"2674c072-d155-4777-a2cb-5ea9baca36c6","v":1,"ts":"2026-11-25T20:40:50.525Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T20:40:50.527Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:45057/","v":1,"ts":"2026-11-25T20:40:51.254Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking More button in sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:03.960Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking More button in sidebar","action_type":"click","v":1,"ts":"2026-11-25T20:41:03.960Z"}
+{"type":"step_end","index":2,"status":"passed","duration":13.4,"summary":"click: Clicking More button in sidebar","ordinal":2,"id":"0-2","kind":"click","screenshot":"screenshot.jpg","action_id":"a015c7c4-39d4-43a7-b9fb-2891d1510e26","v":1,"ts":"2026-11-25T20:41:04.209Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T20:41:04.209Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:45057/budget","v":1,"ts":"2026-11-25T20:41:04.260Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Rules in the sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:04.888Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Rules in the sidebar","action_type":"click","v":1,"ts":"2026-11-25T20:41:04.888Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.7,"summary":"click: Clicking Rules in the sidebar","ordinal":3,"id":"0-3","kind":"click","screenshot":"screenshot.jpg","action_id":"20e20a0c-8bc7-41ab-84f0-2b4e46be2361","v":1,"ts":"2026-11-25T20:41:04.983Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T20:41:04.983Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:05.043Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Create new rule in the Rules panel","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:10.697Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Create new rule in the Rules panel","action_type":"click","v":1,"ts":"2026-11-25T20:41:10.697Z"}
+{"type":"step_end","index":4,"status":"passed","duration":5.7,"summary":"click: Clicking Create new rule in the Rules panel","ordinal":4,"id":"0-4","kind":"click","screenshot":"screenshot.jpg","action_id":"728431d6-8ea7-4693-ba54-22482ec3e31c","v":1,"ts":"2026-11-25T20:41:10.842Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":21.44,"final_url":"http://127.0.0.1:45057/rules","actions_executed":4,"screenshot_path":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/0/replay-test/screenshots/step_004.png","run_dir":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T20:41:10.963Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":21.44,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T20:41:10.964Z"}
+{"type":"test_md_step_start","step_index":2,"heading":"Set group condition","ref":null,"v":1,"ts":"2026-11-25T20:41:10.964Z"}
+{"type":"run_start","objective":"In the rule's condition choose the field \"category group\", the operator \"is\" and the value \"Usual Expenses\".","timestamp":1795639270,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T20:41:10.999Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 4 actions","recording_length":4,"v":1,"ts":"2026-11-25T20:41:10.999Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T20:41:11.008Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:11.277Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking the category group field in the rule condition row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:11.901Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking the category group field in the rule condition row","action_type":"click","v":1,"ts":"2026-11-25T20:41:11.902Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.9,"summary":"click: Clicking the category group field in the rule condition row","ordinal":5,"id":"1-1","kind":"click","screenshot":"screenshot.jpg","action_id":"714e78af-b8b6-4e11-b1ab-1007df77a596","v":1,"ts":"2026-11-25T20:41:11.997Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T20:41:11.997Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:12.261Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking category group in the rule condition field menu","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:12.932Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking category group in the rule condition field menu","action_type":"click","v":1,"ts":"2026-11-25T20:41:12.932Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.9,"summary":"click: Clicking category group in the rule condition field menu","ordinal":6,"id":"1-2","kind":"click","screenshot":"screenshot.jpg","action_id":"73396e5a-eb6d-4c4b-a67c-637ee231a16e","v":1,"ts":"2026-11-25T20:41:13.032Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T20:41:13.032Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:13.299Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking Usual Expenses in the rule condition dropdown","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:13.933Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking Usual Expenses in the rule condition dropdown","action_type":"click","v":1,"ts":"2026-11-25T20:41:13.933Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.9,"summary":"click: Clicking Usual Expenses in the rule condition dropdown","ordinal":7,"id":"1-3","kind":"click","screenshot":"screenshot.jpg","action_id":"6f6eb559-fbf9-4f66-81ff-3565d64611bf","v":1,"ts":"2026-11-25T20:41:14.031Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T20:41:14.032Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:14.311Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Usual Expenses in the rule condition value menu","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:14.956Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Usual Expenses in the rule condition value menu","action_type":"click","v":1,"ts":"2026-11-25T20:41:14.956Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.9,"summary":"click: Clicking Usual Expenses in the rule condition value menu","ordinal":8,"id":"1-4","kind":"click","screenshot":"screenshot.jpg","action_id":"cc161ff4-7b9e-4720-add1-4b4982290736","v":1,"ts":"2026-11-25T20:41:15.064Z"}
+{"type":"run_end","run_id":"run-1","status":"passed","summary":"","reason":"replay completed","duration":4.07,"final_url":"http://127.0.0.1:45057/rules","actions_executed":4,"screenshot_path":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/1/replay-test/screenshots/step_004.png","run_dir":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/1/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T20:41:15.065Z"}
+{"type":"test_md_step_end","step_index":2,"status":"passed","duration_s":4.07,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T20:41:15.065Z"}
+{"type":"test_md_step_start","step_index":3,"heading":"Set notes action","ref":null,"v":1,"ts":"2026-11-25T20:41:15.065Z"}
+{"type":"run_start","objective":"In the rule's action choose \"set\" \"notes\" to \"grouptest\", then click Save.","timestamp":1795639275,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T20:41:15.139Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 4 actions","recording_length":4,"v":1,"ts":"2026-11-25T20:41:15.139Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T20:41:15.147Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:15.420Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking category in rule action row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:16.118Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking category in rule action row","action_type":"click","v":1,"ts":"2026-11-25T20:41:16.118Z"}
+{"type":"step_end","index":1,"status":"passed","duration":1,"summary":"click: Clicking category in rule action row","ordinal":9,"id":"2-1","kind":"click","screenshot":"screenshot.jpg","action_id":"0776d5be-6baa-4935-abbc-39e16c0e7c8d","v":1,"ts":"2026-11-25T20:41:16.212Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T20:41:16.213Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:16.488Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking notes in the rule action menu","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:17.128Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking notes in the rule action menu","action_type":"click","v":1,"ts":"2026-11-25T20:41:17.128Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.9,"summary":"click: Clicking notes in the rule action menu","ordinal":10,"id":"2-2","kind":"click","screenshot":"screenshot.jpg","action_id":"c773f012-ad89-4cea-b4f2-6c3031fd53d1","v":1,"ts":"2026-11-25T20:41:17.229Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T20:41:17.230Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:17.497Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Typing grouptest into the rule action field notes","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T20:41:17.719Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Typing grouptest into the rule action field notes","action_type":"fill","v":1,"ts":"2026-11-25T20:41:17.720Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.5,"summary":"fill: Typing grouptest into the rule action field notes","ordinal":11,"id":"2-3","kind":"fill","screenshot":"screenshot.jpg","action_id":"ba35a6b0-8932-40f6-8292-f2203489f946","v":1,"ts":"2026-11-25T20:41:17.828Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T20:41:17.828Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:18.097Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Clicking Save in the rule modal footer","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:18.722Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Clicking Save in the rule modal footer","action_type":"click","v":1,"ts":"2026-11-25T20:41:18.722Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.9,"summary":"click: Clicking Save in the rule modal footer","ordinal":12,"id":"2-4","kind":"click","screenshot":"screenshot.jpg","action_id":"0c539b86-1cb9-4aa5-870d-8acbec39593a","v":1,"ts":"2026-11-25T20:41:18.817Z"}
+{"type":"run_end","run_id":"run-2","status":"passed","summary":"","reason":"replay completed","duration":3.69,"final_url":"http://127.0.0.1:45057/rules","actions_executed":4,"screenshot_path":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/2/replay-test/screenshots/step_004.png","run_dir":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/2/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T20:41:18.817Z"}
+{"type":"test_md_step_end","step_index":3,"status":"passed","duration_s":3.69,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T20:41:18.818Z"}
+{"type":"test_md_step_start","step_index":4,"heading":"Add Food transaction","ref":null,"v":1,"ts":"2026-11-25T20:41:18.818Z"}
+{"type":"run_start","objective":"In the sidebar click the \"Checking\" account, click \"Add New\", type \"Grocer\" as the Payee, choose \"Food\" as the Category, type 10.00 as the Payment, and click \"Add\".","timestamp":1795639278,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T20:41:18.899Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 12 actions","recording_length":12,"v":1,"ts":"2026-11-25T20:41:18.900Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T20:41:18.909Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:45057/rules","v":1,"ts":"2026-11-25T20:41:18.979Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Clicking the Checking account in the sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:19.557Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Clicking the Checking account in the sidebar","action_type":"click","v":1,"ts":"2026-11-25T20:41:19.557Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.6,"summary":"click: Clicking the Checking account in the sidebar","ordinal":13,"id":"3-1","kind":"click","screenshot":"screenshot.jpg","action_id":"6f30521c-6746-433a-84ed-a7fe9f65411d","v":1,"ts":"2026-11-25T20:41:19.640Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T20:41:19.640Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:19.709Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking Add New transaction button","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:25.371Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking Add New transaction button","action_type":"click","v":1,"ts":"2026-11-25T20:41:25.371Z"}
+{"type":"step_end","index":2,"status":"passed","duration":5.7,"summary":"click: Clicking Add New transaction button","ordinal":14,"id":"3-2","kind":"click","screenshot":"screenshot.jpg","action_id":"a8b95bd9-3428-4123-96ea-1b87e936e055","v":1,"ts":"2026-11-25T20:41:25.452Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-25T20:41:25.452Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:25.537Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Clicking the Payee field for the new transaction","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:26.142Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Clicking the Payee field for the new transaction","action_type":"click","v":1,"ts":"2026-11-25T20:41:26.142Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.7,"summary":"click: Clicking the Payee field for the new transaction","ordinal":15,"id":"3-3","kind":"click","screenshot":"screenshot.jpg","action_id":"190cbda3-d1e0-4321-b397-efa2e00035cb","v":1,"ts":"2026-11-25T20:41:26.234Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-25T20:41:26.234Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:26.318Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Typing Gro in the Payee field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T20:41:26.457Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Typing Gro in the Payee field","action_type":"fill","v":1,"ts":"2026-11-25T20:41:26.457Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.2,"summary":"fill: Typing Gro in the Payee field","ordinal":16,"id":"3-4","kind":"fill","screenshot":"screenshot.jpg","action_id":"67164c1c-4dc7-4e00-a1ed-c344afd0f277","v":1,"ts":"2026-11-25T20:41:26.543Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-25T20:41:26.543Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:26.614Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Typing Grocer into the Payee field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T20:41:28.140Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Typing Grocer into the Payee field","action_type":"fill","v":1,"ts":"2026-11-25T20:41:28.140Z"}
+{"type":"step_end","index":5,"status":"passed","duration":1.6,"summary":"fill: Typing Grocer into the Payee field","ordinal":17,"id":"3-5","kind":"fill","screenshot":"screenshot.jpg","action_id":"4988d9bf-4ae1-4367-a9ed-e3729c6abb4c","v":1,"ts":"2026-11-25T20:41:28.226Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-25T20:41:28.226Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:28.304Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Clicking the payee field for the new transaction","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:30.243Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Clicking the payee field for the new transaction","action_type":"click","v":1,"ts":"2026-11-25T20:41:30.244Z"}
+{"type":"step_end","index":6,"status":"passed","duration":2,"summary":"click: Clicking the payee field for the new transaction","ordinal":18,"id":"3-6","kind":"click","screenshot":"screenshot.jpg","action_id":"92df8401-f92e-4d1e-85d9-82d3d15a10e8","v":1,"ts":"2026-11-25T20:41:30.332Z"}
+{"type":"step_start","index":7,"objective":"Step 7","v":1,"ts":"2026-11-25T20:41:30.332Z"}
+{"type":"step_event","index":7,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:30.396Z"}
+{"type":"step_event","index":7,"event":"action","detail":"Clicking Categorize in the Category field for the new transaction","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:35.785Z"}
+{"type":"step_event","index":7,"event":"reasoning","detail":"Clicking Categorize in the Category field for the new transaction","action_type":"click","v":1,"ts":"2026-11-25T20:41:35.785Z"}
+{"type":"step_end","index":7,"status":"passed","duration":5.5,"summary":"click: Clicking Categorize in the Category field for the new transaction","ordinal":19,"id":"3-7","kind":"click","screenshot":"screenshot.jpg","action_id":"4f081285-e533-4ef0-b37e-33069a070edc","v":1,"ts":"2026-11-25T20:41:35.786Z"}
+{"type":"step_start","index":8,"objective":"Step 8","v":1,"ts":"2026-11-25T20:41:35.786Z"}
+{"type":"step_event","index":8,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:35.863Z"}
+{"type":"step_event","index":8,"event":"action","detail":"Clicking Food category for the new transaction","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:36.476Z"}
+{"type":"step_event","index":8,"event":"reasoning","detail":"Clicking Food category for the new transaction","action_type":"click","v":1,"ts":"2026-11-25T20:41:36.476Z"}
+{"type":"step_end","index":8,"status":"passed","duration":0.7,"summary":"click: Clicking Food category for the new transaction","ordinal":20,"id":"3-8","kind":"click","screenshot":"screenshot.jpg","action_id":"b7054144-e3b1-4abc-ae8a-9e3f47de7584","v":1,"ts":"2026-11-25T20:41:36.566Z"}
+{"type":"step_start","index":9,"objective":"Step 9","v":1,"ts":"2026-11-25T20:41:36.566Z"}
+{"type":"step_event","index":9,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:36.628Z"}
+{"type":"step_event","index":9,"event":"action","detail":"Clicking the payment field for the new transaction entry row","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:43.498Z"}
+{"type":"step_event","index":9,"event":"reasoning","detail":"Clicking the payment field for the new transaction entry row","action_type":"click","v":1,"ts":"2026-11-25T20:41:43.498Z"}
+{"type":"step_end","index":9,"status":"passed","duration":6.9,"summary":"click: Clicking the payment field for the new transaction entry row","ordinal":21,"id":"3-9","kind":"click","screenshot":"screenshot.jpg","action_id":"0dae7b89-1246-4f81-b0a0-9a4224918b6c","v":1,"ts":"2026-11-25T20:41:43.500Z"}
+{"type":"step_start","index":10,"objective":"Step 10","v":1,"ts":"2026-11-25T20:41:43.500Z"}
+{"type":"step_event","index":10,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:43.579Z"}
+{"type":"step_event","index":10,"event":"action","detail":"Typing 10.00 into the Payment field","action_type":"fill","success":true,"v":1,"ts":"2026-11-25T20:41:43.727Z"}
+{"type":"step_event","index":10,"event":"reasoning","detail":"Typing 10.00 into the Payment field","action_type":"fill","v":1,"ts":"2026-11-25T20:41:43.727Z"}
+{"type":"step_end","index":10,"status":"passed","duration":0.2,"summary":"fill: Typing 10.00 into the Payment field","ordinal":22,"id":"3-10","kind":"fill","screenshot":"screenshot.jpg","action_id":"d0527920-971e-4f06-b3e2-d1f4815d32c8","v":1,"ts":"2026-11-25T20:41:43.812Z"}
+{"type":"step_start","index":11,"objective":"Step 11","v":1,"ts":"2026-11-25T20:41:43.812Z"}
+{"type":"step_event","index":11,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:43.878Z"}
+{"type":"step_event","index":11,"event":"action","detail":"Clicking Add to save the new transaction","action_type":"click","success":true,"v":1,"ts":"2026-11-25T20:41:49.428Z"}
+{"type":"step_event","index":11,"event":"reasoning","detail":"Clicking Add to save the new transaction","action_type":"click","v":1,"ts":"2026-11-25T20:41:49.428Z"}
+{"type":"step_end","index":11,"status":"passed","duration":5.6,"summary":"click: Clicking Add to save the new transaction","ordinal":23,"id":"3-11","kind":"click","screenshot":"screenshot.jpg","action_id":"739d0c18-8f83-4b0c-8d68-211a9ac754be","v":1,"ts":"2026-11-25T20:41:49.428Z"}
+{"type":"run_end","run_id":"run-3","status":"passed","summary":"","reason":"replay completed","duration":30.54,"final_url":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","actions_executed":11,"screenshot_path":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/3/replay-test/screenshots/step_011.png","run_dir":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/3/replay-test","total_runs":1,"context":{"memory":{},"variables":{},"pointer":""},"variables_out":{},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T20:41:49.435Z"}
+{"type":"test_md_step_end","step_index":4,"status":"passed","duration_s":30.54,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T20:41:49.436Z"}
+{"type":"test_md_step_start","step_index":5,"heading":"Check transaction notes","ref":null,"v":1,"ts":"2026-11-25T20:41:49.436Z"}
+{"type":"run_start","objective":"Verify the Notes cell of the \"Grocer\" transaction row shows \"grouptest\".","timestamp":1795639309,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-25T20:41:49.519Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 2 actions","recording_length":2,"v":1,"ts":"2026-11-25T20:41:49.520Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-25T20:41:49.555Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:49.688Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Reading the Notes cell from the Grocer transaction","action_type":"analyze","success":true,"v":1,"ts":"2026-11-25T20:41:49.808Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Reading the Notes cell from the Grocer transaction","action_type":"analyze","v":1,"ts":"2026-11-25T20:41:49.808Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.3,"summary":"analyze: Reading the Notes cell from the Grocer transaction","ordinal":24,"id":"4-1","kind":"analyze","screenshot":"screenshot.jpg","action_id":"58dc07fa-3910-446e-9f2b-c3e1f3e6ce95","v":1,"ts":"2026-11-25T20:41:49.809Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-25T20:41:49.810Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","v":1,"ts":"2026-11-25T20:41:49.899Z"}
+{"type":"step_event","index":2,"event":"assertion","detail":"The Notes cell of the \"Grocer\" transaction row shows \"grouptest\".","passed":true,"v":1,"ts":"2026-11-25T20:41:49.905Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.1,"summary":"assert: The Notes cell of the \"Grocer\" transaction row shows \"grouptest\".","ordinal":25,"id":"4-2","kind":"assert","screenshot":"screenshot.jpg","action_id":"fa9c32d9-8b09-4a83-bce2-658af354a8f6","v":1,"ts":"2026-11-25T20:41:49.907Z"}
+{"type":"run_end","run_id":"run-4","status":"passed","summary":"","reason":"replay completed","duration":0.4,"final_url":"http://127.0.0.1:45057/accounts/c5d30eef-75c4-4605-93c9-80a575dcd708","actions_executed":2,"screenshot_path":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/4/replay-test/screenshots/step_002.png","run_dir":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/scratch/4/replay-test","total_runs":1,"context":{"memory":{},"variables":{"grocer_notes_cell_check":{"syntax":"{{grocer_notes_cell_check}}","value":"grouptest","secret":false}},"pointer":""},"variables_out":{"grocer_notes_cell_check":{"syntax":"{{grocer_notes_cell_check}}","value":"grouptest","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-25T20:41:49.910Z"}
+{"type":"test_md_step_end","step_index":5,"status":"passed","duration_s":0.4,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-25T20:41:49.910Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"b356303b-a796-4894-bd6c-a895ea9fcee4","v":1,"ts":"2026-11-25T20:41:51.949Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":66,"steps":{"total":5,"passed":5,"failed":0,"skipped":0,"replay_decisions":5,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"override_start_url":"http://127.0.0.1:45057/","v":1,"ts":"2026-11-25T20:41:51.951Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"<local>/.testmuai/kaneai/sessions/34ead2cd-bf09-4506-b7a4-5ad3d75b1f89/evidence/b356303b-a796-4894-bd6c-a895ea9fcee4.evidence","v":1,"ts":"2026-11-25T20:41:51.955Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":66,"session_id":"34ead2cd-bf09-4506-b7a4-5ad3d75b1f89","coverage":{"status":"skipped"},"override_start_url":"http://127.0.0.1:45057/","v":1,"ts":"2026-11-25T20:41:51.955Z"}

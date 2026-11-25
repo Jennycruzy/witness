@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2671/to_html_entity_encodes_as_a_well_formed__test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.99,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.99,
+        "rootCause": "The conversion result adds two semicolons when it should add only one."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/8356b39a-0dd8-4d3a-986f-3f711d6c9ad4/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 1.94885,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

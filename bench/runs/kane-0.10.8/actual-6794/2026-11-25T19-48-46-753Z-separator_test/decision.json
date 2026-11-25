@@ -1,0 +1,65 @@
+{
+  "test": "bench/tests/actual-sep/separator_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.98,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.98,
+        "rootCause": "The recorded flow did not reach the required completed-transaction state before checking the Deposit value. The live screen still shows the open row editor with an Add button and a date picker, rather than a saved transaction row."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/4f1574ed-3cde-4824-be35-a6bc85dfa700/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.25785,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.96,
+        "rootCause": "The replay checked for a new saved transaction while the page was still editing it. The visible Add button and open date picker show the required completed-transaction state was never reached."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/363742c3-9ca5-4e1f-b37d-c8812394f76b/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.22275,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 3,
+      "query": "the new transaction Deposit amount in the transaction entry row",
+      "expected": "1'234.56",
+      "locator": "(el(92).textContent.match(/1'234\\.56/) || [null])[0]",
+      "positional": false,
+      "kind": "read"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2071/sql_beautify_keeps_the_space_in_on_dupli_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.96,
+        "rootCause": "The SQL formatter removes the space between the words KEY and UPDATE in the output."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/fe3bae31-b761-479b-84c4-f414f3ad00b6/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.27925,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

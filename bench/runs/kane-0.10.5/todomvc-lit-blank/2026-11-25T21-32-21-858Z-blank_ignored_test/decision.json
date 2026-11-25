@@ -1,0 +1,44 @@
+{
+  "test": "bench/tests/todomvc/blank_ignored_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.96,
+        "rootCause": "The recording checked the footer without first creating or restoring the one-item state it requires."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/24281701-f6fe-4321-a268-765ea7f18619/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.2845,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 3,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

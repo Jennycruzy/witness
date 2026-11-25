@@ -1,0 +1,56 @@
+{
+  "test": "bench/tests/actual-layout/running_balance_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.98,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 3,
+      "kind": "action",
+      "reason": "action_failed: click @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.98,
+        "rootCause": "The recording expects a transaction dated 11/17/2026, but the live page shows the only transaction dated 11/25/2026. The attempted target is also positioned in the Balance column rather than the Deposit column."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/e4cb9037-23d6-42e9-b6ea-b348f2b3e1d7/scratch/1/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 0.7181599999999999,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 3,
+      "kind": "action",
+      "reason": "action_failed: click @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.96,
+        "rootCause": "The recording is tied to an old transaction date and cell position. On the live page, that transaction is not present, so the locator no longer identifies the intended Deposit amount."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/801083d6-276a-4bd9-9f86-a6a71853e3e0/scratch/1/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 3.0759,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

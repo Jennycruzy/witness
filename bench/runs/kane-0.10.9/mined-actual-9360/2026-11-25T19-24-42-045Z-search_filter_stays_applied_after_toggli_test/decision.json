@@ -1,0 +1,53 @@
+{
+  "test": "examples/mine/actual/cases/9360/search_filter_stays_applied_after_toggli_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 6,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": {
+      "runId": "run-5",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.98,
+        "rootCause": "The search view did not exclude a transaction whose payee does not match the entered Coffee search text."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/c9a4948c-8360-4c30-b507-3fabf385a4a8/scratch/5/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.8165999999999998,
+    "replayDecisions": 6,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 6,
+    "stepsPassed": 6,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 6,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 5,
+      "query": "whether the Hide reconciled transactions option is present in the Account menu",
+      "expected": "Hide reconciled transactions",
+      "locator": "internal:role=button[name=\"Hide reconciled transactions\"i]",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

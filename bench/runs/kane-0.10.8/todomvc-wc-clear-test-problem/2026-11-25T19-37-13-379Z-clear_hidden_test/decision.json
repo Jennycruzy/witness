@@ -1,0 +1,44 @@
+{
+  "test": "bench/tests/todomvc/clear_hidden_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.99,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 2,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_state_mismatch",
+        "confidence": 0.99,
+        "rootCause": "The footer is showing the cleanup button when it should be hidden."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/7ba51219-a669-4b9c-ae92-f5aefd276c39/scratch/1/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.1142499999999997,
+    "replayDecisions": 2,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 2,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 2,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

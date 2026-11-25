@@ -1,0 +1,65 @@
+{
+  "test": "examples/mine/actual/cases/9360/search_filter_stays_applied_after_toggli_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 6,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": {
+      "runId": "run-5",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.98,
+        "rootCause": "The transaction search is not removing a row that does not match the entered search text."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/c8735433-eaf5-4289-8021-a710fcab49e4/scratch/5/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.8226,
+    "replayDecisions": 6,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 6,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 5,
+      "kind": "action",
+      "reason": "action_failed: fill @ step 5",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.72,
+        "rootCause": "The recorded automation no longer reliably targets a fillable Payment control on the live transaction row."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/df20310b-9902-4c38-badd-0206a8cce170/scratch/2/replay-test/screenshots/step_005.png"
+    },
+    "creditsReported": 3.6461999999999994,
+    "replayDecisions": 6,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 5,
+      "query": "whether the Hide reconciled transactions option is present in the Account menu",
+      "expected": "Hide reconciled transactions",
+      "locator": "internal:role=button[name=\"Hide reconciled transactions\"i]",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

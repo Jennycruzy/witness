@@ -1,0 +1,44 @@
+{
+  "test": "examples/it-tools-favorites/tests/favorite_tool_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_state_mismatch",
+        "confidence": 0.96,
+        "rootCause": "The home page is showing the general tool list instead of the required favorites section, so the expected Base64 tool is not listed there."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/1766fbf7-31db-4caa-b260-c9d65a91ea2f/scratch/3/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.8179,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

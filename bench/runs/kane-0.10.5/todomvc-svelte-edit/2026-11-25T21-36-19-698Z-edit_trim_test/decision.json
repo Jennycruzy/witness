@@ -1,0 +1,61 @@
+{
+  "test": "examples/todomvc-svelte/tests/edit_trim_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.93,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.93,
+        "rootCause": "The recording did not set up or clear the todo list before making its one-item assertion. The page shown in the replay has two active rows: a blank row and “b”."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/0feffdf4-f172-43df-a8c5-ad921dbaf433/scratch/2/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 3.2485,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 3,
+      "query": "whether the todo text \"b\" is present in the main todo list",
+      "expected": "b",
+      "locator": "internal:text=\"b\"s",
+      "positional": false,
+      "kind": "locator"
+    },
+    {
+      "step": 5,
+      "query": "the todo text in the todo list item",
+      "expected": "spaced",
+      "locator": "internal:text=\"spaced\"i",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "test": "bench/tests/todomvc/blank_ignored_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.96,
+        "rootCause": "The app's footer count is out of sync with the todos shown on the page."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/0f9fe939-a3f4-449d-9e15-11a39423726f/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.4909499999999998,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 3,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

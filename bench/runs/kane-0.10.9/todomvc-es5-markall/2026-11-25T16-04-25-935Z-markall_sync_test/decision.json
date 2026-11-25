@@ -1,0 +1,44 @@
+{
+  "test": "bench/tests/todomvc/markall_sync_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.94,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_state_mismatch",
+        "confidence": 0.94,
+        "rootCause": "The page is not keeping the mark-all checkbox in sync with the completed state of every todo."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/eb617937-1a1c-4114-8ea6-8d9fc0bb20b8/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.2384,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 3,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

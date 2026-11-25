@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2694/parse_ip_range_reports_the_network_addre_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.99,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.99,
+        "rootCause": "The IP range parser is showing the entered host address as the network address rather than calculating the network address from the /24 range."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/b5be6fe2-bd89-4b08-aea8-e5b2a8c384da/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.1056999999999997,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

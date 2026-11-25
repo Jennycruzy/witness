@@ -1,0 +1,53 @@
+{
+  "test": "examples/mine/cyberchef/cases/2290/dechunk_http_response_drops_the_terminat_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.98,
+        "rootCause": "The operation does not stop cleanly after the zero-length final chunk, so part of the trailer is treated as output."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/4634bfef-97df-4ac2-9508-9be61ce917d9/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.41665,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 4,
+      "query": "the exact text content in the Output textbox",
+      "expected": "MozillaDeveloperNetwork",
+      "locator": "internal:role=textbox >> internal:has-text=\"MozillaDeveloperNetwork\"i",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

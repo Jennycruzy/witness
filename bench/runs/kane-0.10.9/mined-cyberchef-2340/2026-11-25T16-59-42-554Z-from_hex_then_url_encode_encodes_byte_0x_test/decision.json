@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2340/from_hex_then_url_encode_encodes_byte_0x_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.96,
+        "rootCause": "The URL encoding result changes the final byte into two encoded values rather than keeping it as the single required encoded byte."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/4190e86f-6c98-4b9b-aebd-5ac2d765c769/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.19315,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

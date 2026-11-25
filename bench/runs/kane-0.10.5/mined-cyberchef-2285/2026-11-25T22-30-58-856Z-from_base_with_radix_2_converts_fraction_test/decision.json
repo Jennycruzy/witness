@@ -1,0 +1,53 @@
+{
+  "test": "examples/mine/cyberchef/cases/2285/from_base_with_radix_2_converts_fraction_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.98,
+        "rootCause": "The base-conversion operation is treating the valid binary value as an invalid number."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/5d03e1ca-f633-4707-b12f-0f1ffb22c264/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.112,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 5,
+      "query": "the value in the Output pane textbox",
+      "expected": "2.5",
+      "locator": "internal:role=textbox >> internal:has-text=\"2.5\"i",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

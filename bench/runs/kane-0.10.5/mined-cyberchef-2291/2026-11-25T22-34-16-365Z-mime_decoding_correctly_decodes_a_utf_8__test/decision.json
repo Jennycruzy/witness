@@ -1,0 +1,53 @@
+{
+  "test": "examples/mine/cyberchef/cases/2291/mime_decoding_correctly_decodes_a_utf_8__test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.98,
+        "rootCause": "The decoder is not preserving the accented character in the MIME-encoded input and displays a replacement character instead."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/ef4171ff-429b-4377-b9e7-21f325f7f6ef/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.21015,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 4,
+      "query": "the text content of the Output box",
+      "expected": "Subject: café",
+      "locator": "internal:role=textbox >> internal:has-text=\"Subject: café\"i",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

@@ -75,6 +75,18 @@ All of it is real: public bugs in real apps, real Kane runs (kane-cli 0.10.5, 17
   - Kane's label was right on 15 of the 16 kept. It named the app on every one-operation bug; the one it got wrong is the multi-step menu case (#8760), which it called an automation bug at 0.95. Every case keeps its test, both builds, the runs and `result.json`; `witness mine summary` recounts them.
 - **Actual Budget, a layout change between 26.8.0 and 26.7.0.** The replay failed at a click: TEST_PROBLEM. Re-recording on 26.7.0 passed the click, then failed at the balance check: the real #8475 bug, now an APP_BUG.
 
+## Triage bench: 43 cases, answers fixed before any run
+
+[`bench/`](bench/): 28 real app bugs, 2 real test problems and 13 controls, each a Kane test and two real builds. The answers and the held-out half were committed (sha256) before the first run.
+
+| kane-cli | Kane's label right | WITNESS right | Real app bugs where the agent is told to edit the test: Kane / WITNESS |
+|---|---|---|---|
+| 0.10.5 | 32 of 43 | **37 of 43** | 8 / **0** of 28 |
+| 0.10.8 | 36 of 43 | 36 of 43 | 5 / **1** of 28 |
+| 0.10.9 | 36 of 43 | **38 of 43** | 5 / **0** of 28 |
+
+Most of WITNESS's misses are ENV (the reference failed too on the bench machine, so nobody is told to change anything); each miss is explained in [`bench/README.md`](bench/README.md#results-25-november-2026).
+
 ## Reported upstream
 
 | Where | What we sent | Outcome |
@@ -133,6 +145,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | Closed loop | [Pull request #1](https://github.com/Jennycruzy/witness/pull/1) | On GitHub: a PR puts back the upstream TodoMVC Svelte code; the check replays the Kane tests on the PR's build and the base build and comments APP_BUG with the card; a separate Claude Code agent given only that comment fixes two app files; the check goes green |
 | Closed loop | [`src/commands/fix.ts`](src/commands/fix.ts) | Agent edits outside the app source are rolled back; a changed test or recording (sha256) is rejected |
 | Closed loop | [`evidence/skill-fresh-session/`](evidence/skill-fresh-session/) and its row in `verify` | A fresh Claude Code session with only the WITNESS skill, asked "The Kane test fails on this TodoMVC app. Sort it out.", loaded the skill by itself; Kane said `automation_bug` 0.9, WITNESS said APP_BUG, the agent wrote *"I didn't go by that label"*, fixed the app only, and the re-run passed |
+| Verified | [`bench/`](bench/) and `witness bench score bench/cases.json` | 43 cases with answers fixed before any run, on kane-cli 0.10.5, 0.10.8 and 0.10.9: how often Kane's label and WITNESS tell an agent to edit the test when the app is broken |
 | Ships | [witness.38-49-216-59.sslip.io](https://witness.38-49-216-59.sslip.io) | Pick any open pull request of Actual Budget and watch Kane check its live preview, then the verdict; below it, the TodoMVC upstream build or the fixed build. The same page runs locally with `witness live examples/todomvc-svelte/live.json` |
 | Ships | [`examples/pr/actual/runs/`](examples/pr/actual/runs/) | The 25 open pull requests checked on 25 November, one `pr.json` per check |
 | Craft | [How I tried to break it](#how-i-tried-to-break-it) | Each way the verdict could be wrong, and the run or test that covers it |

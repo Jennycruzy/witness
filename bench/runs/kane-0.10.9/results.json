@@ -1,0 +1,437 @@
+{
+  "kane": "0.10.9",
+  "label": "kane-0.10.9",
+  "casesSha256": "16991f08da63ac0f86f02f14c8772a399c94ad0984acef66e224a2f7b1732f25",
+  "rows": [
+    {
+      "id": "todomvc-react-escape",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.8410499999999996
+    },
+    {
+      "id": "todomvc-es5-markall",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.94,
+      "target": "failed",
+      "credits": 2.2384
+    },
+    {
+      "id": "todomvc-es6-order",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "todomvc-lit-blank",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "automation_bug",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.2653499999999998
+    },
+    {
+      "id": "todomvc-wc-blank",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.93,
+      "target": "failed",
+      "credits": 2.35175
+    },
+    {
+      "id": "todomvc-wc-clear-test-problem",
+      "truth": "TEST_PROBLEM",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.19225
+    },
+    {
+      "id": "todomvc-svelte-edit",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.93,
+      "target": "failed",
+      "credits": 2.9559499999999996
+    },
+    {
+      "id": "todomvc-svelte-edit-control",
+      "truth": "PASS",
+      "half": "A",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "todomvc-svelte-filter",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.16805
+    },
+    {
+      "id": "cyberchef-2434",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.13445
+    },
+    {
+      "id": "cyberchef-2434-control",
+      "truth": "PASS",
+      "half": "B",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "ittools-favorites",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.96,
+      "target": "failed",
+      "credits": 2.8179
+    },
+    {
+      "id": "ittools-favorites-control",
+      "truth": "PASS",
+      "half": "A",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "actual-6606",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.99,
+      "target": "failed",
+      "credits": 2.731
+    },
+    {
+      "id": "actual-6794",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "ENV",
+      "kaneLabel": "automation_bug",
+      "kaneConfidence": 0.95,
+      "target": "failed",
+      "credits": 4.9963999999999995
+    },
+    {
+      "id": "actual-8475",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "ENV",
+      "kaneLabel": "automation_bug",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 5.58015
+    },
+    {
+      "id": "actual-layout-test-problem",
+      "truth": "TEST_PROBLEM",
+      "half": "B",
+      "verdict": "ENV",
+      "kaneLabel": "automation_bug",
+      "kaneConfidence": 0.96,
+      "target": "failed",
+      "credits": 6.0695
+    },
+    {
+      "id": "mined-cyberchef-2025",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.96,
+      "target": "failed",
+      "credits": 2.246
+    },
+    {
+      "id": "mined-cyberchef-2025-control",
+      "truth": "PASS",
+      "half": "B",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-cyberchef-2058",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.99,
+      "target": "failed",
+      "credits": 2.04005
+    },
+    {
+      "id": "mined-cyberchef-2058-control",
+      "truth": "PASS",
+      "half": "B",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-cyberchef-2071",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.1333
+    },
+    {
+      "id": "mined-cyberchef-2071-control",
+      "truth": "PASS",
+      "half": "A",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-cyberchef-2249",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.84635
+    },
+    {
+      "id": "mined-cyberchef-2249-control",
+      "truth": "PASS",
+      "half": "B",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-cyberchef-2285",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.99,
+      "target": "failed",
+      "credits": 2.25225
+    },
+    {
+      "id": "mined-cyberchef-2285-control",
+      "truth": "PASS",
+      "half": "B",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-cyberchef-2290",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.99,
+      "target": "failed",
+      "credits": 2.15395
+    },
+    {
+      "id": "mined-cyberchef-2291",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.99,
+      "target": "failed",
+      "credits": 2.0632
+    },
+    {
+      "id": "mined-cyberchef-2307",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.99,
+      "target": "failed",
+      "credits": 2.0639000000000003
+    },
+    {
+      "id": "mined-cyberchef-2340",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.96,
+      "target": "failed",
+      "credits": 2.19315
+    },
+    {
+      "id": "mined-cyberchef-2671",
+      "truth": "APP_BUG",
+      "half": "B",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.99,
+      "target": "failed",
+      "credits": 2.07605
+    },
+    {
+      "id": "mined-cyberchef-2694",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.99,
+      "target": "failed",
+      "credits": 2.1056999999999997
+    },
+    {
+      "id": "mined-actual-8587",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "automation_bug",
+      "kaneConfidence": 0.96,
+      "target": "failed",
+      "credits": 2.3952
+    },
+    {
+      "id": "mined-actual-8587-control",
+      "truth": "PASS",
+      "half": "A",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-actual-8726",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.93,
+      "target": "failed",
+      "credits": 2.9257999999999997
+    },
+    {
+      "id": "mined-actual-8726-control",
+      "truth": "PASS",
+      "half": "A",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-actual-8763",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "automation_bug",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.7141499999999996
+    },
+    {
+      "id": "mined-actual-8763-control",
+      "truth": "PASS",
+      "half": "B",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-actual-9173",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.0196
+    },
+    {
+      "id": "mined-actual-9173-control",
+      "truth": "PASS",
+      "half": "A",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    },
+    {
+      "id": "mined-actual-9360",
+      "truth": "APP_BUG",
+      "half": "A",
+      "verdict": "APP_BUG",
+      "kaneLabel": "application_issue",
+      "kaneConfidence": 0.98,
+      "target": "failed",
+      "credits": 2.8165999999999998
+    },
+    {
+      "id": "mined-actual-9360-control",
+      "truth": "PASS",
+      "half": "A",
+      "verdict": "PASS",
+      "kaneLabel": null,
+      "kaneConfidence": null,
+      "target": "passed",
+      "credits": 0
+    }
+  ]
+}

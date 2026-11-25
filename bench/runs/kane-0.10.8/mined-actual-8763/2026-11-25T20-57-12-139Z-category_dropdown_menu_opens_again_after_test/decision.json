@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/actual/cases/8763/category_dropdown_menu_opens_again_after_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.97,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.97,
+        "rootCause": "The recording checks the menu before it opens the menu."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/c61d74c6-46a8-4c60-9d55-7ae4a86206dd/scratch/4/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.8269499999999996,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

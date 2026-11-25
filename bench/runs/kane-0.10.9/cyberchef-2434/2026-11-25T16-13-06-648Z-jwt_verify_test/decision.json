@@ -1,0 +1,44 @@
+{
+  "test": "examples/cyberchef-jwt/tests/jwt_verify_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 4,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": {
+      "runId": "run-3",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "script_error",
+        "confidence": 0.98,
+        "rootCause": "The JWT Verify operation fails while handling the supplied token and key, leaving an error message in the Output box rather than the verified payload."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/29aec5bf-22e6-467a-897d-3ea696e92211/scratch/3/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.13445,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 4,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 4,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

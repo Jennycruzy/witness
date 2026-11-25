@@ -1,0 +1,12 @@
+{
+  "test": "examples/mine/actual/cases/8726/amount_is_greater_than_filter_hides_tran_test.md",
+  "decision": {
+    "kaneLabel": null,
+    "kaneConfidence": null,
+    "verdict": "PASS",
+    "why": "Kane passed the test on the target build.",
+    "next": "Nothing to do."
+  },
+  "blind": [],
+  "locked": []
+}

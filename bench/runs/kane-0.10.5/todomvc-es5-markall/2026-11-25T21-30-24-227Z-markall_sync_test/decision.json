@@ -1,0 +1,44 @@
+{
+  "test": "bench/tests/todomvc/markall_sync_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.82,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.82,
+        "rootCause": "The replayed assertion appears to use an outdated or incorrect way of identifying the master checkbox state. The live page is otherwise healthy: both visible todos are completed and the counter reads “0 items left.”"
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/05da9104-0344-47e0-831a-5e43800d3d51/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 3.4589,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 3,
+    "stepsPassed": 3,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

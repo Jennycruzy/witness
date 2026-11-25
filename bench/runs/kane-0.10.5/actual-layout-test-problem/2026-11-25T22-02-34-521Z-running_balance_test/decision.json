@@ -1,0 +1,56 @@
+{
+  "test": "bench/tests/actual-layout/running_balance_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.95,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "agent_misstep",
+        "confidence": 0.95,
+        "rootCause": "The recorded assertion targeted the wrong cell in the transaction row. The highlighted value is under Deposit, while the Balance column shows 20.00."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/55905c50-351d-47a4-afc3-8fa98a0621ba/scratch/2/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.2840000000000003,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 3,
+      "kind": "action",
+      "reason": "action_failed: click @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "test_data_issue",
+        "confidence": 0.96,
+        "rootCause": "The recording depends on transaction data that is no longer present in the expected form. Its earlier clicks continued on the only visible row, leaving the replay without the transaction state required for the final edit."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/d3839962-b4c3-4a4a-904e-c00c3e701709/scratch/1/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 3.4393499999999992,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

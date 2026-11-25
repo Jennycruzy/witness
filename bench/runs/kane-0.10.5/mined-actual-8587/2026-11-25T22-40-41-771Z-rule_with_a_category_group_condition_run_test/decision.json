@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/actual/cases/8587/rule_with_a_category_group_condition_run_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.95,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.95,
+        "rootCause": "The replay did not reach the required saved-transaction state before reading the Grocer row. The page still showed an open entry with Cancel and Add controls, a date picker, and blank row fields."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/c1af1b2c-22b3-4d14-a3b6-0383727bdfbb/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.428,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

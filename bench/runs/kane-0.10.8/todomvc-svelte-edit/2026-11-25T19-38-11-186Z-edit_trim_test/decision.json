@@ -1,0 +1,61 @@
+{
+  "test": "examples/todomvc-svelte/tests/edit_trim_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.93,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 2,
+    "healed": false,
+    "failed": {
+      "runId": "run-2",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.93,
+        "rootCause": "The app is showing an extra blank todo alongside the todo named \"b\"."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/f9476d9c-d60f-4180-bf22-5c492aae45a3/scratch/2/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.8671499999999996,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": [
+    {
+      "step": 3,
+      "query": "whether the todo text \"b\" is present in the main todo list",
+      "expected": "b",
+      "locator": "internal:text=\"b\"s",
+      "positional": false,
+      "kind": "locator"
+    },
+    {
+      "step": 5,
+      "query": "the todo text in the todo list item",
+      "expected": "spaced",
+      "locator": "internal:text=\"spaced\"i",
+      "positional": false,
+      "kind": "locator"
+    }
+  ]
+}

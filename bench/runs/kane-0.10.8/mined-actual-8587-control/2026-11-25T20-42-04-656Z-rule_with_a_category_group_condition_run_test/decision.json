@@ -1,0 +1,12 @@
+{
+  "test": "examples/mine/actual/cases/8587/rule_with_a_category_group_condition_run_test.md",
+  "decision": {
+    "kaneLabel": null,
+    "kaneConfidence": null,
+    "verdict": "PASS",
+    "why": "Kane passed the test on the target build.",
+    "next": "Nothing to do."
+  },
+  "blind": [],
+  "locked": []
+}

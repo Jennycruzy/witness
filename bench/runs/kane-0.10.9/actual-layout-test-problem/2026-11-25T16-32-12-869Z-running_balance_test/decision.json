@@ -1,0 +1,56 @@
+{
+  "test": "bench/tests/actual-layout/running_balance_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.96,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 3,
+      "kind": "action",
+      "reason": "action_failed: click @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.96,
+        "rootCause": "The saved click location points to the Balance column while the live transaction shown has a different date from the one in the recording."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/a7ebbc80-6e8c-4a16-9bc0-d9abf3969e1b/scratch/1/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 3.1152499999999996,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 3,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 3,
+      "kind": "action",
+      "reason": "action_failed: click @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.98,
+        "rootCause": "The saved test points to an old transaction date and the wrong table column on the live page."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/13136bc5-cafc-43da-aab0-d5613870255e/scratch/1/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.9542499999999996,
+    "replayDecisions": 3,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

@@ -1,0 +1,44 @@
+{
+  "test": "examples/mine/cyberchef/cases/2307/offset_checker_shows_an_html_sample_deli_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "application_issue",
+        "category": "ui_data_defect",
+        "confidence": 0.96,
+        "rootCause": "The output display is treating the delimiter text as HTML rather than plain text, so the tags are not visible."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/c1df13a7-7966-4a65-b185-2d101fcd042f/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.37965,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}
