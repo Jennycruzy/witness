@@ -133,7 +133,7 @@ ${o.pr ? `<section><div class="wrap">
 <div class="kicker rv">Try it on your machine</div>
 <h2 class="rv">One command, no login.</h2>
 <p class="sub rv">One real case from start to finish, then every number recomputed from the committed runs. No Kane login, no credits.</p>
-<div class="cmd rv"><span class="p">$</span><code id="cmdtext">npx -y github:Jennycruzy/witness demo</code><button class="copy" id="copy">Copy</button></div>
+<div class="cmd rv"><span class="p">$</span><code id="cmdtext">npx -y kane-witness demo</code><button class="copy" id="copy">Copy</button></div>
 </div></section>`;
   if (page === 'check') body = phead('Run it yourself', `Check a pull request of ${app} before it merges.`, `${app} is an open-source budgeting app that people use for their own money, and coding agents write many of its changes. Every pull request gets a live preview. Kane uses that preview like a person would, in a real Chrome, replaying tests written from ${app}'s own bug reports. Each test caught its real regression on ${app}'s own builds.`) + `
 <section style="border-top:0;padding-top:32px"><div class="wrap">

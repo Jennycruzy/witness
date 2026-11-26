@@ -42,7 +42,7 @@ Kane's own label for a failed run (`automation_bug`, `application_issue`) is oft
 
 `witness fix <test> witness.json` runs steps 2 to 4 with a coding agent and rejects any change to the test, its recording, or files outside the app source.
 `witness guard … --teach` also writes the verdict into Kane's bug memory (real or not, root cause right or wrong, one short note); it never closes a bug.
-`witness install-hook` adds a Claude Code Stop hook that runs `witness guard` when you try to finish and blocks you while an APP_BUG or STATE_BUG is open (`witness install-hook --carry-state` adds the saved-data check).
+`witness install-hook` adds a Claude Code Stop hook that rebuilds the app and runs `witness guard` when you try to finish. It blocks you while an APP_BUG or STATE_BUG is open, when a pinned test or its recording has changed (put them back and fix the app), and when it could not check the fix at all. When everything passes it writes `.witness/PROVEN.md` (`witness install-hook --carry-state` adds the saved-data check).
 
 ## Say what you did
 
