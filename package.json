@@ -1,6 +1,6 @@
 {
   "name": "kane-witness",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Kane's verdict, made safe for a coding agent to act on: WITNESS replays the same Kane recording on a second build before your agent fixes the app or the test.",
   "type": "module",
   "bin": {
