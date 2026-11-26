@@ -1,0 +1,12 @@
+I fixed this in the app. The test was correct, and Kane's triage (which blamed the replay, BUG-19) was wrong. I couldn't build, run tests or re-run Kane, though: those commands needed approval this non-interactive session couldn't give. So the fix hasn't been run.
+
+**What happened.** In the failed run, the click on the Groceries arrow registered (step 10-3-3), but the final screenshot shows no menu even though the arrow is visible. In the app, clicking that arrow fires a synthetic `contextmenu` event on the category name element. A native listener on that element is what opens the menu. That listener is attached in `useRefEventListener`, and its effect only re-ran when `[ref, event]` changed. Renaming swaps the cell to a text input and back, which replaces the DOM element. The ref object stays the same, so the effect never re-ran and the new element had no listener. Clicking the arrow did nothing until a page reload. The same hook backs other dropdowns (category groups, payees, accounts and others), so they likely had the same bug.
+
+**Changes:**
+- `packages/desktop-client/src/hooks/useRefEventListener.ts`: the hook now checks after every render whether the element behind the ref (or the event name) changed. It moves the listener only when one did, and removes it on unmount. It still doesn't re-add the listener when only the callback changes, which the existing comment and tests require.
+- `useRefEventListener.test.ts`: added a regression test where the element behind the ref is replaced. I checked the five existing cases by reading the code against them and expect them to pass.
+
+To confirm, run:
+1. `yarn vitest run src/hooks/useRefEventListener.test.ts` (in `packages/desktop-client`)
+2. `yarn build:browser --skip-translations` (in the app root, as `witness.json` specifies)
+3. The Kane test against the new build.

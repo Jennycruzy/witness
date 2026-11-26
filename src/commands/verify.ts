@@ -19,6 +19,7 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
   for (const l of cases.locked ?? []) files.push(l.recording, l.run);
   for (const x of cases.sessions ?? []) files.push(x.prompt, x.transcript, x.diff);
   for (const x of cases.carried ?? []) files.push(x.target, x.clean, x.reference);
+  for (const x of cases.hooked ?? []) files.push(x.prompt, x.transcript, x.diff, x.hook, x.pins, x.run, x.proven, x.earlierProof);
   const uniq = [...new Set(files)].sort();
   const manifestPath = join(root, 'evidence/manifest.json');
   const hashes = Object.fromEntries(uniq.map(f => [f, sha(join(root, f))]));
@@ -79,6 +80,19 @@ export function verify(root: string, opts: { writeManifest?: boolean } = {}, log
     const okC = d.verdict === x.truth && c.status === 'passed';
     if (!okC) ok = false;
     log(`  saved data:         clean browser ${c.status.toUpperCase()} (a plain Kane run misses it); with the old build's saved data ${t.status.toUpperCase()}${t.failed ? ` at a ${t.failed.kind}` : ''}; reference ${r.status.toUpperCase()}; WITNESS ${d.verdict} ${okC ? 'right' : 'WRONG'}: ${x.name}`);
+  }
+  for (const x of cases.hooked ?? []) {
+    const hook = JSON.parse(readFileSync(join(root, x.hook), 'utf8'));
+    const pinned: string[] = Object.values(JSON.parse(readFileSync(join(root, x.pins), 'utf8')).pins);
+    const earlier = JSON.parse(readFileSync(join(root, x.earlierProof), 'utf8')).recordingSha256;
+    const run = parseRun(readFileSync(join(root, x.run), 'utf8'));
+    const ranHook = hook.hookInfos?.some((h: any) => / hook$/.test(h.command) && h.durationMs > 0) && (hook.hookErrors ?? []).length === 0;
+    const samePin = pinned.length === 1 && pinned[0] === earlier;
+    const appOnly = readFileSync(join(root, x.diff), 'utf8').split('\n').filter(l => l.startsWith('+++ ')).every(l => l.startsWith('+++ b/packages/'));
+    const proven = existsSync(join(root, x.proven)) && readFileSync(join(root, x.proven), 'utf8').includes(earlier.slice(0, 12));
+    const okH = ranHook && samePin && appOnly && run.status === 'passed' && proven;
+    if (!okH) ok = false;
+    log(`  stop hook:          ${ranHook ? 'ran with no errors' : 'did NOT run cleanly'}; pinned recording ${samePin ? 'is the one the earlier fix was proven with' : 'DIFFERS'}; changed ${appOnly ? 'app source only' : 'files outside the app'}; Kane ${run.status.toUpperCase()} on the rebuilt app; ${proven ? 'PROVEN.md written' : 'no PROVEN.md'}: ${x.name}`);
   }
   const blind = cases.blind.runs.map((r: string) => findBlindChecks(readFileSync(join(root, r), 'utf8')).length);
   log(`  blind check:        found in ${blind.filter((n: number) => n > 0).length} of ${blind.length} real runs on the buggy build`);

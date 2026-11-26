@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"<witness>/dist/cli.js\" hook",
+            "timeout": 3000
+          }
+        ]
+      }
+    ]
+  }
+}

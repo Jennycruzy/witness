@@ -1,0 +1,26 @@
+{
+  "tests": [
+    "tests/category_dropdown_menu_opens_again_after_test.md"
+  ],
+  "target": {
+    "dir": "app/packages/desktop-client/build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "Actual source, our build"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260901",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260901"
+  },
+  "evidenceDir": ".witness/runs",
+  "cacheDir": "<local>/mine-cache",
+  "fix": {
+    "cwd": "app",
+    "source": "packages",
+    "build": "yarn build:browser --skip-translations"
+  }
+}

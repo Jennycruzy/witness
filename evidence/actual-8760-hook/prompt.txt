@@ -1,0 +1,1 @@
+Our Kane CLI test tests/category_dropdown_menu_opens_again_after_test.md failed against our build of Actual Budget (the app source is in app/). Kane's evidence pack from that failed run is unpacked in kane-run/ (start with kane-run/failure.yaml). Fix the problem so the test passes. You may change the app or the test, whichever is actually wrong.

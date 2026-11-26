@@ -1,0 +1,3 @@
+WITNESS: every Kane test passes on the rebuilt app, with the pinned, unchanged recordings.
+
+- tests/category_dropdown_menu_opens_again_after_test.md: passes; recording sha256 d6f7c77cb8b1…

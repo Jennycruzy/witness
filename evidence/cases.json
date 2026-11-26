@@ -399,5 +399,19 @@
       "target_short": "Actual 26.11.0 (newest)",
       "reference_short": "Actual 25.11.0"
     }
+  ],
+  "hooked": [
+    {
+      "name": "Actual #8760: a fresh Claude Code session with Kane's own skill and the WITNESS Stop hook fixed the menu bug; the hook rebuilt Actual and replayed the pinned recording before it could stop",
+      "issue": "https://github.com/actualbudget/actual/issues/8760",
+      "prompt": "evidence/actual-8760-hook/prompt.txt",
+      "transcript": "evidence/actual-8760-hook/session.ndjson",
+      "diff": "evidence/actual-8760-hook/agent.patch",
+      "hook": "evidence/actual-8760-hook/stop-hook.json",
+      "pins": "evidence/actual-8760-hook/pins.json",
+      "run": "evidence/actual-8760-hook/runs/hook-proof/target.ndjson",
+      "proven": "evidence/actual-8760-hook/PROVEN.md",
+      "earlierProof": "evidence/actual-8760-fix/runs/3-fix-proof/proof.json"
+    }
   ]
 }

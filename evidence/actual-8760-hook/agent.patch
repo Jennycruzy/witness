@@ -1,0 +1,95 @@
+diff --git a/packages/desktop-client/src/hooks/useRefEventListener.test.ts b/packages/desktop-client/src/hooks/useRefEventListener.test.ts
+index 2cee4f111..08dd5e2a0 100644
+--- a/packages/desktop-client/src/hooks/useRefEventListener.test.ts
++++ b/packages/desktop-client/src/hooks/useRefEventListener.test.ts
+@@ -82,6 +82,27 @@ describe('useRefEventListener', () => {
+     expect(el.removeEventListener).toHaveBeenCalledTimes(1);
+   });
+ 
++  it('rebinds when the element behind the ref is replaced', () => {
++    const first = makeMockElement();
++    const second = makeMockElement();
++    const ref = { current: first } as unknown as RefObject<HTMLElement | null>;
++
++    const { rerender } = renderHook(() =>
++      useRefEventListener(ref, 'click', vi.fn()),
++    );
++
++    // Simulate the component remounting the node the ref points to.
++    (ref as { current: unknown }).current = second;
++    rerender();
++
++    expect(first.removeEventListener).toHaveBeenCalledTimes(1);
++    expect(second.addEventListener).toHaveBeenCalledTimes(1);
++    expect(second.addEventListener).toHaveBeenCalledWith(
++      'click',
++      expect.any(Function),
++    );
++  });
++
+   it('removes the listener on unmount', () => {
+     const el = makeMockElement();
+     const ref = { current: el } as unknown as RefObject<HTMLElement | null>;
+diff --git a/packages/desktop-client/src/hooks/useRefEventListener.ts b/packages/desktop-client/src/hooks/useRefEventListener.ts
+index 36c6c0bc3..f8720208c 100644
+--- a/packages/desktop-client/src/hooks/useRefEventListener.ts
++++ b/packages/desktop-client/src/hooks/useRefEventListener.ts
+@@ -10,16 +10,32 @@ export function useRefEventListener<
+   // oxlint-disable-next-line typescript/no-explicit-any
+   callback: (this: ElementType, ev: HTMLElementEventMap[EventType]) => any,
+ ) {
+-  // Keep the latest callback in a ref so the effect below doesn't need to
+-  // depend on it. Callers routinely pass a new inline function every render,
+-  // which would otherwise tear down and re-add the native listener on every
+-  // render instead of only when `ref`/`event` change.
++  // Keep the latest callback in a ref so the listener doesn't need to be
++  // re-added when it changes. Callers routinely pass a new inline function
++  // every render, which would otherwise tear down and re-add the native
++  // listener on every render.
+   const callbackRef = useRef(callback);
+   callbackRef.current = callback;
+ 
++  const attachedRef = useRef<{
++    el: EventTarget;
++    event: EventType;
++    listener: EventListener;
++  } | null>(null);
++
++  // The node behind `ref` can be replaced without the ref object changing
++  // (e.g. a component remounts the element it's attached to), so check after
++  // every render and only re-bind when the target actually changed.
+   useEffect(() => {
+     const el =
+       ref instanceof Document || ref instanceof Window ? ref : ref.current;
++    const attached = attachedRef.current;
++    if (attached?.el === el && attached?.event === event) return;
++
++    if (attached) {
++      attached.el.removeEventListener(attached.event, attached.listener);
++      attachedRef.current = null;
++    }
+     if (!el) return;
+ 
+     const listener: EventListener = e =>
+@@ -28,8 +44,17 @@ export function useRefEventListener<
+         e as HTMLElementEventMap[EventType],
+       );
+     el.addEventListener(event, listener);
+-    return () => {
+-      el.removeEventListener(event, listener);
+-    };
+-  }, [ref, event]);
++    attachedRef.current = { el, event, listener };
++  });
++
++  useEffect(
++    () => () => {
++      const attached = attachedRef.current;
++      if (attached) {
++        attached.el.removeEventListener(attached.event, attached.listener);
++        attachedRef.current = null;
++      }
++    },
++    [],
++  );
+ }
