@@ -133,6 +133,8 @@ Most of WITNESS's misses are ENV (the reference failed too on the bench machine,
 
 ## Reported upstream
 
+<p align="center"><img src="docs/kane-cli-fixes.png" width="640" alt="Kane CLI issues #232, #233 and #241, filed from WITNESS runs: each reproduced by the Kane team and closed as fixed"></p>
+
 | Where | What we sent | Outcome |
 |---|---|---|
 | Kane CLI [#232](https://github.com/LambdaTest/kane-cli/issues/232) | Replay triage labels real app bugs `automation_bug`, so agents fix the test instead of the app | **Reproduced and fixed by the Kane team** (3 of 3 runs wrong before, 4 of 4 right after); closed as fixed in kane-cli 0.10.8. Our recordings already flip on 0.10.7: [below](#kane-cli-0107-on-our-recordings) |
