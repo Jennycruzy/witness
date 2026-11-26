@@ -1,0 +1,15 @@
+I fixed it in `packages/loot-core/src/server/transactions/transaction-rules.ts`, but haven't run anything: my requests to run the unit tests and the typecheck were refused for permission, so this is untested.
+
+**Root cause:** you can pick "category group" as a condition in the rule editor, but the code that runs rules never works out a transaction's category group. A condition reads its field straight off the transaction (`condition.ts:240`). That field was missing, so the condition always came out false. The rule never fired, and "grouptest" was never written to the notes. Category group only worked in filters, which take a different path (`conditionsToAQL`, where `category_group` becomes `category.group`).
+
+**Changes (all in `transaction-rules.ts`):**
+- **~line 991:** added an optional `category_group` field to the `TransactionForRules` type.
+- **~line 1098, `prepareTransactionForRules`:** it already looks up the category to get its name. It now also sets `r.category_group = category.cat_group`, so "category group is Usual Expenses" can match a Food transaction.
+- **~line 1136, `finalizeTransactionForRules`:** deletes `category_group` before the transaction goes back to the client. Otherwise the client would treat it as a changed value and try to save a column that doesn't exist.
+
+**Not fully explained:** Kane said the editor stayed open and the draft was never added. The missing group explains the missing note, but I couldn't find a code path that would stop the add itself. Running the recording against a rebuilt target will show whether that symptom is also gone.
+
+**One gap:** the group is set once, before any rules run. If an earlier rule changes the category, a later category-group condition still checks the original category's group.
+
+To check it, run `yarn workspace @actual-app/core run test` and `yarn typecheck`, then rebuild `packages/desktop-client/build` and replay the recording.
+

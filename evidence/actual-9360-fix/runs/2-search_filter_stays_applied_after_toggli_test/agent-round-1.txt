@@ -1,0 +1,24 @@
+I fixed it in the app source. I didn't rebuild `packages/desktop-client/build`, run the typecheck, or rerun the recording, so the fix hasn't been checked against the failing test yet.
+
+**File changed:** `packages/desktop-client/src/components/accounts/Account.tsx`, the `case 'toggle-reconciled':` block in `onMenuSelect` (around lines 962–972).
+
+**Cause:** When you toggle "Hide/Show reconciled transactions", the app reloads the transactions from scratch for the account and its filters. It never re-applied the search text. So the Search box still said "Coffee", but the list showed every transaction, including "Book Store". The other actions that reload the list (removing sorting, applying, updating or deleting a filter) already re-apply the search afterwards; this one didn't.
+
+**Fix:** After the reload, the toggle now re-applies the search when the Search box isn't empty, the same way the "remove sorting" action does:
+
+```ts
+case 'toggle-reconciled': {
+  const showReconciled = !this.state.showReconciled;
+  this.props.setShowReconciled(showReconciled);
+  this.setState({ showReconciled }, () => {
+    this.fetchTransactions(this.state.filterConditions);
+    if (this.state.search !== '') {
+      this.onSearch(this.state.search);
+    }
+  });
+  break;
+}
+```
+
+The old code had two nearly identical branches (one for hide, one for show); I merged them into one that flips the setting. Nothing else about the toggle changes: the saved preference and the active filters are kept as before.
+

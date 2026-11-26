@@ -1,0 +1,43 @@
+{
+  "tests": [
+    "rule_with_a_category_group_condition_run_test.md"
+  ],
+  "target": {
+    "dir": "<actual-source>/packages/desktop-client/build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "Actual source just before the fix of #8587"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260812",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260812"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "<local>",
+  "fix": {
+    "agent": [
+      "env",
+      "CLAUDE_CONFIG_DIR=<local>/.claude-jenny",
+      "claude",
+      "-p",
+      "--allowedTools",
+      "Read,Edit,Glob,Grep"
+    ],
+    "cwd": "<actual-source>",
+    "source": "packages",
+    "build": "yarn build:browser --skip-translations",
+    "rounds": 3,
+    "ignore": [
+      "packages/desktop-client/build",
+      "packages/loot-core/lib-dist",
+      "packages/loot-core/build",
+      "dist/",
+      ".yarn/",
+      "packages/desktop-client/locale"
+    ]
+  }
+}

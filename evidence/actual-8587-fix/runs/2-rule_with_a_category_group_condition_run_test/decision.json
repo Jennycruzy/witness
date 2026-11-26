@@ -1,0 +1,44 @@
+{
+  "test": "rule_with_a_category_group_condition_run_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.98,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 2,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 2",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.98,
+        "rootCause": "The transaction editor remained open and the draft was not added, so there was no completed Grocer row with the requested note to read."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/f8a821ed-1287-41e2-bf4f-5f7dd2b38daf/scratch/4/replay-test/screenshots/step_002.png"
+    },
+    "creditsReported": 2.1866,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

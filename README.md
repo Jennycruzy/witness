@@ -12,20 +12,27 @@
 
 </div>
 
-## A real bug, from Kane's wrong label to a proven fix
+## Three real bugs, fixed from Actual Budget's own source
 
-In [Actual Budget](https://github.com/actualbudget/actual) (30,000 stars, people keep their own money in it), a category's menu stopped opening after you renamed it ([#8760](https://github.com/actualbudget/actual/issues/8760)). We built Actual from its own source at the commit just before the maintainers' fix and ran the Kane test on it.
+[Actual Budget](https://github.com/actualbudget/actual) has 30,000 stars, and people keep their own money in it. For three real bugs, each fixed by a merged pull request, we built Actual from its own source at the commit **just before** the maintainers' fix, ran the Kane test, and let WITNESS and an agent take it from there (kane-cli 0.10.9, 26 November 2026).
 
-| Step | What happened |
-|---|---|
-| **Kane** (kane-cli 0.10.9) | The test failed. Kane's label: `automation_bug`, **0.98**: *"The recorded test did not open the Groceries dropdown before asserting."* An agent that trusts it edits the test, and the bug ships. |
-| **WITNESS** | Replayed the same recording on the next nightly. It passed there, so the recording is fine: **APP_BUG, fix the app, not the test.** |
-| **Claude Code** | Got only WITNESS's card, with read and edit tools, and may change only the app's source. One round: it changed one file, [`useRefEventListener.ts`](evidence/actual-8760-fix/agent.patch), the **same file the maintainers fixed** in [#8763](https://github.com/actualbudget/actual/pull/8763), with the **same design**: find the element again after every render, rebind only when it moved, and clean up on unmount in an effect of its own. The maintainers also fixed two other hooks with the same hidden bug and added tests; the agent was told not to touch tests ([both diffs](evidence/actual-8760-fix/)). |
-| **Kane again** | WITNESS rebuilt Actual from the edited source. The **unchanged** recording (sha256 `d6f7c77cb8b1…`) passed. |
+<p align="center"><img src="docs/actual-8760-before-after.png" width="860" alt="Actual Budget #8760. Left, the buggy build: the category was renamed to Groceries and its arrow is pressed, but no menu opens; Kane labelled this failure a test bug at 0.98. Right, the same steps on the build with Claude's fix: the menu opens with Rename, Hide and Delete."></p>
 
-Every run, the card, the agent's output and both diffs are in [`evidence/actual-8760-fix/`](evidence/actual-8760-fix/).
+| Real bug | Kane's label on the broken build | WITNESS | The agent's fix (one round each) | The maintainers' fix |
+|---|---|---|---|---|
+| [#8760](https://github.com/actualbudget/actual/issues/8760) A category's menu stops opening after a rename | **the test**: `automation_bug` 0.96, 0.98 | APP_BUG | [`useRefEventListener.ts`](evidence/actual-8760-fix/agent.patch) +29 −4 | [#8763](https://github.com/actualbudget/actual/pull/8763): same file, same design |
+| [#8498](https://github.com/actualbudget/actual/issues/8498) A rule with a category group condition never matches | **the test**: `automation_bug` 0.94 to 0.98, in all 4 runs | APP_BUG | [`transaction-rules.ts`](evidence/actual-8587-fix/agent.patch) +6 | [#8587](https://github.com/actualbudget/actual/pull/8587): same file |
+| [#9359](https://github.com/actualbudget/actual/issues/9359) The search is dropped after toggling reconciled rows | the app: `application_issue` 0.98 | APP_BUG | [`Account.tsx`](evidence/actual-9360-fix/agent.patch) +10 −12 | [#9360](https://github.com/actualbudget/actual/pull/9360): same file |
 
-On the same bug, page and port, Kane's label is not stable: in six more replays on kane-cli 0.10.9 it said the app once (0.91) and the test five times (0.93 to 0.98), even after WITNESS marked the bug real in Kane's bug memory. WITNESS said APP_BUG on every run where the reference passed ([runs](evidence/kane-cli-241-followup/)).
+- **Kane blamed the test in 6 of the 8 failing runs** on these three bugs. An agent that trusts that label edits the test, the test goes green, and the bug reaches people's budgets. WITNESS replayed the same recording on the next nightly, where it passes, and said APP_BUG all 8 times.
+- **The agent got only WITNESS's card**, Claude Code with read and edit tools, allowed to change only the app's source. All three fixes landed in the file the maintainers changed. On #8760 it also chose their design: find the element again after every render, rebind only when it moved, clean up on unmount in an effect of its own. The maintainers also added tests, and on #8760 fixed two more hooks with the same hidden bug; the agent was told not to touch tests.
+- **Kane proved each fix.** WITNESS rebuilt Actual from the edited source, and the **unchanged** recording (same sha256) passed.
+- **The guard held.** On the first try at #8498 we had allowed edits only in the UI package. The agent's fix was in the rules engine (`loot-core`), so WITNESS rolled it back and rejected the round ([kept here](evidence/actual-8587-fix/first-try-rejected/)). With `packages/` allowed, the same fix passed.
+- **Two more were not started, by design.** On #8725 the next nightly failed the test too (ENV), and on #9167 our source build failed at a click (TEST_PROBLEM). WITNESS starts a fix only on APP_BUG.
+
+Every run, card, agent output and both diffs per bug: [`evidence/actual-8760-fix/`](evidence/actual-8760-fix/), [`actual-8587-fix/`](evidence/actual-8587-fix/), [`actual-9360-fix/`](evidence/actual-9360-fix/). The same three bugs had already been found by [`witness mine`](#what-it-found-on-real-software) from their issue text alone.
+
+Kane's label is not stable even on one bug, one page and one port: in six more replays of #8760 it said the app once (0.91) and the test five times (0.93 to 0.98), even after WITNESS marked the bug real in Kane's bug memory ([runs](evidence/kane-cli-241-followup/)).
 
 ## What WITNESS has done
 
@@ -171,7 +178,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | Ships | [`examples/actual`](examples/actual) and [`evidence/actual-8475-search.json`](evidence/actual-8475-search.json) | The nightly watch set up on Actual Budget, and the build search that found the first bad nightly for #8475 (20 June 2026) unattended, with the commits in between |
 | Verified | `node dist/cli.js verify` | Kane's label right on 6 of 12 real app bugs in four apps, WITNESS 12 of 12; 3 of 3 real test problems; the 16 mined regressions (Kane 15 of 16, WITNESS 16 of 16); ENV where the good build fails too; every evidence file checked by sha256 |
 | Verified | [Reported upstream](#reported-upstream) | Three Kane CLI issues reproduced and fixed by the Kane team; the TodoMVC fix PR |
-| Closed loop | [`evidence/actual-8760-fix/`](evidence/actual-8760-fix/) | Actual Budget built from its own source: Kane said `automation_bug` 0.98, WITNESS said APP_BUG, Claude Code fixed the same file as the maintainers in one round, the unchanged recording passed |
+| Closed loop | [Three real bugs](#three-real-bugs-fixed-from-actual-budgets-own-source) | Actual Budget built from its own source at the commit before each fix: Kane blamed the test in 6 of 8 failing runs, WITNESS said APP_BUG in all 8, Claude Code fixed all three in one round each, in the maintainers' file, and the unchanged recordings passed |
 | Verified | [`evidence/actual-6574-saved-state/`](evidence/actual-6574-saved-state/) and its row in `verify` | A live Actual Budget bug that a clean Kane run passes on the newest release; with the browser data the previous release saved, the same recording fails: STATE_BUG |
 | Closed loop | [`evidence/todomvc-svelte-trim-hook-untold.patch`](evidence/todomvc-svelte-trim-hook-untold.patch) and its row in `verify` | A Claude Code session told about one bug tried to stop; the Stop hook blocked it on a second bug it was never told about; it fixed that too, and the unchanged recordings passed |
 | Closed loop | [Pull request #1](https://github.com/Jennycruzy/witness/pull/1) | On GitHub: a PR puts back the upstream TodoMVC Svelte code; the check replays the Kane tests on the PR's build and the base build and comments APP_BUG with the card; a separate Claude Code agent given only that comment fixes two app files; the check goes green |

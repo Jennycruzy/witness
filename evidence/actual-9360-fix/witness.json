@@ -1,0 +1,41 @@
+{
+  "tests": [
+    "search_filter_stays_applied_after_toggli_test.md"
+  ],
+  "target": {
+    "dir": "<actual-source>/packages/desktop-client/build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "Actual source just before the fix of #9360"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.11.0-nightly.20261029",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.11.0-nightly.20261029"
+  },
+  "evidenceDir": "runs",
+  "cacheDir": "<local>",
+  "fix": {
+    "agent": [
+      "env",
+      "CLAUDE_CONFIG_DIR=<local>/.claude-jenny",
+      "claude",
+      "-p",
+      "--allowedTools",
+      "Read,Edit,Glob,Grep"
+    ],
+    "cwd": "<actual-source>",
+    "source": "packages/desktop-client/src",
+    "build": "yarn build:browser --skip-translations",
+    "rounds": 3,
+    "ignore": [
+      "packages/desktop-client/build",
+      "dist/",
+      ".yarn/",
+      "packages/desktop-client/locale"
+    ]
+  }
+}

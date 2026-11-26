@@ -1,0 +1,17 @@
+I fixed the app source, but I couldn't run any tests or the typecheck: the sandbox needed approval for each command, so I couldn't rebuild or replay either. The fix is reasoned from reading the code and hasn't been verified.
+
+**Root cause:** The rule editor offers "category group" as a condition, but the rules engine never gives transactions a `category_group` value. Each condition checks the field directly on the transaction (`packages/loot-core/src/server/rules/condition.ts:240`, `object[this.field]`). Before rules run, `prepareTransactionForRules` added the payee name, account, balance and category name, but nothing for the category group. So the "category group is Usual Expenses" condition never matched a new transaction, and the notes were never set to "grouptest".
+
+**Change:** one file, `packages/loot-core/src/server/transactions/transaction-rules.ts`
+- **Type, line 991:** added `category_group?: string;` to the `TransactionForRules` type.
+- **Line 1098, in `prepareTransactionForRules`:** added `r.category_group = category.cat_group;` next to the existing `_category_name` line. The condition now has the group id to compare against.
+- **Lines 1143–1145, in `finalizeTransactionForRules`:** added a delete for `category_group`. The value only exists while rules are evaluated and doesn't leak into the transaction that gets saved or sent back to the client. The other temporary fields (`balance`, `parent_amount`) are handled the same way.
+
+**What still needs checking:**
+- **Kane's screenshot:** it showed the editor still open with the Add button visible, and this fix doesn't directly explain that. If the replay still fails there after a rebuild, that's a separate client-side problem to look at.
+- **Category changed by an earlier rule:** the group is read once, before any rules run. If one rule changes the category, a later "category group" condition still sees the original group. The category name used in templates already works this way.
+- **Commands to run:**
+  - `yarn workspace @actual-app/core run test`
+  - `yarn typecheck`
+  - rebuild `packages/desktop-client/build` and rerun the scenario
+

@@ -1,0 +1,9 @@
+{
+  "outcome": "PROVEN",
+  "rounds": 1,
+  "changed": [
+    "packages/loot-core/src/server/transactions/transaction-rules.ts"
+  ],
+  "recordingSha256": "0f58658a1e714ae836f4596fcabe4467c10edfa02ac7107a609b594fa894ecf5",
+  "test": "rule_with_a_category_group_condition_run_test.md"
+}
