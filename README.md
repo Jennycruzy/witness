@@ -6,7 +6,7 @@
 
 **On 3 real Actual Budget bugs, a second Kane run on a working build called all 8 failing runs right: app bug. The agent fixed each one in the file the maintainers fixed, and Kane proved it.<br>The Kane team fixed 3 Kane CLI bugs we reported: [#232](https://github.com/LambdaTest/kane-cli/issues/232), [#233](https://github.com/LambdaTest/kane-cli/issues/233), [#241](https://github.com/LambdaTest/kane-cli/issues/241).**
 
-[**▶ Video (3 min)**](https://youtu.be/KO2CXsEPsxs) · [**Live site**](https://witness-kane.vercel.app) · [Check a pull request](https://witness-kane.vercel.app/check) · [`npx kane-witness demo`](https://www.npmjs.com/package/kane-witness) · [For judges](#judges-one-minute-per-score)
+[**▶ Video (3 min)**](https://youtu.be/KO2CXsEPsxs) · [**Live site**](https://witness-kane.vercel.app) · [**Fixed in Kane CLI**](#reported-upstream) · [Check a pull request](https://witness-kane.vercel.app/check) · [`npx kane-witness demo`](https://www.npmjs.com/package/kane-witness) · [For judges](#judges-one-minute-per-score)
 
 [![ci](https://github.com/Jennycruzy/witness/actions/workflows/ci.yml/badge.svg)](https://github.com/Jennycruzy/witness/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/kane-witness)](https://www.npmjs.com/package/kane-witness)
 
