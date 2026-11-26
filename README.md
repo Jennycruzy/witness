@@ -4,7 +4,7 @@
 
 **When a Kane CLI test fails, your coding agent asks one question: is the app broken, or the test?<br>If it gets the wrong answer, it rewrites the test and the bug ships. WITNESS gives it the right answer, with proof.**
 
-**On 3 real Actual Budget bugs, Kane blamed the test in 6 of 8 failing runs. WITNESS said "app bug" all 8 times, and the agent fixed each one in the file the maintainers fixed.<br>The Kane team fixed 3 Kane CLI bugs we found: [#232](https://github.com/LambdaTest/kane-cli/issues/232), [#233](https://github.com/LambdaTest/kane-cli/issues/233), [#241](https://github.com/LambdaTest/kane-cli/issues/241).**
+**On 3 real Actual Budget bugs, a second Kane run on a working build called all 8 failing runs right: app bug. The agent fixed each one in the file the maintainers fixed, and Kane proved it.<br>The Kane team fixed 3 Kane CLI bugs we reported: [#232](https://github.com/LambdaTest/kane-cli/issues/232), [#233](https://github.com/LambdaTest/kane-cli/issues/233), [#241](https://github.com/LambdaTest/kane-cli/issues/241).**
 
 [**▶ Video (3 min)**](https://youtu.be/KO2CXsEPsxs) · [**Live site**](https://witness-kane.vercel.app) · [Check a pull request](https://witness-kane.vercel.app/check) · [`npx kane-witness demo`](https://www.npmjs.com/package/kane-witness) · [For judges](#judges-one-minute-per-score)
 
