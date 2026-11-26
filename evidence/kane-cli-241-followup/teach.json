@@ -1,0 +1,24 @@
+{
+  "tests": [
+    "category_dropdown_menu_opens_again_after_test.md"
+  ],
+  "target": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260831",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "port": 42460,
+    "label": "@actual-app/web@26.9.0-nightly.20260831"
+  },
+  "reference": {
+    "npm": "@actual-app/web",
+    "version": "26.9.0-nightly.20260901",
+    "buildDir": "build",
+    "isolation": true,
+    "setup": "node setup.mjs {url} {profile}",
+    "label": "@actual-app/web@26.9.0-nightly.20260901"
+  },
+  "evidenceDir": "runs-teach",
+  "cacheDir": "<local>"
+}

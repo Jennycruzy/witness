@@ -25,6 +25,8 @@ In [Actual Budget](https://github.com/actualbudget/actual) (30,000 stars, people
 
 Every run, the card, the agent's output and both diffs are in [`evidence/actual-8760-fix/`](evidence/actual-8760-fix/).
 
+On the same bug, page and port, Kane's label is not stable: in six more replays on kane-cli 0.10.9 it said the app once (0.91) and the test five times (0.93 to 0.98), even after WITNESS marked the bug real in Kane's bug memory. WITNESS said APP_BUG on every run where the reference passed ([runs](evidence/kane-cli-241-followup/)).
+
 ## What WITNESS has done
 
 - **The Kane team fixed three Kane CLI bugs we found.** [#232](https://github.com/LambdaTest/kane-cli/issues/232): Kane labelled real app bugs as test bugs, so agents fixed the wrong thing. [#233](https://github.com/LambdaTest/kane-cli/issues/233): a list check passed on a blank todo. [#241](https://github.com/LambdaTest/kane-cli/issues/241): bug memory repeated a root cause marked wrong. All three were reproduced by the Kane team and closed as fixed.

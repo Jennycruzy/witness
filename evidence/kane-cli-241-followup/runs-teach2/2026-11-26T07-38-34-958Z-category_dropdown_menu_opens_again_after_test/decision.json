@@ -1,0 +1,56 @@
+{
+  "test": "category_dropdown_menu_opens_again_after_test.md",
+  "decision": {
+    "kaneLabel": "application_issue",
+    "kaneConfidence": 0.91,
+    "verdict": "ENV",
+    "why": "The same recording does not pass on the reference build either.",
+    "next": "Check the environment or the reference build before changing anything."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "application_issue",
+        "category": "functional_defect",
+        "confidence": 0.91,
+        "rootCause": "The live budget page did not present the Groceries menu in its required open state, and therefore did not show Rename."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/dc607acc-aef5-4e7f-a843-40fb91d182f2/scratch/4/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.9758999999999998,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 1,
+    "healed": false,
+    "failed": {
+      "runId": "run-1",
+      "stepIndex": 1,
+      "kind": "action",
+      "reason": "action_failed: click @ step 1",
+      "label": {
+        "family": "automation_bug",
+        "category": "locator_rot",
+        "confidence": 0.97,
+        "rootCause": "The saved test expects a Rename option that this live menu no longer offers."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/be0a63ae-259d-48d9-8beb-9d3f60bbdf71/scratch/1/replay-test/screenshots/step_001.png"
+    },
+    "creditsReported": 1.48905,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

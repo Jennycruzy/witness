@@ -1,0 +1,16 @@
+{
+  "verdict": "APP_BUG",
+  "bug": "BUG-19",
+  "marked": [
+    "real",
+    "rca-wrong"
+  ],
+  "noted": "Real app bug, not the test: the same recording passes on @actual-app/web@26.9.0-nightl… and fails here at a check.",
+  "plan": {
+    "marks": [
+      "real",
+      "rca-wrong"
+    ],
+    "note": "Real app bug, not the test: the same recording passes on @actual-app/web@26.9.0-nightl… and fails here at a check."
+  }
+}
