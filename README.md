@@ -1,12 +1,41 @@
+<div align="center">
+
 # WITNESS
 
-**When a Kane CLI test fails, WITNESS tells the coding agent who is at fault: the app or the test. It now does this on a real app's pull requests, on their live previews.**
+**When a Kane CLI test fails, your coding agent asks one question: is the app broken, or the test?<br>If it gets the wrong answer, it rewrites the test and the bug ships. WITNESS gives it the right answer, with proof.**
 
-**Try it now: [witness.38-49-216-59.sslip.io](https://witness.38-49-216-59.sslip.io)**: pick any open pull request of Actual Budget and watch Kane check its live preview in a real Chrome. No login.
+[**Live site**](https://witness-kane.vercel.app) · [Check a pull request](https://witness-kane.vercel.app/check) · [`npx kane-witness demo`](https://www.npmjs.com/package/kane-witness) · [For judges](#judges-one-minute-per-score)
 
-## The problem
+[![ci](https://github.com/Jennycruzy/witness/actions/workflows/ci.yml/badge.svg)](https://github.com/Jennycruzy/witness/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/kane-witness)](https://www.npmjs.com/package/kane-witness)
 
-When a Kane test fails, a coding agent has to choose: fix the app, or fix the test. Kane gives a label for that, and agents act on it. On 12 real app bugs in four open-source apps (CyberChef, IT-Tools, Actual Budget, TodoMVC) we measured that label pointing at the test in 6. On a 13th, Kane passed the bug outright. An agent that trusts it rewrites the test to accept the bug.
+<a href="https://witness-kane.vercel.app"><img src="docs/site.png" width="860" alt="The WITNESS site: it watches Actual Budget's open pull requests and replays the same Kane recording on the live main build and on the pull request's preview"></a>
+
+</div>
+
+## A real bug, from Kane's wrong label to a proven fix
+
+In [Actual Budget](https://github.com/actualbudget/actual) (30,000 stars, people keep their own money in it), a category's menu stopped opening after you renamed it ([#8760](https://github.com/actualbudget/actual/issues/8760)). We built Actual from its own source at the commit just before the maintainers' fix and ran the Kane test on it.
+
+| Step | What happened |
+|---|---|
+| **Kane** (kane-cli 0.10.9) | The test failed. Kane's label: `automation_bug`, **0.98**: *"The recorded test did not open the Groceries dropdown before asserting."* An agent that trusts it edits the test, and the bug ships. |
+| **WITNESS** | Replayed the same recording on the next nightly. It passed there, so the recording is fine: **APP_BUG, fix the app, not the test.** |
+| **Claude Code** | Got only WITNESS's card, with read and edit tools, and may change only the app's source. One round: it changed one file, [`useRefEventListener.ts`](evidence/actual-8760-fix/agent.patch), the **same file the maintainers fixed** in [#8763](https://github.com/actualbudget/actual/pull/8763), with the **same design**: find the element again after every render, rebind only when it moved, and clean up on unmount in an effect of its own. The maintainers also fixed two other hooks with the same hidden bug and added tests; the agent was told not to touch tests ([both diffs](evidence/actual-8760-fix/)). |
+| **Kane again** | WITNESS rebuilt Actual from the edited source. The **unchanged** recording (sha256 `d6f7c77cb8b1…`) passed. |
+
+Every run, the card, the agent's output and both diffs are in [`evidence/actual-8760-fix/`](evidence/actual-8760-fix/).
+
+## What WITNESS has done
+
+- **The Kane team fixed three Kane CLI bugs we found.** [#232](https://github.com/LambdaTest/kane-cli/issues/232): Kane labelled real app bugs as test bugs, so agents fixed the wrong thing. [#233](https://github.com/LambdaTest/kane-cli/issues/233): a list check passed on a blank todo. [#241](https://github.com/LambdaTest/kane-cli/issues/241): bug memory repeated a root cause marked wrong. All three were reproduced by the Kane team and closed as fixed.
+- **On the newest Kane, it is still not enough.** On 28 real app bugs, with the answers committed before the first run, kane-cli 0.10.9 told the agent to edit the test 5 times. WITNESS: **0**. ([Triage bench](#triage-bench-43-cases-answers-fixed-before-any-run))
+- **It runs on a real app that people keep their money in.** [Actual Budget](https://github.com/actualbudget/actual) has 30,000 stars, and AI agents write most of its changes: 24 of its 36 open pull requests are marked `[AI]`. WITNESS has checked 40 of them on their live previews. It blamed none of them for a bug they did not add.
+- **Real bugs in five open-source apps, web and desktop:** Actual Budget, CyberChef, IT-Tools, TodoMVC and MarkText. Each one has its test, both builds and every Kane run in this repo.
+- **It catches a bug that a clean test run cannot see.** In Actual Budget [#6574](https://github.com/actualbudget/actual/issues/6574), a budget saved by an older version will not open after the update. A fresh browser passes, so plain Kane misses it. WITNESS replays with the saved data and names it.
+
+## Why Kane's label is not enough
+
+When a Kane test fails, a coding agent has to choose: fix the app, or fix the test. Kane gives a label for that, and agents act on it. #8760 is not rare. On 12 real app bugs in four open-source apps (CyberChef, IT-Tools, Actual Budget, TodoMVC), Kane's label pointed at the test in 6. On a 13th, Kane passed the bug outright.
 
 ## How WITNESS decides
 
@@ -32,7 +61,7 @@ How a check works:
 1. **Pick.** `witness pr watch` looks at the open pull requests every three hours and picks each new commit whose changed files touch an area a test covers (`areas` in [`pr.json`](examples/pr/actual/pr.json)).
 2. **Replay on the preview.** Kane uses the pull request's live preview like a person would, replaying tests written from Actual's own bug reports. Each of those tests caught its real regression on Actual's own builds.
 3. **Compare.** If a test fails, the same recording is replayed on Actual's live main build (`edge.actualbudget.org`). Fails only on the preview: the pull request added the bug (APP_BUG). Fails on main too: ENV. If the branch is behind main, the published nightly from the day it split off is replayed as well; if that fails too, the bug is older than the pull request (BEHIND_MAIN).
-4. **Show.** The result appears on the [hosted page](https://witness.38-49-216-59.sslip.io) under *Checked automatically*, and every check is committed as one `pr.json` in [`examples/pr/actual/runs/`](examples/pr/actual/runs/).
+4. **Show.** The result appears on the [live site](https://witness-kane.vercel.app/checks) under *Checked automatically*, and every check is committed as one `pr.json` in [`examples/pr/actual/runs/`](examples/pr/actual/runs/).
 
 **Results, 25 November 2026:** 40 checks of 36 open pull requests (24 marked `[AI]`), 50 test runs: 46 PASS, 2 BEHIND_MAIN, 1 TEST_PROBLEM, 1 ENV. No pull request was blamed for a bug it did not add.
 
@@ -119,7 +148,7 @@ npm ci && npm run build && npm link     # gives you the `witness` command
 ## Check it yourself in 60 seconds (no login)
 
 ```bash
-npx -y github:Jennycruzy/witness demo
+npx -y kane-witness demo
 ```
 
 One real case from start to finish (Kane's label, the second build, the card, the agent's one-line fix, the unchanged recording passing), then every number above recomputed from the committed runs. No Kane login, no credits, no network calls of its own. Or from a clone:
@@ -136,17 +165,18 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 
 | Score | Look at | What you see |
 |---|---|---|
-| Ships | `npx -y github:Jennycruzy/witness demo` | The full flow on a real bug, from the real Kane runs, in under a second after install |
+| Ships | `npx -y kane-witness demo` | The full flow on a real bug, from the real Kane runs, in under a second after install |
 | Ships | [`examples/actual`](examples/actual) and [`evidence/actual-8475-search.json`](evidence/actual-8475-search.json) | The nightly watch set up on Actual Budget, and the build search that found the first bad nightly for #8475 (20 June 2026) unattended, with the commits in between |
 | Verified | `node dist/cli.js verify` | Kane's label right on 6 of 12 real app bugs in four apps, WITNESS 12 of 12; 3 of 3 real test problems; the 16 mined regressions (Kane 15 of 16, WITNESS 16 of 16); ENV where the good build fails too; every evidence file checked by sha256 |
-| Verified | [Reported upstream](#reported-upstream) | Both Kane issues reproduced and fixed by the Kane team; the TodoMVC fix PR |
+| Verified | [Reported upstream](#reported-upstream) | Three Kane CLI issues reproduced and fixed by the Kane team; the TodoMVC fix PR |
+| Closed loop | [`evidence/actual-8760-fix/`](evidence/actual-8760-fix/) | Actual Budget built from its own source: Kane said `automation_bug` 0.98, WITNESS said APP_BUG, Claude Code fixed the same file as the maintainers in one round, the unchanged recording passed |
 | Verified | [`evidence/actual-6574-saved-state/`](evidence/actual-6574-saved-state/) and its row in `verify` | A live Actual Budget bug that a clean Kane run passes on the newest release; with the browser data the previous release saved, the same recording fails: STATE_BUG |
 | Closed loop | [`evidence/todomvc-svelte-trim-hook-untold.patch`](evidence/todomvc-svelte-trim-hook-untold.patch) and its row in `verify` | A Claude Code session told about one bug tried to stop; the Stop hook blocked it on a second bug it was never told about; it fixed that too, and the unchanged recordings passed |
 | Closed loop | [Pull request #1](https://github.com/Jennycruzy/witness/pull/1) | On GitHub: a PR puts back the upstream TodoMVC Svelte code; the check replays the Kane tests on the PR's build and the base build and comments APP_BUG with the card; a separate Claude Code agent given only that comment fixes two app files; the check goes green |
 | Closed loop | [`src/commands/fix.ts`](src/commands/fix.ts) | Agent edits outside the app source are rolled back; a changed test or recording (sha256) is rejected |
 | Closed loop | [`evidence/skill-fresh-session/`](evidence/skill-fresh-session/) and its row in `verify` | A fresh Claude Code session with only the WITNESS skill, asked "The Kane test fails on this TodoMVC app. Sort it out.", loaded the skill by itself; Kane said `automation_bug` 0.9, WITNESS said APP_BUG, the agent wrote *"I didn't go by that label"*, fixed the app only, and the re-run passed |
 | Verified | [`bench/`](bench/) and `witness bench score bench/cases.json` | 43 cases with answers fixed before any run, on kane-cli 0.10.5, 0.10.8 and 0.10.9: how often Kane's label and WITNESS tell an agent to edit the test when the app is broken |
-| Ships | [witness.38-49-216-59.sslip.io](https://witness.38-49-216-59.sslip.io) | Pick any open pull request of Actual Budget and watch Kane check its live preview, then the verdict; below it, the TodoMVC upstream build or the fixed build. The same page runs locally with `witness live examples/todomvc-svelte/live.json` |
+| Ships | [witness-kane.vercel.app/check](https://witness-kane.vercel.app/check) | Pick any open pull request of Actual Budget and watch Kane check its live preview, then the verdict; below it, the TodoMVC upstream build or the fixed build. The same page runs locally with `witness live examples/todomvc-svelte/live.json` |
 | Ships | [`examples/pr/actual/runs/`](examples/pr/actual/runs/) | The 25 open pull requests checked on 25 November, one `pr.json` per check |
 | Craft | [How I tried to break it](#how-i-tried-to-break-it) | Each way the verdict could be wrong, and the run or test that covers it |
 

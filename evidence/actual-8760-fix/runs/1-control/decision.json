@@ -1,0 +1,44 @@
+{
+  "test": "category_dropdown_menu_opens_again_after_test.md",
+  "decision": {
+    "kaneLabel": "automation_bug",
+    "kaneConfidence": 0.96,
+    "verdict": "APP_BUG",
+    "why": "The same recording passes on the reference build and fails here at a check.",
+    "next": "Fix the app, not the test."
+  },
+  "target": {
+    "status": "failed",
+    "stepsTotal": 5,
+    "stepsPassed": 4,
+    "healed": false,
+    "failed": {
+      "runId": "run-4",
+      "stepIndex": 3,
+      "kind": "check",
+      "reason": "assertion_failed: @ step 3",
+      "label": {
+        "family": "automation_bug",
+        "category": "state_transition_bug",
+        "confidence": 0.96,
+        "rootCause": "The recorded replay reached the budget page but did not get the Groceries menu open before checking its contents."
+      },
+      "screenshot": "<local>/.testmuai/kaneai/sessions/a351e359-b12c-4adc-965d-1ce2e9775f07/scratch/4/replay-test/screenshots/step_003.png"
+    },
+    "creditsReported": 2.7549499999999996,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "reference": {
+    "status": "passed",
+    "stepsTotal": 5,
+    "stepsPassed": 5,
+    "healed": false,
+    "failed": null,
+    "creditsReported": 0,
+    "replayDecisions": 5,
+    "authorDecisions": 0
+  },
+  "blind": [],
+  "locked": []
+}

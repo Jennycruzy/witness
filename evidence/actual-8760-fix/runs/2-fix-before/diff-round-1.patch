@@ -1,0 +1,52 @@
+diff --git a/packages/desktop-client/src/hooks/useRefEventListener.ts b/packages/desktop-client/src/hooks/useRefEventListener.ts
+index 36c6c0bc3..9f6fe99db 100644
+--- a/packages/desktop-client/src/hooks/useRefEventListener.ts
++++ b/packages/desktop-client/src/hooks/useRefEventListener.ts
+@@ -17,9 +17,25 @@ export function useRefEventListener<
+   const callbackRef = useRef(callback);
+   callbackRef.current = callback;
+ 
++  const bindingRef = useRef<{
++    el: EventTarget;
++    event: EventType;
++    listener: EventListener;
++  } | null>(null);
++
++  // `ref.current` can point at a new DOM node after a re-render (e.g. when
++  // the element is unmounted and remounted), so check it after every render
++  // and only rebind when the element or event name actually changed.
+   useEffect(() => {
+     const el =
+       ref instanceof Document || ref instanceof Window ? ref : ref.current;
++    const binding = bindingRef.current;
++    if (binding?.el === el && binding?.event === event) return;
++
++    if (binding) {
++      binding.el.removeEventListener(binding.event, binding.listener);
++      bindingRef.current = null;
++    }
+     if (!el) return;
+ 
+     const listener: EventListener = e =>
+@@ -28,8 +44,17 @@ export function useRefEventListener<
+         e as HTMLElementEventMap[EventType],
+       );
+     el.addEventListener(event, listener);
+-    return () => {
+-      el.removeEventListener(event, listener);
+-    };
+-  }, [ref, event]);
++    bindingRef.current = { el, event, listener };
++  });
++
++  useEffect(
++    () => () => {
++      const binding = bindingRef.current;
++      if (binding) {
++        binding.el.removeEventListener(binding.event, binding.listener);
++        bindingRef.current = null;
++      }
++    },
++    [],
++  );
+ }

@@ -1,0 +1,15 @@
+I fixed the app in one file: `packages/desktop-client/src/hooks/useRefEventListener.ts`, lines 17–60. I haven't tested it. The sandbox needed approval for the vitest, typecheck and lint commands, and nobody was there to approve them, so none of them ran.
+
+**Cause.** This is a regression from #8606 (`7a67eff1e`). That change made `useRefEventListener` attach its listener only when `[ref, event]` change. But `ref` is a ref object whose identity never changes, while `ref.current` can. In `SidebarCategory.tsx`, the row's name view (the one the dropdown arrow belongs to) is a fresh DOM node every time the rename input closes. So after "Food" is renamed to "Groceries", the `contextmenu` listener from `useContextMenu` is still attached to the old node, which is no longer on the page. Clicking the arrow sends `contextmenu` to the new node, nothing handles it, and the menu never opens. That's the step-5 failure, so this is an app bug, not a test bug.
+
+**Fix.**
+- **Lines 20–49:** the effect now runs after every render and checks the current `ref.current` and event name. It only rebinds when one of them has changed, moving the listener from the old element to the new one.
+- **Lines 51–60:** a separate cleanup effect removes the listener when the component unmounts.
+
+This keeps the goal of #8606: re-renders where only the callback changes still don't rebind, and the latest-callback ref is unchanged. The existing tests in `useRefEventListener.test.ts` (bind once, no rebind on a new callback, latest callback used, rebind on event change, remove on unmount) should all still pass, but I couldn't run them.
+
+**Before merging:**
+- Run `yarn workspace @actual-app/web exec vitest --run src/hooks/useRefEventListener.test.ts`, `yarn typecheck` and `yarn lint`.
+- Consider adding a test for "rebinds when `ref.current` changes". I didn't, because I was told not to edit tests.
+- I didn't add a release note to `upcoming-release-notes/` because I was told to change only application source. One will be needed if this goes into a PR.
+
