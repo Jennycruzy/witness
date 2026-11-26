@@ -1,0 +1,72 @@
+name: WITNESS for Kane CLI
+description: When a Kane CLI test fails, replay the same recording on a build that works and tell the agent whether to fix the app or the test.
+branding: { icon: eye, color: green }
+
+inputs:
+  config:
+    description: Path to witness.json, relative to working-directory
+    default: witness.json
+  working-directory:
+    description: Folder that holds witness.json and the Kane tests
+    default: .
+  kane-username:
+    description: TestMu username (pass a secret)
+    required: true
+  kane-access-key:
+    description: TestMu access key (pass a secret)
+    required: true
+  comment:
+    description: Post the verdict and the card on the pull request when a test fails
+    default: "true"
+  version:
+    description: kane-witness version from npm
+    default: latest
+
+outputs:
+  verdict:
+    description: PASS when every test passed, otherwise the first verdict (APP_BUG, TEST_PROBLEM, ENV, ...)
+    value: ${{ steps.guard.outputs.verdict }}
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with: { node-version: 22 }
+    - name: Install Kane CLI and WITNESS
+      shell: bash
+      run: npm install -g @testmuai/kane-cli kane-witness@${{ inputs.version }}
+    - name: Kane login
+      shell: bash
+      env:
+        KANE_USERNAME: ${{ inputs.kane-username }}
+        KANE_ACCESS_KEY: ${{ inputs.kane-access-key }}
+      run: kane-cli login --username "$KANE_USERNAME" --access-key "$KANE_ACCESS_KEY" < /dev/null
+    - name: Replay the Kane tests (the reference build only when one fails)
+      id: guard
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        CHROME_PATH: /usr/bin/google-chrome
+        WITNESS_REPORT: ${{ runner.temp }}/witness-report.md
+      run: |
+        set +e
+        witness guard "${{ inputs.config }}" | tee "${{ runner.temp }}/witness.log"
+        code=${PIPESTATUS[0]}
+        v=$(grep -o -E "VERDICT +[A-Z_]+" "${{ runner.temp }}/witness.log" | head -1 | awk '{print $2}')
+        echo "verdict=${v:-PASS}" >> "$GITHUB_OUTPUT"
+        exit $code
+    - name: Post the verdict on the pull request
+      if: always() && inputs.comment == 'true' && github.event.pull_request.number != ''
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        [ -f "${{ runner.temp }}/witness-report.md" ] || exit 0
+        gh pr comment ${{ github.event.pull_request.number }} --repo "${{ github.repository }}" --body-file "${{ runner.temp }}/witness-report.md"
+    - name: Keep the runs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: witness-runs
+        path: ${{ inputs.working-directory }}/.witness/runs
+        if-no-files-found: ignore

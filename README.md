@@ -154,6 +154,19 @@ git clone https://github.com/Jennycruzy/witness && cd witness
 npm ci && npm run build && npm link     # gives you the `witness` command
 ```
 
+### On every pull request: the GitHub Action
+
+```yaml
+# .github/workflows/witness.yml: build your app twice (the PR and the base branch), then
+- uses: Jennycruzy/witness@master
+  with:
+    working-directory: e2e            # holds witness.json and the Kane tests
+    kane-username: ${{ secrets.KANE_USERNAME }}
+    kane-access-key: ${{ secrets.KANE_ACCESS_KEY }}
+```
+
+It installs Kane CLI and `kane-witness` from npm, runs every test on the PR's build, and replays a failing one on the base build. Then it posts the verdict and the agent's card on the pull request, and sets the `verdict` output (`PASS`, `APP_BUG`, `TEST_PROBLEM`, `ENV`, …). The job needs `pull-requests: write` to comment. [A real run](https://github.com/Jennycruzy/witness/actions/runs/45804388751) on the TodoMVC Svelte commit before its fix: both tests failed on that build and passed on the base build, so both are APP_BUG (Kane's labels 0.95 and 0.98).
+
 ## Check it yourself in 60 seconds (no login)
 
 ```bash
@@ -186,6 +199,7 @@ node dist/cli.js verify     # recomputes every number above from evidence/, chec
 | Closed loop | [`evidence/skill-fresh-session/`](evidence/skill-fresh-session/) and its row in `verify` | A fresh Claude Code session with only the WITNESS skill, asked "The Kane test fails on this TodoMVC app. Sort it out.", loaded the skill by itself; Kane said `automation_bug` 0.9, WITNESS said APP_BUG, the agent wrote *"I didn't go by that label"*, fixed the app only, and the re-run passed |
 | Verified | [`bench/`](bench/) and `witness bench score bench/cases.json` | 43 cases with answers fixed before any run, on kane-cli 0.10.5, 0.10.8 and 0.10.9: how often Kane's label and WITNESS tell an agent to edit the test when the app is broken |
 | Ships | [witness-kane.vercel.app/check](https://witness-kane.vercel.app/check) | Pick any open pull request of Actual Budget and watch Kane check its live preview, then the verdict; below it, the TodoMVC upstream build or the fixed build. The same page runs locally with `witness live examples/todomvc-svelte/live.json` |
+| Ships | [`action.yml`](action.yml) and [its run](https://github.com/Jennycruzy/witness/actions/runs/45804388751) | The GitHub Action from npm `kane-witness`: on the commit before the TodoMVC fix, both tests fail, pass on the base build, verdict output `APP_BUG` |
 | Ships | [`examples/pr/actual/runs/`](examples/pr/actual/runs/) | The 25 open pull requests checked on 25 November, one `pr.json` per check |
 | Craft | [How I tried to break it](#how-i-tried-to-break-it) | Each way the verdict could be wrong, and the run or test that covers it |
 
