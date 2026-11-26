@@ -14,7 +14,7 @@ import { classify, labelDisagrees } from './core/classify.js';
 import { loadConfig } from './io/config.js';
 import { guard } from './commands/guard.js';
 import { fix } from './commands/fix.js';
-import { stopHook } from './commands/hook.js';
+import { pinTests, pinsPath, stopHook } from './commands/hook.js';
 import { teach } from './commands/teach.js';
 import { watch } from './commands/watch.js';
 import { search } from './commands/search.js';
@@ -194,9 +194,20 @@ async function main(): Promise<number> {
     if (!already) (cur.hooks.Stop = cur.hooks.Stop ?? []).push({ hooks: [{ type: 'command', command, timeout: 1200 }] });
     writeFileSync(settings, JSON.stringify(cur, null, 2) + '\n');
     console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
+    if (existsSync('witness.json')) {
+      const pins = pinTests(loadConfig(resolve('witness.json')), process.cwd());
+      console.log(`Pinned ${Object.keys(pins).length} Kane test(s) and their recordings in ${pinsPath(process.cwd())}: an agent's fix only counts if they stay unchanged`);
+    }
     return 0;
   }
-  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] [--teach] | witness teach <evidence dir> <test_md> [witness.json] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness mine plan|run|summary <mine.json> [--only <pr>] | witness classify <target.ndjson> <reference.ndjson>');
+  if (cmd === 'pin') {
+    // witness pin [witness.json]: a person accepts the tests and recordings as they are now
+    const cfgPath = resolve(a ?? 'witness.json');
+    const pins = pinTests(loadConfig(cfgPath), dirname(cfgPath));
+    for (const [t, h] of Object.entries(pins)) console.log(`  pinned ${t}  ${h.slice(0, 12)}…`);
+    return 0;
+  }
+  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] [--teach] | witness teach <evidence dir> <test_md> [witness.json] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness pin [witness.json] | witness mine plan|run|summary <mine.json> [--only <pr>] | witness classify <target.ndjson> <reference.ndjson>');
   return 64;
 }
 
