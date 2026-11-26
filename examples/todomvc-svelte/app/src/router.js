@@ -18,7 +18,6 @@ export function router(onChange) {
 
     function init() {
         window.addEventListener("hashchange", handleChange);
-        // `hashchange` doesn't fire on initial load, so apply the current hash now.
         handleChange();
     }
 
