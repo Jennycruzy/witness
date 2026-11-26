@@ -159,6 +159,15 @@ git clone https://github.com/Jennycruzy/witness && cd witness
 npm ci && npm run build && npm link     # gives you the `witness` command
 ```
 
+Then, in your app's folder:
+
+```bash
+witness init      # finds your Kane tests and build, writes witness.json, installs the pinned Stop hook
+witness guard     # replays the tests; on a failure, the reference build decides
+```
+
+`witness init` takes the reference from `origin/main` (built in its own worktree) unless you pass `--reference <staging url>` or `--npm <package>` for the last release. It prints everything it guessed, and never replaces an existing `witness.json` without `--force`.
+
 ### On every pull request: the GitHub Action
 
 ```yaml
@@ -250,6 +259,7 @@ Put a `witness.json` next to your Kane tests:
 
 | Command | What it does | Kane credits |
 |---|---|---|
+| `witness init` | Writes `witness.json` for the project (Kane tests, build command, output folder, `origin/main` or `--reference`/`--npm` as the reference) and installs the pinned Stop hook (`--no-hook` to skip) | 0 |
 | `witness record <test>` | Records the test's steps with Kane on the reference build (with an npm channel: the newest release) and keeps the recording | ~50 for a short test |
 | `witness demo` | One real case end to end and every number recomputed, from the committed runs; no login | 0 |
 | `witness guard` | Runs each test on your build; on a failure replays it on the reference and gives the verdict | 0 when the target passes; about 2 per failing test (Kane's triage); the reference replay 0 |

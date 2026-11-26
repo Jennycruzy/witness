@@ -15,6 +15,7 @@ import { loadConfig } from './io/config.js';
 import { guard } from './commands/guard.js';
 import { fix } from './commands/fix.js';
 import { pinTests, pinsPath, stopHook } from './commands/hook.js';
+import { planInit } from './commands/init.js';
 import { teach } from './commands/teach.js';
 import { watch } from './commands/watch.js';
 import { search } from './commands/search.js';
@@ -29,6 +30,25 @@ import { checkPr, listOpenPrs, loadPrConfig, watchPrs } from './commands/pr.js';
 import { register, runBench, scoreAll } from './commands/bench.js';
 
 const [cmd, a, b] = process.argv.slice(2);
+
+/** Add the WITNESS Stop hook to .claude/settings.json and pin the tests in ./witness.json. */
+function installHook(carry: boolean) {
+    const settings = resolve('.claude/settings.json');
+    mkdirSync(dirname(settings), { recursive: true });
+    const cur = existsSync(settings) ? JSON.parse(readFileSync(settings, 'utf8')) : {};
+    cur.hooks = cur.hooks ?? {};
+    // Run from npx's cache, the path would not last: the hook then runs the published package instead.
+    const self = resolve(process.argv[1]);
+    const command = `${/[\\/]_npx[\\/]/.test(self) ? 'npx -y kane-witness' : `node ${JSON.stringify(self)}`} hook${carry ? ' --carry-state' : ''}`;
+    const already = JSON.stringify(cur.hooks.Stop ?? []).includes(' hook');
+    if (!already) (cur.hooks.Stop = cur.hooks.Stop ?? []).push({ hooks: [{ type: 'command', command, timeout: 1800 }] });
+    writeFileSync(settings, JSON.stringify(cur, null, 2) + '\n');
+    console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
+    if (existsSync('witness.json')) {
+      const pins = pinTests(loadConfig(resolve('witness.json')), process.cwd());
+      console.log(`Pinned ${Object.keys(pins).length} Kane test(s) and their recordings in ${pinsPath(process.cwd())}: an agent's fix only counts if they stay unchanged`);
+    }
+}
 
 async function main(): Promise<number> {
   if (cmd === 'classify' && a && b) {
@@ -184,22 +204,20 @@ async function main(): Promise<number> {
     console.log(`Installed the WITNESS skill in ${dest}`);
     return 0;
   }
-  if (cmd === 'install-hook') {
-    const settings = resolve('.claude/settings.json');
-    mkdirSync(dirname(settings), { recursive: true });
-    const cur = existsSync(settings) ? JSON.parse(readFileSync(settings, 'utf8')) : {};
-    cur.hooks = cur.hooks ?? {};
-    const command = `node ${JSON.stringify(resolve(process.argv[1]))} hook${a === '--carry-state' ? ' --carry-state' : ''}`;
-    const already = JSON.stringify(cur.hooks.Stop ?? []).includes(' hook');
-    if (!already) (cur.hooks.Stop = cur.hooks.Stop ?? []).push({ hooks: [{ type: 'command', command, timeout: 1200 }] });
-    writeFileSync(settings, JSON.stringify(cur, null, 2) + '\n');
-    console.log(already ? 'The WITNESS Stop hook is already installed.' : `Installed the WITNESS Stop hook in ${settings}`);
-    if (existsSync('witness.json')) {
-      const pins = pinTests(loadConfig(resolve('witness.json')), process.cwd());
-      console.log(`Pinned ${Object.keys(pins).length} Kane test(s) and their recordings in ${pinsPath(process.cwd())}: an agent's fix only counts if they stay unchanged`);
-    }
+  if (cmd === 'init') {
+    // witness init [--reference <url> | --npm <package> [--build-dir <dir>]] [--force] [--no-hook]
+    const args = process.argv.slice(3);
+    const val = (f: string) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : undefined; };
+    if (existsSync('witness.json') && !args.includes('--force')) { console.error('witness.json already exists here (use --force to replace it)'); return 1; }
+    const plan = planInit(process.cwd(), { reference: val('--reference'), npm: val('--npm'), buildDir: val('--build-dir') });
+    writeFileSync('witness.json', JSON.stringify(plan.config, null, 2) + '\n');
+    console.log(`Wrote witness.json: ${plan.config.tests.length} Kane test(s), target ${plan.config.target.dir}, reference ${plan.config.reference.url ?? plan.config.reference.npm ?? plan.config.reference.git}`);
+    for (const n of plan.notes) console.log(`  ${n}`);
+    if (!args.includes('--no-hook')) installHook(false);
+    console.log('Next: build the app, then `witness guard` (or let your agent work: it cannot stop until the unchanged recordings pass).');
     return 0;
   }
+  if (cmd === 'install-hook') { installHook(a === '--carry-state'); return 0; }
   if (cmd === 'pin') {
     // witness pin [witness.json]: a person accepts the tests and recordings as they are now
     const cfgPath = resolve(a ?? 'witness.json');
@@ -207,7 +225,7 @@ async function main(): Promise<number> {
     for (const [t, h] of Object.entries(pins)) console.log(`  pinned ${t}  ${h.slice(0, 12)}…`);
     return 0;
   }
-  console.error('usage: witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] [--teach] | witness teach <evidence dir> <test_md> [witness.json] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness pin [witness.json] | witness mine plan|run|summary <mine.json> [--only <pr>] | witness classify <target.ndjson> <reference.ndjson>');
+  console.error('usage: witness init [--reference <url> | --npm <package>] [--force] [--no-hook] | witness demo | witness verify | witness guard [witness.json] [--only <test>] [--record-missing] [--carry-state] [--teach] | witness teach <evidence dir> <test_md> [witness.json] | witness record <test_md> [witness.json] [--carry-state] | witness fix <test_md> [witness.json] | witness hook | witness install-skill [--global] | witness install-hook | witness pin [witness.json] | witness mine plan|run|summary <mine.json> [--only <pr>] | witness classify <target.ndjson> <reference.ndjson>');
   return 64;
 }
 

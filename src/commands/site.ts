@@ -85,8 +85,8 @@ export function renderPage(page: PageName, o: SiteOptions, api = ''): string {
   if (page === 'home') body = `<header class="hero" id="top"><div class="wrap">
 <div>
 <div class="status"><span class="pulse"></span>${o.pr ? `Watching ${app} pull requests` : 'Live'}</div>
-<h1>Is it the app,<br><span class="dim">or the test?</span></h1>
-<p class="lead">When a <a href="https://www.testmuai.com/kane-cli/">Kane CLI</a> test fails, a coding agent has to pick: fix the app, or edit the test. WITNESS replays the same recording on a build known to work, and the comparison decides.${o.pr ? ` Here it checks ${app}'s open pull requests on their live previews.` : ''}</p>
+<h1>Kane said the test was wrong.<br><span class="dim">The app was broken.</span></h1>
+<p class="lead">When a <a href="https://www.testmuai.com/kane-cli/">Kane CLI</a> test fails, WITNESS replays the same recording on a build known to work and tells your coding agent what to fix. The fix only counts when that unchanged recording passes on the rebuilt app.${o.pr ? ` Here it checks ${app}'s open pull requests on their live previews.` : ''}</p>
 <div class="cta">${o.pr ? '<a class="btn btn-primary" href="/check">Check a pull request</a>' : '<a class="btn btn-primary" href="/demo">Run the demo</a>'}<a class="btn" href="/how">How it decides</a></div>
 ${o.pr ? `<div class="stats" id="stats"><div class="stat"><b data-k="checks">0</b><span>checks</span></div><div class="stat"><b data-k="prs">0</b><span>pull requests</span></div><div class="stat"><b data-k="ai">0</b><span>by AI agents</span></div><div class="stat"><b data-k="runs">0</b><span>test runs</span></div></div>` : ''}
 <a class="busybar" id="busybar" href="#"><span class="pulse"></span><span id="busytext">A run is in progress</span></a>
@@ -111,6 +111,19 @@ ${o.pr ? `<div class="stats" id="stats"><div class="stat"><b data-k="checks">0</
 </div></header>
 
 <section><div class="wrap">
+<div class="kicker rv">Proven on real bugs</div>
+<h2 class="rv">Three real Actual Budget bugs, fixed from its own source.</h2>
+<p class="sub rv">Actual Budget has 30,000 stars, and people keep their own money in it. We built it at the commit just before each maintainers' fix. Kane blamed the test in 6 of 8 failing runs. WITNESS said APP_BUG in all 8, Claude Code fixed each bug in one round, and Kane passed the unchanged recording on the rebuilt app.</p>
+<div class="panel tw rv"><table style="min-width:760px"><thead><tr><th>Real bug</th><th>Kane's label</th><th>WITNESS</th><th>Agent's fix</th><th>Maintainers' fix</th></tr></thead><tbody>
+<tr><td><a href="https://github.com/actualbudget/actual/issues/8760">#8760</a> A category's menu stops opening after a rename</td><td><span class="badge b-warn">the test</span> 0.96, 0.98</td><td><span class="badge b-bad">APP_BUG</span></td><td><a href="https://github.com/Jennycruzy/witness/blob/master/evidence/actual-8760-fix/agent.patch"><code>useRefEventListener.ts</code></a></td><td><a href="https://github.com/actualbudget/actual/pull/8763">#8763</a>, same file, same design</td></tr>
+<tr><td><a href="https://github.com/actualbudget/actual/issues/8498">#8498</a> A rule with a category group condition never matches</td><td><span class="badge b-warn">the test</span> 0.94 to 0.98</td><td><span class="badge b-bad">APP_BUG</span></td><td><a href="https://github.com/Jennycruzy/witness/blob/master/evidence/actual-8587-fix/agent.patch"><code>transaction-rules.ts</code></a></td><td><a href="https://github.com/actualbudget/actual/pull/8587">#8587</a>, same file</td></tr>
+<tr><td><a href="https://github.com/actualbudget/actual/issues/9359">#9359</a> The search is dropped after toggling reconciled rows</td><td><span class="badge b-info">the app</span> 0.98</td><td><span class="badge b-bad">APP_BUG</span></td><td><a href="https://github.com/Jennycruzy/witness/blob/master/evidence/actual-9360-fix/agent.patch"><code>Account.tsx</code></a></td><td><a href="https://github.com/actualbudget/actual/pull/9360">#9360</a>, same file</td></tr>
+</tbody></table></div>
+<img class="rv" src="https://raw.githubusercontent.com/Jennycruzy/witness/master/docs/actual-8760-before-after.png" alt="Actual Budget #8760. Left, the buggy build: the category was renamed to Groceries and its arrow is pressed, but no menu opens; Kane labelled this failure a test bug at 0.98. Right, the build with Claude's fix: the menu opens." style="display:block;width:100%;margin-top:20px;border:1px solid var(--line);border-radius:14px" loading="lazy">
+<a class="more rv" href="https://github.com/Jennycruzy/witness#three-real-bugs-fixed-from-actual-budgets-own-source">Every run, card and diff →</a>
+</div></section>
+
+<section><div class="wrap">
 <div class="kicker rv">Explore</div>
 <h2 class="rv">See it work on a real app.</h2>
 <div class="ways rv">
@@ -130,10 +143,12 @@ ${o.pr ? `<section><div class="wrap">
 </div></section>` : ''}
 
 <section><div class="wrap">
-<div class="kicker rv">Try it on your machine</div>
-<h2 class="rv">One command, no login.</h2>
-<p class="sub rv">One real case from start to finish, then every number recomputed from the committed runs. No Kane login, no credits.</p>
+<div class="kicker rv">Use it</div>
+<h2 class="rv">Where your agent already works.</h2>
+<p class="sub rv">See one real case from start to finish, with every number recomputed from the committed runs. No Kane login, no credits.</p>
 <div class="cmd rv"><span class="p">$</span><code id="cmdtext">npx -y kane-witness demo</code><button class="copy" id="copy">Copy</button></div>
+<p class="sub rv" style="margin-top:28px">In your project, <code>witness init</code> finds your Kane tests and your build, writes <code>witness.json</code>, and installs a Claude Code Stop hook. Your agent cannot say it is done until the pinned, unchanged recordings pass on the rebuilt app. On a fresh session fixing Actual #8760, the hook rebuilt Actual and only let it stop after Kane passed: <a class="link" href="https://github.com/Jennycruzy/witness/blob/master/evidence/actual-8760-hook/PROVEN.md">PROVEN</a>.</p>
+<p class="sub rv">On every pull request, the <a class="link" href="https://github.com/Jennycruzy/witness#on-every-pull-request-the-github-action">GitHub Action</a> replays the tests on the PR's build and the base build and comments the verdict with the agent's card, as it did on <a class="link" href="https://github.com/Jennycruzy/witness/pull/2#issuecomment-7191732394">pull request #2</a>.</p>
 </div></section>`;
   if (page === 'check') body = phead('Run it yourself', `Check a pull request of ${app} before it merges.`, `${app} is an open-source budgeting app that people use for their own money, and coding agents write many of its changes. Every pull request gets a live preview. Kane uses that preview like a person would, in a real Chrome, replaying tests written from ${app}'s own bug reports. Each test caught its real regression on ${app}'s own builds.`) + `
 <section style="border-top:0;padding-top:32px"><div class="wrap">
